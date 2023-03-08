@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="466.1813"
+   height="434.48776"
+   id="svg10"
+   sodipodi:docname="alternative.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata16">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     id="namedview12"
+     showgrid="false"
+     inkscape:zoom="0.19203901"
+     inkscape:cx="-2242.558"
+     inkscape:cy="36.416924"
+     inkscape:window-x="3832"
+     inkscape:window-y="515"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg10" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path2"
+     d="M 467.18595,397.93475 H -0.15662132 l 0.001942,36.553 H 467.18592 Z"
+     style="fill:#62b880" />
+  <g
+     aria-label="/"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';letter-spacing:0px;word-spacing:0px;fill:#6288b8;fill-opacity:1;stroke:none"
+     id="text818"
+     transform="matrix(2.3802353,0,0,2.3802353,2647.6893,-43.079261)">
+    <path
+       d="m -973.49463,31.854218 -51.09377,137.062502 h -25.9687 l 51.09372,-137.062502 z"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Bold';fill:#6288b8;fill-opacity:1"
+       id="path820"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

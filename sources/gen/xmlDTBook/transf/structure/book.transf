@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns="http://www.w3.org/1999/xhtml" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:content format="xhtml">
+		<sm:WFreeBlock>
+			<dtbook version="2005-3">
+				<sm:addAttribute name="xmlns">http://www.daisy.org/z3986/2005/dtbook/</sm:addAttribute>
+				<sm:callModel>
+					<sm:current axis="genSpecific"/>
+				</sm:callModel>
+				<head>
+					<sm:callCompositionMeta axis="head"/>
+					<sm:callCompositionMeta axis="headGenSpecific"/>
+					<sm:for codes="frontmatter backcover backmatter">
+						<sm:callPartMeta axis="head"/>
+					</sm:for>
+				</head>
+				<book>
+					<frontmatter>
+						<sm:addAttribute name="id">
+							<sm:callModel>
+								<sm:current axis="id"/>
+							</sm:callModel>
+						</sm:addAttribute>
+						<sm:callCompositionMeta axis="frontmatter"/>
+						<sm:for codes="frontmatter">
+							<sm:WFreeBlock>
+								<level1>
+									<sm:callPartMeta/>
+									<sm:callPartMeta axis="genSpecific"/>
+								</level1>
+							</sm:WFreeBlock>
+						</sm:for>
+						<sm:for codes="backcover sameAuthor">
+							<sm:WFreeBlock>
+								<level1>
+									<sm:addAttribute name="id">
+										<sm:callPartMeta axis="id"/>
+									</sm:addAttribute>
+									<h1>
+										<sm:title>
+											<sm:partTitle/>
+										</sm:title>
+									</h1>
+									<sm:callPartMeta/>
+									<sm:callSubModel/>
+								</level1>
+							</sm:WFreeBlock>
+						</sm:for>
+						<sm:inDataOrder>
+							<sm:for codes="inscription citation">
+								<sm:WFreeBlock>
+									<level1>
+										<sm:addAttribute name="id">
+											<sm:callPartMeta axis="id"/>
+										</sm:addAttribute>
+										<h1>
+											<sm:title>
+												<sm:partTitle/>
+											</sm:title>
+										</h1>
+										<sm:callPartMeta/>
+										<sm:callSubModel/>
+									</level1>
+								</sm:WFreeBlock>
+							</sm:for>
+						</sm:inDataOrder>
+					</frontmatter>
+					<bodymatter>
+						<sm:for codes="level1">
+							<sm:callSubModel/>
+						</sm:for>
+						<sm:for codes="backmatter">
+							<sm:WFreeBlock>
+								<level1>
+									<sm:addAttribute name="id">
+										<sm:callPartMeta axis="id"/>
+									</sm:addAttribute>
+									<h1>
+										<sm:title>
+											<sm:partTitle/>
+										</sm:title>
+									</h1>
+									<sm:callPartMeta/>
+									<sm:callSubModel/>
+								</level1>
+							</sm:WFreeBlock>
+						</sm:for>
+					</bodymatter>
+				</book>
+			</dtbook>
+		</sm:WFreeBlock>
+	</sm:content>
+</sm:compositionXhtmlTransf>

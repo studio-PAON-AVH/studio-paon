@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<smp:scarProc name="￼;DT Modèle￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="dtmodel"/>
+	<smp:structure isFolder="true">
+		<smp:path>
+			<smp:pathLevel>
+				<smp:meta sc:refUri="/portal/import/metas/uid.meta"/>
+			</smp:pathLevel>
+		</smp:path>
+		<smp:versionning>
+			<smp:none/>
+		</smp:versionning>
+		<smp:metas>
+			<smp:metaList>
+				<smp:meta sc:refUri="/portal/depot/prc/dtmodel/metas/srcUri.meta"/>
+			</smp:metaList>
+		</smp:metas>
+	</smp:structure>
+	<smp:writeProcess>
+		<smp:buildViews>
+			<smp:infoView/>
+			<smp:rootView family="technical" name="￼;Accueil￼">
+				<smp:xslView>
+					<smp:onMetas/>
+					<smp:xsl sc:refUri="/portal/depot/prc/dtmodel/preview.xsl"/>
+				</smp:xslView>
+			</smp:rootView>
+			<smp:view code="xmlDTBook" family="userFriendly" name="￼;DTBook￼" urlPatterns="?V=dtbook">
+				<smp:generatorView>
+					<smp:generator result="oneStream" sc:refUri="/gen/xmlDTBook/xmlDTBook.generator"/>
+				</smp:generatorView>
+			</smp:view>
+			<smp:view code="daisy2Pre" family="userFriendly/notViewable" mimeType="application/zip" name="￼;Pre-build Daisy 2 ￼" urlPatterns="?V=daisy2Pre.zip">
+				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1637962212307">Préparation daisy2</comment></comment>-->
+				<smp:generatorView>
+					<smp:generator sc:refUri="/gen/daisy2/daisy2.generator"/>
+				</smp:generatorView>
+			</smp:view>
+			<smp:view code="daisy3Pre" family="userFriendly/notViewable" mimeType="application/zip" name="￼;Pre-build Daisy 3￼" urlPatterns="?V=daisy3Pre.zip">
+				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1637962212307">Préparation daisy2</comment></comment>-->
+				<smp:generatorView>
+					<smp:generator sc:refUri="/gen/xmlDTBookAud/xmlDTBookAud.generator"/>
+				</smp:generatorView>
+			</smp:view>
+			<smp:view code="odtDuxbury" family="userFriendly/notViewable" mimeType="application/vnd.oasis.opendocument.text" name="￼;Export ODT pour Duxbury￼" urlPatterns="?V=odtDuxbury">
+				<smp:generatorView>
+					<smp:generator result="oneStream" sc:refUri="/gen/od/odtDuxbury.generator"/>
+				</smp:generatorView>
+			</smp:view>
+			<smp:asyncBuildViews>
+				<smp:stateNew/>
+				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1636532571785" updateTime="1637962206521">Vues pour génération des pistes audio communes à tous les exports audio</comment></comment>-->
+				<smp:stateReady>
+					<smp:freeViewMaker xml:space="preserve">&lt;viewMaker indexPath="index.xml" transformParams="transform=gen&amp;amp;codeGen=xmlSrcAudio&amp;amp;localAutoUpdate=minor&amp;amp;failOnGenError=true&amp;amp;publishFullTraceGenOnFail=true"  type="eu.scenari.store.service.mkviews.makers.CallTransformMultiViewsMk" code="multi-txt-view"/&gt;</smp:freeViewMaker>
+					<smp:freeViewMaker xml:space="preserve">&lt;viewMaker code="daisy2" urlPatterns="?V=daisy2.zip" builtOn="content" buildPath="free/prcs/daisy2/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2Pre"/&gt;
+&lt;viewMaker code="daisy3" urlPatterns="?V=daisy3.zip" builtOn="content" buildPath="free/prcs/daisy3/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy3Pre" optional="true"/&gt;
+&lt;viewMaker code="duration" urlPatterns="?V=duration" builtOn="content" buildPath="free/prcs/daisy2/buildDuration.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2"/&gt;<smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 2￼" urlPatterns="?V=daisy2.zip"/><smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 3￼" urlPatterns="?V=daisy3.zip"/><smp:registerUiView family="" name="￼;Duration￼" urlPatterns="?V=duration"><!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1673514716751" creationTime="1673514666952">TODO : indexer dans ES + supp urlPatterns</comment></comment>--></smp:registerUiView></smp:freeViewMaker>
+				</smp:stateReady>
+				<smp:stateFailure/>
+			</smp:asyncBuildViews>
+		</smp:buildViews>
+	</smp:writeProcess>
+	<smp:authoring>
+		<smp:preview>
+			<smp:resChildrenWidget/>
+		</smp:preview>
+	</smp:authoring>
+	<smp:indexings>
+		<smp:es>
+			<smp:record refRecordsGroupCode="res">
+				<smp:indexFields>
+					<smp:metadatas>
+						<smp:includeMeta sc:refUri="/portal/depot/prc/dtmodel/metas/srcUri.meta"/>
+						<smp:includeMeta metaCode="state"/>
+					</smp:metadatas>
+				</smp:indexFields>
+			</smp:record>
+		</smp:es>
+	</smp:indexings>
+</smp:scarProc>

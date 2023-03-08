@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/backcoverM.model"/>
+	<sm:axis code="metadc"/>
+	<sm:content>
+		<sm:forField codes="backResume">
+			<sm:Widget sc:refUri="/gen/audio/widget/meta.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dc:description"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:dynamicString>
+						<sm:freeSelect xpath="concatExpr(descendant::sc:para, normalize-space(.), ' ')"/>
+					</sm:dynamicString>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

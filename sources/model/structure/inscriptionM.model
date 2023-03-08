@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim name="￼;Métadonnées même dédicace￼" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="inscriptionM" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure/>
+	<sm:storage>
+		<sm:fullTitleBuilder>
+			<sm:fixedString value="￼;Dédicace￼"/>
+		</sm:fullTitleBuilder>
+	</sm:storage>
+</sm:dataFormPrim>

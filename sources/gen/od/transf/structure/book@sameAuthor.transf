@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<sm:compositionOdtTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:axis code="sameAuthor"/>
+	<sm:content>
+		<!--# Du même auteur-->
+		<sm:for codes="sameAuthor">
+			<sm:WParagraph globalStyle="newPage">
+				<sm:fixedString value="[[*pg*]]"/>
+			</sm:WParagraph>
+			<sm:WParagraph globalStyle="Titre1">
+				<sm:title>
+					<sm:partTitle format="fullTitleText"/>
+				</sm:title>
+			</sm:WParagraph>
+			<sm:callSubModel/>
+		</sm:for>
+	</sm:content>
+</sm:compositionOdtTransf>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim name="￼;Métas de texte￼" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="contentM" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure>
+		<sm:field code="title" name="￼;Titre￼" occurrence="one">
+			<sm:string/>
+		</sm:field>
+		<sm:field code="pronounce" name="￼;Prononciation￼" occurrence="one">
+			<sm:enum labelIfNone="￼;Comme un sigle (exemple ISBN)￼">
+				<sm:option key="no" name="￼;Comme un sigle (exemple ISBN)￼"/>
+				<sm:option key="yes" name="￼;Comme un mot (exemple OTAN)￼"/>
+			</sm:enum>
+		</sm:field>
+		<sm:variants>
+			<sm:variant key="abr">
+				<sm:excludeMember refCode="pronounce"/>
+			</sm:variant>
+		</sm:variants>
+	</sm:structure>
+	<sm:storage/>
+</sm:dataFormPrim>

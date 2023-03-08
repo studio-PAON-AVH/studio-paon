@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<smp:portalDefinition keyPortal="studioPaon" majorVersion="1" mediumVersion="2" minorVersion="0" name="￼;Studio Paon￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlets>
+		<smp:portletLinker sc:refUri="/portal/import/import.linker"/>
+		<smp:portletLinker sc:refUri="/portal/chain/chain.linker"/>
+		<smp:portletLinker sc:refUri="/portal/depot/depot.linker"/>
+	</smp:portlets>
+	<smp:frontPages baseUrl="/~~static" sc:refUri="/portal/servers/static.server">
+		<smp:frontMonoAppPage code="home" title="￼;Studio Paon￼">
+			<smp:authConf>
+				<smp:portlet sc:refUri="/portal/chain/chain.portlet"/>
+			</smp:authConf>
+			<smp:homePlugin>
+				<smp:remoteSite url="https://studio-paon.docs-kelis.fr/common/help"/>
+			</smp:homePlugin>
+			<smp:mainToolbarPlugin>
+				<smp:openSiteAction name="￼;Tableau de bord￼" target="self">
+					<smp:remoteSite url="¤builder;prl-import#urlTree.url¤/"/>
+				</smp:openSiteAction>
+			</smp:mainToolbarPlugin>
+			<smp:wspsPlugin/>
+			<smp:itemEdPlugin/>
+			<smp:dynGenPlugin/>
+			<smp:depotPlugin>
+				<smp:allDepotPortlets>
+					<smp:showDesk/>
+				</smp:allDepotPortlets>
+			</smp:depotPlugin>
+			<smp:freeMjs>
+				<smp:mjs mainFile="chain.free.ui.conf.js" sc:refUri="/portal/chain/free/chain.free.ui.doss">
+					<smp:ownerPortlet sc:refUri="/portal/chain/chain.portlet"/>
+				</smp:mjs>
+			</smp:freeMjs>
+		</smp:frontMonoAppPage>
+	</smp:frontPages>
+	<smp:scenariWebCore>
+		<smp:server addCoreData="yes" baseUrl="/~~static/scCore" sc:refUri="/portal/servers/static.server"/>
+	</smp:scenariWebCore>
+</smp:portalDefinition>

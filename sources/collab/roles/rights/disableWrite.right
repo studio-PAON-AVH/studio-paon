@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<sm:right code="disableWrite" levelAuthority="1000" priority="1000" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:allowPerms>
+		<sm:globalPerm code="callTransition.item"/>
+	</sm:allowPerms>
+	<sm:denyPerms>
+		<sm:globalPerm code="write.node"/>
+	</sm:denyPerms>
+</sm:right>

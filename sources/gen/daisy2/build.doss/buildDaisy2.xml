@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="main">
+
+	<target name="main">
+		<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+
+		<!-- Séléction du fichier html principal -->
+		<first id="root">
+			<fileset dir="${vFolderDest}/co" includes="*.html"/>
+		</first>
+		<!-- Gestion et textes spécifiques de structure -->
+		<transformXsl inFile="${toString:root}" outFile="${toString:root}" style="audio.post.xsl"/>
+
+		<!-- cleanup des structures vide -->
+		<transformXsl inFile="${toString:root}" outFile="${toString:root}" style="cleanup.xsl"/>
+
+		<!-- Completion des métadonnées manquantes -->
+		<transformXsl inFile="${toString:root}" outFile="${toString:root}" style="daisy2.post.xsl"/>
+
+		<!-- Packaging -->
+		<move todir="${vFolderDest}">
+			<fileset dir="${vFolderDest}/co" includes="*.html"/>
+		</move>
+		<delete dir="${vFolderDest}/lib-sc"/>
+		<delete dir="${vFolderDest}/co"/>
+		<delete file="${vFolderDest}/index.html"/>
+	</target>
+</project>

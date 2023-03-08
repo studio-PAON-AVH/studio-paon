@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" name="￼;Titre flottant￼">
+	<sm:identification targetNamespace="editadapt.fr:paon" targetPrefix="paon" code="bridgehead" itemExtension="xml"/>
+	<sm:structure>
+		<sm:field code="bridgehead" name="￼;Titre￼" occurrence="one" family="property/title">
+			<sm:string/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage/>
+</sm:dataFormPrim>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sm:openUiWidget xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns="http://www.w3.org/1999/xhtml" code="bookMHead">
+	<sm:content>
+		<doctitle>
+			<sm:callZone key="title"/>
+		</doctitle>
+		<docauthor>
+			<sm:callZone key="author"/>
+		</docauthor>
+	</sm:content>
+</sm:openUiWidget>

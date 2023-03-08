@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<sm:compositionOdtTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:axis code="citationInscription"/>
+	<sm:content>
+		<!--#Dédicace #Citation-->
+		<sm:inDataOrder>
+			<sm:for codes="inscription">
+				<sm:WParagraph globalStyle="newPage">
+					<sm:fixedString value="[[*pg*]]"/>
+				</sm:WParagraph>
+				<sm:WParagraph globalStyle="Titre1">
+					<sm:title>
+						<sm:partTitle format="fullTitleText"/>
+					</sm:title>
+				</sm:WParagraph>
+				<sm:callSubModel/>
+			</sm:for>
+			<sm:for codes="citation">
+				<sm:WParagraph globalStyle="newPage">
+					<sm:fixedString value="[[*pg*]]"/>
+				</sm:WParagraph>
+				<sm:WParagraph globalStyle="Titre1">
+					<sm:title>
+						<sm:partTitle format="fullTitleText"/>
+					</sm:title>
+				</sm:WParagraph>
+				<sm:callSubModel/>
+			</sm:for>
+		</sm:inDataOrder>
+	</sm:content>
+</sm:compositionOdtTransf>

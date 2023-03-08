@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sm:odTemplateText xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:contentView>
+		<sm:heading/>
+		<sm:defaultStyle/>
+		<sm:footnote/>
+	</sm:contentView>
+	<sm:contentStruct>
+		<sm:WPageMaster style="book">
+			<sm:body>
+				<sm:callRootModel axis="couverture"/>
+				<sm:callRootModel axis="backcover"/>
+				<sm:callRootModel axis="sameAuthor"/>
+				<sm:callRootModel axis="citationInscription"/>
+				<sm:callRootModel/>
+				<sm:callRootModel axis="backmatter"/>
+			</sm:body>
+		</sm:WPageMaster>
+	</sm:contentStruct>
+</sm:odTemplateText>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="importRes" basedir="." default="main">
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	<taskdef name="loadStaticClass" classname="com.scenari.scant.LoadStaticClass" onerror="ignore"/>
+	<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+	<taskdef name="transform" classname="com.scenari.m.co.ant.TransformTask"/>
+
+	<property name="mode.debug" value="false"/>
+
+	<target name="main">
+		<copy file="od.notes.xsl" tofile="${gen.gens.dir}/odtDuxbury/ui.doss/od.notes.xsl"/>
+		<copy file="od.post.xsl" tofile="${gen.gens.dir}/odtDuxbury/ui.doss/od.post.xsl"/>
+		<transformXsl inFile="${gen.gens.dir}/odtDuxbury/ui.doss/build.xml" outFile="${gen.gens.dir}/odtDuxbury/ui.doss/build.xml" style="od.build.post.xsl"/>
+	</target>
+
+</project>

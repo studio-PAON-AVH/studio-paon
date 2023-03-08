@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<sm:webSiteGenerator code="xmlDTBookAud" name="￼;DTBook XML Audio￼" nature="xml" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1665491649033">Post traitement des notes dans le build daisy 3 du depot</comment></comment>-->
+	<sm:modelRoot>
+		<sm:allowedModel sc:refUri="/model/structure/book.model"/>
+	</sm:modelRoot>
+	<sm:mode debug="no" standard="XML"/>
+	<sm:uiFrame sc:refUri="/gen/xmlDTBookAud/xmlDTBookAud.uiframe"/>
+	<sm:transformerList sc:refUri="/gen/xmlDTBook/transf.transflist">
+		<sm:transformerList info="Ids" sc:refUri="/gen/audio/transf/structure/id.transflist"/>
+		<sm:transformerList info="Surcharge audio" sc:refUri="/gen/xmlDTBookAud/transf.transflist"/>
+	</sm:transformerList>
+	<sm:uiTemplateList>
+		<sm:uiTemplate code="xml" sc:refUri="/gen/audio/tpl/xml.uitemplate"/>
+	</sm:uiTemplateList>
+</sm:webSiteGenerator>

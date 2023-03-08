@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns="http://www.w3.org/1999/xhtml" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:content format="xhtml">
+		<sm:choose>
+			<sm:when xpath="//paon:bookM/sp:options/sp:publishNotes[text()='end']">
+				<sm:WFreeBlock>
+					<note-processing class="end-xhtml1"/>
+				</sm:WFreeBlock>
+			</sm:when>
+			<sm:otherwise>
+				<sm:WFreeBlock>
+					<note-processing class="flow"/>
+				</sm:WFreeBlock>
+			</sm:otherwise>
+		</sm:choose>
+		<sm:WFreeBlock>
+			<div class="frontMatter">
+				<div class="cover">
+					<sm:addAttribute name="id">
+						<sm:callModel>
+							<sm:current axis="id"/>
+						</sm:callModel>
+					</sm:addAttribute>
+					<h1 class="title">
+						<sm:title>
+							<sm:compositionTitle/>
+						</sm:title>
+					</h1>
+					<sm:callCompositionMeta/>
+					<sm:for codes="frontmatter">
+						<sm:callPartMeta/>
+						<sm:callSubModel/>
+					</sm:for>
+				</div>
+				<sm:for codes="backcover sameAuthor">
+					<sm:WFreeBlock>
+						<div>
+							<sm:addAttribute name="class">
+								<sm:dynamicString>
+									<sm:freeSelect xpath="local-name()"/>
+								</sm:dynamicString>
+							</sm:addAttribute>
+							<sm:addAttribute name="id">
+								<sm:callPartMeta axis="id"/>
+							</sm:addAttribute>
+							<h1>
+								<sm:title>
+									<sm:partTitle/>
+								</sm:title>
+							</h1>
+							<sm:callPartMeta/>
+							<sm:callSubModel/>
+						</div>
+					</sm:WFreeBlock>
+				</sm:for>
+				<sm:inDataOrder>
+					<sm:for codes="inscription citation">
+						<sm:WFreeBlock>
+							<div>
+								<sm:addAttribute name="class">
+									<sm:dynamicString>
+										<sm:freeSelect xpath="local-name()"/>
+									</sm:dynamicString>
+								</sm:addAttribute>
+								<sm:addAttribute name="id">
+									<sm:callPartMeta axis="id"/>
+								</sm:addAttribute>
+								<h1>
+									<sm:title>
+										<sm:partTitle/>
+									</sm:title>
+								</h1>
+								<sm:callPartMeta/>
+								<sm:callSubModel/>
+							</div>
+						</sm:WFreeBlock>
+					</sm:for>
+				</sm:inDataOrder>
+			</div>
+			<div class="bodymatter">
+				<sm:for codes="level1">
+					<sm:WFreeBlock>
+						<div class="level1">
+							<sm:addAttribute name="id">
+								<sm:callSubModel axis="id"/>
+							</sm:addAttribute>
+							<sm:callPartMeta/>
+							<sm:callSubModel axis="co"/>
+							<sm:callSubModel/>
+						</div>
+					</sm:WFreeBlock>
+				</sm:for>
+			</div>
+			<sm:for codes="backmatter">
+				<sm:WFreeBlock>
+					<div class="rearmatter">
+						<div>
+							<sm:addAttribute name="class">
+								<sm:dynamicString>
+									<sm:freeSelect xpath="local-name()"/>
+								</sm:dynamicString>
+							</sm:addAttribute>
+							<sm:addAttribute name="id">
+								<sm:callPartMeta axis="id"/>
+							</sm:addAttribute>
+							<h1>
+								<sm:title>
+									<sm:partTitle/>
+								</sm:title>
+							</h1>
+							<sm:callPartMeta/>
+							<sm:callSubModel/>
+						</div>
+					</div>
+				</sm:WFreeBlock>
+			</sm:for>
+		</sm:WFreeBlock>
+	</sm:content>
+</sm:compositionXhtmlTransf>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<smp:webAppServer4test xmlns:smp="scenari.eu:builder:portal:1.0" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" code="wa" name="￼;wa￼">
+	<smp:components>
+		<smp:scenariEngine/>
+		<smp:openDependencies>
+			<smp:localJars sc:refUri="/portal/servers/libjar.doss"/>
+		</smp:openDependencies>
+	</smp:components>
+</smp:webAppServer4test>

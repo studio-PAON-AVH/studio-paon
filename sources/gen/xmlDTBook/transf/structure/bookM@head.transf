@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/bookM.model"/>
+	<sm:axis code="head"/>
+	<sm:content>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:generator"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:dynamicString>
+					<sm:freeSelect xpath="concat('SCENARI ', computeStrAgent('/@@/scenari.version'), ' / ', computeStrAgent('/@@/keyPrimary'), ' ', computeStrAgent('/@@/version'))"/>
+				</sm:dynamicString>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:forField codes="author">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dc:Creator"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+		<sm:forField codes="title">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dc:Title"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dtb:sourceTitle"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dc:Date"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:dynamicString>
+					<sm:freeSelect xpath="java:eu.scenari.editadapt.utils.Utils.getDateStr()"/>
+				</sm:dynamicString>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:producedDate"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:dynamicString>
+					<sm:freeSelect xpath="java:eu.scenari.editadapt.utils.Utils.getDateStr()"/>
+				</sm:dynamicString>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dc:Language"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:WText value="￼;fr-FR￼"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dc:Format"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:WText value="ANSI/NISO Z39.86-2005"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

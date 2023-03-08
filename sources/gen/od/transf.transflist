@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<sm:transformerList xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:transformerList sc:refUri="/gen/od/transf/bases.transflist"/>
+	<sm:transformerList sc:refUri="/gen/od/transf/structure.transflist"/>
+</sm:transformerList>

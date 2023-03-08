@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<sm:transformerList xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:transformer sc:refUri="/gen/xmlDTBookAud/transf/structure/book@genSpecific.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBookAud/transf/structure/bookM@headGenSpecific.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBookAud/transf/structure/frontmatterM@genSpecific.transf"/>
+</sm:transformerList>

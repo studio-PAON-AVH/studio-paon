@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="main">
+	<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+	<target name="main">
+		<transformXsl inFile="${vFolderDest}/co/dtbook.xml" outFile="${vFolderDest}/dtbook.xml" style="post.dtb.xsl"/>
+		<transformXsl inFile="${vFolderDest}/dtbook.xml" outFile="${vFolderDest}/dtbook.xml" style="post.poem.xsl"/>
+		<transformXsl inFile="${vFolderDest}/dtbook.xml" outFile="${vFolderDest}/dtbook.notes.xml" style="post.notes.xsl"/>
+
+		<!--post fix pour le doctype et autres correctifs finaux -->
+		<xslt in="${vFolderDest}/dtbook.notes.xml" out="${vFolderDest}/dtbook.xml" style="post.fix.xsl"/>
+
+		<!-- nettoyage : transfert du fichier temporaire dans co et suppression du dossier co -->
+		<move file="${vFolderDest}/dtbook.notes.xml" tofile="${vFolderDest}/co/dtbook.notes.xml"/>
+		<delete dir="${vFolderDest}/co"/>
+	</target>
+</project>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim name="￼;Métadonnées Livre￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="backmatterM" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure>
+		<sm:field code="publishingYear" family="property" name="￼;Année de publication￼" occurrence="zeroOrOne">
+			<sm:number allowedDecimals="0" max="9999"/>
+		</sm:field>
+		<sm:field code="publishingMonth" family="property" name="￼;Mois de publication￼" occurrence="zeroOrOne">
+			<sm:enum labelIfNone="￼;Janvier￼">
+				<sm:option key="01" name="￼;Janvier￼"/>
+				<sm:option key="02" name="￼;Février￼"/>
+				<sm:option key="03" name="￼;Mars￼"/>
+				<sm:option key="04" name="￼;Avril￼"/>
+				<sm:option key="05" name="￼;Mai￼"/>
+				<sm:option key="06" name="￼;Juin￼"/>
+				<sm:option key="07" name="￼;Juillet￼"/>
+				<sm:option key="08" name="￼;Août￼"/>
+				<sm:option key="09" name="￼;Septembre￼"/>
+				<sm:option key="10" name="￼;Octobre￼"/>
+				<sm:option key="11" name="￼;Novembre￼"/>
+				<sm:option key="12" name="￼;Décembre￼"/>
+			</sm:enum>
+		</sm:field>
+		<sm:field code="isbn" family="property" name="￼;ISBN￼" occurrence="one">
+			<sm:string matchesRegexp="^(((97(8|9)-)?\d{1,5}-\d{1,7}-\d{1,6}-\d)|\d{13})$" matchesRegexpMsg="￼;Ce champs doit contenir un ISBN 10 (2-08148-150-3), ISBN 13 (978-2-08148-150-3) ou EAN (9782081481503).￼"/>
+		</sm:field>
+		<sm:field code="secondaryIsbn" family="property" name="￼;ISBN secondaire￼" occurrence="zeroOrMore">
+			<sm:help quickHelp="￼;Cet ISBN n'est pas la clé principale du fichier (indexation par une clé unique dans certains formats de sortie comme Daisy 2).￼"/>
+			<sm:string matchesRegexp="^(((97(8|9)-)?\d{1,5}-\d{1,7}-\d{1,6}-\d)|\d{13})$" matchesRegexpMsg="￼;Ce champs doit contenir un ISBN 10 (2-08148-150-3), ISBN 13 (978-2-08148-150-3) ou EAN (9782081481503).￼"/>
+		</sm:field>
+		<sm:group code="translatedTitle" name="￼;Titre original￼" occurrence="zeroOrOne">
+			<sm:field code="title" family="property" name="￼;Titre￼" occurrence="one">
+				<sm:string/>
+			</sm:field>
+			<sm:field code="originalLanguage" name="￼;Langue d'origine￼" occurrence="one">
+				<sm:string/>
+			</sm:field>
+			<sm:field code="sourcePublisher" family="property" name="￼;Éditeur d'origine￼" occurrence="zeroOrOne">
+				<sm:string/>
+			</sm:field>
+		</sm:group>
+		<sm:field code="translatedBy" family="property" name="￼;Traduit par￼" occurrence="zeroOrOne">
+			<sm:string/>
+		</sm:field>
+		<sm:field code="others" family="property" name="￼;Autres mentions￼" occurrence="zeroOrOne">
+			<sm:otherType sc:refUri="/model/bases/text.model"/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage>
+		<sm:fullTitleBuilder>
+			<sm:fixedString value="￼;Autres mentions￼"/>
+		</sm:fullTitleBuilder>
+		<sm:indexes>
+			<sm:index sc:refUri="/model/auth/index/publishingYear.index">
+				<sm:fieldValue refCode="publishingYear"/>
+			</sm:index>
+			<sm:index sc:refUri="/model/auth/index/translatedTitle.index">
+				<sm:for refCodes="translatedTitle">
+					<sm:fieldValue refCode="translatedTitle"/>
+				</sm:for>
+			</sm:index>
+		</sm:indexes>
+	</sm:storage>
+</sm:dataFormPrim>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="main">
+	<target name="main">
+		<taskdef name="transform" classname="com.scenari.m.co.ant.TransformTask"/>
+		<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+		<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+
+		<!-- Gestion des notes -->
+		<transformXsl inFile="${vFolderDest}/index.xml" outFile="${vFolderDest}/index.xml" style="audio.post.xsl"/>
+
+		<!-- cleanup des structures vide -->
+		<transformXsl inFile="${vFolderDest}/index.xml" outFile="${vFolderDest}/index.xml" style="cleanup.xsl"/>
+
+		<!-- Post traitement contenu - sortie texte à traduire en audio -->
+		<transformXsl inFile="${vFolderDest}/index.xml" outFile="${vFolderDest}/txts.xml" style="xml2Txt.xsl"/>
+
+		<xmltask source="${vFolderDest}/txts.xml">
+			<call path="/*[local-name()='html']/*[local-name()='body']/*[local-name()='div']">
+				<param name="id" path="@id"/>
+				<param name="text" path="text()"/>
+				<actions>
+					<!-- Création fichiers txt -->
+					<echo file="${vFolderDest}/@{id}.txt" append="false">@{text}</echo>
+					<!-- TTS -->
+					<!-- Commenter cette ligner pour debug dans builder sans ajout free du transformer acapelaTTS -->
+					<transform src="${vFolderDest}/@{id}.txt" dst="${vFolderDest}/@{id}.acapela.tts.zip" params="transform=acapelaTTS&amp;voice=Manon22k_HQ&amp;dico=Dictionnaire_MANON_AVH.dic"/>
+				</actions>
+			</call>
+		</xmltask>
+
+		<!-- construction de l'index des vues -->
+		<transformXsl inFile="${vFolderDest}/txts.xml" outFile="${vFolderDest}/index.xml" style="buildIndex.xsl"/>
+	</target>
+
+</project>

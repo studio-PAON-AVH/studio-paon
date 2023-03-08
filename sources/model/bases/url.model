@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" name="￼;URL￼">
+	<sm:identification targetNamespace="editadapt.fr:paon" targetPrefix="paon" code="url" itemExtension="xml"/>
+	<sm:structure>
+		<sm:field code="url" name="￼;Adresse web, email...￼" occurrence="one">
+			<sm:url/>
+		</sm:field>
+		<sm:field code="title" name="￼;Titre￼" occurrence="zeroOrOne">
+			<sm:string/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage>
+		<sm:fullTitleBuilder>
+			<sm:fieldValue refCode="title"/>
+		</sm:fullTitleBuilder>
+	</sm:storage>
+</sm:dataFormPrim>

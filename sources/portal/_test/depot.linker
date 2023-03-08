@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<smp:depotLnk4test xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlet sc:refUri="/portal/depot/depot.portlet"/>
+	<smp:servers>
+		<smp:serverWrite sc:refUri="/portal/_test/servers/wa.server">
+			<smp:components>
+				<smp:data sc:refUri="/portal/servers/fs.storage"/>
+				<smp:usersManager>
+					<smp:cookieBasicAuth openCookiePath="¤builder;test#main#portal#http.contexts.path¤"/>
+					<smp:remoteScUsers>
+						<smp:chainPrl sc:refUri="/portal/chain/chain.portlet"/>
+					</smp:remoteScUsers>
+				</smp:usersManager>
+				<smp:transforms>
+					<smp:all/>
+				</smp:transforms>
+				<smp:models>
+					<smp:wspDef lang="fr-FR" sc:refUri="/paon.wspdef"/>
+				</smp:models>
+				<smp:esEngine>
+					<smp:esInternalAccess url="http://127.0.0.1:9210"/>
+				</smp:esEngine>
+			</smp:components>
+		</smp:serverWrite>
+		<smp:serverWebFront sc:refUri="/portal/_test/servers/web.server"/>
+	</smp:servers>
+	<smp:free>
+		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portal/depot/free/lnk.depot.transforms.universeInit.xsl"/>
+	</smp:free>
+</smp:depotLnk4test>

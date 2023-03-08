@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" name="￼;Métas de langue￼">
+	<sm:identification targetNamespace="editadapt.fr:paon" targetPrefix="paon" code="langM" itemExtension="xml"/>
+	<sm:structure>
+		<sm:field code="lang" name="￼;Code langue￼" occurrence="one">
+			<sm:string maxCharactersAdvised="5" matchesRegexpAdvised="\w\w-\w\w"/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage/>
+</sm:dataFormPrim>

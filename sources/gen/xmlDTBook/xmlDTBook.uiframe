@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<sm:staticUiFrame xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:rootContext>
+		<sm:none useHtmlRedirect="no"/>
+	</sm:rootContext>
+	<sm:callRootModel axis="root"/>
+	<sm:publishFiles sc:refUri="/gen/xmlDTBook/postXsl.doss"/>
+	<sm:freeInitProperties mode="replace" xml:space="preserve">postTask.ant=buildDtBook.xml
+destination.root.filepath=dtbook.xml
+destination.onestream.builder=file:dtbook.xml
+destination.onestream.mimetype=application/xml</sm:freeInitProperties>
+</sm:staticUiFrame>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<sm:dataFormOdTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/bookM.model"/>
+	<sm:axis code="publishNotes"/>
+	<sm:content>
+		<sm:forGroup codes="options">
+			<sm:forField codes="publishNotes">
+				<sm:WParagraph display="always" globalStyle="publishNotes">
+					<sm:fieldValueEnum format="key"/>
+				</sm:WParagraph>
+			</sm:forField>
+		</sm:forGroup>
+	</sm:content>
+</sm:dataFormOdTransf>

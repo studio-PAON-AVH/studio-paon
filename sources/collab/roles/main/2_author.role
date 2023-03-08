@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sm:role xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" code="author" name="￼;Auteur￼" exclusiveGroup="main" sortKey="20">
+	<!--Habilitatitions :
+   [reader]
+  + Accés en écriture dans chain
+-->
+	<sm:superRole sc:refUri="/collab/roles/main/1_reader.role"/>
+	<sm:allowPerms>
+		<sm:globalPerm code="write"/>
+	</sm:allowPerms>
+</sm:role>

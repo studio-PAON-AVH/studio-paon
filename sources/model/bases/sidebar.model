@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim name="￼;Métas de sidebar￼" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="sidebar" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure>
+		<sm:field code="render" name="￼;Rendu￼" occurrence="one">
+			<sm:enum>
+				<sm:option key="optional" name="￼;Optionnel￼"/>
+				<sm:option key="required" name="￼;Obligatoire￼"/>
+			</sm:enum>
+		</sm:field>
+	</sm:structure>
+	<sm:storage/>
+</sm:dataFormPrim>

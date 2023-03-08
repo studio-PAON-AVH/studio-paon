@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:model sc:refUri="/model/structure/bookM.model"/>
+	<sm:axis code="frontmatter"/>
+	<sm:content>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@frontmatter.uiwidget">
+			<sm:xhtmlContentZone key="title">
+				<sm:forField codes="title">
+					<sm:fieldValueString/>
+				</sm:forField>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="author">
+				<sm:forField codes="author">
+					<sm:fieldValueString/>
+				</sm:forField>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content"/>
+		</sm:Widget>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

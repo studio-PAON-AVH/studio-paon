@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim name="￼;Métadonnées Livre￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="backcoverM" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure>
+		<sm:field code="backResume" family="property" name="￼;Résumé ou présentation du livre￼" occurrence="one">
+			<sm:otherType sc:refUri="/model/bases/text.model"/>
+		</sm:field>
+		<sm:field code="backAuthor" family="property" name="￼;Présentation de l'auteur￼" occurrence="zeroOrOne">
+			<sm:otherType sc:refUri="/model/bases/text.model"/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage>
+		<sm:fullTitleBuilder>
+			<sm:fixedString value="￼;Quatrième de couverture￼"/>
+		</sm:fullTitleBuilder>
+		<sm:indexes>
+			<sm:index sc:refUri="/model/auth/index/hasResume.index">
+				<sm:dynamicString xpath="if(sp:backResume[descendant::sc:inlineStyle[@role='error']] or string-length(normalize-space(sp:backResume))=0,'false','true')"/>
+			</sm:index>
+		</sm:indexes>
+	</sm:storage>
+</sm:dataFormPrim>

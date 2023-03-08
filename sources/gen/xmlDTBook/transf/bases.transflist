@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<sm:transformerList xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/bases/bridgehead.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/bases/flow.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/bases/text.transf"/>
+</sm:transformerList>

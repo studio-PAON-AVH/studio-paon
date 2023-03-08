@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/backmatterM.model"/>
+	<sm:content>
+		<sm:choose>
+			<sm:when codes="publishingYear">
+				<sm:Widget sc:refUri="/gen/xmlDTBook/widget/p.uiwidget">
+					<sm:xhtmlContentZone key="p">
+						<sm:forField codes="publishingYear">
+							<sm:WText value="￼;Date de publication : ￼"/>
+						</sm:forField>
+						<sm:forField codes="publishingMonth">
+							<sm:fieldValueEnum format="label"/>
+							<sm:WText value="￼; ￼"/>
+						</sm:forField>
+						<sm:forField codes="publishingYear ">
+							<sm:fieldValueString/>
+						</sm:forField>
+					</sm:xhtmlContentZone>
+				</sm:Widget>
+			</sm:when>
+		</sm:choose>
+		<sm:forField codes="isbn secondaryIsbn">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/p.uiwidget">
+				<sm:xhtmlContentZone key="p">
+					<sm:fieldName/>
+					<sm:WText value="￼; : ￼"/>
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+		<sm:forGroup codes="translatedTitle">
+			<sm:forField codes="*">
+				<sm:Widget sc:refUri="/gen/xmlDTBook/widget/p.uiwidget">
+					<sm:xhtmlContentZone key="p">
+						<sm:fieldName/>
+						<sm:WText value="￼; : ￼"/>
+						<sm:fieldValueString/>
+					</sm:xhtmlContentZone>
+				</sm:Widget>
+			</sm:forField>
+		</sm:forGroup>
+		<sm:forField codes="others">
+			<sm:fieldValueOtherType/>
+		</sm:forField>
+		<sm:Widget sc:refUri="/gen/audio/widget/infosAVH.uiwidget"/>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim name="￼;Métadonnées niveau￼" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="title" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure>
+		<sm:field code="title" family="property/title" name="￼;Titre￼" occurrence="one">
+			<sm:string/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage>
+		<sm:fullTitleBuilder>
+			<sm:fieldValue refCode="title"/>
+		</sm:fullTitleBuilder>
+	</sm:storage>
+</sm:dataFormPrim>

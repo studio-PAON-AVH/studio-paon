@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<sm:wspDefinition keyWsp="paon" majorVersion="1" mediumVersion="2" minorVersion="0" name="￼;Paon￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:publicClasses>
+		<sm:class access="readWrite" sc:refUri="/model/structure/book.model"/>
+	</sm:publicClasses>
+	<sm:templateClasses>
+		<sm:mainview>
+			<sm:mainXmlEditor selectFirst="true">
+				<sm:editor sc:refUri="/wui/default.editor"/>
+			</sm:mainXmlEditor>
+			<sm:mainBinaryView selectFirst="true"/>
+		</sm:mainview>
+		<sm:publications>
+			<sm:generator sc:refUri="/gen/xmlDTBook/xmlDTBook.generator" shared="true"/>
+			<sm:generator nameInTree="￼;Tester les exports pour Duxbury￼" overrideGenName="￼;Tester les exports pour Duxbury￼" sc:refUri="/gen/od/odtDuxbury.generator" shared="true"/>
+		</sm:publications>
+		<sm:hiddenGenerators>
+			<sm:generator sc:refUri="/gen/xmlSrcAudio/xmlSrcAudio.generator"/>
+			<sm:generator sc:refUri="/gen/daisy2/daisy2.generator"/>
+			<sm:generator sc:refUri="/gen/xmlDTBookAud/xmlDTBookAud.generator"/>
+		</sm:hiddenGenerators>
+	</sm:templateClasses>
+	<sm:collaboration>
+		<sm:lifeCycle sc:refUri="/collab/lifecycle/approval.lifeCycle"/>
+	</sm:collaboration>
+	<sm:wspFront>
+		<sm:folderSpace>
+			<sm:icon>
+				<sm:open sc:refUri="/wui/_res/spaces/folderOpen.png"/>
+				<sm:closed sc:refUri="/wui/_res/spaces/folderClose.png"/>
+			</sm:icon>
+		</sm:folderSpace>
+		<sm:wspsPlugin>
+			<sm:document sc:refUri="/model/structure/book.model"/>
+		</sm:wspsPlugin>
+	</sm:wspFront>
+	<sm:migration>
+		<sm:update sc:refUri="/migr/from_1.0.doss">
+			<sm:from key="paon"/>
+			<sm:to key="paon" majorVersion="1" mediumVersion="1" minorVersion="0"/>
+		</sm:update>
+		<sm:update sc:refUri="/migr/from_1.1.3.doss">
+			<sm:from key="paon"/>
+			<sm:to key="paon" majorVersion="1" mediumVersion="1" minorVersion="4"/>
+		</sm:update>
+	</sm:migration>
+	<sm:free>
+		<sm:front>
+			<sm:freeConfigWspRes key="icons" sc:refUri="/wui/_res/search/icons.doss"/>
+			<sm:freeConfigWsp xml:space="preserve">//Contexte : [async] @param : wspMeta, wspResUrl, UTILS
+const {FixedCssSelectorSearchAction, FixedTextSearchAction} = await wspResUrl.importJs(":back:edit/wed/features/searchBar.js");
+const reg = wspMeta.reg;
+reg.addToList("wed.searchBar.actions", "repriseError", 100,
+    new FixedCssSelectorSearchAction(
+        "repriseError",
+        "inlineStyle[role='error']",
+        "￼Erreur à la reprise￼"
+    ).setLabel("￼Parcourir les erreurs à la reprise￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/errorSearch.svg").url)
+    , 10
+);
+
+reg.addToList("wed.searchBar.actions", "emphase", 100,
+    new FixedCssSelectorSearchAction(
+        "repriseError",
+        "inlineStyle[role='emphase']",
+        "￼Italique￼"
+    ).setLabel("￼Parcourir le texte en italique￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/italicSearch.svg").url)
+    , 10
+);
+reg.addToList("wed.searchBar.actions", "bridgehead", 101,
+    new FixedCssSelectorSearchAction(
+        "bridgehead",
+        "flow &gt; bridgehead",
+        "￼Titre flottant￼"
+    ).setLabel("￼Parcourir les titres flottants￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/titleSearch.svg").url)
+    , 10
+);
+
+reg.addToList("wed.searchBar.actions", "roman", 102,
+    new FixedTextSearchAction(
+        "roman",
+        /(?&lt;=^|\s)[IVXLCDM]+(?=$|\s|ième\s)/g
+    ).setLabel("￼Parcourir les chiffres romains￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/romanSearch.svg").url)
+    , 10
+);
+
+reg.addToList("wed.searchBar.actions", "note", 103,
+    new FixedCssSelectorSearchAction(
+        "note",
+        "emptyLeaf[role='note']",
+        "￼Note￼"
+    ).setLabel("￼Parcourir les notes de bas de page￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/note.svg").url)
+    , 10
+);
+
+reg.addToList("wed.searchBar.actions", "frame", 104,
+    new FixedCssSelectorSearchAction(
+        "frame",
+        "div",
+        "￼Cadre￼"
+    ).setLabel("￼Parcourir les cadres￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/frame.svg").url)
+    , 10
+);
+
+reg.addToList("wed.searchBar.actions", "maj", 105,
+    new FixedTextSearchAction(
+        "maj",
+        /[AEIUOY]+/g
+    ).setLabel("￼Parcours les voyelles majuscules non accentuées￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/maj.svg").url)
+    , 10
+);
+
+reg.addToList("wed.searchBar.actions", "number", 106,
+    new FixedTextSearchAction(
+        "number",
+        /\d+/g
+    ).setLabel("￼Parcours les chiffres￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/number.svg").url)
+    , 10
+);</sm:freeConfigWsp>
+		</sm:front>
+		<sm:freeBuild sc:refUri="/gen/od/freeOdTxt.doss"/>
+	</sm:free>
+</sm:wspDefinition>

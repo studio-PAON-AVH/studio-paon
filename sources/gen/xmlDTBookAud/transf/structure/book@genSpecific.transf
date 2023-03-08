@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns="http://www.w3.org/1999/xhtml" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:axis code="genSpecific"/>
+	<sm:content format="xhtml">
+		<sm:callCompositionMeta axis="genSpecific"/>
+		<sm:choose>
+			<sm:when xpath="//paon:bookM/sp:options/sp:publishNotes[text()='end']">
+				<sm:WFreeBlock>
+					<note-processing class="end-dtb"/>
+				</sm:WFreeBlock>
+			</sm:when>
+			<sm:otherwise>
+				<sm:WFreeBlock>
+					<note-processing class="flow-dtb"/>
+				</sm:WFreeBlock>
+			</sm:otherwise>
+		</sm:choose>
+	</sm:content>
+</sm:compositionXhtmlTransf>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<sm:lifeCycle info="Approbation des documents" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:states>
+		<sm:state-default/>
+		<sm:state-unknown name="￼;Inconnu￼"/>
+		<sm:state code="working" name="￼;En cours￼">
+			<sm:display color="#ec7833">
+				<sm:icon sc:refUri="/collab/lifecycle/res/check.png"/>
+			</sm:display>
+		</sm:state>
+		<sm:state code="published" name="￼;Publié￼">
+			<sm:display color="#376036">
+				<sm:icon sc:refUri="/collab/lifecycle/res/published.png"/>
+			</sm:display>
+		</sm:state>
+		<sm:state code="xPublicationPending" name="￼;Publication en cours￼">
+			<sm:display color="#376036">
+				<sm:icon sc:refUri="/collab/lifecycle/res/publicationPending.png"/>
+			</sm:display>
+			<sm:rightVariations>
+				<sm:addRight sc:refUri="/collab/roles/rights/disableWrite.right"/>
+			</sm:rightVariations>
+		</sm:state>
+		<sm:state code="xPublicationError" name="￼;Erreur de publication￼">
+			<sm:display color="#419f30">
+				<sm:icon sc:refUri="/collab/lifecycle/res/publicationError.png"/>
+			</sm:display>
+			<sm:rightVariations>
+				<sm:addRight sc:refUri="/collab/roles/rights/disableWrite.right"/>
+			</sm:rightVariations>
+		</sm:state>
+	</sm:states>
+	<sm:transitions>
+		<sm:automaticTransition code="init" targetState="working">
+			<sm:triggers>
+				<sm:triggerOnUpdate/>
+			</sm:triggers>
+			<sm:restrictFromState/>
+			<sm:restrictFromState refState="?"/>
+			<sm:restrictFromState refState="published"/>
+			<sm:restrictFromState refState="xPublicationError"/>
+			<sm:restricForClass sc:refUri="/model/structure/book.model"/>
+		</sm:automaticTransition>
+		<sm:simpleTransition code="toWorking" name="￼;Reprendre l'édition￼" targetState="working">
+			<sm:restrictFromState refState="published"/>
+			<sm:restrictFromState refState="xPublicationError"/>
+			<sm:restricForClass sc:refUri="/model/structure/book.model"/>
+		</sm:simpleTransition>
+		<sm:simpleTransition code="toPublish" name="￼;Exporter￼" targetState="xPublicationPending">
+			<sm:restrictFromState refState="working"/>
+			<sm:restrictFromState refState="xPublicationError"/>
+			<sm:restricForClass sc:refUri="/model/structure/book.model"/>
+			<sm:postActions>
+				<sm:freeAction xml:space="preserve">&lt;postAction type="eu.scenari.wsp.lifecycle.actions.CallJobAction" continueIfFailed="false" callJobId="publish"/&gt;</sm:freeAction>
+			</sm:postActions>
+		</sm:simpleTransition>
+		<!--# Transitions techniques  - déclenchées par les Jobs
+On peut activer depuis working à cause de la pose de lien et de la transition auto vers working-->
+		<sm:simpleTransition code="xToPublicationError" name="￼;TECHNICAL toPublicationError￼" targetState="xPublicationError">
+			<sm:restrictFromState refState="xPublicationPending"/>
+			<sm:restricForClass sc:refUri="/model/structure/book.model"/>
+			<sm:showPerm sc:refUri="/collab/roles/perm/actionsSystem.perm"/>
+		</sm:simpleTransition>
+		<sm:simpleTransition code="xToPublicationSuccess" name="￼;TECHNICAL toPublish￼" targetState="published">
+			<sm:restrictFromState refState="xPublicationPending"/>
+			<sm:restricForClass sc:refUri="/model/structure/book.model"/>
+			<sm:showPerm sc:refUri="/collab/roles/perm/actionsSystem.perm"/>
+		</sm:simpleTransition>
+	</sm:transitions>
+	<sm:authoring/>
+</sm:lifeCycle>

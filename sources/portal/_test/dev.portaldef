@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<smp:portalDefinition4test keyPortal="studiopaon" name="￼;Studio Paon￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlets>
+		<smp:portletLinker sc:refUri="/portal/_test/import.linker"/>
+		<smp:portletLinker sc:refUri="/portal/_test/chain.linker"/>
+		<smp:portletLinker sc:refUri="/portal/_test/depot.linker"/>
+	</smp:portlets>
+	<smp:frontPages sc:refUri="/portal/_test/servers/web.server">
+		<smp:frontMonoAppPage code="home">
+			<smp:security>
+				<smp:secFetchHeadersRequired/>
+			</smp:security>
+			<smp:authConf>
+				<smp:portlet sc:refUri="/portal/chain/chain.portlet"/>
+			</smp:authConf>
+			<smp:homePlugin>
+				<smp:remoteSite url="https://studio-paon.docs-kelis.fr/common/help"/>
+			</smp:homePlugin>
+			<smp:mainToolbarPlugin>
+				<smp:openSiteAction name="￼;Tableau de bord￼" target="self">
+					<smp:remoteSite url="¤builder;prl-import#urlTree.url¤/"/>
+				</smp:openSiteAction>
+			</smp:mainToolbarPlugin>
+			<smp:wspsPlugin/>
+			<smp:itemEdPlugin/>
+			<smp:dynGenPlugin/>
+			<smp:depotPlugin>
+				<smp:allDepotPortlets>
+					<smp:showDesk/>
+				</smp:allDepotPortlets>
+			</smp:depotPlugin>
+			<smp:uiConf>
+				<smp:logo sc:refUri="/portal/_dist/_res/logo-avh.png"/>
+				<smp:aboutXhtmlContent xml:space="preserve">&lt;p&gt;Studio PAON est une chaîne de production semi automatisée pour la production de livres adaptés aux formats Full DAISY et BRF aux normes du Pôle d'adaptation des Ouvrages Numériques (PAON) de l' Association Valentin Haüy (AVH).&lt;/p&gt;
+&lt;p&gt;Financé par l'AVH et subventionné par le ministère de la Culture, le projet est coordonné par Éditadapt Gautier Chomel et réalisé en partenariat avec Luc Audrain, Kelis, Scopyleft et Thomas Parisot.&lt;/p&gt;
+&lt;p&gt;Studio PAON est réalisé avec les logiciels SCENARI, une suite de solutions logicielles libres et gratuites éditées par Kelis.&lt;/p&gt; </smp:aboutXhtmlContent>
+			</smp:uiConf>
+			<smp:freeMjs>
+				<smp:mjs mainFile="chain.free.ui.conf.js" sc:refUri="/portal/chain/free/chain.free.ui.doss">
+					<smp:ownerPortlet sc:refUri="/portal/chain/chain.portlet"/>
+				</smp:mjs>
+			</smp:freeMjs>
+		</smp:frontMonoAppPage>
+	</smp:frontPages>
+	<smp:scenariWebCore>
+		<smp:server>
+			<smp:webServer4test code="coreSrv"/>
+		</smp:server>
+	</smp:scenariWebCore>
+	<smp:localization lang="fr-FR">
+		<sm:scenariCore>
+			<sm:locale sc:refUri="/portal/_dist/_res/sccore_wui.xlf"/>
+		</sm:scenariCore>
+	</smp:localization>
+	<sm:artifactsProvider>
+		<sm:webArtifactsProvider>
+			<sm:currentBuilderVersion/>
+		</sm:webArtifactsProvider>
+	</sm:artifactsProvider>
+	<smp:properties>
+		<smp:propertiesFile sc:refUri="/portal/_test/dev.props"/>
+		<smp:propertiesFile sc:refUri="/portal/_test/_nocommit.props">
+			<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1678267877547" creationTime="1678267868481">Copier le fichier dev.props et compléter ses propriétés.</comment></comment>-->
+		</smp:propertiesFile>
+	</smp:properties>
+</smp:portalDefinition4test>

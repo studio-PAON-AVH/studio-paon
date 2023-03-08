@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<sm:boxWed code="default" name="￼;Formulaire￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:modelRoot allPublicClasses="true"/>
+	<sm:wedlingList>
+		<sm:wedlingList sc:refUri="/wui/default/_common.wdllist"/>
+		<sm:wedlingList sc:refUri="/wui/default/specific.wdllist"/>
+	</sm:wedlingList>
+	<sm:uiGuidelines>
+		<sm:sharedCss key="box/root" mode="" xml:space="preserve">.sm-root{
+    width:100%;
+}</sm:sharedCss>
+		<sm:sharedCss key="box/head-body" mode="" xml:space="preserve">.head{
+    color:var(--edit-color);
+}
+
+/* BLOC */
+:host(.bloc) {
+    border-left: 2px solid var(--alt1-border-color);
+    margin-top: 1em;
+    padding:.4rem;
+    margin-left: 0;
+}
+
+:host(.bloc)&gt;.head {
+    font-variant:small-caps;
+    font-size: 1.2em;
+}
+
+/* SUBLEVEL */
+:host(.sm-sub-level){
+	margin-top:1em;
+}
+
+:host(.v.sm-sub-level){
+	border: 1px solid var(--inv-alt1-bgcolor);
+	padding:0;
+}
+	
+:host(.v.sm-sub-level)&gt;.head{
+	background-color: var(--inv-alt1-bgcolor);
+	color:var(--inv-alt2-color);
+	font-size: 1.4em;
+    font-weight: bold;
+	padding: .2rem .4rem;
+}
+	
+:host(.h.sm-sub-level)&gt;.head{
+	background-color: var(--alt1-bgcolor);
+	color:var(--alt2-color);
+	padding: .2rem .4rem;
+	box-sizing: border-box;
+}
+	
+:host(.v.sm-sub-level)&gt;.body.sublevel{
+	border-left: 1px solid var(--border-color);
+    margin-left: 1em;
+	padding: .4rem;
+}</sm:sharedCss>
+		<sm:sharedCss key="box/head-body/block" xml:space="preserve">:host{
+	margin: .2em 0;
+}
+
+.sm-root{
+    width:100%;
+}
+
+/* ROOT */
+:host(.sm-root){
+    max-width:1015px;
+    margin:0 auto;
+    width:100%;
+    padding: 0 1em;
+    box-sizing: border-box;
+}
+
+:host(.sm-root) &gt; .head{
+    display: none;
+}
+
+:host(.sm-root) &gt; .body{
+	padding-inline-start: 0;
+    margin-inline-start: 0;
+}
+	
+:host([wed-name='title#']) &gt; .body{
+	margin-inline-start: 0;
+    padding-left: 0;
+}
+	
+:host(.h) &gt; .head {
+	flex: 1 1 8rem;
+}
+:host(.h) &gt; .body {
+	flex: 8 2 20rem;
+}</sm:sharedCss>
+		<sm:sharedCss key="box-create" xml:space="preserve">:host {
+	padding: .2rem;
+	margin: .3rem 0;
+	background-color: var(--alt1-bgcolor);
+	color: var(--alt1-color);
+	font-size: .85em;
+	opacity: .6;
+}
+
+:host(:hover) {
+	background-color: var(--edit-select-bgcolor);
+}
+
+:host::before {
+	content: '+ '
+}</sm:sharedCss>
+		<sm:sharedCss key="box-collaps/collapsed" sc:refUri="/wui/_res/sharedCSS.doss" xml:space="preserve">.head{
+   flex: 2 1 auto;
+}
+.body {
+   display:none !important;
+}
+  
+#decollapser {
+   min-width: 1em;
+   min-height: 1em;
+   background: no-repeat top / contain url([CSSLIB]/img/uncollapse.svg);
+   cursor: pointer;
+   margin-right: .5em;
+}</sm:sharedCss>
+		<sm:sharedCss key="box-collaps/uncollapsed" sc:refUri="/wui/_res/sharedCSS.doss" xml:space="preserve">#collapser {
+	min-width: 1em;
+	min-height: 1em;
+	background: no-repeat top / contain url([CSSLIB]/img/collapse.svg);
+	cursor: pointer;
+	margin-right: .5em;
+}</sm:sharedCss>
+		<sm:sharedCss key="box/richtext" xml:space="preserve">:host(.mtLn), :host(.mnLn){
+	border:none;
+}
+txt-root {
+    border: 1px solid var(--border-color);
+}
+txt-root:focus {
+    box-shadow: 0 0 0 2px var(--edit-select-bgcolor) !important;
+    outline: transparent !important;
+}
+
+txt-para + txt-para{
+	margin-top:12px;
+}</sm:sharedCss>
+		<sm:sharedCss key="box-input-enum" sc:refUri="/wui/_res/sharedCSS.doss" xml:space="preserve">:host {
+    border: 1px solid var(--border-color);
+    padding: .3em 1.6em .3em .3em;
+    background: var(--row-bgcolor) url([CSSLIB]/img/collapse.svg) no-repeat right 5px center / 1em;
+}
+:host(:focus) {
+    box-shadow: 0 0 0 2px var(--edit-select-bgcolor) !important;
+    outline: transparent !important;
+}</sm:sharedCss>
+		<sm:sharedCss key="box-input-number" xml:space="preserve">:host{
+    align-self: stretch;
+}
+input {
+    border: 1px solid var(--border-color);
+    padding: 0.3em;
+}
+input:focus {
+    box-shadow: 0 0 0 2px var(--edit-select-bgcolor) !important;
+    outline: transparent !important;
+}</sm:sharedCss>
+		<sm:sharedCss key="box-input" xml:space="preserve">:host{
+    align-self: stretch;
+}
+input {
+    border: 1px solid var(--border-color);
+    padding: 0.3em;
+}
+input:focus {
+    box-shadow: 0 0 0 2px var(--edit-select-bgcolor) !important;
+    outline: transparent !important;
+}</sm:sharedCss>
+		<sm:sharedCss key="box-input-radio" xml:space="preserve">:host{
+    border-inline-start:none;
+}
+c-action {
+    border: 1px solid var(--border-color);
+    padding: .3em;
+    text-align: center;
+}
+c-action::before{
+    content:none;
+}
+c-action[aria-pressed="true"]{
+    background-color:var(--edit-select-bgcolor);
+    border-color:var(--alt1-bordercolor);
+}</sm:sharedCss>
+		<sm:sharedCss key="box/str" xml:space="preserve">:host{
+    border-bottom: none;
+}
+txt-root-str {
+    border: 1px solid var(--border-color);
+    padding: .3em;
+}
+txt-root-str:focus {
+    box-shadow: 0 0 0 2px var(--edit-select-bgcolor) !important;
+    outline: transparent !important;
+}
+
+:not(:focus) &gt; txt-str-alone[placeholder].virtual::before {
+    font-style: normal;
+    letter-spacing: 0;
+}
+
+txt-root-str[contenteditable="false"]{
+    border:none;
+    padding:0 !important;
+}
+:not(:focus) &gt; txt-str-alone[placeholder].virtual::before{
+    color:var(--inv-alt2-color);
+}</sm:sharedCss>
+		<sm:sharedCss key="box/richtitle" sc:refUri="/wui/_res/sharedCSS.doss" xml:space="preserve">#expand {
+	display: none;
+}
+
+.main {
+	display: flex;
+	min-height: 0;
+	min-width: 0;
+	flex-direction: column;
+	flex: 1;
+}
+
+.main &gt; *::before {
+	min-width: 1em;
+	min-height: 1em;
+	margin-right: .5em;
+}
+
+.body {
+	display: flex;
+	min-height: 0;
+	min-width: 0;
+	flex-direction: row;
+	align-items: center;
+}
+
+.label::before {
+	content: '+ ';
+}
+
+:host([expanded]) &gt; .label:before {
+	content: '- ';
+}
+
+:host([expanded][filled]) &gt; .label::before {
+	content: none;
+}
+
+.body {
+	display: none;
+}
+:host([expanded]) .body {
+	display: flex;
+}
+
+:host([expanded]) .head::before {
+	content: "";
+	background: no-repeat top / contain url([CSSLIB]/img/black.png);
+}
+
+:host([expanded]) .body::before {
+	content: "";
+	background: no-repeat top / contain url([CSSLIB]/img/color.png);
+}
+
+::slotted(*) {
+	flex: 1;
+}
+</sm:sharedCss>
+		<sm:sharedCss key="level-title" xml:space="preserve">:host([edit-mode='h']) {
+    display: flex !important;
+}
+
+/* ICON HX */
+.icon-hx{
+  background-color: var(--inv-bgcolor);
+  color: var(--inv-color);
+  margin-right: .5em;
+  border-radius: 50%;
+  font-size: .8em;
+  line-height: 24px;
+  flex: 0 0 24px;
+  text-align: center;
+}</sm:sharedCss>
+	</sm:uiGuidelines>
+</sm:boxWed>

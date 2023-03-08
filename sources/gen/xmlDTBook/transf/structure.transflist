@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<sm:transformerList xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/backcoverM.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/backcoverM@head.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/backmatterM.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/backmatterM@head.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/book.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/book@genSpecific.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/book@root.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/bookM@frontmatter.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/bookM@head.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/bookM@headGenSpecific.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/citationM.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/frontmatterM.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/frontmatterM@genSpecific.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/frontmatterM@head.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/inscriptionM.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/level1.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/level2.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/level3.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/level4.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/level5.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/level6.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/sameAuthorM.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlDTBook/transf/structure/title.transf"/>
+</sm:transformerList>

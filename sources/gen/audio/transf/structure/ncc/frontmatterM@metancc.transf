@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:model sc:refUri="/model/structure/frontmatterM.model"/>
+	<sm:axis code="metancc"/>
+	<sm:content>
+		<sm:forField codes="publisher">
+			<sm:Widget sc:refUri="/gen/audio/widget/meta.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="ncc:sourcePublisher"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

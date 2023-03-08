@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" name="￼;Numéro de page￼">
+	<sm:identification targetNamespace="editadapt.fr:paon" targetPrefix="paon" code="pageNumber" itemExtension="xml"/>
+	<sm:structure>
+		<sm:field code="pageNumber" name="￼;Numéro de page￼" occurrence="one" family="content">
+			<sm:number min="0" allowedDecimals="0"/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage/>
+</sm:dataFormPrim>

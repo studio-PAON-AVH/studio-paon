@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<sm:role xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" code="none" name="￼;Aucun￼" exclusiveGroup="main" sortKey="1">
+	<!--Habilitatitions :
+  - aucun accés-->
+	<sm:superRole globalRole="main:~fallback"/>
+</sm:role>

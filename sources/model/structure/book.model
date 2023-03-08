@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<sm:compositionPrim name="￼;Livre￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="book" itemExtension="book" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure>
+		<sm:meta sc:refUri="/model/structure/bookM.model" usage="required"/>
+		<sm:part code="frontmatter" family="sub-level" internalized="userDependent" name="￼;Couverture￼" usage="required">
+			<sm:meta sc:refUri="/model/structure/frontmatterM.model" usage="required"/>
+		</sm:part>
+		<sm:part code="backcover" family="sub-level" internalized="userDependent" name="￼;Quatrième de couverture￼" usage="required">
+			<sm:meta sc:refUri="/model/structure/backcoverM.model" usage="required"/>
+		</sm:part>
+		<sm:part code="sameAuthor" family="sub-level" internalized="always" name="￼;Du même auteur￼" usage="optional">
+			<sm:meta sc:refUri="/model/structure/sameAuthorM.model" usage="required"/>
+			<sm:allowedModel sc:refUri="/model/bases/flow.model"/>
+		</sm:part>
+		<sm:set usage="optional">
+			<sm:part code="inscription" family="sub-level" internalized="always" name="￼;Dédicace￼">
+				<sm:meta sc:refUri="/model/structure/inscriptionM.model" usage="required"/>
+				<sm:allowedModel sc:refUri="/model/bases/flow.model"/>
+			</sm:part>
+			<sm:part code="citation" family="sub-level" internalized="always" name="￼;Citation￼">
+				<sm:meta sc:refUri="/model/structure/citationM.model" usage="required"/>
+				<sm:allowedModel sc:refUri="/model/bases/flow.model"/>
+			</sm:part>
+		</sm:set>
+		<sm:set usage="optional">
+			<sm:part code="level1" family="sub-level" internalized="always" name="￼;Premier niveau￼">
+				<sm:meta sc:refUri="/model/structure/title.model" usage="required"/>
+				<sm:allowedModel sc:refUri="/model/structure/level1.model"/>
+			</sm:part>
+		</sm:set>
+		<sm:part code="backmatter" family="sub-level" internalized="userDependent" name="￼;Autres mentions￼" usage="required">
+			<sm:meta sc:refUri="/model/structure/backmatterM.model" usage="required"/>
+		</sm:part>
+	</sm:structure>
+	<sm:storage/>
+	<sm:authoring>
+		<sm:icon sc:refUri="/model/auth/ico/book.png"/>
+	</sm:authoring>
+</sm:compositionPrim>

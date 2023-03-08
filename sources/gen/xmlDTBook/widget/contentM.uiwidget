@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<sm:freeUiWidget xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" code="contentM">
+	<sm:widgetBsFragment contentFormat="xhtml" xml:space="preserve">&lt;source type="xslOnSrc-dynamique"&gt;
+	&lt;xsl:stylesheet exclude-result-prefixes="sc sp java paon"
+									version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+									xmlns:paon="editadapt.fr:paon"
+									xmlns:sc="http://www.utc.fr/ics/scenari/v3/core"
+									xmlns:sp="http://www.utc.fr/ics/scenari/v3/primitive"
+									xmlns:java="http://xml.apache.org/xslt/java"&gt;
+
+		&lt;xsl:output omit-xml-declaration="yes" indent="no" method="xml" /&gt;
+		&lt;xsl:param name="vDialog" /&gt;
+		&lt;xsl:param name="vAgent" /&gt;
+		&lt;xsl:param name="vArguments" /&gt;
+		&lt;xsl:template match="*"&gt;
+			&lt;xsl:if test="$vArguments/paon:contentM/sp:title"&gt;
+				&lt;att name="title"&gt;&lt;xsl:value-of select="$vArguments/paon:contentM/sp:title"/&gt;&lt;/att&gt;
+			&lt;/xsl:if&gt;
+			&lt;xsl:if test="$vArguments/paon:contentM/sp:pronounce"&gt;
+				&lt;att name="pronounce"&gt;&lt;xsl:value-of select="returnFirst($vArguments/paon:contentM/sp:pronounce/text(), 'no')"/&gt;&lt;/att&gt;
+			&lt;/xsl:if&gt;
+&lt;xsl:value-of select="computeStrAgent('xhtmlContentZone_content', $vArguments)" disable-output-escaping="yes"/&gt;
+		&lt;/xsl:template&gt;
+	&lt;/xsl:stylesheet&gt;
+&lt;/source&gt;
+</sm:widgetBsFragment>
+</sm:freeUiWidget>

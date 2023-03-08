@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<sm:packMake xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:wspDef sc:refUri="/paon.wspdef" lang="fr-FR"/>
+</sm:packMake>

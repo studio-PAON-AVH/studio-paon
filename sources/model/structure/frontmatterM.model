@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim name="￼;Métadonnées Livre￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="frontmatterM" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure>
+		<sm:field code="subTitle" family="property" name="￼;complément du titre￼" occurrence="zeroOrMore">
+			<sm:string/>
+		</sm:field>
+		<sm:field code="typeOuvrage" family="property" name="￼;Type d'ouvrage￼" occurrence="zeroOrMore">
+			<sm:string/>
+		</sm:field>
+		<sm:field code="publisher" family="property" name="￼;Éditeur￼" occurrence="one">
+			<sm:string/>
+		</sm:field>
+		<sm:field code="legalsAVH" family="property" name="￼;Note générale de l'AVH￼" occurrence="one">
+			<sm:string/>
+		</sm:field>
+		<sm:field code="legalsJeunesse" family="property" name="￼;Mention légale jeunesse￼" occurrence="zeroOrOne">
+			<sm:string/>
+		</sm:field>
+		<sm:field code="legalsException" family="property" name="￼;Mention exception au droit d'auteur￼" occurrence="one">
+			<sm:string/>
+		</sm:field>
+		<sm:field code="legalsAUD" family="property" name="￼;Mention légale Audio￼" occurrence="one">
+			<sm:string/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage>
+		<sm:fullTitleBuilder>
+			<sm:fixedString value="￼;Couverture￼"/>
+		</sm:fullTitleBuilder>
+		<sm:indexes>
+			<sm:index sc:refUri="/model/auth/index/subTitle.index">
+				<sm:fieldValue refCode="subTitle"/>
+			</sm:index>
+			<sm:index sc:refUri="/model/auth/index/typeOuvrage.index">
+				<sm:fieldValue refCode="typeOuvrage"/>
+			</sm:index>
+		</sm:indexes>
+	</sm:storage>
+</sm:dataFormPrim>

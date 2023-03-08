@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<sm:role xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" code="admin" name="￼;Administrateur technique￼" exclusiveGroup="main" sortKey="40" permGroup="adminSyst">
+	<!--Habilitatitions :
+   [default : gestion de l'env de production]
+   + édition avancée
+-->
+	<sm:superRole sc:refUri="/collab/roles/default.right"/>
+	<sm:allowPerms>
+		<sm:globalPerm code="DO"/>
+		<sm:localPerm sc:refUri="/collab/roles/perm/actionsSystem.perm"/>
+	</sm:allowPerms>
+</sm:role>

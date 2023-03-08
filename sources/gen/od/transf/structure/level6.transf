@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<sm:compositionOdtTransf xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:model sc:refUri="/model/structure/level6.model"/>
+	<sm:content>
+		<sm:for codes="flow">
+			<sm:callSubModel/>
+		</sm:for>
+	</sm:content>
+</sm:compositionOdtTransf>

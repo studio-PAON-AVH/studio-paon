@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<sm:freeUiTemplate xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:templateXsl templateEncoding="UTF-8" pageUnicityCriterion="none" resultEncoding="UTF-8" resultExtension=".xml" resultXslMethod="xml" resultIndent="true">
+		<sm:contentTemplate sc:refUri="/gen/audio/tpl/xml.xsl"/>
+	</sm:templateXsl>
+</sm:freeUiTemplate>

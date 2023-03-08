@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<sm:freeUiWidget code="altAudio" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:widgetBsFragment contentFormat="xhtml" xml:space="preserve">&lt;source type="xslOnSrc-dynamique"&gt;
+	&lt;xsl:stylesheet exclude-result-prefixes="sc sp java paon"
+									version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+									xmlns:paon="editadapt.fr:paon"
+									xmlns:sc="http://www.utc.fr/ics/scenari/v3/core"
+									xmlns:sp="http://www.utc.fr/ics/scenari/v3/primitive"
+									xmlns:java="http://xml.apache.org/xslt/java"&gt;
+
+		&lt;xsl:output omit-xml-declaration="yes" indent="no" method="xml" /&gt;
+		&lt;xsl:param name="vDialog" /&gt;
+		&lt;xsl:param name="vAgent" /&gt;
+		&lt;xsl:param name="vArguments" /&gt;
+		&lt;xsl:template match="*"&gt;
+			&lt;xsl:choose&gt;
+			&lt;xsl:when test="$vArguments/paon:alttext/sp:altAUDIO"&gt;
+				&lt;span class="altaudio"&gt;
+					&lt;xsl:attribute name="cmd"&gt;
+						&lt;xsl:text&gt;\prx=&lt;/xsl:text&gt;
+						&lt;xsl:for-each select="$vArguments/paon:alttext/sp:altAUDIO/sp:phonem"&gt;
+							&lt;xsl:value-of select="text()"/&gt;&lt;xsl:text&gt; &lt;/xsl:text&gt;
+						&lt;/xsl:for-each&gt;
+						&lt;xsl:text&gt;\&lt;/xsl:text&gt;
+					&lt;/xsl:attribute&gt;
+						&lt;xsl:value-of select="computeStrAgent('xhtmlContentZone_content', $vArguments)" disable-output-escaping="yes"/&gt;
+				&lt;/span&gt;
+			&lt;/xsl:when&gt;
+			&lt;xsl:otherwise&gt;&lt;xsl:value-of select="computeStrAgent('xhtmlContentZone_content', $vArguments)" disable-output-escaping="yes"/&gt;&lt;/xsl:otherwise&gt;
+			&lt;/xsl:choose&gt;
+		&lt;/xsl:template&gt;
+	&lt;/xsl:stylesheet&gt;
+&lt;/source&gt;
+</sm:widgetBsFragment>
+</sm:freeUiWidget>

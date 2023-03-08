@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<sm:textOdTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/bases/text.model"/>
+	<sm:axis code="tbHead"/>
+	<sm:content>
+		<sm:paraTag globalStyle="p"/>
+		<sm:listTags>
+			<sm:itemizedListTag/>
+			<sm:orderedListTag/>
+		</sm:listTags>
+		<sm:phraseTag globalStyle="txtAlternative" role="alternative"/>
+		<sm:phraseTag globalStyle="txtCite" role="cite"/>
+		<sm:inlineStyleTag globalStyle="txtTitleCite" role="titleCite"/>
+		<sm:inlineStyleTag globalStyle="txtStrong" role="strong"/>
+		<sm:inlineStyleTag globalStyle="txtEmp" role="emphase"/>
+		<sm:inlineStyleTag globalStyle="txtExposant" role="exposant"/>
+		<sm:inlineStyleTag globalStyle="txtInferior" role="inferieur"/>
+		<sm:inlineStyleTag globalStyle="txtAbreviation" role="abreviation"/>
+		<sm:inlineStyleTag globalStyle="txtAcronym" role="acronym"/>
+		<sm:inlineStyleTag globalStyle="txtAuthor" role="author"/>
+		<sm:inlineStyleTag globalStyle="txtUrl" role="url">
+			<sm:Widget sc:refUri="/gen/od/transf/bases/url.odwidget"/>
+		</sm:inlineStyleTag>
+		<sm:inlineStyleTag globalStyle="txtLang" role="lang"/>
+		<sm:inlineStyleTag globalStyle="txtError" role="error"/>
+		<sm:emptyLeafTag role="note">
+			<sm:footNote>
+				<sm:callMeta/>
+			</sm:footNote>
+		</sm:emptyLeafTag>
+	</sm:content>
+</sm:textOdTransf>

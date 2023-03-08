@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<smp:depotLnk xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlet sc:refUri="/portal/import/import.portlet"/>
+	<smp:servers>
+		<smp:serverWrite sc:refUri="/portal/servers/wa.server">
+			<smp:reverseProxy baseUrl="/~~import/~~write" sc:refUri="/portal/servers/static.server"/>
+			<smp:components>
+				<smp:data sc:refUri="/portal/servers/fs.storage"/>
+				<smp:usersManager>
+					<smp:cookieBasicAuth openCookiePath="/" secure="true"/>
+					<smp:remoteScUsers>
+						<smp:chainLnk sc:refUri="/portal/chain/chain.linker"/>
+					</smp:remoteScUsers>
+				</smp:usersManager>
+				<smp:transforms>
+					<smp:all FFmpegExePath="/usr/bin/ffmpeg" imageMagickBinFolderPath="/usr/bin"/>
+				</smp:transforms>
+				<smp:esEngine>
+					<smp:esInternalAccess url="§§es.host§§"/>
+					<smp:esPublicAccess baseUrl="/~~import/~~search" sc:refUri="/portal/servers/static.server"/>
+				</smp:esEngine>
+			</smp:components>
+		</smp:serverWrite>
+		<smp:serverUrlTreeFront baseUrl="/~~import" sc:refUri="/portal/servers/static.server">
+			<smp:sendFile/>
+		</smp:serverUrlTreeFront>
+		<smp:serverWebFront baseUrl="/~~static/import" sc:refUri="/portal/servers/static.server"/>
+	</smp:servers>
+</smp:depotLnk>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sm:transformerList xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/content/backcoverM.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/content/backmatterM.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/content/bookM.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/content/citationM.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/content/frontmatterM.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/content/inscriptionM.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/content/sameAuthorM.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/content/title.transf"/>
+</sm:transformerList>

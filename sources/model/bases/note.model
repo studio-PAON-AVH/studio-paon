@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" name="￼;Note de bas de page￼">
+	<sm:identification targetNamespace="editadapt.fr:paon" targetPrefix="paon" code="note" itemExtension="xml"/>
+	<sm:structure>
+		<sm:field code="content" name="￼;Contenu de la note￼" occurrence="one" family="content">
+			<sm:otherType sc:refUri="/model/bases/text.model"/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage/>
+</sm:dataFormPrim>

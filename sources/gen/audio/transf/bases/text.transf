@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<sm:textXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1636464792358">TODO : tableau et note de bas de page</comment></comment>-->
+	<sm:model sc:refUri="/model/bases/text.model"/>
+	<sm:content>
+		<sm:paraTag tagName="p"/>
+		<sm:divTag role="citation" tagName="div" widgetClass="citation"/>
+		<sm:divTag role="poem" tagName="div" widgetClass="poem"/>
+		<sm:divTag role="epigraph" tagName="div" widgetClass="epigraph"/>
+		<sm:divTag role="side" tagName="div" widgetClass="side"/>
+		<sm:listTags>
+			<sm:itemizedListTag tagName="none"/>
+			<sm:orderedListTag tagName="none"/>
+		</sm:listTags>
+		<sm:tableTag>
+			<sm:captionTag/>
+			<sm:columnTag preferedCellTagName="th" role="head" widgetClass="head"/>
+			<sm:columnTag preferedCellTagName="td"/>
+			<sm:rowTag preferedCellTagName="th" role="head" widgetClass="head"/>
+			<sm:rowTag preferedCellTagName="td"/>
+			<sm:cellTag/>
+		</sm:tableTag>
+		<sm:phraseTag role="alternative" tagName="none">
+			<sm:Widget sc:refUri="/gen/audio/widget/altAudio.uiwidget"/>
+		</sm:phraseTag>
+		<sm:phraseTag role="cite" tagName="span" widgetClass="cite"/>
+		<sm:inlineStyleTag role="strong" tagName="none"/>
+		<sm:inlineStyleTag role="emphase" tagName="none"/>
+		<sm:inlineStyleTag role="exposant" tagName="none"/>
+		<sm:inlineStyleTag role="inferieur" tagName="none"/>
+		<sm:inlineStyleTag role="abreviation" tagName="none"/>
+		<sm:inlineStyleTag role="acronym" tagName="none"/>
+		<sm:inlineStyleTag role="author" tagName="none"/>
+		<sm:inlineStyleTag role="titleCite" tagName="none"/>
+		<sm:inlineStyleTag role="lang" tagName="none"/>
+		<sm:inlineStyleTag role="error" tagName="none" widgetClass="error"/>
+		<sm:inlineStyleTag role="url" tagName="none">
+			<sm:Widget sc:refUri="/gen/audio/widget/url_blank.uiwidget"/>
+		</sm:inlineStyleTag>
+		<sm:emptyLeafTag role="note" tagName="none">
+			<sm:Widget sc:refUri="/gen/audio/widget/note.uiwidget"/>
+		</sm:emptyLeafTag>
+		<sm:emptyLeafTag role="acapelaCmd" tagName="none">
+			<sm:Widget sc:refUri="/gen/audio/widget/acapelaCmd.uiwidget"/>
+		</sm:emptyLeafTag>
+	</sm:content>
+</sm:textXhtmlTransf>

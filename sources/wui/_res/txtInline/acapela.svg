@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="17"
+   height="17"
+   viewBox="0 0 4.4979167 4.4979167"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="acapela.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="30.932715"
+     inkscape:cy="-12.933042"
+     inkscape:document-units="mm"
+     inkscape:current-layer="svg8"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="3832"
+     inkscape:window-y="515"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     units="px" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     id="path7"
+     style="fill:#648db2;fill-opacity:1;stroke-width:0.22715758"
+     d="m 2.5120365,2.6999812 c 0,0.272589 0.1817261,0.4088835 0.3861679,0.4088835 0.3180206,0 0.4997467,-0.181726 0.567894,-0.3861678 0.022716,-0.045431 0.022716,-0.090863 0.022716,-0.1362945 V 2.1775187 c -0.4543151,0 -0.9767776,0.068147 -0.9767776,0.5224625 m 1.0222091,0.363452 C 3.3979511,3.2451593 3.1480778,3.4041696 2.8073414,3.4041696 c -0.4770309,0 -0.7041885,-0.3180206 -0.7041885,-0.658757 0,-0.5451781 0.4997467,-0.8631987 1.408377,-0.8404829 v -0.045432 c 0,-0.181726 -0.045432,-0.5451781 -0.5224625,-0.5224624 -0.2271575,0 -0.4543151,0.068147 -0.6133254,0.1590103 L 2.284879,1.2234569 C 2.466605,1.1098782 2.7619099,1.0190151 3.0572147,1.0190151 c 0.7269043,0 0.8859146,0.4770309 0.8859146,0.9313461 v 0.8631987 c 0,0.1590103 0,0.2953048 0.022716,0.4315994 C 4.6018862,2.4273921 4.6927492,1.3597515 4.1021396,0.67827884 3.3752353,-0.13948842 1.9668584,-0.11677267 0.96736508,0.74642611 -0.054844,1.6096248 -0.30471733,2.9498544 0.39947114,3.744906 1.1036596,4.5626732 2.4893208,4.5172417 3.5115299,3.6540429 3.6251087,3.5631799 3.7386874,3.4496011 3.8295505,3.3360223 H 3.5569614 Z"
+     inkscape:connector-curvature="0" />
+</svg>

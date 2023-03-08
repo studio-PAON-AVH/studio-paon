@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<sm:odSkinClass xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" class="od:od" name="￼;Skin Open Document￼">
+	<sm:defaultSkin sc:refUri="/gen/od/od.skin.odt"/>
+</sm:odSkinClass>

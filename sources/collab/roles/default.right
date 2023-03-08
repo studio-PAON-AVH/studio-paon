@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sm:right code="~default" priority="0" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<!--Configuration générale de l'application-->
+	<sm:allowPerms>
+		<sm:globalPerm code="DATA"/>
+		<sm:globalPerm code="dialog.adminUser#List"/>
+	</sm:allowPerms>
+	<sm:denyPerms>
+		<sm:globalPerm code="DO"/>
+		<!--[XUL uniquement] Rôles de niveau "entrepôt"  
+- Role "main:admin" jamais accessible dans les groupes (poserait des pbs de sécurité : contrôle d'augmentation de privilège absente de cette couche)-->
+		<sm:globalPerm code="role.main:admin.applyOn.group#show"/>
+		<sm:globalPerm code="role.hideWspApp.applyOn.wsp#show"/>
+		<sm:globalPerm code="role.hideWspDocApp.applyOn.wsp#show"/>
+		<sm:globalPerm code="role.main:admin.applyOn.wsp#show"/>
+		<sm:globalPerm code="role.hideWspApp.applyOn.space#show"/>
+		<sm:globalPerm code="role.hideWspDocApp.applyOn.space#show"/>
+		<sm:globalPerm code="role.main:admin.applyOn.space#show"/>
+	</sm:denyPerms>
+</sm:right>

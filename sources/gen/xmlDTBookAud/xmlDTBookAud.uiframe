@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sm:staticUiFrame xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:rootContext>
+		<sm:none useHtmlRedirect="no"/>
+	</sm:rootContext>
+	<sm:callRootModel axis="root"/>
+	<sm:publishFiles sc:refUri="/gen/audio/build.doss">
+		<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1665495461915">audio</comment></comment>-->
+	</sm:publishFiles>
+	<sm:publishFiles sc:refUri="/gen/xmlDTBook/postXsl.doss">
+		<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1665495474915">xmlDTBook</comment></comment>-->
+	</sm:publishFiles>
+	<sm:publishFiles sc:refUri="/gen/xmlDTBookAud/postXsl.doss">
+		<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1665495494041">xmlDTBookAud</comment></comment>-->
+	</sm:publishFiles>
+	<sm:freeInitProperties mode="replace" xml:space="preserve">postTask.ant=buildDtBookAud.xml
+destination.root.filepath=dtbook.xml
+destination.onestream.builder=file:dtbook.xml
+destination.onestream.mimetype=application/xml</sm:freeInitProperties>
+</sm:staticUiFrame>

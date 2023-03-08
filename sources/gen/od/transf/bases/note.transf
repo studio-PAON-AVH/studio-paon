@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<sm:dataFormOdTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/bases/note.model"/>
+	<sm:content>
+		<sm:forField>
+			<sm:fieldValueOtherType/>
+		</sm:forField>
+	</sm:content>
+</sm:dataFormOdTransf>

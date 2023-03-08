@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/backcoverM.model"/>
+	<sm:axis code="id"/>
+	<sm:content>
+		<sm:WText value="_"/>
+		<sm:dynamicString>
+			<sm:freeSelect xpath="formatStr('%03.0f',count(../preceding-sibling::*))"/>
+		</sm:dynamicString>
+		<sm:WText value="_"/>
+		<sm:dynamicString>
+			<sm:freeSelect xpath="java:eu.scenari.editadapt.utils.Utils.escapeXhtmlId(computeStrAgent(concat('@', getIdNode(..), '_meta/fullTitleText')))"/>
+		</sm:dynamicString>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

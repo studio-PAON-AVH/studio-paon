@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<sm:freeUiWidget code="acapelaCmd" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:zoneToDeclare key="prev" occurrence="One"/>
+	<sm:widgetBsFragment contentFormat="xhtml" xml:space="preserve">&lt;source type="xslOnSrc-dynamique"&gt;
+&lt;xsl:stylesheet exclude-result-prefixes="sc sp java paon"
+                version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:paon="editadapt.fr:paon"
+                xmlns:sc="http://www.utc.fr/ics/scenari/v3/core"
+                xmlns:sp="http://www.utc.fr/ics/scenari/v3/primitive"
+                xmlns:java="http://xml.apache.org/xslt/java"&gt;
+
+    &lt;xsl:output omit-xml-declaration="yes" indent="no" method="xml" /&gt;
+    &lt;xsl:param name="vDialog" /&gt;
+    &lt;xsl:param name="vAgent" /&gt;
+    &lt;xsl:param name="vArguments" /&gt;
+    &lt;xsl:template match="*"&gt;
+        &lt;cmd&gt;&lt;xsl:value-of select="$vArguments/paon:acapelaCmd/sp:acapelaCmd"/&gt;&lt;/cmd&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+&lt;/source&gt;
+</sm:widgetBsFragment>
+	<sm:callableModel sc:refUri="/model/bases/text.model" view="xhtmlContent"/>
+</sm:freeUiWidget>

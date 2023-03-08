@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim name="￼;Métadonnées même citation￼" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="citationM" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure/>
+	<sm:storage>
+		<sm:fullTitleBuilder>
+			<sm:fixedString value="￼;Citation￼"/>
+		</sm:fullTitleBuilder>
+	</sm:storage>
+</sm:dataFormPrim>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<sm:transformerList xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/dc/backcoverM@metadc.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/dc/backmatterM@metadc.transf"/>
+	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/book.transf"/>
+	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/book@meta.transf"/>
+	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/book@root.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/dc/bookM@metadc.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/ncc/bookM@metancc.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/dc/frontmatterM@metadc.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/structure/ncc/frontmatterM@metancc.transf"/>
+	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/level.transf"/>
+	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/level@co.transf"/>
+	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/title.transf"/>
+</sm:transformerList>

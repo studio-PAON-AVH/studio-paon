@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<sm:openUiTemplate pageUnicityCriterion="hierarchicalContext" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:head>
+		<sm:windowTitle>
+			<sm:rootTitle type="fullTitle"/>
+		</sm:windowTitle>
+		<sm:standardTags generator="yes" revision="yes"/>
+		<sm:callZone format="xhtml" key="meta"/>
+	</sm:head>
+	<sm:body>
+		<sm:callMainZone format="xhtml"/>
+	</sm:body>
+</sm:openUiTemplate>

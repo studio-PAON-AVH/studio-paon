@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<sm:textXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/bases/text.model"/>
+	<sm:content>
+		<sm:paraTag tagName="p"/>
+		<sm:divTag role="citation" tagName="div" widgetClass="blockquote"/>
+		<sm:divTag role="epigraph" tagName="div" widgetClass="epigraph"/>
+		<sm:divTag role="poem" tagName="div" widgetClass="poem"/>
+		<sm:divTag role="side" tagName="div" widgetClass="side">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/side.uiwidget"/>
+		</sm:divTag>
+		<sm:listTags>
+			<sm:itemizedListTag tagName="ul"/>
+			<sm:orderedListTag tagName="ol"/>
+		</sm:listTags>
+		<sm:tableTag>
+			<sm:captionTag/>
+			<sm:columnTag preferedCellTagName="th" role="head"/>
+			<sm:columnTag preferedCellTagName="td"/>
+			<sm:rowTag preferedCellTagName="td"/>
+			<sm:rowTag preferedCellTagName="th" role="head"/>
+			<sm:cellTag/>
+		</sm:tableTag>
+		<sm:phraseTag role="alternative" tagName="none"/>
+		<sm:phraseTag role="cite" tagName="cite"/>
+		<sm:inlineStyleTag role="strong" tagName="strong"/>
+		<sm:inlineStyleTag role="emphase" tagName="em"/>
+		<sm:inlineStyleTag role="exposant" tagName="sup"/>
+		<sm:inlineStyleTag role="inferieur" tagName="sub"/>
+		<sm:inlineStyleTag role="abreviation" tagName="abbr">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/contentM.uiwidget"/>
+		</sm:inlineStyleTag>
+		<sm:inlineStyleTag role="acronym" tagName="acronym">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/contentM.uiwidget"/>
+		</sm:inlineStyleTag>
+		<sm:inlineStyleTag role="author" tagName="span" widgetClass="author"/>
+		<sm:inlineStyleTag role="titleCite" tagName="span" widgetClass="title"/>
+		<sm:inlineStyleTag role="lang" tagName="none">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/spanLocInline.uiwidget"/>
+		</sm:inlineStyleTag>
+		<sm:inlineStyleTag role="error" tagName="span" widgetClass="error"/>
+		<sm:inlineStyleTag role="url" tagName="none">
+			<sm:Widget sc:refUri="/gen/audio/widget/url.uiwidget"/>
+		</sm:inlineStyleTag>
+		<sm:emptyLeafTag role="note" tagName="none">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/note.uiwidget"/>
+		</sm:emptyLeafTag>
+	</sm:content>
+</sm:textXhtmlTransf>

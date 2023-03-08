@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<sm:right xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" code="main:system">
+	<sm:allowPerms>
+		<sm:globalPerm code="adminSyst"/>
+		<sm:globalPerm code="deploy"/>
+		<sm:globalPerm code="dialog.ping#Ping"/>
+		<sm:globalPerm code="admin.liaise"/>
+		<sm:globalPerm code="install.skinPack"/>
+		<!--Saas-->
+		<sm:globalPerm code="admin.Container"/>
+	</sm:allowPerms>
+	<sm:denyPerms>
+		<sm:globalPerm code="DO"/>
+	</sm:denyPerms>
+</sm:right>

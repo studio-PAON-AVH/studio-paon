@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<sm:transformerList xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:transformer sc:refUri="/gen/xmlSrcAudio/transf/structure/book.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlSrcAudio/transf/structure/book@root.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlSrcAudio/transf/structure/level.transf"/>
+	<sm:transformer sc:refUri="/gen/xmlSrcAudio/transf/structure/level@co.transf"/>
+</sm:transformerList>

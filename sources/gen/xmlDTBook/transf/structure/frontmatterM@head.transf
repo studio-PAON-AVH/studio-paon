@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/frontmatterM.model"/>
+	<sm:axis code="head"/>
+	<sm:content>
+		<sm:forField codes="legalsException">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dc:Rights"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+		<sm:choose>
+			<sm:when codes="typeOuvrage">
+				<sm:forField codes="typeOuvrage">
+					<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+						<sm:xhtmlContentZone key="name">
+							<sm:WText value="dc:coverage"/>
+						</sm:xhtmlContentZone>
+						<sm:xhtmlContentZone key="content">
+							<sm:fieldValueString/>
+						</sm:xhtmlContentZone>
+					</sm:Widget>
+					<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+						<sm:xhtmlContentZone key="name">
+							<sm:WText value="dc:subject"/>
+						</sm:xhtmlContentZone>
+						<sm:xhtmlContentZone key="content">
+							<sm:fieldValueString/>
+						</sm:xhtmlContentZone>
+					</sm:Widget>
+				</sm:forField>
+			</sm:when>
+		</sm:choose>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:producer"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:WText value="￼;Pôle d'adaptation des ouvrages numériques de l'association Valentin Haüy￼"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:forField codes="publisher">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dtb:sourcePublisher"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:publisher"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:forField codes="publisher">
+					<sm:fieldValueString/>
+					<sm:WText value=". "/>
+				</sm:forField>
+				<sm:WText value="￼;Adapté par l'Association Valentin Haüy￼"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dc:Publisher"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:forField codes="publisher">
+					<sm:fieldValueString/>
+					<sm:WText value=". "/>
+				</sm:forField>
+				<sm:WText value="￼;Adapté par l'Association Valentin Haüy￼"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

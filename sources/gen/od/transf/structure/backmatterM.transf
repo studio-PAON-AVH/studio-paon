@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<sm:dataFormOdTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/backmatterM.model"/>
+	<sm:content>
+		<sm:WParagraph globalStyle="newPage">
+			<sm:fixedString value="[[*pg*]]"/>
+		</sm:WParagraph>
+		<sm:WParagraph globalStyle="Titre1">
+			<sm:title>
+				<sm:fixedTitle value="￼;Autres mentions￼"/>
+			</sm:title>
+		</sm:WParagraph>
+		<sm:choose>
+			<sm:when codes="publishingYear">
+				<sm:WParagraph style="">
+					<sm:fixedString value="Date de publication : "/>
+					<sm:forField codes="publishingMonth">
+						<sm:fieldValueEnum format="label"/>
+						<sm:fixedString value=" "/>
+					</sm:forField>
+					<sm:forField codes="publishingYear">
+						<sm:fieldValueString/>
+					</sm:forField>
+				</sm:WParagraph>
+			</sm:when>
+			<sm:otherwise/>
+		</sm:choose>
+		<sm:forField codes="isbn">
+			<sm:WParagraph globalStyle="p">
+				<sm:fieldName/>
+				<sm:fixedString value=" : "/>
+				<sm:fieldValueString/>
+			</sm:WParagraph>
+		</sm:forField>
+		<sm:forField codes="secondaryIsbn">
+			<sm:WParagraph>
+				<sm:fieldName/>
+				<sm:fixedString value=" : "/>
+				<sm:fieldValueString/>
+			</sm:WParagraph>
+		</sm:forField>
+		<sm:forGroup codes="translatedTitle">
+			<sm:forField codes="translatedTitle">
+				<sm:WParagraph>
+					<sm:fieldName/>
+					<sm:fixedString value=" : "/>
+					<sm:fieldValueString/>
+				</sm:WParagraph>
+			</sm:forField>
+			<sm:forField codes="originalLanguage">
+				<sm:WParagraph>
+					<sm:fieldName/>
+					<sm:fixedString value=" : "/>
+					<sm:fieldValueString/>
+				</sm:WParagraph>
+			</sm:forField>
+			<sm:forField codes="sourcePublisher">
+				<sm:WParagraph>
+					<sm:fieldName/>
+					<sm:fixedString value=" : "/>
+					<sm:fieldValueString/>
+				</sm:WParagraph>
+			</sm:forField>
+		</sm:forGroup>
+		<sm:forField codes="translatedBy">
+			<sm:WParagraph>
+				<sm:fieldName/>
+				<sm:fixedString value=" : "/>
+				<sm:fieldValueString/>
+			</sm:WParagraph>
+		</sm:forField>
+		<sm:forField codes="others">
+			<sm:fieldValueOtherType/>
+		</sm:forField>
+		<sm:WParagraph>
+			<sm:fixedString value="￼;Association Valentin Haüy, 5 rue Duroc 75343 Paris Cedex 07 - tél. : 01 44 49 27 27 - E-mail : mediatheque@avh.asso.fr - Site Internet : http://www.avh.asso.fr￼"/>
+		</sm:WParagraph>
+	</sm:content>
+</sm:dataFormOdTransf>

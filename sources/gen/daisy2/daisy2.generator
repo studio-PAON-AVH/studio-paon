@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<sm:webSiteGenerator code="daisy2" name="￼;Daisy 2￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:modelRoot>
+		<sm:allowedModel sc:refUri="/model/structure/book.model"/>
+	</sm:modelRoot>
+	<sm:mode debug="no" extension=".html" standard="XHTML 1.0 - Transitional"/>
+	<sm:uiFrame sc:refUri="/gen/daisy2/daisy.uiframe"/>
+	<sm:transformerList>
+		<sm:transformerList info="audio" sc:refUri="/gen/audio/transf.transflist"/>
+		<sm:transformerList info="specific daisy2" sc:refUri="/gen/daisy2/transf.transflist"/>
+	</sm:transformerList>
+	<sm:uiTemplateList>
+		<sm:uiTemplate code="content" sc:refUri="/gen/daisy2/tpl/content.uitemplate"/>
+	</sm:uiTemplateList>
+</sm:webSiteGenerator>

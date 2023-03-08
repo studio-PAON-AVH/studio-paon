@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<smp:depotLnk4test xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlet sc:refUri="/portal/import/import.portlet"/>
+	<smp:servers>
+		<smp:serverWrite sc:refUri="/portal/_test/servers/wa.server">
+			<smp:components>
+				<smp:data sc:refUri="/portal/servers/fs.storage"/>
+				<smp:usersManager>
+					<smp:cookieBasicAuth openCookiePath="¤builder;test#main#portal#http.contexts.path¤"/>
+					<smp:remoteScUsers>
+						<smp:chainLnk sc:refUri="/portal/_test/chain.linker"/>
+					</smp:remoteScUsers>
+				</smp:usersManager>
+				<smp:transforms>
+					<smp:all/>
+				</smp:transforms>
+				<smp:remoteServers>
+					<smp:otherServers localIPs="forbid" otherIps="allow" privateIPs="forbid"/>
+				</smp:remoteServers>
+				<smp:esEngine>
+					<smp:esInternalAccess url="http://127.0.0.1:9210"/>
+				</smp:esEngine>
+			</smp:components>
+		</smp:serverWrite>
+		<smp:serverWebFront sc:refUri="/portal/_test/servers/web.server"/>
+	</smp:servers>
+</smp:depotLnk4test>

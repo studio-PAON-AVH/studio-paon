@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<sm:transformerList xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:transformerList info="Contenu" sc:refUri="/gen/audio/transf/structure/content.transflist"/>
+	<sm:transformerList info="Ids" sc:refUri="/gen/audio/transf/structure/id.transflist"/>
+	<sm:transformerList info="meta dc" sc:refUri="/gen/audio/transf/structure/dc.transflist"/>
+	<sm:transformerList info="meta ncc" sc:refUri="/gen/audio/transf/structure/ncc.transflist"/>
+</sm:transformerList>

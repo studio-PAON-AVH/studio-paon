@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<sm:compositionOdtTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/level1.model"/>
+	<sm:content>
+		<sm:for codes="flow">
+			<sm:callSubModel/>
+		</sm:for>
+		<sm:for codes="level2">
+			<sm:WParagraph globalStyle="Titre2">
+				<sm:title>
+					<sm:partTitle format="fullTitleText"/>
+				</sm:title>
+			</sm:WParagraph>
+			<sm:callSubModel/>
+		</sm:for>
+	</sm:content>
+</sm:compositionOdtTransf>

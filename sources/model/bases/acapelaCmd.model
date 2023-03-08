@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim name="￼;Numéro de page￼" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="acapelaCmd" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure>
+		<sm:field code="acapelaCmd" family="content" name="￼;Commande Acapela￼" occurrence="one">
+			<sm:help quickHelp="￼;Cf https://www.acapela-cloud.com/editor/ pour la liste des commandes￼"/>
+			<sm:doc xml:space="preserve">Voir la liste des commandes ici : https://www.acapela-cloud.com/editor/</sm:doc>
+			<sm:string matchesRegexp="\\[^\\]+\\" matchesRegexpMsg="￼;Les commandes doivent respecter la forme \xxx\￼"/>
+		</sm:field>
+	</sm:structure>
+	<sm:storage/>
+</sm:dataFormPrim>

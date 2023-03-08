@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<sm:freeOdWidget code="url" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:widgetBsFragment contentFormat="od" xml:space="preserve">&lt;source type="xslOnSrc-dynamique"&gt;
+	&lt;xsl:stylesheet exclude-result-prefixes="sc sp java paon" version="1.0" 
+		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+		xmlns:paon="editadapt.fr:paon"
+		xmlns:sc="http://www.utc.fr/ics/scenari/v3/core"
+		xmlns:sp="http://www.utc.fr/ics/scenari/v3/primitive"
+		xmlns:java="http://xml.apache.org/xslt/java"
+		xmlns:scodPp="scenari.eu:openDocumentExtension.postprocessing:1.0"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"&gt;
+
+		&lt;xsl:output omit-xml-declaration="yes" indent="no" method="xml" /&gt;
+		&lt;xsl:param name="vDialog" /&gt;
+		&lt;xsl:param name="vAgent" /&gt;
+		&lt;xsl:param name="vArguments" /&gt;
+
+		&lt;xsl:template match="*"&gt;
+			&lt;text:a xlink:type="simple"&gt;
+				&lt;xsl:attribute name="xlink:href"&gt;
+					&lt;xsl:value-of select="paon:url/sp:url"/&gt;
+				&lt;/xsl:attribute&gt;
+				&lt;text:span text:style-name="txtUrl"&gt;
+					&lt;xsl:apply-templates select="*|text()" mode="text"/&gt;
+				&lt;/text:span&gt;
+			&lt;/text:a&gt;
+		&lt;/xsl:template&gt;
+		&lt;xsl:template match="text()" mode="text"&gt;
+			&lt;xsl:copy-of select="."/&gt;
+		&lt;/xsl:template&gt;
+		&lt;xsl:template match="sc:*" mode="text"&gt;
+			&lt;xsl:apply-templates/&gt;
+		&lt;/xsl:template&gt;
+		&lt;xsl:template match="paon:url" mode="text"/&gt;
+	&lt;/xsl:stylesheet&gt;
+&lt;/source&gt;</sm:widgetBsFragment>
+	<sm:declareStyle>
+		<sm:WInline globalStyle="txtUrl"/>
+	</sm:declareStyle>
+</sm:freeOdWidget>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:axis code="id"/>
+	<sm:content format="xhtml">
+		<sm:WFreeBlock>_001_<sm:dynamicString>
+				<sm:freeSelect xpath="java:eu.scenari.editadapt.utils.Utils.escapeXhtmlId(paon:bookM/descendant::sp:title)"/>
+			</sm:dynamicString>
+		</sm:WFreeBlock>
+	</sm:content>
+</sm:compositionXhtmlTransf>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<sm:wedEditor xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" code="default" name="￼;Défaut (dans atelier)￼">
+	<sm:weds>
+		<sm:main sc:refUri="/wui/default.wed"/>
+	</sm:weds>
+	<sm:wspItemsAccess>
+		<sm:full/>
+	</sm:wspItemsAccess>
+</sm:wedEditor>

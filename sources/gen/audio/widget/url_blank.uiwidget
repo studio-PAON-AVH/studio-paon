@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<sm:freeUiWidget code="url" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:widgetBsFragment contentFormat="xhtml" xml:space="preserve">&lt;source type="xslOnSrc-dynamique"&gt;
+	&lt;xsl:stylesheet exclude-result-prefixes="sc sp java paon"
+	version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:paon="editadapt.fr:paon"
+	xmlns:sc="http://www.utc.fr/ics/scenari/v3/core"
+	xmlns:sp="http://www.utc.fr/ics/scenari/v3/primitive"
+	xmlns:java="http://xml.apache.org/xslt/java"&gt;
+
+		&lt;xsl:output omit-xml-declaration="yes" indent="no" method="xml" /&gt;
+		&lt;xsl:param name="vDialog" /&gt;
+		&lt;xsl:param name="vAgent" /&gt;
+		&lt;xsl:param name="vArguments" /&gt;
+		&lt;xsl:template match="*"&gt;
+			&lt;xsl:variable name="vTitle" select="$vArguments/paon:url/sp:title"/&gt;
+			&lt;xsl:variable name="vUrl" select="$vArguments/paon:url/sp:url"/&gt;
+			&lt;xsl:variable name="vContent" select="computeStrAgent('xhtmlContentZone_content', $vArguments)"/&gt;
+    	&lt;a target="_blank" href="{$vUrl}"&gt;&lt;xsl:if test="string-length($vTitle)&gt;0"&gt;&lt;xsl:attribute name="title"&gt;&lt;xsl:value-of select="$vTitle"/&gt;&lt;/xsl:attribute&gt;&lt;/xsl:if&gt;&lt;span class="lnk"&gt;&lt;xsl:value-of select="$vContent" disable-output-escaping="yes"/&gt;&lt;/span&gt;&lt;/a&gt;
+		&lt;/xsl:template&gt;
+	&lt;/xsl:stylesheet&gt;
+&lt;/source&gt;</sm:widgetBsFragment>
+</sm:freeUiWidget>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sm:compositionPrim xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" name="￼;Sixième niveau (interne)￼">
+	<sm:identification targetNamespace="editadapt.fr:paon" targetPrefix="paon" code="level6" itemExtension="xml"/>
+	<sm:structure>
+		<sm:part code="flow" name="￼;Contenu￼" internalized="userDependent" usage="optional">
+			<sm:allowedModel sc:refUri="/model/bases/flow.model"/>
+		</sm:part>
+	</sm:structure>
+	<sm:storage/>
+	<sm:authoring/>
+</sm:compositionPrim>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/level1.model"/>
+	<sm:model sc:refUri="/model/structure/level2.model"/>
+	<sm:model sc:refUri="/model/structure/level3.model"/>
+	<sm:model sc:refUri="/model/structure/level4.model"/>
+	<sm:model sc:refUri="/model/structure/level5.model"/>
+	<sm:model sc:refUri="/model/structure/level6.model"/>
+	<sm:axis code="id"/>
+	<sm:content format="xhtml">
+		<sm:WFreeBlock>_<sm:dynamicString>
+				<sm:freeXslFragment xml:space="preserve">&lt;xsl:for-each select="../../ancestor::*[contains(name(),'sp:level')]"&gt;
+&lt;xsl:value-of select="formatStr('%03.0f', count(preceding-sibling::*))"/&gt;&lt;xsl:text&gt;-&lt;/xsl:text&gt;
+&lt;/xsl:for-each&gt;
+&lt;xsl:value-of select="formatStr('%03.0f', count(../preceding-sibling::*))"/&gt;</sm:freeXslFragment>
+			</sm:dynamicString>_<sm:dynamicString>
+				<sm:freeSelect xpath="java:eu.scenari.editadapt.utils.Utils.escapeXhtmlId(preceding-sibling::paon:title/sp:title)"/>
+			</sm:dynamicString>
+		</sm:WFreeBlock>
+	</sm:content>
+</sm:compositionXhtmlTransf>

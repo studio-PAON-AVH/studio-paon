@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/title.model"/>
+	<sm:content>
+		<sm:forField codes="title">
+			<sm:Widget sc:refUri="/gen/audio/widget/pSecondaryVoice.uiwidget">
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

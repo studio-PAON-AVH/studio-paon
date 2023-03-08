@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<smp:meta name="￼;Date de publication en médiathèque￼" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="dateEnd"/>
+	<smp:structure>
+		<smp:date/>
+	</smp:structure>
+	<smp:authoring>
+		<smp:formEditor>
+			<smp:dateWidget date="true"/>
+		</smp:formEditor>
+	</smp:authoring>
+</smp:meta>

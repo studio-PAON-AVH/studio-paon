@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<sm:compositionPrim xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" name="￼;Contenu￼">
+	<sm:identification targetNamespace="editadapt.fr:paon" targetPrefix="paon" code="flow" itemExtension="xml"/>
+	<sm:structure>
+		<sm:set usage="required">
+			<sm:part code="content" name="￼;Texte￼" family="content" internalized="userDependent">
+				<sm:allowedModel sc:refUri="/model/bases/text.model"/>
+			</sm:part>
+			<sm:part code="bridgehead" name="￼;Titre flottant￼" family="content" internalized="userDependent">
+				<sm:meta sc:refUri="/model/bases/bridgehead.model" usage="required"/>
+			</sm:part>
+		</sm:set>
+	</sm:structure>
+	<sm:storage/>
+	<sm:authoring/>
+</sm:compositionPrim>

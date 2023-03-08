@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<smp:webAppServer code="scenari" name="￼;Webapp Editadapt￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:systemAccess domainUrl="§§webapp.url§§"/>
+	<smp:data addonsDirPath="§§data.dir§§/addons" backupDirPath="§§data.dir§§/backup" dataDirPath="§§data.dir§§/data" logsDirPath="§§logs.dir§§" tempDirPath="§§data.dir§§/tmp" workingDirPath="§§data.dir§§/working"/>
+	<smp:components>
+		<smp:scenariEngine addCoreLib="yes">
+			<smp:logs>
+				<smp:daily/>
+			</smp:logs>
+			<!--<smp:properties xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:systemProperty key="postscriptum.path" value="§§app.ext.postscriptum.path§§"/>
+	<smp:systemProperty key="postscriptum.timeout" value="§§app.ext.postscriptum.timeout§§"/>
+	<smp:systemProperty key="postscriptum.serverRoot" value="§§wa.data.dir§§"/>
+	<smp:systemProperty key="postscriptum.serverPort" value="§§app.ext.postscriptum.server.port§§"/>
+	<smp:systemProperty key="postscriptum.serverPool" value="§§app.ext.postscriptum.server.pool§§"/>
+</smp:properties>-->
+		</smp:scenariEngine>
+	</smp:components>
+	<smp:free>
+		<smp:staticFile destPath="WEB-INF/lib" l10nCtxt="" sc:refUri="/portal/servers/libjar.doss"/>
+	</smp:free>
+</smp:webAppServer>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sm:compositionOdtTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:axis code="backmatter"/>
+	<sm:content>
+		<!--# Back matter (label : content)-->
+		<sm:for codes="backmatter">
+			<sm:callPartMeta/>
+		</sm:for>
+	</sm:content>
+</sm:compositionOdtTransf>

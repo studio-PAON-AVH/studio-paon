@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/frontmatterM.model"/>
+	<sm:axis code="metadc"/>
+	<sm:content>
+		<sm:Widget sc:refUri="/gen/audio/widget/meta.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dc:publisher"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:forField codes="publisher">
+					<sm:fieldValueString/>
+					<sm:WText value=" "/>
+				</sm:forField>
+				<sm:WText value="adapté par l'Association Valentin Haüy"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:forField codes="typeOuvrage">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dc:coverage"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dc:subject"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

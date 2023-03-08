@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<sm:role xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" code="manager" name="￼;Gestionnaire fonctionnel￼" exclusiveGroup="main" sortKey="30">
+	<!--Habilitatitions :
+   [author]
+   + admin prod  (users, wsps, ...)
+-->
+	<sm:superRole sc:refUri="/collab/roles/main/2_author.role"/>
+	<sm:allowPerms>
+		<sm:globalPerm code="admin"/>
+	</sm:allowPerms>
+	<sm:denyPerms>
+		<sm:globalPerm code="roles.adminSyst#set"/>
+		<sm:globalPerm code="admin.props.isHidden.user"/>
+	</sm:denyPerms>
+</sm:role>

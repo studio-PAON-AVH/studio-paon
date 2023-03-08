@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="main">
+	<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+	<target name="main">
+	<move file="${vFolderDest}/co/dtbook.xml" tofile="${vFolderDest}/dtbook.xml"/>
+		<delete dir="${vFolderDest}/co"/>
+		<!-- ajustements de transformation free dtbook -->
+		<transformXsl inFile="${vFolderDest}/dtbook.xml" outFile="${vFolderDest}/dtbook.xml" style="post.dtb.xsl"/>
+		<transformXsl inFile="${vFolderDest}/dtbook.xml" outFile="${vFolderDest}/dtbook.xml" style="post.poem.xsl"/>
+		<!-- cleanup des structures vide -->
+		<transformXsl inFile="${vFolderDest}/dtbook.xml" outFile="${vFolderDest}/dtbook.xml" style="cleanup.xsl"/>
+		<!-- ajustements de transformation pour audio -->
+		<transformXsl inFile="${vFolderDest}/dtbook.xml" outFile="${vFolderDest}/dtbook.xml" style="audio.post.xsl"/>
+	</target>
+</project>

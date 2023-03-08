@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<smp:noContentProc xmlns:smp="scenari.eu:builder:portal:1.0" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" name="￼;Dossier sans accueil￼">
+	<smp:identification code="folder"/>
+	<smp:structure isFolder="true">
+		<smp:versionning>
+			<smp:none/>
+		</smp:versionning>
+		<smp:metas/>
+	</smp:structure>
+	<smp:writeProcess>
+		<smp:buildViews>
+			<smp:infoView/>
+			<smp:rootView>
+				<smp:none/>
+			</smp:rootView>
+		</smp:buildViews>
+	</smp:writeProcess>
+	<smp:authoring>
+		<smp:transformation sc:refUri="/portal/_commons/prc/folder/home.processing" label="￼;Importer un accueil de dossier personnalisé￼"/>
+	</smp:authoring>
+</smp:noContentProc>

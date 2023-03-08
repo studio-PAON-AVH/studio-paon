@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<smp:depotPrl code="import" name="￼;Import￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:processings>
+		<smp:processing access="readWrite" sc:refUri="/portal/_commons/prc/folder/folder.processing"/>
+		<smp:processing access="readWriteNoCreator" sc:refUri="/portal/_commons/prc/folder/home.processing"/>
+		<smp:processing access="readWrite" sc:refUri="/portal/import/prc/xml/xml.processing"/>
+		<smp:processing access="readWrite" sc:refUri="/portal/import/prc/data/data.processing"/>
+	</smp:processings>
+	<smp:features>
+		<smp:jobs>
+			<smp:jobRemakeViews/>
+			<smp:freeJob code="reImport2ChainJob" label="￼;Ré-importer les contenus dans chain￼">
+				<smp:serverFactory class="eu.scenari.editadapt.import2chain.ReImport2ChainJob"/>
+				<smp:uiFactory factoryVarName="factory" xml:space="preserve">const {RelaunchCidTaskBaseJobFactory} = await import(reg.env.resolver.resolve(":lib:store/jobs.js").url);
+const factory = new RelaunchCidTaskBaseJobFactory("reImport2ChainJob")
+const jobBuilder = factory.getJobBuilder();
+jobBuilder.addBaseJobDatas({stopAfterFailures: 50,});</smp:uiFactory>
+			</smp:freeJob>
+		</smp:jobs>
+	</smp:features>
+	<smp:rolesDefinition>
+		<smp:overallRoles>
+			<sm:role sc:refUri="/collab/roles/main/0_none.role"/>
+			<sm:role sc:refUri="/collab/roles/main/1_reader.role"/>
+			<sm:role sc:refUri="/collab/roles/main/2_author.role"/>
+			<sm:role sc:refUri="/collab/roles/main/3_manager.role"/>
+			<sm:role sc:refUri="/collab/roles/main/4_admin.role"/>
+			<sm:role sc:refUri="/collab/roles/main/5_system.right"/>
+		</smp:overallRoles>
+	</smp:rolesDefinition>
+	<smp:writeProcess>
+		<smp:autoCreateFolders/>
+	</smp:writeProcess>
+	<smp:indexes>
+		<smp:urlTree>
+			<smp:accessPoints>
+				<smp:standardsAccessPoints>
+					<smp:apPublic anonymousUserAllowed="false" authentication="enabled">
+						<smp:freeRendering xml:space="preserve">&lt;case test="hasParam(list)"&gt;
+&lt;urlRenderer type="eu.scenari.urltree.renderer.lib.UTRdrNodeInfoLoader" persistMetas="*"&gt;
+  &lt;children props="prc" persistMetas="*"/&gt;
+  &lt;ifNodeNotFound refCode="404"/&gt;
+&lt;/urlRenderer&gt;
+&lt;/case&gt;</smp:freeRendering>
+						<smp:freeRendering xml:space="preserve">&lt;case test="hasParam(ch)"&gt;
+  &lt;urlRenderer code="ch" type="eu.scenari.urltree.renderer.lib.UTRdrListChildrenLoader" outputFormat="json"/&gt;
+&lt;/case&gt;</smp:freeRendering>
+					</smp:apPublic>
+				</smp:standardsAccessPoints>
+			</smp:accessPoints>
+		</smp:urlTree>
+		<smp:esIndex>
+			<smp:mapping>
+				<smp:mpCommonFields>
+					<smp:depotMpFields contentId="true" deployFields="true" path="true" processing="true" resId="true" scgroup="true" scjoin="true" trashed="true" unlisted="true"/>
+				</smp:mpCommonFields>
+				<smp:recordsStructure>
+					<smp:contentGroup code="res">
+						<smp:mpFields>
+							<smp:mpField code="isbn">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="uid">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="sourceXMLDoctype">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="title">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="author">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="publisher">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="comments">
+								<smp:text multiline="true" predefinedAnalysis="french"/>
+							</smp:mpField>
+							<smp:mpField code="pages">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="sourceFormat">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="statut">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="statutAud">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="statutBrl">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="illustrations">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="collection">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="originalFilename">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="originalLanguage">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="typeOuvrage">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="authorAud">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="authorBrl">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="authorPivot">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="statusEmbos">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="fileName">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="dtdDetail">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="dateEnd">
+								<smp:keyword/>
+							</smp:mpField>
+						</smp:mpFields>
+					</smp:contentGroup>
+				</smp:recordsStructure>
+			</smp:mapping>
+		</smp:esIndex>
+	</smp:indexes>
+	<smp:free>
+		<smp:staticFile destPath="[WRITE]/WEB-INF/free/prcs/xml-lg" l10nCtxt="" sc:refUri="/portal/import/prc/xml/xmllg2antViews.doss"/>
+		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portal/import/free/prl.import.xml.universeInit.xsl"/>
+		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portal/import/free/prl.import.electre.universeInit.xsl"/>
+		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portal/import/free/prc.import.normalize-xml-input.xsl"/>
+	</smp:free>
+</smp:depotPrl>

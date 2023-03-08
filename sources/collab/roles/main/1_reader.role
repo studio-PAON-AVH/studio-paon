@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<sm:role code="reader" exclusiveGroup="main" name="￼;Lecteur￼" sortKey="10" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<!--Habilitatitions :
+   [default]
+  + Accés en lecture seule dans chain-->
+	<sm:superRole sc:refUri="/collab/roles/default.right"/>
+	<sm:allowPerms>
+		<sm:globalPerm code="read"/>
+		<sm:globalPerm code="use"/>
+		<sm:globalPerm code="server.storeChanges#Listen"/>
+	</sm:allowPerms>
+	<sm:denyPerms>
+		<sm:globalPerm code="ui.app.wspDoc.create.doc"/>
+		<sm:globalPerm code="ui.app.wspDoc.change.doc"/>
+		<sm:globalPerm code="ui.wspApp"/>
+		<sm:globalPerm code="ui.wspsPlg"/>
+		<sm:globalPerm code="view.depot"/>
+	</sm:denyPerms>
+</sm:role>

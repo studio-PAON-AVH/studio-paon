@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<sm:compositionOdtTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:axis code="couverture"/>
+	<sm:content>
+		<!--# Couverture encodée-->
+		<sm:WParagraph globalStyle="couverture">
+			<sm:fixedString value="[[*pv-1*]][[*sk2*]]"/>
+		</sm:WParagraph>
+		<sm:callCompositionMeta axis="title"/>
+		<sm:for codes="frontmatter">
+			<sm:callPartMeta axis="subType"/>
+		</sm:for>
+		<sm:callCompositionMeta axis="author"/>
+		<sm:WParagraph display="always" globalStyle="couverture">
+			<sm:fixedString value="[[*&lt;*]]"/>
+		</sm:WParagraph>
+		<sm:for codes="frontmatter">
+			<sm:callPartMeta axis="publisher"/>
+			<sm:callPartMeta axis="legalsAVH"/>
+		</sm:for>
+		<sm:WParagraph globalStyle="couverture">
+			<sm:fixedString value="[[*sk-3*]]Braille intégral / abrégé"/>
+		</sm:WParagraph>
+		<sm:WParagraph globalStyle="couverture">
+			<sm:fixedString value="[[*sk-1*]]Code Français / US"/>
+		</sm:WParagraph>
+		<sm:WParagraph globalStyle="couverture">
+			<sm:fixedString value="[[*sk-1*]]Volume x sur y"/>
+		</sm:WParagraph>
+		<sm:WParagraph>
+			<sm:fixedString value="[[*pg*]][[*pv1*]][[*>*]]"/>
+		</sm:WParagraph>
+		<sm:for codes="frontmatter">
+			<sm:callPartMeta axis="legalsExcepJeun"/>
+		</sm:for>
+		<sm:callCompositionMeta axis="publishNotes"/>
+	</sm:content>
+</sm:compositionOdtTransf>

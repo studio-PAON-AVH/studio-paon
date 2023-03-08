@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Migrate" default="main" basedir=".">
+
+    <target name="main">
+
+        <!-- # XSL de migration générale -->
+        <migrateXsl style="${basedir}/main.xsl">
+            <restrict>
+                <srcNode refid="scenari.wsp.src"/>
+                <or>
+                    <name name="*.book"/>
+                </or>
+            </restrict>
+
+        </migrateXsl>
+    </target>
+</project>

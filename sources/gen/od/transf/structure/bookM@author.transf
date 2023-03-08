@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<sm:dataFormOdTransf xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:model sc:refUri="/model/structure/bookM.model"/>
+	<sm:axis code="author"/>
+	<sm:content>
+		<sm:forField codes="author">
+			<sm:WParagraph globalStyle="couverture">
+				<sm:fieldValueString/>
+			</sm:WParagraph>
+		</sm:forField>
+	</sm:content>
+</sm:dataFormOdTransf>

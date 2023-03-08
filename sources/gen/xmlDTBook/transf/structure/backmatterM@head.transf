@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/backmatterM.model"/>
+	<sm:axis code="head"/>
+	<sm:content>
+		<sm:forField codes="isbn secondaryIsbn">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dc:Source"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:sourceDate"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:forField codes="publishingYear">
+					<sm:fieldValueString/>
+				</sm:forField>
+				<sm:forField codes="publishingMonth">
+					<sm:WText value="￼;-￼"/>
+					<sm:fieldValueEnum format="key"/>
+				</sm:forField>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:forField codes="translatedBy">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dc:Contributor"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="role">
+					<sm:WText value="translator"/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+		<sm:forGroup codes="translatedTitle">
+			<sm:forField codes="translatedTitle">
+				<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+					<sm:xhtmlContentZone key="name">
+						<sm:WText value="dc:Relation"/>
+					</sm:xhtmlContentZone>
+					<sm:xhtmlContentZone key="content">
+						<sm:fieldValueString/>
+					</sm:xhtmlContentZone>
+					<sm:xhtmlContentZone key="role">
+						<sm:WText value="translator"/>
+					</sm:xhtmlContentZone>
+				</sm:Widget>
+			</sm:forField>
+		</sm:forGroup>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

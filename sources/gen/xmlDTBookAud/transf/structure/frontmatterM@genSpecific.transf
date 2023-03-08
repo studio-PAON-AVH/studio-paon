@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/frontmatterM.model"/>
+	<sm:axis code="genSpecific"/>
+	<sm:content>
+		<sm:forField codes="legalsAUD">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/p.uiwidget">
+				<sm:xhtmlContentZone key="p">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<sm:webSiteGenerator code="xmlDTBook" name="￼;DTBook XML￼" nature="xml" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:modelRoot>
+		<sm:allowedModel sc:refUri="/model/structure/book.model"/>
+	</sm:modelRoot>
+	<sm:mode debug="no" standard="XML"/>
+	<sm:uiFrame sc:refUri="/gen/xmlDTBook/xmlDTBook.uiframe"/>
+	<sm:transformerList sc:refUri="/gen/xmlDTBook/transf.transflist">
+		<sm:transformerList info="Ids" sc:refUri="/gen/audio/transf/structure/id.transflist"/>
+	</sm:transformerList>
+	<sm:uiTemplateList>
+		<sm:uiTemplate code="xml" sc:refUri="/gen/audio/tpl/xml.uitemplate"/>
+	</sm:uiTemplateList>
+</sm:webSiteGenerator>

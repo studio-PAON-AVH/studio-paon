@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns="http://www.w3.org/1999/xhtml" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/level6.model"/>
+	<sm:content format="xhtml">
+		<sm:WFreeBlock>
+			<level6>
+				<sm:addAttribute name="id">
+					<sm:callModel>
+						<sm:current axis="id"/>
+					</sm:callModel>
+				</sm:addAttribute>
+				<sm:choose>
+					<sm:when xpath="../paon:title/sp:title">
+						<sm:WFreeBlock>
+							<h6>
+								<sm:dynamicString>
+									<sm:freeSelect xpath="../paon:title/sp:title"/>
+								</sm:dynamicString>
+							</h6>
+						</sm:WFreeBlock>
+					</sm:when>
+				</sm:choose>
+				<sm:inDataOrder>
+					<sm:for codes="*">
+						<sm:callSubModel/>
+					</sm:for>
+				</sm:inDataOrder>
+			</level6>
+		</sm:WFreeBlock>
+	</sm:content>
+</sm:compositionXhtmlTransf>

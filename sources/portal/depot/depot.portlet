@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<smp:depotPrl code="depot" name="￼;Export￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:processings>
+		<smp:processing access="readWriteNoCreator" sc:refUri="/portal/depot/prc/dtmodel/dtmodel.processing"/>
+		<smp:processing access="readWrite" sc:refUri="/portal/depot/prc/file/file.processing"/>
+	</smp:processings>
+	<smp:features>
+		<smp:jobs>
+			<smp:jobRemakeViews>
+				<smp:definedView code="xmlDTBook" name="￼;DTBook￼"/>
+				<smp:definedView code="daisy2" name="￼;Daisy 2￼"/>
+				<smp:definedView code="odtDuxbury" name="￼;Export ODT pour Duxbury￼"/>
+			</smp:jobRemakeViews>
+		</smp:jobs>
+	</smp:features>
+	<smp:rolesDefinition>
+		<smp:overallRoles>
+			<sm:role sc:refUri="/collab/roles/main/0_none.role"/>
+			<sm:role sc:refUri="/collab/roles/main/1_reader.role"/>
+			<sm:role sc:refUri="/collab/roles/main/2_author.role"/>
+			<sm:role sc:refUri="/collab/roles/main/3_manager.role"/>
+			<sm:role sc:refUri="/collab/roles/main/4_admin.role"/>
+			<sm:role sc:refUri="/collab/roles/main/5_system.right"/>
+		</smp:overallRoles>
+	</smp:rolesDefinition>
+	<smp:indexes>
+		<smp:urlTree>
+			<smp:accessPoints>
+				<smp:standardsAccessPoints>
+					<smp:apPublic anonymousUserAllowed="false" authentication="enabled">
+						<smp:freeRendering xml:space="preserve">&lt;case test="hasParam(list)"&gt;
+&lt;urlRenderer type="eu.scenari.urltree.renderer.lib.UTRdrNodeInfoLoader"&gt;
+  &lt;desc props="cdView*n*path" persistMetas="*"/&gt;
+  &lt;ifNodeNotFound refCode="404"/&gt;
+&lt;/urlRenderer&gt;
+&lt;/case&gt;</smp:freeRendering>
+					</smp:apPublic>
+				</smp:standardsAccessPoints>
+			</smp:accessPoints>
+		</smp:urlTree>
+		<smp:esIndex>
+			<smp:mapping>
+				<smp:mpCommonFields>
+					<smp:depotMpFields contentId="true" deployFields="true" path="true" processing="true" resId="true" scgroup="true" scjoin="true" trashed="true" unlisted="true"/>
+				</smp:mpCommonFields>
+				<smp:recordsStructure>
+					<smp:contentGroup code="res">
+						<smp:mpFields>
+							<smp:mpField code="srcUri">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="state">
+								<smp:keyword/>
+							</smp:mpField>
+						</smp:mpFields>
+					</smp:contentGroup>
+				</smp:recordsStructure>
+			</smp:mapping>
+		</smp:esIndex>
+	</smp:indexes>
+	<smp:free>
+		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portal/depot/free/prl.depot.freePersistUid.universeInit.xsl"/>
+		<smp:staticFile destPath="[WRITE]/WEB-INF/free/prcs/daisy2" l10nCtxt="" sc:refUri="/portal/depot/prc/dtmodel/daisy2PostBuild.doss"/>
+		<smp:staticFile destPath="[WRITE]/WEB-INF/free/prcs/daisy3" l10nCtxt="" sc:refUri="/portal/depot/prc/dtmodel/daisy3PostBuild.doss"/>
+	</smp:free>
+</smp:depotPrl>

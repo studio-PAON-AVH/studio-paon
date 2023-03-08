@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:model sc:refUri="/model/structure/backmatterM.model"/>
+	<sm:axis code="metadc"/>
+	<sm:content>
+		<sm:forField codes="isbn">
+			<sm:Widget sc:refUri="/gen/audio/widget/meta-scheme.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dc:source"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="scheme">
+					<sm:WText value="￼;ISBN￼"/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

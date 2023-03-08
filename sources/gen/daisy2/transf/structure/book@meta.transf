@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:axis code="meta"/>
+	<sm:content format="xhtml">
+		<sm:callCompositionMeta axis="metadc"/>
+		<sm:for codes="*">
+			<sm:callPartMeta axis="metadc"/>
+		</sm:for>
+		<sm:callCompositionMeta axis="metancc"/>
+		<sm:for codes="*">
+			<sm:callPartMeta axis="metancc"/>
+		</sm:for>
+	</sm:content>
+</sm:compositionXhtmlTransf>

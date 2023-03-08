@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<sm:transformerList xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:transformer sc:refUri="/gen/audio/transf/bases/bridgehead.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/bases/flow.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/bases/sidebar.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/bases/text.transf"/>
+	<sm:transformer sc:refUri="/gen/audio/transf/bases/text@secondaryVoice.transf"/>
+</sm:transformerList>

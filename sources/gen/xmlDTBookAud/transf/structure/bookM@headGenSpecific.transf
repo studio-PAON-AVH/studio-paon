@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:model sc:refUri="/model/structure/bookM.model"/>
+	<sm:axis code="headGenSpecific"/>
+	<sm:content>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dc:Type"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:WText value="sound"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:uid"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:dynamicString>
+					<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1631186005688">Code de l'item</comment></comment>-->
+					<sm:freeSelect xpath="substring-before(extractFileNameFromPath(srcFields(srcFileAgent(), 'srcUri')),'.')"/>
+				</sm:dynamicString>
+				<sm:WText value="-AUD"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dc:Identifier"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:dynamicString>
+					<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1631186005688">Code de l'item</comment></comment>-->
+					<sm:freeSelect xpath="substring-before(extractFileNameFromPath(srcFields(srcFileAgent(), 'srcUri')),'.')"/>
+				</sm:dynamicString>
+				<sm:WText value="-AUD"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:multimediaType"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:WText value="audioFullText"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:multimediaContent"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:WText value="audio, text"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:narrator"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:WText value="Manon, Acapella"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dtb:audioFormat"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:WText value="MP3"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

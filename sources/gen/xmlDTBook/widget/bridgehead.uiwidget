@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<sm:openUiWidget xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns="http://www.w3.org/1999/xhtml" code="bridgehead">
+	<sm:content>
+		<bridgehead>
+			<sm:callZone key="title"/>
+		</bridgehead>
+	</sm:content>
+</sm:openUiWidget>

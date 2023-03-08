@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sm:dataFormOdTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/bases/bridgehead.model"/>
+	<sm:content>
+		<sm:forField codes="bridgehead">
+			<sm:WParagraph globalStyle="bridgehead">
+				<sm:fieldValueString/>
+			</sm:WParagraph>
+		</sm:forField>
+	</sm:content>
+</sm:dataFormOdTransf>

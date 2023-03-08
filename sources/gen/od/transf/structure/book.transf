@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<sm:compositionOdtTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:content>
+		<!--# Contenu-->
+		<sm:for codes="level1">
+			<sm:WParagraph globalStyle="newPage">
+				<sm:fixedString value="[[*pg*]]"/>
+			</sm:WParagraph>
+			<sm:WParagraph globalStyle="Titre1">
+				<sm:title>
+					<sm:partTitle format="fullTitleText"/>
+				</sm:title>
+			</sm:WParagraph>
+			<sm:callSubModel/>
+		</sm:for>
+		<sm:WSection style="note">
+			<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1652950022740">Notes de fin de flux ajoutées ici</comment></comment>-->
+			<sm:label/>
+		</sm:WSection>
+	</sm:content>
+</sm:compositionOdtTransf>

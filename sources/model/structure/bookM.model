@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<sm:dataFormPrim xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" name="￼;Métadonnées Livre￼">
+	<sm:identification targetNamespace="editadapt.fr:paon" targetPrefix="paon" code="bookM" itemExtension="xml"/>
+	<sm:structure>
+		<sm:field code="title" name="￼;Titre￼" occurrence="one" family="property/title">
+			<sm:string/>
+		</sm:field>
+		<sm:field code="author" name="￼;Auteur￼" occurrence="one" family="property">
+			<sm:string/>
+		</sm:field>
+		<sm:group code="options" name="￼;Options de publication￼" occurrence="one" family="property">
+			<sm:field code="publishNotes" name="￼;Publication des notes - sortie Audio￼" occurrence="zeroOrOne" family="property">
+				<sm:enum labelIfNone="￼;Dans le flux￼">
+					<sm:option name="￼;Dans le flux￼"/>
+					<sm:option key="end" name="￼;En fin de document￼"/>
+				</sm:enum>
+			</sm:field>
+		</sm:group>
+	</sm:structure>
+	<sm:storage>
+		<sm:fullTitleBuilder>
+			<sm:fieldValue refCode="title"/>
+		</sm:fullTitleBuilder>
+	</sm:storage>
+</sm:dataFormPrim>

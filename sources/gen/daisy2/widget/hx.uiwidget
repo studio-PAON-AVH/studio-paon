@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<sm:openUiWidget xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns="http://www.w3.org/1999/xhtml" code="hx">
+	<sm:content>
+		<sm:choose>
+			<sm:when xpath="local-name(parent::*/parent::*)='level1'">
+				<h1>
+					<sm:callZone key="content"/>
+				</h1>
+			</sm:when>
+			<sm:when xpath="local-name(parent::*/parent::*)='level2'">
+				<h2>
+					<sm:callZone key="content"/>
+				</h2>
+			</sm:when>
+			<sm:when xpath="local-name(parent::*/parent::*)='level3'">
+				<h3>
+					<sm:callZone key="content"/>
+				</h3>
+			</sm:when>
+			<sm:when xpath="local-name(parent::*/parent::*)='level4'">
+				<h4>
+					<sm:callZone key="content"/>
+				</h4>
+			</sm:when>
+			<sm:when xpath="local-name(parent::*/parent::*)='level5'">
+				<h5>
+					<sm:callZone key="content"/>
+				</h5>
+			</sm:when>
+			<sm:when xpath="local-name(parent::*/parent::*)='level6'">
+				<h6>
+					<sm:callZone key="content"/>
+				</h6>
+			</sm:when>
+		</sm:choose>
+	</sm:content>
+</sm:openUiWidget>

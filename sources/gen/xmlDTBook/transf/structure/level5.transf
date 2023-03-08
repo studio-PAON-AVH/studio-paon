@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns="http://www.w3.org/1999/xhtml">
+	<sm:model sc:refUri="/model/structure/level5.model"/>
+	<sm:content format="xhtml">
+		<sm:WFreeBlock>
+			<level5>
+				<sm:choose>
+					<sm:when xpath="../paon:title/sp:title">
+						<sm:WFreeBlock>
+							<h5>
+								<sm:dynamicString>
+									<sm:freeSelect xpath="../paon:title/sp:title"/>
+								</sm:dynamicString>
+							</h5>
+						</sm:WFreeBlock>
+					</sm:when>
+				</sm:choose>
+				<sm:inDataOrder>
+					<sm:for codes="*">
+						<sm:callSubModel/>
+					</sm:for>
+				</sm:inDataOrder>
+			</level5>
+		</sm:WFreeBlock>
+	</sm:content>
+</sm:compositionXhtmlTransf>

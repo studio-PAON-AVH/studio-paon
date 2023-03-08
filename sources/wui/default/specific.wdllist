@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<sm:wedlingList xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+	<sm:wedling sc:refUri="/wui/default/specific/book.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/bookM.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/flow.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/level.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/skipped.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/title@level1.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/title@level2.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/title@level3.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/title@level4.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/title@level5.wdl"/>
+	<sm:wedling sc:refUri="/wui/default/specific/title@level6.wdl"/>
+</sm:wedlingList>

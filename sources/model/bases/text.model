@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<sm:textPrim name="￼;Texte￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:identification code="text" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
+	<sm:structure>
+		<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1623793040423">- Comment faire les appels de note et notes (noteref et note). 
+- Un doute aussi sur le retour à la ligne (ici nommé br)</comment></comment>-->
+		<sm:blockTags>
+			<sm:paraTag name="￼;Paragraphe￼"/>
+			<sm:divTag name="￼;Citation multi-paragraphe￼" role="citation"/>
+			<sm:divTag name="￼;Poème￼" role="poem"/>
+			<sm:divTag name="￼;Texte en marge￼" role="side">
+				<sm:meta sc:refUri="/model/bases/sidebar.model" usage="required"/>
+			</sm:divTag>
+			<sm:divTag name="￼;Épigraphe￼" role="epigraph"/>
+			<sm:itemizedListTag name="￼;Liste à puces￼">
+				<sm:listItemTag name="￼;ligne￼"/>
+			</sm:itemizedListTag>
+			<sm:orderedListTag name="￼;Liste ordonnée￼">
+				<sm:listItemTag name="￼;ligne ordonnée￼"/>
+			</sm:orderedListTag>
+			<sm:tableTag colRowSpan="allowed" name="￼;Tableau￼">
+				<sm:captionTag name="￼;Légende￼"/>
+				<sm:columnTag name="￼;Colonne￼"/>
+				<sm:columnTag name="￼;Colonne d'entête￼" role="head"/>
+				<sm:rowTag name="￼;Ligne￼"/>
+				<sm:rowTag name="￼;Ligne d'entête￼" role="head"/>
+				<sm:cellTag name="￼;Cellule￼"/>
+			</sm:tableTag>
+		</sm:blockTags>
+		<sm:inlineTags>
+			<sm:phraseTag name="￼;Alternatives￼" role="alternative">
+				<sm:meta sc:refUri="/model/bases/alttxt.model" usage="required"/>
+			</sm:phraseTag>
+			<sm:phraseTag name="￼;Citation en ligne￼" role="cite"/>
+			<sm:inlineStyleTag name="￼;Titre de la citation￼" role="titleCite"/>
+			<sm:inlineStyleTag htmlEquiv="b" name="￼;Gras￼" role="strong"/>
+			<sm:inlineStyleTag htmlEquiv="i" name="￼;Italique￼" role="emphase"/>
+			<sm:inlineStyleTag htmlEquiv="sup" name="￼;Exposant￼" role="exposant"/>
+			<sm:inlineStyleTag htmlEquiv="sub" name="￼;Inférieur￼" role="inferieur"/>
+			<sm:inlineStyleTag name="￼;Abréviation￼" role="abreviation">
+				<sm:meta sc:refUri="/model/bases/contentM.model" usage="required" variantKey="abr"/>
+			</sm:inlineStyleTag>
+			<sm:inlineStyleTag name="￼;Acronyme￼" role="acronym">
+				<sm:meta sc:refUri="/model/bases/contentM.model" usage="required"/>
+			</sm:inlineStyleTag>
+			<sm:inlineStyleTag name="￼;Auteur de la citation￼" role="author"/>
+			<sm:inlineStyleTag htmlEquiv="a" name="￼;Adresse web, email￼" role="url">
+				<sm:meta sc:refUri="/model/bases/url.model" usage="required"/>
+			</sm:inlineStyleTag>
+			<sm:inlineStyleTag name="￼;Terme dans une langue étrangère￼" role="lang">
+				<sm:meta sc:refUri="/model/bases/langM.model" usage="required"/>
+			</sm:inlineStyleTag>
+			<sm:inlineStyleTag name="￼;Erreur à la reprise￼" role="error"/>
+			<sm:emptyLeafTag name="￼;Note de bas de page￼" role="note">
+				<sm:meta sc:refUri="/model/bases/note.model" usage="required"/>
+			</sm:emptyLeafTag>
+			<sm:emptyLeafTag name="￼;Numéro de page￼" role="pageNumber">
+				<sm:meta sc:refUri="/model/bases/pageNumber.model" usage="required"/>
+			</sm:emptyLeafTag>
+			<sm:emptyLeafTag name="￼;Commande Acapela￼" role="acapelaCmd">
+				<sm:meta sc:refUri="/model/bases/acapelaCmd.model" usage="required"/>
+			</sm:emptyLeafTag>
+		</sm:inlineTags>
+	</sm:structure>
+</sm:textPrim>

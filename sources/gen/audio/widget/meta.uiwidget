@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<sm:openUiWidget xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns="http://www.w3.org/1999/xhtml" code="meta">
+	<sm:content>
+		<meta>
+			<sm:addAttribute name="name">
+				<sm:callZone key="name"/>
+			</sm:addAttribute>
+			<sm:addAttribute name="content">
+				<sm:callZone key="content"/>
+			</sm:addAttribute>
+		</meta>
+	</sm:content>
+</sm:openUiWidget>

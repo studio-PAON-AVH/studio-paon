@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+	<configuration default="false" name="SCENARIbuilder-studiopaon" type="Application" factoryName="Application" folderName="builders" show_console_on_std_err="true" show_console_on_std_out="true">
+		<option name="ALTERNATIVE_JRE_PATH" value="11"/>
+		<option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true"/>
+		<option name="INCLUDE_PROVIDED_SCOPE" value="true"/>
+		<option name="MAIN_CLASS_NAME" value="eu.scenari.jetty.xml.XmlConfiguration"/>
+		<module name="Mod.studio-paon-sc61"/>
+		<option name="PROGRAM_PARAMETERS" value="$SCENARI_CORE_VCS_6.1$/Ide_IntelliJ/launcher-bui/$OS$/DEV-SCbuilder/serverInit.xml"/>
+		<option name="VM_PARAMETERS" value="-ea -DSCENARI_CORE_VCS_DIR=&quot;$SCENARI_CORE_VCS_6.1$&quot; -DSCENARI_IM_DIR=&quot;$SCENARI_IM_DIR$&quot; -DSCENARI_FFMPEG_PATH=&quot;$SCENARI_FFMPEG_PATH$&quot;"/>
+		<option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.."/>
+		<method v="2">
+			<option name="Make" enabled="true"/>
+		</method>
+	</configuration>
+</component>

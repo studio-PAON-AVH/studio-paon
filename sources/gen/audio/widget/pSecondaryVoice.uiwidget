@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<sm:openUiWidget code="pSecondaryVoice" xmlns="http://www.w3.org/1999/xhtml" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:content>
+		<p>
+			<sm:addAttribute name="class">
+				<sm:dynamicString>
+					<sm:freeSelect xpath="local-name()"/>
+				</sm:dynamicString> secondaryVoice</sm:addAttribute>
+			<sm:callZone key="content"/>
+		</p>
+	</sm:content>
+</sm:openUiWidget>
