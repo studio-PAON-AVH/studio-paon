@@ -52,6 +52,5 @@
 		<sm:forField codes="others">
 			<sm:fieldValueOtherType axis="secondaryVoice"/>
 		</sm:forField>
-		<sm:Widget sc:refUri="/gen/audio/widget/infosAVH.uiwidget"/>
 	</sm:content>
 </sm:dataFormXhtmlTransf>

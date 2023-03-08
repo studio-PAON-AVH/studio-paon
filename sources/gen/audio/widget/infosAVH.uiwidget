@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<sm:openUiWidget code="infosAVH" xmlns="http://www.w3.org/1999/xhtml" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
-	<sm:content>
-		<p>￼;Association Valentin Haüy, 5 rue Duroc 75343 Paris Cedex 07 - tél. : 01 44 49 27 27 - E-mail : ￼<a href="mailto:mediatheque@avh.asso.fr">￼;mediatheque@avh.asso.fr￼</a>￼; - Site Internet : ￼<a href="https://www.avh.asso.fr">￼;https://www.avh.asso.fr￼</a>
-		</p>
-	</sm:content>
-</sm:openUiWidget>

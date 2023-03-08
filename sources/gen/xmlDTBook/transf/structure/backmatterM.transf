@@ -43,6 +43,5 @@
 		<sm:forField codes="others">
 			<sm:fieldValueOtherType/>
 		</sm:forField>
-		<sm:Widget sc:refUri="/gen/audio/widget/infosAVH.uiwidget"/>
 	</sm:content>
 </sm:dataFormXhtmlTransf>

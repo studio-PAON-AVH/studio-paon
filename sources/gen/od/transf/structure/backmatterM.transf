@@ -72,8 +72,5 @@
 		<sm:forField codes="others">
 			<sm:fieldValueOtherType/>
 		</sm:forField>
-		<sm:WParagraph>
-			<sm:fixedString value="￼;Association Valentin Haüy, 5 rue Duroc 75343 Paris Cedex 07 - tél. : 01 44 49 27 27 - E-mail : mediatheque@avh.asso.fr - Site Internet : http://www.avh.asso.fr￼"/>
-		</sm:WParagraph>
 	</sm:content>
 </sm:dataFormOdTransf>
