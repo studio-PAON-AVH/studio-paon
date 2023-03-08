@@ -17,7 +17,6 @@
 		</sm:WParagraph>
 		<sm:for codes="frontmatter">
 			<sm:callPartMeta axis="publisher"/>
-			<sm:callPartMeta axis="legalsAVH"/>
 		</sm:for>
 		<sm:WParagraph globalStyle="couverture">
 			<sm:fixedString value="[[*sk-3*]]Braille intégral / abrégé"/>

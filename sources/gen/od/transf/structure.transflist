@@ -12,7 +12,6 @@
 	<sm:transformer sc:refUri="/gen/od/transf/structure/bookM@publishNotes.transf"/>
 	<sm:transformer sc:refUri="/gen/od/transf/structure/bookM@title.transf"/>
 	<sm:transformer sc:refUri="/gen/od/transf/structure/citationM.transf"/>
-	<sm:transformer sc:refUri="/gen/od/transf/structure/frontmatterM@legalsAVH.transf"/>
 	<sm:transformer sc:refUri="/gen/od/transf/structure/frontmatterM@legalsExcepJeun.transf"/>
 	<sm:transformer sc:refUri="/gen/od/transf/structure/frontmatterM@publisher.transf"/>
 	<sm:transformer sc:refUri="/gen/od/transf/structure/frontmatterM@subType.transf"/>

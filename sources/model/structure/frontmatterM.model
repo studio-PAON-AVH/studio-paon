@@ -11,9 +11,6 @@
 		<sm:field code="publisher" family="property" name="￼;Éditeur￼" occurrence="one">
 			<sm:string/>
 		</sm:field>
-		<sm:field code="legalsAVH" family="property" name="￼;Note générale de l'AVH￼" occurrence="one">
-			<sm:string/>
-		</sm:field>
 		<sm:field code="legalsJeunesse" family="property" name="￼;Mention légale jeunesse￼" occurrence="zeroOrOne">
 			<sm:string/>
 		</sm:field>
