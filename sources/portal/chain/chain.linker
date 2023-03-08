@@ -43,13 +43,13 @@
 							<smp:authenticationPolicy accountOffFor="5" maxAttempts="5"/>
 							<smp:bySearch baseNamePattern="§§user.ldap.baseNamePattern§§" scope="subtree" searchAccount="§§user.ldap.searchAccount§§" searchPassword="§§user.ldap.searchPassword§§" searchPattern="§§user.ldap.searchPattern§§"/>
 						</smp:ldapAuthenticationMethod>
-						<smp:forcedUser account="admin" authMethod="" digestPwd="§§user.admin.password§§" isSuperAdmin="true">
+						<smp:volatileUser account="admin" authMethod="" digestPwd="§§user.admin.password.digest§§" isSuperAdmin="true">
 							<smp:grantedLocalRole sc:refUri="/collab/roles/main/4_admin.role"/>
-						</smp:forcedUser>
-						<smp:forcedUser account="writer" authMethod="" password="§§@.hashpwdSHA256?key=user.writer.password;§§">
+						</smp:volatileUser>
+						<smp:volatileUser account="writer" authMethod="" password="§§@.hashpwdSHA256?key=user.writer.password;§§">
 							<smp:grantedLocalRole sc:refUri="/collab/roles/main/2_author.role"/>
-						</smp:forcedUser>
-						<smp:forcedUser account="system" categ="system" digestPwd="§§user.system.password§§" grantedRoles="main:system" isHidden="true" isReadOnly="true"/>
+						</smp:volatileUser>
+						<smp:volatileUser account="system" categ="system" digestPwd="§§user.system.password.digest§§" grantedRoles="main:system" isHidden="true"/>
 					</smp:odbUsers>
 				</smp:usersManager>
 				<smp:transforms>
