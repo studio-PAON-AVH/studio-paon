@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<smp:portalDefinition4test keyPortal="studiopaon" name="￼;Studio Paon￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:smp="scenari.eu:builder:portal:1.0">
+<smp:portalDefinition4test keyPortal="studioPaonCommons" name="￼;Studio Paon￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:smp="scenari.eu:builder:portal:1.0">
 	<smp:portlets>
 		<smp:portletLinker sc:refUri="/portal/_test/import.linker"/>
 		<smp:portletLinker sc:refUri="/portal/_test/chain.linker"/>
