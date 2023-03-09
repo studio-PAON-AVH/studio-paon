@@ -14,7 +14,7 @@
 			<sm:snapshots/>
 		</sm:webArtifactsProvider>
 	</sm:artifactsProvider>
-	<smp:description name="studioPaon" stage="final">
+	<smp:description name="studioPaonCommons" stage="final">
 		<smp:logo sc:refUri="/portal/_dist/_res/logo-avh.png"/>
 		<smp:aboutXhtmlContent xml:space="preserve">&lt;p&gt;Studio PAON est une chaîne de production semi automatisée pour la production de livres adaptés aux formats Full DAISY et BRF aux normes du Pôle d'adaptation des Ouvrages Numériques (PAON) de l' Association Valentin Haüy (AVH).&lt;/p&gt;
 &lt;p&gt;Financé par l'AVH et subventionné par le ministère de la Culture, le projet est coordonné par Éditadapt Gautier Chomel et réalisé en partenariat avec Luc Audrain, Kelis, Scopyleft et Thomas Parisot.&lt;/p&gt;
