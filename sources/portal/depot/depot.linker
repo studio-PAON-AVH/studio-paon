@@ -13,7 +13,7 @@
 					</smp:remoteScUsers>
 				</smp:usersManager>
 				<smp:transforms>
-					<smp:all FFmpegExePath="/usr/bin/ffmpeg" imageMagickBinFolderPath="/usr/bin"/>
+					<smp:all/>
 					<smp:libreOfficeConnectionPool>
 						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
 						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
@@ -25,7 +25,7 @@
 					<smp:otherServers localIPs="forbid" otherIps="allow" privateIPs="forbid"/>
 				</smp:remoteServers>
 				<smp:esEngine>
-					<smp:esInternalAccess url="§§es.host§§"/>
+					<smp:esInternalAccess url="§§app.ext.es.host§§"/>
 					<smp:esPublicAccess baseUrl="/~~search" sc:refUri="/portal/servers/static.server"/>
 				</smp:esEngine>
 			</smp:components>

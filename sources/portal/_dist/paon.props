@@ -1,33 +1,36 @@
 <?xml version="1.0"?>
 <smp:properties xmlns:smp="scenari.eu:builder:portal:1.0">
-	<smp:property group="scenari" key="public.url" sortKey="10" value="https://studio-paon.scenari.eu">
+	<smp:property group="webapp" key="webapp.public.url" sortKey="10" value="https://studio-paon.scenari.eu">
 		<smp:description xml:space="preserve">URL publique du serveur</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="war.code" sortKey="20" value="scenari">
+	<smp:property group="webapp" key="webapp.code" sortKey="20" value="scenari">
 		<smp:description xml:space="preserve">Nom du fichier war généré</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="webapp.url" sortKey="30" value="http://127.0.0.1:8080">
+	<smp:property group="webapp" key="webapp.name" sortKey="25" value="Studio Paon">
+		<smp:description xml:space="preserve">Nom du serveur</smp:description>
+	</smp:property>
+	<smp:property group="webapp" key="webapp.system.url" sortKey="30" value="http://127.0.0.1:8080">
 		<smp:description xml:space="preserve">URL locale du serveur</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="data.dir" sortKey="40" value="/data/studio-paon/data/scenari">
+	<smp:property group="webapp" key="webapp.work.dir" sortKey="40" value="/data/studio-paon/data/scenari">
 		<smp:description xml:space="preserve">Chemin vers les fichiers de données du serveur (ce dossier contiendra un ensemble de répertoire : data, addons, working...)</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="logs.dir" sortKey="50" value="/data/logs/studio-paon/webapps">
+	<smp:property group="webapp" key="webapp.logs.dir" sortKey="50" value="/data/logs/studio-paon/webapps">
 		<smp:description xml:space="preserve">Chemin vers les fichiers de logs du serveur</smp:description>
 	</smp:property>
 	<!--Mail-->
-	<smp:property group="scenari" key="mail.smtp.host" sortKey="60">
+	<smp:property group="mail" key="mail.smtp.host" sortKey="60">
 		<smp:description xml:space="preserve">Host du serveur d'envoi des emails.</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="mail.from" sortKey="70">
+	<smp:property group="mail" key="mail.from" sortKey="70">
 		<smp:description xml:space="preserve">Adresse email utilisée dans le champs from des emails envoyés</smp:description>
 	</smp:property>
 	<!--ES-->
-	<smp:property group="scenari" key="es.host" sortKey="80" value="http://127.0.0.1:9200">
+	<smp:property group="ext" key="app.ext.es.host" sortKey="80" value="http://127.0.0.1:9200">
 		<smp:description xml:space="preserve">Host du serveur ElasticSearch</smp:description>
 	</smp:property>
 	<!--Users-->
-	<smp:property group="scenari" key="user.system.password.digest" sortKey="100">
+	<smp:property group="users" key="user.system.password.digest" sortKey="100">
 		<smp:description xml:space="preserve">Gestion des utilisateurs : mot de passe de l'utilisateur "system"
 CE MOT DE PASSE DOIT ETRE PERSONNALISE POUR DES QUESTIONS DE SECURITE
 Le mot de passe doit être hashé en SHA256, exprimé en base 64 et préfixé de la chaine {SHA 256}
@@ -35,7 +38,7 @@ Par exemple, le mot de passe "test" donne "{SHA256}n4bQgYhMfWWaL+qgxVrQFaO/TxsrC
 Exemple de commande linux pour générer le hash du mot de passe "test": 
 echo -n {SHA256} &amp;&amp; echo -n 'test' | openssl dgst -binary -sha256 | openssl base64</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="user.admin.password.digest" sortKey="110">
+	<smp:property group="users" key="user.admin.password.digest" sortKey="110">
 		<smp:description xml:space="preserve">Gestion des utilisateurs : mot de passe de l'utilisateur "admin"
 CE MOT DE PASSE DOIT ETRE PERSONNALISE POUR DES QUESTIONS DE SECURITE
 Le mot de passe doit être hashé en SHA256, exprimé en base 64 et préfixé de la chaine {SHA 256}
@@ -43,29 +46,29 @@ Par exemple, le mot de passe "test" donne "{SHA256}n4bQgYhMfWWaL+qgxVrQFaO/TxsrC
 Exemple de commande linux pour générer le hash du mot de passe "test": 
 echo -n {SHA256} &amp;&amp; echo -n 'test' | openssl dgst -binary -sha256 | openssl base64</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="user.writer.password" sortKey="120" value="">
+	<smp:property group="users" key="user.writer.password" sortKey="120" value="">
 		<smp:description xml:space="preserve">Gestion des utilisateurs : mot de passe de l'utilisateur "writer"
 CE MOT DE PASSE DOIT ETRE PERSONNALISE POUR DES QUESTIONS DE SECURITE
 Ce user permet la communication ente les portlets chain et depot.
 Il doit être exprimé en clair (pas de hash)</smp:description>
 	</smp:property>
 	<!-- LDAP-->
-	<smp:property group="scenari" key="user.ldap.disabled" sortKey="130" value="true">
+	<smp:property group="users" key="user.ldap.disabled" sortKey="130" value="true">
 		<smp:description xml:space="preserve">LDAP [boolean]  : active / désactive les fonctions LDAP</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="user.ldap.url" sortKey="140">
+	<smp:property group="users" key="user.ldap.url" sortKey="140">
 		<smp:description xml:space="preserve">LDAP : Url principale (et alternatives) pour la connexion au serveur LDAP. ex: ldap://xxx.xxx.xxx.xxx:xxxx</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="user.ldap.baseNamePattern" sortKey="150" value="ou=people,dc=nodomain">
+	<smp:property group="users" key="user.ldap.baseNamePattern" sortKey="150" value="ou=people,dc=nodomain">
 		<smp:description xml:space="preserve">LDAP : baseName de la recherche</smp:description>
 	</smp:property>
 	<smp:property group="users" key="user.ldap.searchPattern" sortKey="160" value="(&amp;(objectClass=Person)(|(sn={0})(givenName={0})))">
 		<smp:description xml:space="preserve">LDAP : {0} pour le compte d'authentification; {1} pour le mot de passe</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="user.ldap.searchAccount" sortKey="170" value="cn=admin,dc=nodomain">
+	<smp:property group="users" key="user.ldap.searchAccount" sortKey="170" value="cn=admin,dc=nodomain">
 		<smp:description xml:space="preserve">LDAP : compte pour effectuer la recherche</smp:description>
 	</smp:property>
-	<smp:property group="scenari" key="user.ldap.searchPassword" sortKey="180" value="xxx">
+	<smp:property group="users" key="user.ldap.searchPassword" sortKey="180" value="xxx">
 		<smp:description xml:space="preserve">LDAP : mot de passe pour effectuer la recherche</smp:description>
 	</smp:property>
 	<!--Electre-->

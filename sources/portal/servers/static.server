@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<smp:webServer xmlns:smp="scenari.eu:builder:portal:1.0" code="static" name="￼;Frontal NGINX￼">
-	<smp:publicAccess url="§§public.url§§"/>
+<smp:webServer code="static" name="￼;Frontal NGINX￼" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:publicAccess url="§§webapp.public.url§§"/>
 	<smp:data/>
 	<smp:software name="nginx"/>
 </smp:webServer>

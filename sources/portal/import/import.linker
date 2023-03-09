@@ -13,10 +13,10 @@
 					</smp:remoteScUsers>
 				</smp:usersManager>
 				<smp:transforms>
-					<smp:all FFmpegExePath="/usr/bin/ffmpeg" imageMagickBinFolderPath="/usr/bin"/>
+					<smp:all/>
 				</smp:transforms>
 				<smp:esEngine>
-					<smp:esInternalAccess url="§§es.host§§"/>
+					<smp:esInternalAccess url="§§app.ext.es.host§§"/>
 					<smp:esPublicAccess baseUrl="/~~import/~~search" sc:refUri="/portal/servers/static.server"/>
 				</smp:esEngine>
 			</smp:components>
