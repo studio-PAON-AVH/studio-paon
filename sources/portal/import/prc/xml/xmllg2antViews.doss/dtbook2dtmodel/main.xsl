@@ -37,9 +37,7 @@
 						<sp:publisher>
 							<xsl:value-of select="dtb:head/dtb:meta[@name='dc:Publisher']/@content"/>
 						</sp:publisher>
-						<sp:legalsAVH>Transcrit et adapté pour la Médiathèque de l’Association Valentin Haüy</sp:legalsAVH>
-						<sp:legalsException>Cette adaptation est réalisée et diffusée par l’Association Valentin Haüy dans le cadre de l’exception au droit d’auteur en faveur des personnes en situation de handicap prévue aux articles L. 122-5, L. 122-5-1 et L. 122-5-2 et R. 122-13 à 22 du code de la propriété intellectuelle. Cette adaptation ne peut être utilisée que par la personne qui l’a empruntée et ne doit en aucune manière être transmise à un tiers de quelque façon que ce soit.</sp:legalsException>
-						<sp:legalsAUD>Ce livre vous est lu par les voix d’Acapela Group.</sp:legalsAUD>
+						<sp:legalsException>Cette adaptation est réalisée et diffusée dans le cadre de l’exception au droit d’auteur en faveur des personnes en situation de handicap prévue aux articles L. 122-5, L. 122-5-1 et L. 122-5-2 et R. 122-13 à 22 du code de la propriété intellectuelle. Cette adaptation ne peut être utilisée que par la personne qui l’a empruntée et ne doit en aucune manière être transmise à un tiers de quelque façon que ce soit.</sp:legalsException>
 					</paon:frontmatterM>
 				</sp:frontmatter>
 				<sp:backcover>
