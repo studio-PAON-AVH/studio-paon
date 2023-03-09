@@ -14,7 +14,7 @@
 		</sm:tag>
 		<sm:tag refCodes="phonem">
 			<sm:openEdtWidget>
-				<sm:contentBox draggable="true" orientation="horizontal">
+				<sm:contentBox draggable="true" layout="horizontal">
 					<sm:cssRules xml:space="preserve">:host{
     margin: .3em 1em 0 0;
 border: 1px solid var(--border-color);
