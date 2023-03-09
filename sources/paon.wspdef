@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sm:wspDefinition keyWsp="paon" majorVersion="1" mediumVersion="2" minorVersion="0" name="￼;Paon￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+<sm:wspDefinition keyWsp="paoncommons" majorVersion="1" mediumVersion="2" minorVersion="0" name="￼;Paon￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
 	<sm:publicClasses>
 		<sm:class access="readWrite" sc:refUri="/model/structure/book.model"/>
 	</sm:publicClasses>

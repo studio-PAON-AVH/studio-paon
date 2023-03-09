@@ -14,7 +14,7 @@
 		</xsl:copy>
 		<service code="chainImport" type="eu.scenari.editadapt.import2chain.SvcImport2ChainLoader">
 			<defaultWspType>
-				<wspType version="1.2.0" key="paon" lang="fr-FR" title="Paon 1" uri="paon_fr-FR_1-2-0"/>
+				<wspType version="1.2.0" key="paoncommons" lang="fr-FR" title="Paon 1" uri="paoncommons_fr-FR_1-2-0"/>
 			</defaultWspType>
 		</service>
 	</xsl:template>
