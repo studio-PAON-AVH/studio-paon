@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<smp:chainPrl code="chain" name="￼;Chain￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:wspFeatures>
+		<smp:publicWsp active="falseByDefault"/>
+		<smp:extIt active="falseByDefault"/>
+		<smp:airIt active="falseByDefault"/>
+	</smp:wspFeatures>
+	<smp:wspDerived/>
+	<smp:wspDraft/>
+	<smp:repository/>
+	<smp:rolesDefinition>
+		<smp:overallRoles>
+			<sm:role sc:refUri="/collab/roles/main/0_none.role"/>
+			<sm:role sc:refUri="/portalLight/collab/roles/1_reader.role"/>
+			<sm:role sc:refUri="/collab/roles/main/2_author.role"/>
+			<sm:role sc:refUri="/collab/roles/main/3_manager.role"/>
+			<sm:role sc:refUri="/collab/roles/main/4_admin.role"/>
+			<sm:role sc:refUri="/collab/roles/main/5_system.right"/>
+		</smp:overallRoles>
+	</smp:rolesDefinition>
+	<smp:free>
+		<smp:transformXsl filesPath="[APP]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portalLight/chain/free/prl.chain.lc.universeInit.xsl"/>
+	</smp:free>
+</smp:chainPrl>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="importRes" basedir="." default="main">
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+	<taskdef name="loadStaticClass" classname="com.scenari.scant.LoadStaticClass" onerror="ignore"/>
+	<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+
+	<property name="mode.debug" value="false"/>
+
+	<!-- vu spécifique qui expose la duree pour le dashbord -->
+	<target name="main">
+		<unzip src="${vInput}" dest="${vDestPath}_tmp">
+			<patternset>
+				<include name="**/ncc.html"/>
+			</patternset>
+		</unzip>
+		<transformXsl inFile="${vDestPath}_tmp/ncc.html" outFile="${vDestPath}" style="extractDuration.xsl"/>
+		<delete dir="${vDestPath}_tmp"/>
+	</target>
+</project>

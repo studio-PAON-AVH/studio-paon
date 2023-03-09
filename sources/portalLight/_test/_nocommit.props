@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<smp:properties xmlns:smp="scenari.eu:builder:portal:1.0">
+	<!--Electre-->
+	<smp:property key="enable.electre.api" value="true"/>
+	<smp:property key="electre.user" value="api-valentin-hauy"/>
+	<smp:property key="electre.password" value="gSbqZrRpCQmMhQpkBNVzuNjWdhSQpHsT"/>
+	<!--Acapela-->
+	<smp:property key="enable.electre.api" value="true"/>
+	<smp:property key="acapela.url" value="https://avh.acapela-cloud.com"/>
+	<smp:property key="acapela.user" value="equipe_paon@avh.asso.fr"/>
+	<smp:property key="acapela.password" value="StudioPAON!"/>
+</smp:properties>

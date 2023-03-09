@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<smp:chainLnk4test xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlet sc:refUri="/portalLight/chain/chain.portlet"/>
+	<smp:servers>
+		<smp:serverApp sc:refUri="/portalLight/_test/servers/wa.server">
+			<smp:components>
+				<smp:data sc:refUri="/portalLight/servers/odb.storage"/>
+				<smp:usersManager>
+					<smp:cookieBasicAuth openCookiePath="¤builder;test#main#portal#http.contexts.path¤"/>
+					<smp:odbUsers sc:refUri="/portalLight/servers/odb.storage">
+						<smp:userEdition>
+							<smp:updateCurrentUser fieldNickname="rw"/>
+						</smp:userEdition>
+						<smp:embeddedAuthenticationMethod name="Interne"/>
+						<smp:forcedUser account="admin" isSuperAdmin="true" password="admin">
+							<smp:grantedLocalRole sc:refUri="/collab/roles/main/4_admin.role"/>
+						</smp:forcedUser>
+						<smp:forcedUser account="writer" isSuperAdmin="false" password="writer">
+							<smp:grantedLocalRole sc:refUri="/collab/roles/main/2_author.role"/>
+						</smp:forcedUser>
+					</smp:odbUsers>
+				</smp:usersManager>
+				<smp:transforms>
+					<smp:all/>
+				</smp:transforms>
+				<smp:batch>
+					<smp:commonsTasks/>
+					<smp:generateTask/>
+				</smp:batch>
+				<smp:remoteServers>
+					<smp:otherServers localIPs="forbid" otherIps="allow" privateIPs="forbid"/>
+				</smp:remoteServers>
+				<smp:models>
+					<smp:wspDef lang="fr-FR" sc:refUri="/paon.wspdef"/>
+				</smp:models>
+			</smp:components>
+		</smp:serverApp>
+		<smp:serverWebFront sc:refUri="/portalLight/_test/servers/web.server"/>
+	</smp:servers>
+</smp:chainLnk4test>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<smp:portalDefinition keyPortal="studioPaonCommonsLight" majorVersion="1" mediumVersion="2" minorVersion="0" name="￼;§§webapp.name§§￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlets>
+		<smp:portletLinker sc:refUri="/portalLight/import/import.linker"/>
+		<smp:portletLinker sc:refUri="/portalLight/chain/chain.linker"/>
+	</smp:portlets>
+	<smp:frontPages baseUrl="/~~static" sc:refUri="/portalLight/servers/static.server">
+		<smp:frontMonoAppPage code="home" title="￼;Studio Paon￼">
+			<smp:authConf>
+				<smp:portlet sc:refUri="/portalLight/chain/chain.portlet"/>
+			</smp:authConf>
+			<smp:homePlugin>
+				<smp:remoteSite url="https://studio-paon.docs-kelis.fr/common/help"/>
+			</smp:homePlugin>
+			<smp:wspsPlugin/>
+			<smp:itemEdPlugin/>
+			<smp:dynGenPlugin/>
+			<smp:depotPlugin>
+				<smp:allDepotPortlets>
+					<smp:showDesk/>
+				</smp:allDepotPortlets>
+			</smp:depotPlugin>
+		</smp:frontMonoAppPage>
+	</smp:frontPages>
+	<smp:scenariWebCore>
+		<smp:server addCoreData="yes" baseUrl="/~~static/scCore" sc:refUri="/portalLight/servers/static.server"/>
+	</smp:scenariWebCore>
+</smp:portalDefinition>

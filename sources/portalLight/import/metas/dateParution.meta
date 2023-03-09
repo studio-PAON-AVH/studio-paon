@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<smp:meta name="￼;Date de parution￼" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="dateParution"/>
+	<smp:structure>
+		<smp:string validRegExp="(\d\d\d\d(-\d\d)?)?"/>
+		<smp:defaultValue xml:space="preserve"/>
+	</smp:structure>
+	<smp:authoring/>
+</smp:meta>

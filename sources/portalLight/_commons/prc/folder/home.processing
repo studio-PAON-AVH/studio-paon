@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<smp:binaryProc name="￼;Dossier avec accueil personnalisé￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="home"/>
+	<smp:structure isFolder="true">
+		<smp:versionning>
+			<smp:none/>
+		</smp:versionning>
+		<smp:metas/>
+	</smp:structure>
+	<smp:writeProcess>
+		<smp:buildViews>
+			<smp:infoView/>
+			<smp:rootView code="home">
+				<smp:unzipView/>
+			</smp:rootView>
+			<smp:view code="src" family="userFriendly/notViewable" name="￼;Sources￼" urlPatterns="?V=src">
+				<smp:identityView/>
+			</smp:view>
+		</smp:buildViews>
+	</smp:writeProcess>
+	<smp:authoring>
+		<smp:preview>
+			<smp:tabsWidget>
+				<smp:tab label="￼;Contenu￼">
+					<smp:resChildrenWidget/>
+				</smp:tab>
+				<smp:tab label="￼;Rendu￼">
+					<smp:iframeWidget displayOnContentActions="true">
+						<smp:fromView refViewCode="home"/>
+					</smp:iframeWidget>
+				</smp:tab>
+			</smp:tabsWidget>
+		</smp:preview>
+		<smp:previewMini>
+			<smp:iframeWidget>
+				<smp:fromView refViewCode="home"/>
+			</smp:iframeWidget>
+		</smp:previewMini>
+		<smp:transformation label="￼;Supprimer l'accueil de ce dossier￼" sc:refUri="/portalLight/_commons/prc/folder/folder.processing"/>
+	</smp:authoring>
+</smp:binaryProc>

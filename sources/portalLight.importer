@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<smw:modeletImporter xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smw="scenari.eu:builder:wspmgr">
+	<smw:modelet>
+		<smw:replaceSpace fromUri="/portal" toUri="/portalLight"/>
+		<smw:replaceItem>
+			<smw:from sc:refUri="/collab/roles/main/1_reader.role"/>
+			<smw:to sc:refUri="/portalLight/collab/roles/1_reader.role"/>
+		</smw:replaceItem>
+		<smw:overrideItemByXsl>
+			<smw:target sc:refUri="/portalLight/portal.portaldef"/>
+			<smw:target sc:refUri="/portalLight/import/import.portlet"/>
+			<smw:target sc:refUri="/portalLight/import/import.linker"/>
+			<smw:target sc:refUri="/portalLight/import/prc/xml/xml.processing"/>
+			<smw:target sc:refUri="/portalLight/chain/free/prl.chain.lc.universeInit.xsl"/>
+			<smw:target sc:refUri="/portalLight/collab/roles/1_reader.role"/>
+			<smw:target sc:refUri="/portalLight/chain/chain.portlet"/>
+			<smw:target sc:refUri="/portalLight/_dist/paon.svmake"/>
+			<smw:target sc:refUri="/portalLight/_dist/paon.props"/>
+			<smw:target sc:refUri="/portalLight/_test/dev.portaldef"/>
+			<smw:target sc:refUri="/portalLight/_test/import.linker"/>
+			<smw:target sc:refUri="/portalLight/chain/chain.linker"/>
+			<smw:target sc:refUri="/portalLight/_test/chain.linker"/>
+			<smw:xsl sc:refUri="/portalLight.xsl"/>
+		</smw:overrideItemByXsl>
+		<smw:lastImport state="done" ts="1678371544862"/>
+	</smw:modelet>
+</smw:modeletImporter>

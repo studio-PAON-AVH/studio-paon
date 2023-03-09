@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<smp:noContentProc name="￼;Data￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="data"/>
+	<smp:structure>
+		<smp:path>
+			<smp:pathLevel>
+				<smp:meta sc:refUri="/portalLight/import/metas/uid.meta"/>
+			</smp:pathLevel>
+		</smp:path>
+		<smp:versionning>
+			<smp:none/>
+		</smp:versionning>
+		<smp:metas>
+			<smp:metaList info="identification">
+				<smp:meta sc:refUri="/portalLight/import/metas/isbn.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/uid.meta"/>
+			</smp:metaList>
+			<smp:metaList info="Métas de gestion en doublon">
+				<smp:meta sc:refUri="/portalLight/import/metas/title.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/author.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/publisher.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/comments.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/pages.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/sourceFormat.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/collection.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/illustrations.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/statut.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/statutAud.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/statutBrl.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/statutEmbos.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/originalFilename.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/originalLanguage.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/typeOuvrage.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/authorAud.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/authorBrl.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/authorPivot.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/fileName.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/dtdDetail.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/dateEnd.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/dateParution.meta"/>
+			</smp:metaList>
+		</smp:metas>
+	</smp:structure>
+	<smp:writeProcess>
+		<smp:buildMetas>
+			<smp:metaToPopulate sc:refUri="/portalLight/import/metas/uid.meta">
+				<smp:fixedString value="FR-AVH-"/>
+				<smp:fromMeta sc:refUri="/portalLight/import/metas/isbn.meta"/>
+			</smp:metaToPopulate>
+		</smp:buildMetas>
+		<smp:buildViews>
+			<smp:infoView/>
+			<smp:rootView>
+				<smp:xslView>
+					<smp:onMetas/>
+					<smp:xsl sc:refUri="/portalLight/import/prc/data/free/datas.xsl"/>
+				</smp:xslView>
+			</smp:rootView>
+		</smp:buildViews>
+	</smp:writeProcess>
+	<smp:authoring>
+		<smp:preview>
+			<smp:openViewer>
+				<smp:resInfoWidget>
+					<smp:systemMetas>
+						<smp:all/>
+					</smp:systemMetas>
+					<smp:resFormInfos/>
+				</smp:resInfoWidget>
+			</smp:openViewer>
+		</smp:preview>
+		<smp:transformation label="￼;Importer un fichier XML￼" sc:refUri="/portalLight/import/prc/xml/xml.processing"/>
+	</smp:authoring>
+	<smp:indexings>
+		<smp:es>
+			<smp:record refRecordsGroupCode="res">
+				<smp:indexFields>
+					<smp:metadatas>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/author.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/authorAud.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/authorBrl.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/authorPivot.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/collection.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/comments.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/dateEnd.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/dateParution.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/dtdDetail.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/dureeAudio.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/fileName.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/illustrations.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/isbn.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/originalFilename.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/originalLanguage.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/pages.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/publisher.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/sourceFormat.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/statut.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/statutAud.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/statutBrl.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/statutEmbos.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/title.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/typeOuvrage.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/uid.meta"/>
+					</smp:metadatas>
+				</smp:indexFields>
+			</smp:record>
+		</smp:es>
+	</smp:indexings>
+</smp:noContentProc>

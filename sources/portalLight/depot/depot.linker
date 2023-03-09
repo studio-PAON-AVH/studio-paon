@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<smp:depotLnk xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlet sc:refUri="/portalLight/depot/depot.portlet"/>
+	<smp:servers>
+		<smp:serverWrite sc:refUri="/portalLight/servers/wa.server">
+			<smp:reverseProxy baseUrl="/~~write" sc:refUri="/portalLight/servers/static.server"/>
+			<smp:components>
+				<smp:data sc:refUri="/portalLight/servers/fs.storage"/>
+				<smp:usersManager>
+					<smp:cookieBasicAuth openCookiePath="/" secure="true"/>
+					<smp:remoteScUsers>
+						<smp:chainPrl sc:refUri="/portalLight/chain/chain.portlet"/>
+					</smp:remoteScUsers>
+				</smp:usersManager>
+				<smp:transforms>
+					<smp:all/>
+					<smp:libreOfficeConnectionPool>
+						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
+						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
+						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
+						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
+					</smp:libreOfficeConnectionPool>
+				</smp:transforms>
+				<smp:remoteServers>
+					<smp:otherServers localIPs="forbid" otherIps="allow" privateIPs="forbid"/>
+				</smp:remoteServers>
+				<smp:esEngine>
+					<smp:esInternalAccess url="§§app.ext.es.host§§"/>
+					<smp:esPublicAccess baseUrl="/~~search" sc:refUri="/portalLight/servers/static.server"/>
+				</smp:esEngine>
+			</smp:components>
+		</smp:serverWrite>
+		<smp:serverUrlTreeFront sc:refUri="/portalLight/servers/static.server">
+			<smp:sendFile sendUrl="/~~depot/~~repos"/>
+		</smp:serverUrlTreeFront>
+		<smp:serverWebFront baseUrl="/~~static/depot" sc:refUri="/portalLight/servers/static.server"/>
+	</smp:servers>
+	<smp:free>
+		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portalLight/depot/free/lnk.depot.transforms.universeInit.xsl"/>
+	</smp:free>
+</smp:depotLnk>

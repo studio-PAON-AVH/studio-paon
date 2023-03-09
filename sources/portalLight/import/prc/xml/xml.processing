@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<smp:binaryProc name="￼;XML￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="xml"/>
+	<smp:structure>
+		<smp:path>
+			<smp:pathLevel>
+				<smp:fixedString value="FR-AVH-"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/isbn.meta"/>
+			</smp:pathLevel>
+		</smp:path>
+		<smp:versionning>
+			<smp:none/>
+		</smp:versionning>
+		<smp:metas>
+			<smp:metaList info="identification">
+				<smp:meta sc:refUri="/portalLight/import/metas/isbn.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/uid.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/prc/xml/meta/sourceXMLDoctype.meta"/>
+			</smp:metaList>
+		</smp:metas>
+	</smp:structure>
+	<smp:writeProcess>
+		<smp:buildMetas>
+			<!--<smp:extractFromRootContent xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:extractByXsl sc:refUri="/portal/import/prc/xml/free/prc.xml.extractMetas.xsl" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+		<smp:populatedMeta sc:refUri="/portal/import/prc/xml/meta/sourceXMLDoctype.meta"/>
+	</smp:extractByXsl>
+</smp:extractFromRootContent>-->
+			<smp:metaToPopulate sc:refUri="/portalLight/import/metas/uid.meta">
+				<smp:fixedString value="FR-AVH-"/>
+				<smp:fromMeta sc:refUri="/portalLight/import/metas/isbn.meta"/>
+			</smp:metaToPopulate>
+		</smp:buildMetas>
+		<smp:buildViews>
+			<smp:infoView/>
+			<smp:rootView code="xml" family="userFriendly" mimeType="application/xml" name="￼;Source￼">
+				<smp:identityView/>
+			</smp:rootView>
+			<smp:freeViewMaker xml:space="preserve">&lt;selector match="each"&gt;
+  &lt;viewSet&gt;
+      &lt;persistentMetaAllowed name="sourceXMLDoctype" regexp="lg"/&gt;
+      &lt;viewMaker code="dtbook" urlPatterns="?V=dtbook" builtOn="content" buildPath="free/prcs/xml-lg/xmllg2dtbook/build.xml" type="eu.scenari.store.service.mkviews.makers.AntViewMk"/&gt;
+      &lt;viewMaker code="dtmodel" urlPatterns="?V=dtmodel" builtOn="views" fromCdView="dtbook" buildPath="free/prcs/xml-lg/dtbook2dtmodel/build.xml" type="eu.scenari.store.service.mkviews.makers.AntViewMk"/&gt;
+  &lt;/viewSet&gt;
+  &lt;viewSet&gt;
+      &lt;persistentMetaAllowed name="sourceXMLDoctype" regexp="dtbook"/&gt;
+      &lt;viewMaker code="dtbook" urlPatterns="?V=dtbook" builtOn="content" type="eu.scenari.store.service.mkviews.makers.IdentityViewMk"/&gt;
+      &lt;viewMaker code="dtmodel" urlPatterns="?V=dtmodel" builtOn="content" buildPath="free/prcs/xml-lg/dtbook2dtmodel/build.xml" type="eu.scenari.store.service.mkviews.makers.AntViewMk"/&gt;
+  &lt;/viewSet&gt;
+&lt;/selector&gt;<smp:registerUiView family="userFriendly" name="￼;DTBook￼" urlPatterns="?V=dtbook"/><smp:registerUiView family="userFriendly" name="￼;DTModel￼" urlPatterns="?V=dtmodel"/></smp:freeViewMaker>
+		</smp:buildViews>
+	</smp:writeProcess>
+	<smp:authoring>
+		<smp:preview>
+			<smp:openViewer>
+				<smp:resInfoWidget>
+					<smp:systemMetas>
+						<smp:all/>
+					</smp:systemMetas>
+					<smp:resFormInfos/>
+				</smp:resInfoWidget>
+			</smp:openViewer>
+		</smp:preview>
+	</smp:authoring>
+</smp:binaryProc>

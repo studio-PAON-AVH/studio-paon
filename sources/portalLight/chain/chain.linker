@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<smp:chainLnk xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlet sc:refUri="/portalLight/chain/chain.portlet"/>
+	<smp:servers>
+		<smp:serverApp sc:refUri="/portalLight/servers/wa.server">
+			<smp:reverseProxy baseUrl="/~~chain" sc:refUri="/portalLight/servers/static.server"/>
+			<smp:components>
+				<smp:data sc:refUri="/portalLight/servers/odb.storage"/>
+				<smp:mails>
+					<smp:property key="mail.smtp.host" value="§§mail.smtp.host§§"/>
+				</smp:mails>
+				<smp:usersManager>
+					<smp:cookieBasicAuth openCookiePath="/" secure="true"/>
+					<smp:odbUsers sc:refUri="/portalLight/servers/odb.storage">
+						<smp:userEdition>
+							<smp:updateCurrentUser fieldNickname="rw"/>
+							<smp:createUserWf>
+								<smp:enteringPassword immediateExpiry="false"/>
+								<smp:passwordAutoByMail from="§§mail.from§§" immediateExpiry="false" subject="Studio Paon : attribution des identifiants d'accès">
+									<smp:standardBodyMail/>
+								</smp:passwordAutoByMail>
+							</smp:createUserWf>
+							<smp:updateUserWf>
+								<smp:enteringPassword immediateExpiry="false"/>
+								<smp:passwordAutoByMail from="§§mail.from§§" immediateExpiry="false" subject="Studio Paon : réaffectation d'un mot de passe">
+									<smp:standardBodyMail/>
+								</smp:passwordAutoByMail>
+							</smp:updateUserWf>
+							<smp:passwordLostWf>
+								<smp:passwordLostMail from="§§mail.from§§" subject="Studio Paon : perte de mot de passe">
+									<smp:standardBodyMail/>
+								</smp:passwordLostMail>
+							</smp:passwordLostWf>
+						</smp:userEdition>
+						<smp:embeddedAuthenticationMethod name="Interne">
+							<smp:authenticationPolicy accountOffFor="5" maxAttempts="5"/>
+							<smp:passwordConstraints>
+								<smp:require errorMsg="￼;Le mot de passe doit contenir au moins 3 catégories de caractères parmi les majuscules, minuscules, chiffres et ponctuations.￼" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])).*|((?=.*\d)(?=.*[a-z])(?=.*\p{Punct})).*|((?=.*\d)(?=.*[A-Z])(?=.*\p{Punct})).*|((?=.*[a-z])(?=.*[A-Z])(?=.*\p{Punct})).*"/>
+								<smp:length errorMsg="￼;Le mot de passe doit contenir au minimum 8 caractères￼" max="128" min="8"/>
+							</smp:passwordConstraints>
+						</smp:embeddedAuthenticationMethod>
+						<smp:ldapAuthenticationMethod code="remote" name="￼;Centralisée (annuaire LDAP)￼" uiDisabled="§§user.ldap.disabled§§" url="§§user.ldap.url§§">
+							<smp:authenticationPolicy accountOffFor="5" maxAttempts="5"/>
+							<smp:bySearch baseNamePattern="§§user.ldap.baseNamePattern§§" scope="subtree" searchAccount="§§user.ldap.searchAccount§§" searchPassword="§§user.ldap.searchPassword§§" searchPattern="§§user.ldap.searchPattern§§"/>
+						</smp:ldapAuthenticationMethod>
+						<smp:volatileUser account="admin" authMethod="" digestPwd="§§user.admin.password.digest§§" isSuperAdmin="true">
+							<smp:grantedLocalRole sc:refUri="/collab/roles/main/4_admin.role"/>
+						</smp:volatileUser>
+						<smp:volatileUser account="system" categ="system" digestPwd="§§user.system.password.digest§§" grantedRoles="main:system" isHidden="true"/>
+					</smp:odbUsers>
+				</smp:usersManager>
+				<smp:transforms>
+					<smp:all/>
+					<smp:libreOfficeConnectionPool>
+						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
+						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
+					</smp:libreOfficeConnectionPool>
+				</smp:transforms>
+				<smp:batch>
+					<smp:commonsTasks/>
+					<smp:generateTask/>
+					<smp:beanshellTask/>
+					<smp:antTask/>
+				</smp:batch>
+				<smp:remoteServers>
+					<smp:otherServers localIPs="forbid" otherIps="forbid" privateIPs="forbid"/>
+				</smp:remoteServers>
+			</smp:components>
+		</smp:serverApp>
+		<smp:serverWebFront baseUrl="/~~static/#portletCode#" sc:refUri="/portalLight/servers/static.server"/>
+	</smp:servers>
+</smp:chainLnk>

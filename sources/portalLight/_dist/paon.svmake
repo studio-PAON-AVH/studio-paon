@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<smp:svMake xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portals>
+		<smp:portalDef sc:refUri="/portalLight/portal.portaldef">
+			<smp:localization lang="fr-FR">
+				<sm:scenariCore>
+					<sm:locale sc:refUri="/portalLight/_dist/_res/sccore_wui.xlf"/>
+				</sm:scenariCore>
+			</smp:localization>
+		</smp:portalDef>
+	</smp:portals>
+	<sm:artifactsProvider>
+		<sm:webArtifactsProvider>
+			<sm:snapshots/>
+		</sm:webArtifactsProvider>
+	</sm:artifactsProvider>
+	<smp:description name="studioPaonCommonsLight" stage="final">
+		<smp:logo sc:refUri="/portalLight/_dist/_res/logo-avh.png"/>
+		<smp:aboutXhtmlContent xml:space="preserve">&lt;p&gt;Studio PAON est une chaîne de production semi automatisée pour la production de livres adaptés aux formats Full DAISY et BRF aux normes du Pôle d'adaptation des Ouvrages Numériques (PAON) de l' Association Valentin Haüy (AVH).&lt;/p&gt;
+&lt;p&gt;Financé par l'AVH et subventionné par le ministère de la Culture, le projet est coordonné par Éditadapt Gautier Chomel et réalisé en partenariat avec Luc Audrain, Kelis, Scopyleft et Thomas Parisot.&lt;/p&gt;
+&lt;p&gt;Studio PAON est réalisé avec les logiciels SCENARI, une suite de solutions logicielles libres et gratuites éditées par Kelis.&lt;/p&gt;</smp:aboutXhtmlContent>
+	</smp:description>
+	<smp:properties>
+		<smp:propertiesFile sc:refUri="/portalLight/_dist/paon.props"/>
+	</smp:properties>
+	<smp:make>
+		<smp:makeLin>
+			<smp:makeX64/>
+		</smp:makeLin>
+	</smp:make>
+</smp:svMake>

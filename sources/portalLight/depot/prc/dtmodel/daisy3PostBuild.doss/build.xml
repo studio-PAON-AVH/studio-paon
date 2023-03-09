@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="importRes" basedir="." default="main">
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+	<taskdef name="loadStaticClass" classname="com.scenari.scant.LoadStaticClass" onerror="ignore"/>
+	<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+	<taskdef name="transform" classname="com.scenari.m.co.ant.TransformTask"/>
+	<taskdef name="aggregateZippedViews" classname="eu.scenari.editadapt.ant.AggregateZippedViewsTask"/>
+	<taskdef name="splitSentencesBySpan" classname="eu.scenari.editadapt.ant.SplitSentencesBySpanTask"/>
+	<taskdef name="customXsl" classname="eu.scenari.editadapt.ant.TransformXslTask"/>
+
+	<property name="mode.debug" value="false"/>
+
+	<target name="main">
+		<!-- 1) Init post DAISY BUILD -->
+		<!-- recup des fichiers du gen DTB -->
+		<copy todir="${vDestPath}_tmp">
+			<fileset dir="${vInput}" includes="*.xml"/>
+		</copy>
+		<!-- Recup et dezip des packages acapela (task ant free) -->
+		<aggregateZippedViews filter="tts.zip" output="${vDestPath}_tmp"/>
+
+
+		<!-- 2) Construction/modifications des fichiers -->
+		<!-- Déplacement des fichiers audio et xsl transf json -> xon -->
+		<foreach target="post.acapela.unpackage" param="dir" inheritall="true" inheritrefs="true">
+			<path>
+				<dirset dir="${vDestPath}_tmp" includes="*"/>
+			</path>
+		</foreach>
+		<!-- split sentences (custom ant task) -->
+		<splitSentencesBySpan inFile="${vDestPath}_tmp/dtbook.xml" outFile="${vDestPath}_tmp/parsed_span.xml" sentencesSfx=".acapela.tts.zip.sentences.txt" parser="daisy3"/>
+
+		<!-- add Ids-->
+		<!-- Bug dans la fonction precedings... transformXsl remplacée par xslt -->
+		<!-- Bugfix cette XSL inverse les tafs noteref et span lorsqu'une phrase est posée à l'intérieur du tag noteref -->
+		<xslt in="${vDestPath}_tmp/parsed_span.xml" out="${vDestPath}_tmp/dtbook.xml" style="addIds.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="pPfx" expression="p"/>
+			<param name="sPfx" expression="s"/>
+		</xslt>
+
+		<!-- inject TS in span.sentence -->
+		<customXsl inFile="${vDestPath}_tmp/dtbook.xml" outFile="${vDestPath}_tmp/dtbook.xml" style="addTS.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="sPfx" expression="s"/>
+		</customXsl>
+
+		<!-- réorg de dtbook pour bouger les notes inline si besoin -->
+		<transformXsl inFile="${vDestPath}_tmp/dtbook.xml" outFile="${vDestPath}_tmp/dtbook.xml" style="post.dtbook.notes.xsl"/>
+
+		<!-- package OPF -->
+		<customXsl inFile="${vDestPath}_tmp/dtbook.xml" outFile="${vDestPath}_tmp/package.tmp.opf" style="makePackage.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="sPfx" expression="s"/>
+		</customXsl>
+
+		<for param="mp3">
+			<path>
+				<fileset dir="${vDestPath}_tmp" includes="*.mp3"/>
+			</path>
+			<sequential>
+				<propertyregex override="yes" property="package_id" input="@{mp3}" regexp=".+[\\/]([^\\/]+).acapela.tts.zip.mp3" replace="\1"/>
+				<transformXsl inFile="${vDestPath}_tmp/dtbook.xml" outFile="${vDestPath}_tmp/${package_id}.tmp.smil" style="makeSmil.xsl">
+					<param name="package_id" expression="${package_id}"/>
+					<param name="dPfx" expression="d"/>
+					<param name="pPfx" expression="p"/>
+					<param name="sPfx" expression="s"/>
+				</transformXsl>
+				<xslt in="${vDestPath}_tmp/${package_id}.tmp.smil" out="${vDestPath}_tmp/${package_id}.smil" style="addDT-smil.xsl"/>
+			</sequential>
+		</for>
+
+		<!-- Construction du ncx -->
+		<transformXsl inFile="${vDestPath}_tmp/dtbook.xml" outFile="${vDestPath}_tmp/navigation.ncx" style="ncx.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="pPfx" expression="p"/>
+			<param name="sPfx" expression="s"/>
+		</transformXsl>
+
+		<transformXsl inFile="${vDestPath}_tmp/navigation.ncx" outFile="${vDestPath}_tmp/navigation.tmp.ncx" style="filterPages.ncx.xsl"/>
+		<xslt in="${vDestPath}_tmp/navigation.tmp.ncx" out="${vDestPath}_tmp/navigation.ncx" style="post.ncx.xsl"/>
+
+		<!-- clean up TS from dtbook and link 2 smil -->
+		<transformXsl inFile="${vDestPath}_tmp/dtbook.xml" outFile="${vDestPath}_tmp/dtbook.tmp.xml" style="cleanAndLink2smil.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="pPfx" expression="p"/>
+			<param name="sPfx" expression="s"/>
+		</transformXsl>
+
+		<!-- post xsl pour ajout des doctypes -->
+		<xslt in="${vDestPath}_tmp/dtbook.tmp.xml" out="${vDestPath}_tmp/dtbook.xml" style="addDT-dtbook.xsl"/>
+		<xslt in="${vDestPath}_tmp/package.tmp.opf" out="${vDestPath}_tmp/package.opf" style="addDT-opf.xsl"/>
+
+		<!-- 3) Packaging -->
+		<!-- rename -->
+		<renameext srcDir="${vDestPath}_tmp" fromExtension=".acapela.tts.zip.mp3" toExtension=".mp3" replace="true"/>
+		<renameext srcDir="${vDestPath}_tmp" fromExtension=".acapela.tts.zip.smil" toExtension=".smil" replace="true"/>
+		<!-- clean up -->
+		<delete includeEmptyDirs="true">
+			<fileset dir="${vDestPath}_tmp" includes="**/*.zip/ parsed_span.xml *.xon *.txt *.tmp.*"/>
+		</delete>
+		<!-- package -->
+		<zip destfile="${vDestPath}" basedir="${vDestPath}_tmp"/>
+		<!-- clean up build dir -->
+		<delete dir="${vDestPath}_tmp"/>
+	</target>
+
+	<target name="post.acapela.unpackage">
+		<basename property="dirName" file="${dir}"/>
+		<!-- déplacement fichier audio -->
+		<move file="${dir}/audio.mp3" tofile="${vDestPath}_tmp/${dirName}.mp3"/>
+		<!-- json2xon du fichier events -->
+		<transform src="${dir}/events.json" dst="${dir}/events.xon" params="transform=json2xml"/>
+		<transformXsl inFile="${dir}/events.xon" outFile="${vDestPath}_tmp/${dirName}.sentences.txt" style="extractSentences.txt.xsl"/>
+	</target>
+
+</project>

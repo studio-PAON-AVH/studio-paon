@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="importRes" basedir="." default="main">
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	<taskdef name="loadStaticClass" classname="com.scenari.scant.LoadStaticClass" onerror="ignore"/>
+	<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+	<taskdef name="transform" classname="com.scenari.m.co.ant.TransformTask"/>
+
+	<property name="mode.debug" value="false"/>
+
+	<target name="main">
+		<transformXsl inFile="${vInput}" outFile="${vDestPath}_tmp" style="main.xsl"/>
+		<transformXsl inFile="${vDestPath}_tmp" outFile="${vDestPath}" style="post.xsl"/>
+	</target>
+
+</project>

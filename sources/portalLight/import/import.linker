@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<smp:depotLnk xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:portlet sc:refUri="/portalLight/import/import.portlet"/>
+	<smp:servers>
+		<smp:serverWrite sc:refUri="/portalLight/servers/wa.server">
+			<smp:reverseProxy baseUrl="/~~import/~~write" sc:refUri="/portalLight/servers/static.server"/>
+			<smp:components>
+				<smp:data sc:refUri="/portalLight/servers/fs.storage"/>
+				<smp:usersManager>
+					<smp:cookieBasicAuth openCookiePath="/" secure="true"/>
+					<smp:remoteScUsers>
+						<smp:chainLnk sc:refUri="/portalLight/chain/chain.linker"/>
+					</smp:remoteScUsers>
+				</smp:usersManager>
+				<smp:transforms>
+					<smp:all/>
+				</smp:transforms>
+			</smp:components>
+		</smp:serverWrite>
+		<smp:serverUrlTreeFront baseUrl="/~~import" sc:refUri="/portalLight/servers/static.server">
+			<smp:sendFile/>
+		</smp:serverUrlTreeFront>
+		<smp:serverWebFront baseUrl="/~~static/import" sc:refUri="/portalLight/servers/static.server"/>
+	</smp:servers>
+</smp:depotLnk>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="importRes" basedir="." default="main">
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+	<taskdef name="loadStaticClass" classname="com.scenari.scant.LoadStaticClass" onerror="ignore"/>
+	<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+	<taskdef name="transform" classname="com.scenari.m.co.ant.TransformTask"/>
+	<taskdef name="aggregateZippedViews" classname="eu.scenari.editadapt.ant.AggregateZippedViewsTask"/>
+	<taskdef name="splitSentencesBySpan" classname="eu.scenari.editadapt.ant.SplitSentencesBySpanTask"/>
+	<taskdef name="customXsl" classname="eu.scenari.editadapt.ant.TransformXslTask"/>
+
+	<property name="mode.debug" value="false"/>
+
+	<target name="main">
+		<!-- 1) Init post DAISY BUILD -->
+		<!-- recup des fichiers du gen Daisy -->
+		<copy todir="${vDestPath}_tmp">
+			<fileset dir="${vInput}" includes="*.html *.css"/>
+		</copy>
+		<!-- Mémorisation du fichier xhtml principal -->
+		<first id="main">
+			<fileset dir="${vDestPath}_tmp" includes="*.html" excludes="ncc.html"/>
+		</first>
+		<basename property="main_html_file" file="${toString:main}"/>
+		<!-- Recup et dezip des packages acapela (task ant free) -->
+		<aggregateZippedViews filter="tts.zip" output="${vDestPath}_tmp"/>
+
+		<!-- 2) Construction/modifications des fichiers -->
+
+		<!-- Déplacement des fichiers audio et xsl transf json -> xon -->
+		<foreach target="post.acapela.unpackage" param="dir" inheritall="true" inheritrefs="true">
+			<path>
+				<dirset dir="${vDestPath}_tmp" includes="*"/>
+			</path>
+		</foreach>
+		<!-- split sentences (custom ant task) -->
+		<splitSentencesBySpan inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/parsed_span.xml" sentencesSfx=".acapela.tts.zip.sentences.txt"/>
+		<!-- add Ids-->
+		<!-- Bug dans la fonction precedings... xsl remplacée par transformXsl remplacée par xslt -->
+		<xslt in="${vDestPath}_tmp/parsed_span.xml" out="${vDestPath}_tmp/${main_html_file}" style="addIds.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="pPfx" expression="p"/>
+			<param name="sPfx" expression="s"/>
+		</xslt>
+		<!-- master.smil -->
+		<customXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/master.tmp.smil" style="makeSmilMaster.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="sPfx" expression="s"/>
+		</customXsl>
+		<xslt in="${vDestPath}_tmp/master.tmp.smil" out="${vDestPath}_tmp/master.smil" style="post.smil.xsl"/>
+
+		<for param="xon">
+			<path>
+				<fileset dir="${vDestPath}_tmp" includes="**/events.xon"/>
+			</path>
+			<sequential>
+				<propertyregex override="yes" property="package" input="@{xon}" regexp=".+[\\/]([^\\/]+).acapela.tts.zip[\\/].+" replace="\1"/>
+				<customXsl inFile="@{xon}" outFile="${vDestPath}_tmp/${package}.tmp.smil" style="makeSmil.xsl">
+					<param name="main_html_file" expression="${main_html_file}"/>
+					<param name="package" expression="${package}"/>
+
+					<param name="dPfx" expression="d"/>
+					<param name="pPfx" expression="p"/>
+					<param name="sPfx" expression="s"/>
+				</customXsl>
+			</sequential>
+		</for>
+
+		<!-- Add total time to html files -->
+		<transformXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/${main_html_file}" style="addTotalTimeMeta.xsl"/>
+		<!-- Post découpage - ajout des ids nécessaires -->
+		<!-- Construction du ncc -->
+		<transformXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/ncc.tmp.html" style="ncc.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="pPfx" expression="p"/>
+			<param name="sPfx" expression="s"/>
+		</transformXsl>
+		<transformXsl inFile="${vDestPath}_tmp/ncc.tmp.html" outFile="${vDestPath}_tmp/ncc.tmp.html" style="filterSpan.ncc.xsl"/>
+		<transformXsl inFile="${vDestPath}_tmp/ncc.tmp.html" outFile="${vDestPath}_tmp/ncc.tmp.html" style="post.ncc.xsl"/>
+
+		<!-- FIXME: voir cette boucle peut être supprimé (passage du post.smil apres makeSmil) -->
+		<for param="smil">
+			<path>
+				<fileset dir="${vDestPath}_tmp" includes="*.tmp.smil"/>
+			</path>
+			<sequential>
+				<propertyregex override="yes" property="filename" input="@{smil}" regexp=".+[\\/]([^\\/]+).tmp.smil" replace="\1"/>
+				<!-- post traitement puis renommage des .tmp.smil en .smil  -->
+				<xslt in="@{smil}" out="${vDestPath}_tmp/${filename}.smil" style="post.smil.xsl"/>
+			</sequential>
+		</for>
+
+		<!-- post xsl pour ajout du doctype -->
+		<copy file="${vDestPath}_tmp/${main_html_file}" tofile="${vDestPath}_tmp/main.tmp.html"/>
+		<xslt in="${vDestPath}_tmp/main.tmp.html" out="${vDestPath}_tmp/${main_html_file}" style="post.xhtml.xsl">
+			<param name="cleanNccMeta" expression="true"/>
+			<param name="clean4VoiceDream" expression="true"/>
+		</xslt>
+		<xslt in="${vDestPath}_tmp/ncc.tmp.html" out="${vDestPath}_tmp/ncc.html" style="post.xhtml.xsl"/>
+
+
+		<!-- 3) Packaging -->
+
+		<!-- rename -->
+		<renameext srcDir="${vDestPath}_tmp" fromExtension=".acapela.tts.zip.mp3" toExtension=".mp3" replace="true"/>
+		<renameext srcDir="${vDestPath}_tmp" fromExtension=".acapela.tts.zip.smil" toExtension=".smil" replace="true"/>
+		<!-- clean up -->
+		<delete includeEmptyDirs="true">
+			<fileset dir="${vDestPath}_tmp" includes="**/*.zip/ parsed_span.xml *.xon *.txt *.tmp.smil *.tmp.html"/>
+		</delete>
+		<!-- package -->
+		<zip destfile="${vDestPath}" basedir="${vDestPath}_tmp"/>
+		<!-- clean up build dir -->
+		<delete dir="${vDestPath}_tmp"/>
+	</target>
+
+	<target name="post.acapela.unpackage">
+		<basename property="dirName" file="${dir}"/>
+		<!-- déplacement fichier audio -->
+		<move file="${dir}/audio.mp3" tofile="${vDestPath}_tmp/${dirName}.mp3"/>
+		<!-- json2xon du fichier events -->
+		<transform src="${dir}/events.json" dst="${dir}/events.xon" params="transform=json2xml"/>
+		<transformXsl inFile="${dir}/events.xon" outFile="${vDestPath}_tmp/${dirName}.sentences.txt" style="extractSentences.txt.xsl"/>
+	</target>
+
+</project>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<smp:meta name="￼;Auteur Audio￼" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="authorAud"/>
+	<smp:structure>
+		<smp:string/>
+	</smp:structure>
+	<smp:authoring/>
+</smp:meta>
