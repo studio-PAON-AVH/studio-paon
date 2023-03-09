@@ -8,7 +8,7 @@
 	</smp:processings>
 	<smp:features>
 		<smp:jobs>
-			<smp:jobRemakeViews/>
+			<smp:jobRemakeResAsNewContent/>
 			<smp:freeJob code="reImport2ChainJob" label="￼;Ré-importer les contenus dans chain￼">
 				<smp:serverFactory class="eu.scenari.editadapt.import2chain.ReImport2ChainJob"/>
 				<smp:uiFactory factoryVarName="factory" xml:space="preserve">const {RelaunchCidTaskBaseJobFactory} = await import(reg.env.resolver.resolve(":lib:store/jobs.js").url);

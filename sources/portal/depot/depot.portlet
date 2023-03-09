@@ -6,11 +6,7 @@
 	</smp:processings>
 	<smp:features>
 		<smp:jobs>
-			<smp:jobRemakeViews>
-				<smp:definedView code="xmlDTBook" name="￼;DTBook￼"/>
-				<smp:definedView code="daisy2" name="￼;Daisy 2￼"/>
-				<smp:definedView code="odtDuxbury" name="￼;Export ODT pour Duxbury￼"/>
-			</smp:jobRemakeViews>
+			<smp:jobRemakeResAsNewContent/>
 		</smp:jobs>
 	</smp:features>
 	<smp:rolesDefinition>
