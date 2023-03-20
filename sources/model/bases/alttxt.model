@@ -15,7 +15,16 @@
 					<sm:option key="u" name="￼;u￼"/>
 					<sm:option key="y" name="￼;y￼"/>
 					<sm:option key="h" name="￼;h￼"/>
+					<sm:option key="2" name="￼;2￼"/>
 					<sm:option key="9" name="￼;9￼"/>
+					<sm:option key="@" name="￼;@￼"/>
+					<sm:option key="e~" name="￼;e~￼"/>
+					<sm:option key="a~" name="￼;a~￼"/>
+					<sm:option key="o~ " name="￼;o~￼"/>
+					<sm:option key="9~" name="￼;9~￼"/>
+					<sm:option key="j" name="￼;j￼"/>
+					<sm:option key="w" name="￼;w￼"/>
+					<sm:option key="H" name="￼;H￼"/>
 					<sm:option key="p" name="￼;p￼"/>
 					<sm:option key="t" name="￼;t￼"/>
 					<sm:option key="k" name="￼;k￼"/>
