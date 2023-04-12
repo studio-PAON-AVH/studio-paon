@@ -33,7 +33,7 @@ public class AntViewMk extends eu.scenari.store.service.mkviews.makers.AntViewMk
 	public void buildViews(MkViewsTask pTask, ResId pResId, Map<String, IDescView> pViews) {
 		IDescView vView = pViews.get(getCodeViewMaker());
 		try {
-			final Path vDst = vView != null ? vView.getBuildPath(pTask.getSvcStoreSquare(), pResId) : null;
+			final Path vDst = vView != null && !vView.isAlreadyBuilt() ? vView.getBuildPath(pTask.getSvcStoreSquare(), pResId) : null;
 			if (vDst == null) return;
 
 			//Si manip de directory uniquement...

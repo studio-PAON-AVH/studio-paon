@@ -51,10 +51,10 @@
 				<smp:stateNew/>
 				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1636532571785" updateTime="1637962206521">Vues pour génération des pistes audio communes à tous les exports audio</comment></comment>-->
 				<smp:stateReady>
-					<smp:freeViewMaker xml:space="preserve">&lt;viewMaker indexPath="index.xml" transformParams="transform=gen&amp;amp;codeGen=xmlSrcAudio&amp;amp;localAutoUpdate=minor&amp;amp;failOnGenError=true&amp;amp;publishFullTraceGenOnFail=true"  type="eu.scenari.store.service.mkviews.makers.CallTransformMultiViewsMk" code="multi-txt-view"/&gt;</smp:freeViewMaker>
+					<smp:freeViewMaker xml:space="preserve">&lt;viewMaker indexPath="index.xml" transformParams="transform=gen&amp;amp;codeGen=xmlSrcAudio&amp;amp;localAutoUpdate=minor&amp;amp;failOnGenError=true&amp;amp;publishFullTraceGenOnFail=true"  type="eu.scenari.store.service.mkviews.makers.CallTransformMultiViewsMk" indexViewCode="multi-txt-view"/&gt;</smp:freeViewMaker>
 					<smp:freeViewMaker xml:space="preserve">&lt;viewMaker code="daisy2" urlPatterns="?V=daisy2.zip" builtOn="content" buildPath="free/prcs/daisy2/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2Pre"/&gt;
 &lt;viewMaker code="daisy3" urlPatterns="?V=daisy3.zip" builtOn="content" buildPath="free/prcs/daisy3/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy3Pre" optional="true"/&gt;
-&lt;viewMaker code="duration" urlPatterns="?V=duration" builtOn="content" buildPath="free/prcs/daisy2/buildDuration.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2"/&gt;<smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 2￼" urlPatterns="?V=daisy2.zip"/><smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 3￼" urlPatterns="?V=daisy3.zip"/><smp:registerUiView family="" name="￼;Duration￼" urlPatterns="?V=duration"><!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1673514716751" creationTime="1673514666952">TODO : indexer dans ES + supp urlPatterns</comment></comment>--></smp:registerUiView></smp:freeViewMaker>
+&lt;viewMaker code="duration" urlPatterns="?V=duration" builtOn="content" buildPath="free/prcs/daisy2/buildDuration.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2"/&gt;<smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 2￼" urlPatterns="?V=daisy2.zip"/><smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 3￼" urlPatterns="?V=daisy3.zip"/><smp:registerUiView family="" name="￼;Duration￼" urlPatterns="?V=duration"><!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1681290371488" creationTime="1673514666952">Deprecated.</comment></comment>--></smp:registerUiView></smp:freeViewMaker>
 				</smp:stateReady>
 				<smp:stateFailure/>
 			</smp:asyncBuildViews>
@@ -68,12 +68,13 @@
 	<smp:indexings>
 		<smp:es>
 			<smp:record refRecordsGroupCode="res">
-				<smp:indexFields>
+				<smp:indexViewByXsl mainFilePath="master.smil" refViewCode="daisy2">
+					<smp:xsl sc:refUri="/portal/depot/prc/dtmodel/index.duration.xsl"/>
 					<smp:metadatas>
 						<smp:includeMeta sc:refUri="/portal/depot/prc/dtmodel/metas/srcUri.meta"/>
 						<smp:includeMeta metaCode="state"/>
 					</smp:metadatas>
-				</smp:indexFields>
+				</smp:indexViewByXsl>
 			</smp:record>
 		</smp:es>
 	</smp:indexings>

@@ -48,6 +48,9 @@
 							<smp:mpField code="state">
 								<smp:keyword/>
 							</smp:mpField>
+							<smp:mpField code="duration">
+								<smp:date indexed="true"/>
+							</smp:mpField>
 						</smp:mpFields>
 					</smp:contentGroup>
 				</smp:recordsStructure>
