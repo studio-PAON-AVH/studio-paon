@@ -55,7 +55,6 @@ import eu.scenari.commons.util.xml.IFragmentSaxHandler;
 import eu.scenari.store.service.esdriver.EsDriverTask;
 import eu.scenari.store.service.esdriver.SvcEsDriverLoader;
 import eu.scenari.store.service.esdriver.makers.PersistMetaCopyEOM;
-import eu.scenari.store.service.esdriver.makers.utils.IEsIdMaker;
 import eu.scenari.store.service.mkviews.InfoViews;
 import eu.scenari.store.service.storesquare.StoreSquareTask;
 import eu.scenari.urltree.storesquare.ResId;
@@ -64,10 +63,6 @@ public class RawEOM extends PersistMetaCopyEOM {
 
 	protected String fFromCdView;
 	protected String fToEsField;
-	protected String fEsIndex;
-	protected String fPrefixId;
-
-	protected IEsIdMaker fEsIdMaker;
 
 	protected class RawFileHandler extends PersistMetaCopyHandler {
 	}
