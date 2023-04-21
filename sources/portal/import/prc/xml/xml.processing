@@ -54,6 +54,9 @@
 				<smp:fixedString value="FR-AVH-"/>
 				<smp:fromMeta sc:refUri="/portal/import/metas/isbn.meta"/>
 			</smp:metaToPopulate>
+			<smp:metaToPopulate sc:refUri="/portal/import/metas/statut.meta">
+				<smp:fixedString value="PROCESSING"/>
+			</smp:metaToPopulate>
 		</smp:buildMetas>
 		<smp:buildViews>
 			<smp:infoView/>
