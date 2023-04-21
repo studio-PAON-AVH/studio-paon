@@ -9,12 +9,15 @@
 				<smp:usersManager>
 					<smp:cookieBasicAuth openCookiePath="/" secure="true"/>
 					<smp:remoteScUsers>
-						<smp:chainLnk sc:refUri="/portalLight/chain/chain.linker"/>
+						<smp:chainPrl sc:refUri="/portalLight/chain/chain.portlet"/>
 					</smp:remoteScUsers>
 				</smp:usersManager>
 				<smp:transforms>
 					<smp:all/>
 				</smp:transforms>
+				<smp:remoteServers>
+					<smp:otherServers localIPs="forbid" otherIps="forbid" privateIPs="forbid"/>
+				</smp:remoteServers>
 			</smp:components>
 		</smp:serverWrite>
 		<smp:serverUrlTreeFront baseUrl="/~~import" sc:refUri="/portalLight/servers/static.server">

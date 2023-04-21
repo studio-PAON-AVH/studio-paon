@@ -30,11 +30,14 @@
 	<xsl:template match="smp:processing[@sc:refUri='/portalLight/_commons/prc/folder/folder.processing']"/>
 	<xsl:template match="smp:processing[@sc:refUri='/portalLight/_commons/prc/folder/home.processing']"/>
 	<xsl:template match="smp:processing[@sc:refUri='/portalLight/import/prc/data/data.processing']"/>
+  <xsl:template match="smp:processing[@sc:refUri='/portalLight/import/prc/archived/archived.processing']"/>
+  <xsl:template match="smp:processing[@sc:refUri='/portalLight/import/prc/reopened/reopened.processing']"/>
 	<xsl:template match="smp:freeRendering"/>
 	<xsl:template match="smp:esIndex"/>
 	<xsl:template match="sm:role[@sc:refUri='/collab/roles/main/1_reader.role']">
 		<sm:role sc:refUri="/portalLight/collab/roles/1_reader.role"/>
 	</xsl:template>
+  <xsl:template match="smp:transformXsl[@sc:refUri='/portalLight/import/free/prc.import.archived.xsl']"/>
 
 	<!-- import.linker -->
 	<xsl:template match="/smp:depotLnk">

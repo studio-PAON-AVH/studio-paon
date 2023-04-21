@@ -52,14 +52,8 @@
 	</smp:writeProcess>
 	<smp:authoring>
 		<smp:preview>
-			<smp:openViewer>
-				<smp:resInfoWidget>
-					<smp:systemMetas>
-						<smp:all/>
-					</smp:systemMetas>
-					<smp:resFormInfos/>
-				</smp:resInfoWidget>
-			</smp:openViewer>
+			<smp:noContentWidget displayOnContentActions="true"/>
 		</smp:preview>
+		<smp:transformation label="￼;Archiver￼" sc:refUri="/portalLight/import/prc/archived/archived.processing"/>
 	</smp:authoring>
 </smp:binaryProc>

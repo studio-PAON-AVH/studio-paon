@@ -60,14 +60,7 @@
 	</smp:writeProcess>
 	<smp:authoring>
 		<smp:preview>
-			<smp:openViewer>
-				<smp:resInfoWidget>
-					<smp:systemMetas>
-						<smp:all/>
-					</smp:systemMetas>
-					<smp:resFormInfos/>
-				</smp:resInfoWidget>
-			</smp:openViewer>
+			<smp:noContentWidget displayOnContentActions="true"/>
 		</smp:preview>
 		<smp:transformation label="￼;Importer un fichier XML￼" sc:refUri="/portal/import/prc/xml/xml.processing"/>
 	</smp:authoring>

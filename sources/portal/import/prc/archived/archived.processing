@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
-<smp:binaryProc name="￼;XML￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
-	<smp:identification code="xml"/>
+<smp:noContentProc name="￼;Archivé￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="archived"/>
 	<smp:structure>
 		<smp:path>
 			<smp:pathLevel>
-				<smp:fixedString value="FR-AVH-"/>
-				<smp:meta sc:refUri="/portal/import/metas/isbn.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/uid.meta"/>
 			</smp:pathLevel>
 		</smp:path>
 		<smp:versionning>
@@ -15,7 +14,6 @@
 			<smp:metaList info="identification">
 				<smp:meta sc:refUri="/portal/import/metas/isbn.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/uid.meta"/>
-				<smp:meta sc:refUri="/portal/import/prc/xml/meta/sourceXMLDoctype.meta"/>
 			</smp:metaList>
 			<smp:metaList info="Métas de gestion en doublon">
 				<smp:meta sc:refUri="/portal/import/metas/title.meta"/>
@@ -24,18 +22,18 @@
 				<smp:meta sc:refUri="/portal/import/metas/comments.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/pages.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/sourceFormat.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/collection.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/illustrations.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/statut.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/statutAud.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/statutBrl.meta"/>
-				<smp:meta sc:refUri="/portal/import/metas/illustrations.meta"/>
-				<smp:meta sc:refUri="/portal/import/metas/collection.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/statutEmbos.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/originalFilename.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/originalLanguage.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/typeOuvrage.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/authorAud.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/authorBrl.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/authorPivot.meta"/>
-				<smp:meta sc:refUri="/portal/import/metas/statutEmbos.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/fileName.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/dtdDetail.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/dateEnd.meta"/>
@@ -45,11 +43,6 @@
 	</smp:structure>
 	<smp:writeProcess>
 		<smp:buildMetas>
-			<!--<smp:extractFromRootContent xmlns:smp="scenari.eu:builder:portal:1.0">
-	<smp:extractByXsl sc:refUri="/portal/import/prc/xml/free/prc.xml.extractMetas.xsl" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
-		<smp:populatedMeta sc:refUri="/portal/import/prc/xml/meta/sourceXMLDoctype.meta"/>
-	</smp:extractByXsl>
-</smp:extractFromRootContent>-->
 			<smp:metaToPopulate sc:refUri="/portal/import/metas/uid.meta">
 				<smp:fixedString value="FR-AVH-"/>
 				<smp:fromMeta sc:refUri="/portal/import/metas/isbn.meta"/>
@@ -57,28 +50,19 @@
 		</smp:buildMetas>
 		<smp:buildViews>
 			<smp:infoView/>
-			<smp:rootView code="xml" family="userFriendly" mimeType="application/xml" name="￼;Source￼">
-				<smp:identityView/>
+			<smp:rootView>
+				<smp:xslView>
+					<smp:onMetas/>
+					<smp:xsl sc:refUri="/portal/import/prc/data/free/datas.xsl"/>
+				</smp:xslView>
 			</smp:rootView>
-			<smp:freeViewMaker xml:space="preserve">&lt;selector match="each"&gt;
-  &lt;viewSet&gt;
-      &lt;persistentMetaAllowed name="sourceXMLDoctype" regexp="lg"/&gt;
-      &lt;viewMaker code="dtbook" urlPatterns="?V=dtbook" builtOn="content" buildPath="free/prcs/xml-lg/xmllg2dtbook/build.xml" type="eu.scenari.store.service.mkviews.makers.AntViewMk"/&gt;
-      &lt;viewMaker code="dtmodel" urlPatterns="?V=dtmodel" builtOn="views" fromCdView="dtbook" buildPath="free/prcs/xml-lg/dtbook2dtmodel/build.xml" type="eu.scenari.store.service.mkviews.makers.AntViewMk"/&gt;
-  &lt;/viewSet&gt;
-  &lt;viewSet&gt;
-      &lt;persistentMetaAllowed name="sourceXMLDoctype" regexp="dtbook"/&gt;
-      &lt;viewMaker code="dtbook" urlPatterns="?V=dtbook" builtOn="content" type="eu.scenari.store.service.mkviews.makers.IdentityViewMk"/&gt;
-      &lt;viewMaker code="dtmodel" urlPatterns="?V=dtmodel" builtOn="content" buildPath="free/prcs/xml-lg/dtbook2dtmodel/build.xml" type="eu.scenari.store.service.mkviews.makers.AntViewMk"/&gt;
-  &lt;/viewSet&gt;
-&lt;/selector&gt;<smp:registerUiView family="userFriendly" name="￼;DTBook￼" urlPatterns="?V=dtbook"/><smp:registerUiView family="userFriendly" name="￼;DTModel￼" urlPatterns="?V=dtmodel"/></smp:freeViewMaker>
 		</smp:buildViews>
 	</smp:writeProcess>
 	<smp:authoring>
 		<smp:preview>
 			<smp:noContentWidget displayOnContentActions="true"/>
 		</smp:preview>
-		<smp:transformation label="￼;Archiver￼" sc:refUri="/portal/import/prc/archived/archived.processing"/>
+		<smp:transformation label="￼;Ré-ouvrir l'ouvrage archivé￼" sc:refUri="/portal/import/prc/reopened/reopened.processing"/>
 	</smp:authoring>
 	<smp:indexings>
 		<smp:es>
@@ -94,6 +78,7 @@
 						<smp:includeMeta sc:refUri="/portal/import/metas/dateEnd.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/dateParution.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/dtdDetail.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/dureeAudio.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/fileName.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/illustrations.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/isbn.meta"/>
@@ -106,7 +91,6 @@
 						<smp:includeMeta sc:refUri="/portal/import/metas/statutAud.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/statutBrl.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/statutEmbos.meta"/>
-						<smp:includeMeta sc:refUri="/portal/import/prc/xml/meta/sourceXMLDoctype.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/title.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/typeOuvrage.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/uid.meta"/>
@@ -115,4 +99,4 @@
 			</smp:record>
 		</smp:es>
 	</smp:indexings>
-</smp:binaryProc>
+</smp:noContentProc>

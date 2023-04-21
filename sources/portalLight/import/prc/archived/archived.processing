@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<smp:noContentProc name="￼;Data￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
-	<smp:identification code="data"/>
+<smp:noContentProc name="￼;Archivé￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="archived"/>
 	<smp:structure>
 		<smp:path>
 			<smp:pathLevel>
@@ -62,7 +62,7 @@
 		<smp:preview>
 			<smp:noContentWidget displayOnContentActions="true"/>
 		</smp:preview>
-		<smp:transformation label="￼;Importer un fichier XML￼" sc:refUri="/portalLight/import/prc/xml/xml.processing"/>
+		<smp:transformation label="￼;Ré-ouvrir l'ouvrage archivé￼" sc:refUri="/portalLight/import/prc/reopened/reopened.processing"/>
 	</smp:authoring>
 	<smp:indexings>
 		<smp:es>

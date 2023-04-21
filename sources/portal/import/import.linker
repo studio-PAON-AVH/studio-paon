@@ -9,12 +9,18 @@
 				<smp:usersManager>
 					<smp:cookieBasicAuth openCookiePath="/" secure="true"/>
 					<smp:remoteScUsers>
-						<smp:chainLnk sc:refUri="/portal/chain/chain.linker"/>
+						<smp:chainPrl sc:refUri="/portal/chain/chain.portlet"/>
 					</smp:remoteScUsers>
 				</smp:usersManager>
 				<smp:transforms>
 					<smp:all/>
 				</smp:transforms>
+				<smp:remoteServers>
+					<smp:scDepot sc:refUri="/portal/depot/depot.portlet" usedFor="both">
+						<smp:basicAuth account="writer" password="§§user.writer.password§§"/>
+					</smp:scDepot>
+					<smp:otherServers localIPs="forbid" otherIps="forbid" privateIPs="forbid"/>
+				</smp:remoteServers>
 				<smp:esEngine>
 					<smp:esInternalAccess url="§§app.ext.es.host§§"/>
 					<smp:esPublicAccess baseUrl="/~~import/~~search" sc:refUri="/portal/servers/static.server"/>

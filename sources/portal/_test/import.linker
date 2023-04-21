@@ -15,6 +15,9 @@
 					<smp:all/>
 				</smp:transforms>
 				<smp:remoteServers>
+					<smp:scDepot sc:refUri="/portal/depot/depot.portlet" usedFor="both">
+						<smp:basicAuth account="writer" password="writer"/>
+					</smp:scDepot>
 					<smp:otherServers localIPs="forbid" otherIps="allow" privateIPs="forbid"/>
 				</smp:remoteServers>
 				<smp:esEngine>
