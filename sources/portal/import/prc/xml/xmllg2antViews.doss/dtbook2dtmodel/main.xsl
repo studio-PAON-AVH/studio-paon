@@ -423,13 +423,22 @@
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
 	</xsl:template>
 
-	<!-- Flux texte : poème -->
+	<!-- Flux texte : poème
+	peut contenir (title | author | hd | dateline | epigraph | byline | linegroup | line | pagenum | img | imggroup | sidebar)* -->
 	<xsl:template match="dtb:poem" mode="para">
 		<sc:div role="poem">
-			<xsl:for-each select="dtb:line">
-				<sc:para xml:space="preserve"><xsl:apply-templates mode="txt"/></sc:para>
-			</xsl:for-each>
+			<xsl:apply-templates select="*[1]" mode="para"/>
 		</sc:div>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<!-- Ignorer les linegroup (pas prevu dans le model), garder son contenu -->
+	<xsl:template match="dtb:linegroup" mode="para">
+		<xsl:apply-templates mode="para"/>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<!-- Conversion des lines en paragraphes -->
+	<xsl:template match="dtb:line" mode="para">
+		<sc:para xml:space="preserve"><xsl:apply-templates mode="txt"/></sc:para>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
 	</xsl:template>
 
