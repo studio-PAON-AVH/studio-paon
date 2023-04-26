@@ -47,9 +47,7 @@
 				<smp:fixedString value="FR-AVH-"/>
 				<smp:fromMeta sc:refUri="/portal/import/metas/isbn.meta"/>
 			</smp:metaToPopulate>
-			<smp:metaToPopulate sc:refUri="/portal/import/metas/statut.meta">
-				<smp:fixedString value="REOPENED"/>
-			</smp:metaToPopulate>
+			<!--<sexc:exclude xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns="http://www.w3.org/1999/xhtml" xmlns:smp="scenari.eu:builder:portal:1.0" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sexc="scenari.eu:exclude:1.0"><smp:metaToPopulate sc:refUri="/portal/import/metas/statut.meta"><smp:fixedString value="REOPENED"/></smp:metaToPopulate></sexc:exclude>-->
 		</smp:buildMetas>
 		<smp:buildViews>
 			<smp:infoView/>
