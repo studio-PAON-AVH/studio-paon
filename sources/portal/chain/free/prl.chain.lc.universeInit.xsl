@@ -37,9 +37,15 @@
 								</param>
 							</callDialog>
 							<execLcTransition transition="xToPublicationSuccess" wspCode="${{_CurrentWspCode}}" rootItemUri="${{_CurrentSrcUri}}"/>
+							<updateImportMeta bookUri="${{_CurrentSrcUri}}">
+								<meta name="statut" value="EXPORTED"/>
+							</updateImportMeta>
 							<removeSlaveInst/>
 							<failed>
 								<execLcTransition transition="xToPublicationError" wspCode="${{_CurrentWspCode}}" rootItemUri="${{_CurrentSrcUri}}"/>
+								<updateImportMeta bookUri="${{_CurrentSrcUri}}">
+									<meta name="statut" value="PROCESSING"/>
+								</updateImportMeta>
 							</failed>
 						</try>
 					</xmlProp>

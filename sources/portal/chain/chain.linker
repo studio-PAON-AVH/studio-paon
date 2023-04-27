@@ -75,4 +75,7 @@
 		</smp:serverApp>
 		<smp:serverWebFront baseUrl="/~~static/#portletCode#" sc:refUri="/portal/servers/static.server"/>
 	</smp:servers>
+	<smp:free>
+		<smp:transformXsl filesPath="[APP]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portal/chain/free/lnk.chain.batch.universeInit.xsl"/>
+	</smp:free>
 </smp:chainLnk>
