@@ -38,12 +38,18 @@
 		<xsl:variable name="prevLastChar" select="substring($prevPara, string-length($prevPara))"/>
 		<xsl:variable name="follFirstChar" select="substring(following-sibling::text(), 1, 1)"/>
 		<xsl:if test="not($prevLastChar = ' ' or $prevLastChar = ' ' or $prevLastChar = '')"><xsl:text> </xsl:text></xsl:if>
-		<xsl:text>[[*ind5*]][[*tab7*]]Note </xsl:text><xsl:choose>
-			<xsl:when test="$publishNotesEnd"><xsl:value-of select="text:note-citation/text()"/></xsl:when>
+		<xsl:choose>
+			<xsl:when test="$publishNotesEnd">
+				<xsl:text>(Note </xsl:text>
+				<xsl:value-of select="text:note-citation/text()"/>
+				<xsl:text>)</xsl:text>
+			</xsl:when>
 			<xsl:otherwise>
+				<xsl:text>[[*ind5*]][[*tab7*]]Note </xsl:text>
 				<xsl:for-each select="text:note-body/descendant::text:p"><xsl:apply-templates/><xsl:if test="following-sibling::text:p"><xsl:text> </xsl:text></xsl:if></xsl:for-each>
+				<xsl:text>[[*ind1*]]</xsl:text>
 			</xsl:otherwise>
-		</xsl:choose><xsl:text>[[*ind1*]]</xsl:text>
+		</xsl:choose>
 		<xsl:if test="not(contains($seperators,$follFirstChar) or $follFirstChar = '')"><xsl:text> </xsl:text></xsl:if>
 	</xsl:template>
 
