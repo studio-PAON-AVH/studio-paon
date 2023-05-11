@@ -411,16 +411,35 @@
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
 	</xsl:template>
 
+	<!-- Balise cite -->
+	<xsl:template match="dtb:cite" mode="para">
+		<xsl:apply-templates select="*[1]" mode="para"/>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<!-- Balise cite dans un paragraphe -->
+	<xsl:template match="dtb:cite" mode="txt">
+		<sc:phrase role="cite">
+			<xsl:apply-templates mode="txt"/>
+		</sc:phrase>
+	</xsl:template>
+
 	<!-- Flux texte : balise author -->
 	<xsl:template match="dtb:title" mode="para">
 		<sc:para xml:space="preserve"><sc:inlineStyle role="titleCite"><xsl:apply-templates mode="txt"/></sc:inlineStyle></sc:para>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:title" mode="txt">
+		<sc:inlineStyle role="titleCite"><xsl:apply-templates mode="txt"/></sc:inlineStyle>
 	</xsl:template>
 
 	<!-- Flux texte : balise author -->
 	<xsl:template match="dtb:author|dtb:auteur" mode="para">
 		<sc:para xml:space="preserve"><sc:inlineStyle role="author"><xsl:apply-templates mode="txt"/></sc:inlineStyle></sc:para>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<!-- Balise author dans un paragrpahe-->
+	<xsl:template match="dtb:author" mode="txt">
+		<sc:inlineStyle role="author"><xsl:apply-templates mode="txt"/></sc:inlineStyle>
 	</xsl:template>
 
 	<!-- Flux texte : poème
@@ -433,7 +452,7 @@
 	</xsl:template>
 	<!-- Ignorer les linegroup (pas prevu dans le model), garder son contenu -->
 	<xsl:template match="dtb:linegroup" mode="para">
-		<xsl:apply-templates mode="para"/>
+		<xsl:apply-templates select="*[1]" mode="para"/>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
 	</xsl:template>
 	<!-- Conversion des lines en paragraphes -->
@@ -459,7 +478,7 @@
 
 	<!-- Flow sidebar -->
 	<xsl:template match="dtb:sidebar" mode="para">
-		<sc:div role="sidebar">
+		<sc:div role="side">
 			<paon:sidebar>
 				<sp:render>
 					<xsl:value-of select="@render"/>
@@ -477,6 +496,36 @@
 	<!-- Flux texte : éléments ignorés -->
 	<!-- br inutile si balise p -->
 	<xsl:template match="dtb:imggroup|dtb:note|dtb:br" mode="para">
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+
+	<xsl:template match="dtb:table" mode="para">
+		<sc:table>
+			<xsl:apply-templates select="*[1]" mode="para"/>
+		</sc:table>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:colgroup" mode="para">
+		<xsl:apply-templates select="*[1]" mode="para"/>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:col" mode="para">
+		<sc:column width="10" />
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:tr" mode="para">
+		<sc:row>
+			<xsl:if test="./dtb:th">
+				<xsl:attribute name="role">head</xsl:attribute>
+			</xsl:if>
+			<xsl:apply-templates select="*[1]" mode="para"/>
+		</sc:row>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:td|dtb:th" mode="para">
+		<sc:cell>
+			<xsl:apply-templates select="*[1]" mode="para"/>
+		</sc:cell>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
 	</xsl:template>
 
@@ -546,6 +595,11 @@
 	<!-- br remplacé par espace -->
 	<xsl:template match="dtb:br" mode="txt">
 		<xsl:text> </xsl:text>
+	</xsl:template>
+
+	<!-- Pour les URL dans les dtbook reimportés, supprimé les span de lnk-->
+	<xsl:template match="dtb:span[@class='lnk']" mode="txt">
+		<xsl:apply-templates mode="txt"/>
 	</xsl:template>
 
 	<!-- on ignore les tags w -->
