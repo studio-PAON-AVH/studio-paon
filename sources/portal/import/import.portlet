@@ -131,6 +131,9 @@ jobBuilder.addBaseJobDatas({stopAfterFailures: 50,});</smp:uiFactory>
 							<smp:mpField code="dateEnd">
 								<smp:keyword/>
 							</smp:mpField>
+							<smp:mpField code="dateParution">
+								<smp:keyword/>
+							</smp:mpField>
 						</smp:mpFields>
 					</smp:contentGroup>
 				</smp:recordsStructure>
