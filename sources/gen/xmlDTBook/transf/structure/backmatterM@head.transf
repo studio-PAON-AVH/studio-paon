@@ -13,20 +13,24 @@
 				</sm:xhtmlContentZone>
 			</sm:Widget>
 		</sm:forField>
-		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
-			<sm:xhtmlContentZone key="name">
-				<sm:WText value="dtb:sourceDate"/>
-			</sm:xhtmlContentZone>
-			<sm:xhtmlContentZone key="content">
-				<sm:forField codes="publishingYear">
-					<sm:fieldValueString/>
-				</sm:forField>
-				<sm:forField codes="publishingMonth">
-					<sm:WText value="￼;-￼"/>
-					<sm:fieldValueEnum format="key"/>
-				</sm:forField>
-			</sm:xhtmlContentZone>
-		</sm:Widget>
+		<sm:choose>
+			<sm:when codes="publishingYear">
+				<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+					<sm:xhtmlContentZone key="name">
+						<sm:WText value="dtb:sourceDate"/>
+					</sm:xhtmlContentZone>
+					<sm:xhtmlContentZone key="content">
+						<sm:forField codes="publishingYear">
+							<sm:fieldValueString/>
+						</sm:forField>
+						<sm:forField codes="publishingMonth">
+							<sm:WText value="￼;-￼"/>
+							<sm:fieldValueEnum format="key"/>
+						</sm:forField>
+					</sm:xhtmlContentZone>
+				</sm:Widget>
+			</sm:when>
+		</sm:choose>
 		<sm:forField codes="translatedBy">
 			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
 				<sm:xhtmlContentZone key="name">

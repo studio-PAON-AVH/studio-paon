@@ -54,33 +54,32 @@
 				<xsl:apply-templates select="dtb:book/dtb:rearmatter/*"/>
 				<sp:backmatter>
 					<paon:backmatterM>
-						<!-- FIXME : activer le transfert de la date de parution si demander -->
-						<!--<xsl:variable name="dateparution" select="java:get(java:getvar($vdialog, 'persistmetas'), 'dateparution')" />
-						<xsl:if test="$dateparution">
-							<xsl:variable name="anneeparution" select="substring-before($dateparution,'-')" />
-							<xsl:variable name="moisparution" select="substring-after($dateparution,'-')" />
+						<!-- transfert de la date de parution du tableau -->
+						<xsl:variable name="dateParution" select="java:get(java:getVar($vDialog, 'persistMetas'), 'dateParution')" />
+						<xsl:if test="$dateParution">
+							<xsl:variable name="anneeParution" select="substring-before($dateParution,'-')" />
+							<xsl:variable name="moisParution" select="substring-after($dateParution,'-')" />
 							<xsl:choose>
-								<xsl:when test="$anneeparution">
-									<sp:publishingyear>
+								<xsl:when test="$anneeParution">
+									<sp:publishingYear>
 										<xsl:comment>année importée depuis le tableau</xsl:comment>
-										<xsl:value-of select="$anneeparution"/>
-									</sp:publishingyear>
+										<xsl:value-of select="$anneeParution"/>
+									</sp:publishingYear>
 								</xsl:when>
-								<xsl:otherwise> &lt;!&ndash; (une date de parution trouvé mais pas de tiret : date de parution sans mois&ndash;&gt;
-									<sp:publishingyear>
+								<xsl:otherwise> <!-- (une date de parution trouvé mais pas de tiret : date de parution sans mois-->
+									<sp:publishingYear>
 										<xsl:comment>année importée depuis le tableau</xsl:comment>
-										<xsl:value-of select="$dateparution"/>
-									</sp:publishingyear>
+										<xsl:value-of select="$dateParution"/>
+									</sp:publishingYear>
 								</xsl:otherwise>
 							</xsl:choose>
-
-							<xsl:if test="$moisparution">
-								<sp:publishingmonth>
+							<xsl:if test="$moisParution">
+								<sp:publishingMonth>
 									<xsl:comment>mois importé depuis le tableau</xsl:comment>
-									<xsl:value-of select="$moisparution"/>
-								</sp:publishingmonth>
+									<xsl:value-of select="$moisParution"/>
+								</sp:publishingMonth>
 							</xsl:if>
-						</xsl:if>-->
+						</xsl:if>
 						<sp:isbn>
 							<xsl:comment>isbn importé depuis le tableau de bord</xsl:comment>
 							<xsl:value-of select="java:get(java:getVar($vDialog, 'persistMetas'), 'isbn')"/>
