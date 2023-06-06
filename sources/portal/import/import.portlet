@@ -4,6 +4,7 @@
 		<smp:processing access="readWrite" sc:refUri="/portal/_commons/prc/folder/folder.processing"/>
 		<smp:processing access="readWriteNoCreator" sc:refUri="/portal/_commons/prc/folder/home.processing"/>
 		<smp:processing access="readWrite" sc:refUri="/portal/import/prc/xml/xml.processing"/>
+		<smp:processing access="readWrite" sc:refUri="/portal/import/prc/epub3/epub3.processing"/>
 		<smp:processing access="readWrite" sc:refUri="/portal/import/prc/data/data.processing"/>
 		<smp:processing access="readWriteNoCreator" sc:refUri="/portal/import/prc/archived/archived.processing"/>
 		<smp:processing access="readWriteNoCreator" sc:refUri="/portal/import/prc/reopened/reopened.processing"/>
@@ -142,6 +143,7 @@ jobBuilder.addBaseJobDatas({stopAfterFailures: 50,});</smp:uiFactory>
 	</smp:indexes>
 	<smp:free>
 		<smp:staticFile destPath="[WRITE]/WEB-INF/free/prcs/xml-lg" l10nCtxt="" sc:refUri="/portal/import/prc/xml/xmllg2antViews.doss"/>
+		<smp:staticFile destPath="[WRITE]/WEB-INF/free/prcs/epub3" l10nCtxt="" sc:refUri="/portal/import/prc/epub3/epub3.doss"/>
 		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portal/import/free/prl.import.xml.universeInit.xsl"/>
 		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portal/import/free/prl.import.electre.universeInit.xsl"/>
 		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portal/import/free/prc.import.normalize-xml-input.xsl"/>

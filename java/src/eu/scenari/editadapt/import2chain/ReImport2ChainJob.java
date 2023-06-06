@@ -16,7 +16,7 @@ public class ReImport2ChainJob extends RelaunchCidTasksJob {
 	@Override
 	protected boolean skipContext(ResContext pCtx) {
 		String vPrc = (String) pCtx.fOldPersistMetas.get(UTDriverTask.META_processing);
-		return !vPrc.equals("xml");
+		return !vPrc.equals("xml") && !vPrc.equals("epub3");
 	}
 
 	@Override

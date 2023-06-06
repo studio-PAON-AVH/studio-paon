@@ -29,7 +29,7 @@ public class Import2ChainCidTask extends CidTaskBase {
 		String prc = (String) metas.get(UTDriverTask.META_processing);
 		String action = (String) metas.get(UTDriverTask.META_action);
 		if (action != null && (action.equals(UTDriverTask.EUrlTreeNodeAction.remove.toString()) || action.equals(UTDriverTask.EUrlTreeNodeAction.removeAll.toString()))) return true;
-		if (!("xml".equals(prc))) return true;
+		if (!("xml".equals(prc)) && !"epub3".equals(prc)) return true;
 		ResId resId = (ResId) fSessionDatas.get(StoreSquareTask.KEY_resId);
 		if (!resId.getMetasCounter().equals("000")) return true;
 		service.importFromResId(resId, (IPersistentMetas) fSessionDatas.get(StoreSquareTask.KEY_persistentMetas));

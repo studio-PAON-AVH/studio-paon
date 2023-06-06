@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<smp:binaryProc name="￼;EPUB 3￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="epub3"/>
+	<smp:structure>
+		<smp:path>
+			<smp:pathLevel>
+				<smp:fixedString value="FR-AVH-"/>
+				<smp:meta sc:refUri="/portal/import/metas/isbn.meta"/>
+			</smp:pathLevel>
+		</smp:path>
+		<smp:versionning>
+			<smp:none/>
+		</smp:versionning>
+		<smp:metas>
+			<smp:metaList info="identification">
+				<smp:meta sc:refUri="/portal/import/metas/isbn.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/uid.meta"/>
+			</smp:metaList>
+			<smp:metaList info="Métas de gestion en doublon">
+				<smp:meta sc:refUri="/portal/import/metas/title.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/author.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/publisher.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/comments.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/pages.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/sourceFormat.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/statut.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/statutAud.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/statutBrl.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/illustrations.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/collection.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/originalFilename.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/originalLanguage.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/typeOuvrage.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/authorAud.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/authorBrl.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/authorPivot.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/statutEmbos.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/fileName.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/dtdDetail.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/dateEnd.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/dateParution.meta"/>
+			</smp:metaList>
+		</smp:metas>
+	</smp:structure>
+	<smp:writeProcess>
+		<smp:buildMetas>
+			<smp:metaToPopulate sc:refUri="/portal/import/metas/uid.meta">
+				<smp:fixedString value="FR-AVH-"/>
+				<smp:fromMeta sc:refUri="/portal/import/metas/isbn.meta"/>
+			</smp:metaToPopulate>
+		</smp:buildMetas>
+		<smp:buildViews>
+			<smp:infoView/>
+			<smp:rootView code="xml" family="userFriendly" mimeType="application/xml" name="￼;Source￼">
+				<smp:identityView/>
+			</smp:rootView>
+			<smp:freeViewMaker xml:space="preserve">&lt;viewMaker code="dtmodel" urlPatterns="?V=dtmodel" builtOn="content" buildPath="free/prcs/epub3/epub2dtmodel/build.xml" type="eu.scenari.store.service.mkviews.makers.AntViewMk"/&gt;<smp:registerUiView family="userFriendly" name="￼;DTModel￼" urlPatterns="?V=dtmodel"/></smp:freeViewMaker>
+		</smp:buildViews>
+	</smp:writeProcess>
+	<smp:authoring>
+		<smp:preview>
+			<smp:noContentWidget displayOnContentActions="true"/>
+		</smp:preview>
+		<smp:transformation label="￼;Archiver￼" sc:refUri="/portal/import/prc/archived/archived.processing"/>
+	</smp:authoring>
+	<smp:indexings>
+		<smp:es>
+			<smp:record refRecordsGroupCode="res">
+				<smp:indexFields>
+					<smp:metadatas>
+						<smp:includeMeta sc:refUri="/portal/import/metas/author.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/authorAud.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/authorBrl.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/authorPivot.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/collection.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/comments.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/dateEnd.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/dateParution.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/dtdDetail.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/fileName.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/illustrations.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/isbn.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/originalFilename.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/originalLanguage.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/pages.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/publisher.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/sourceFormat.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/statut.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/statutAud.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/statutBrl.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/statutEmbos.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/title.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/typeOuvrage.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/uid.meta"/>
+					</smp:metadatas>
+				</smp:indexFields>
+			</smp:record>
+		</smp:es>
+	</smp:indexings>
+</smp:binaryProc>

@@ -23,8 +23,7 @@ public class FetchResumeCidTask extends CidTaskBase {
 		String prc = (String) metas.get(UTDriverTask.META_processing);
 		String action = (String) metas.get(UTDriverTask.META_action);
 		if (action != null && (action.equals(UTDriverTask.EUrlTreeNodeAction.remove.toString()) || action.equals(UTDriverTask.EUrlTreeNodeAction.removeAll.toString()))) return ECidStatus.waitingForCommit;
-		if (!"xml".equals(prc) && !"data".equals(prc)) return ECidStatus.waitingForCommit;
-
+		if (!"xml".equals(prc) && !"data".equals(prc) && !"epub3".equals(prc)) return ECidStatus.waitingForCommit;
 		if (!service.getEnable()) {
 			metas.put(META_ELECTRE_RESUME, "");
 			return ECidStatus.waitingForCommit;
