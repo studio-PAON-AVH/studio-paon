@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="importRes" basedir="." default="main">
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	<taskdef name="loadStaticClass" classname="com.scenari.scant.LoadStaticClass" onerror="ignore"/>
+	<taskdef name="customXsl" classname="eu.scenari.editadapt.ant.TransformXslTask"/>
+	<taskdef name="transform" classname="com.scenari.m.co.ant.TransformTask"/>
+	<taskdef name="xmlProperty" classname="org.apache.tools.ant.taskdefs.XmlProperty"/>
+
+	<property name="mode.debug" value="false"/>
+
+	<target name="main">
+		<unzip src="${vInput}" dest="${vDestPath}_tmp"/>
+		<xmlproperty file="${vDestPath}_tmp/META-INF/container.xml"/>
+		<customXsl inFile="${vDestPath}_tmp/${container.rootfiles.rootfile(full-path)}" outFile="${vDestPath}_step1" style="1_pre.xsl"/>
+		<customXsl inFile="${vDestPath}_step1" outFile="${vDestPath}_step2" style="2_struct.xsl"/>
+		<customXsl inFile="${vDestPath}_step2" outFile="${vDestPath}_step3" style="3_xhtml2dtmodel.xsl"/>
+		<customXsl inFile="${vDestPath}_step3" outFile="${vDestPath}" style="4_post.xsl"/>
+
+		<delete dir="${vDestPath}_tmp"/>
+		<delete file="${vDestPath}_step1"/>
+		<delete file="${vDestPath}_step2"/>
+		<delete file="${vDestPath}_step3"/>
+
+	</target>
+
+</project>

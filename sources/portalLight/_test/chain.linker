@@ -37,4 +37,7 @@
 		</smp:serverApp>
 		<smp:serverWebFront sc:refUri="/portalLight/_test/servers/web.server"/>
 	</smp:servers>
+	<smp:free>
+		<smp:transformXsl filesPath="[APP]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portalLight/chain/free/lnk.chain.batch.universeInit.xsl"/>
+	</smp:free>
 </smp:chainLnk4test>

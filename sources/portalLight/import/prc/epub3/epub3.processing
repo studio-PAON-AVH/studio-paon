@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
-<smp:noContentProc name="￼;Archivé￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
-	<smp:identification code="archived"/>
+<smp:binaryProc name="￼;EPUB 3￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="epub3"/>
 	<smp:structure>
 		<smp:path>
 			<smp:pathLevel>
-				<smp:meta sc:refUri="/portalLight/import/metas/uid.meta"/>
+				<smp:fixedString value="FR-AVH-"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/isbn.meta"/>
 			</smp:pathLevel>
 		</smp:path>
 		<smp:versionning>
@@ -22,18 +23,18 @@
 				<smp:meta sc:refUri="/portalLight/import/metas/comments.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/pages.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/sourceFormat.meta"/>
-				<smp:meta sc:refUri="/portalLight/import/metas/collection.meta"/>
-				<smp:meta sc:refUri="/portalLight/import/metas/illustrations.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/statut.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/statutAud.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/statutBrl.meta"/>
-				<smp:meta sc:refUri="/portalLight/import/metas/statutEmbos.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/illustrations.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/collection.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/originalFilename.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/originalLanguage.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/typeOuvrage.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/authorAud.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/authorBrl.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/authorPivot.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/statutEmbos.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/fileName.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/dtdDetail.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/dateEnd.meta"/>
@@ -47,23 +48,20 @@
 				<smp:fixedString value="FR-AVH-"/>
 				<smp:fromMeta sc:refUri="/portalLight/import/metas/isbn.meta"/>
 			</smp:metaToPopulate>
-			<!--<sexc:exclude xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns="http://www.w3.org/1999/xhtml" xmlns:smp="scenari.eu:builder:portal:1.0" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sexc="scenari.eu:exclude:1.0"><smp:metaToPopulate sc:refUri="/portal/import/metas/statut.meta"><smp:fixedString value="ARCHIVED"/></smp:metaToPopulate></sexc:exclude>-->
 		</smp:buildMetas>
 		<smp:buildViews>
 			<smp:infoView/>
-			<smp:rootView>
-				<smp:xslView>
-					<smp:onMetas/>
-					<smp:xsl sc:refUri="/portalLight/import/prc/data/free/datas.xsl"/>
-				</smp:xslView>
+			<smp:rootView code="xml" family="userFriendly" mimeType="application/xml" name="￼;Source￼">
+				<smp:identityView/>
 			</smp:rootView>
+			<smp:freeViewMaker xml:space="preserve">&lt;viewMaker code="dtmodel" urlPatterns="?V=dtmodel" builtOn="content" buildPath="free/prcs/epub3/epub2dtmodel/build.xml" type="eu.scenari.store.service.mkviews.makers.AntViewMk"/&gt;<smp:registerUiView family="userFriendly" name="￼;DTModel￼" urlPatterns="?V=dtmodel"/></smp:freeViewMaker>
 		</smp:buildViews>
 	</smp:writeProcess>
 	<smp:authoring>
 		<smp:preview>
 			<smp:noContentWidget displayOnContentActions="true"/>
 		</smp:preview>
-		<smp:transformation label="￼;Ré-ouvrir l'ouvrage archivé￼" sc:refUri="/portalLight/import/prc/reopened/reopened.processing"/>
+		<smp:transformation label="￼;Archiver￼" sc:refUri="/portalLight/import/prc/archived/archived.processing"/>
 	</smp:authoring>
 	<smp:indexings>
 		<smp:es>
@@ -79,7 +77,6 @@
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/dateEnd.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/dateParution.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/dtdDetail.meta"/>
-						<smp:includeMeta sc:refUri="/portalLight/import/metas/dureeAudio.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/fileName.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/illustrations.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/isbn.meta"/>
@@ -100,4 +97,4 @@
 			</smp:record>
 		</smp:es>
 	</smp:indexings>
-</smp:noContentProc>
+</smp:binaryProc>

@@ -16,9 +16,11 @@
 						<try errorVar="pushErrors">
 							
 							<execLcTransition transition="xToPublicationSuccess" wspCode="${{_CurrentWspCode}}" rootItemUri="${{_CurrentSrcUri}}"/>
+							
 							<removeSlaveInst/>
 							<failed>
 								<execLcTransition transition="xToPublicationError" wspCode="${{_CurrentWspCode}}" rootItemUri="${{_CurrentSrcUri}}"/>
+								
 							</failed>
 						</try>
 					</xmlProp>

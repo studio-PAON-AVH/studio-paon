@@ -54,33 +54,32 @@
 				<xsl:apply-templates select="dtb:book/dtb:rearmatter/*"/>
 				<sp:backmatter>
 					<paon:backmatterM>
-						<!-- FIXME : activer le transfert de la date de parution si demander -->
-						<!--<xsl:variable name="dateparution" select="java:get(java:getvar($vdialog, 'persistmetas'), 'dateparution')" />
-						<xsl:if test="$dateparution">
-							<xsl:variable name="anneeparution" select="substring-before($dateparution,'-')" />
-							<xsl:variable name="moisparution" select="substring-after($dateparution,'-')" />
+						<!-- transfert de la date de parution du tableau -->
+						<xsl:variable name="dateParution" select="java:get(java:getVar($vDialog, 'persistMetas'), 'dateParution')" />
+						<xsl:if test="$dateParution">
+							<xsl:variable name="anneeParution" select="substring-before($dateParution,'-')" />
+							<xsl:variable name="moisParution" select="substring-after($dateParution,'-')" />
 							<xsl:choose>
-								<xsl:when test="$anneeparution">
-									<sp:publishingyear>
+								<xsl:when test="$anneeParution">
+									<sp:publishingYear>
 										<xsl:comment>année importée depuis le tableau</xsl:comment>
-										<xsl:value-of select="$anneeparution"/>
-									</sp:publishingyear>
+										<xsl:value-of select="$anneeParution"/>
+									</sp:publishingYear>
 								</xsl:when>
-								<xsl:otherwise> &lt;!&ndash; (une date de parution trouvé mais pas de tiret : date de parution sans mois&ndash;&gt;
-									<sp:publishingyear>
+								<xsl:otherwise> <!-- (une date de parution trouvé mais pas de tiret : date de parution sans mois-->
+									<sp:publishingYear>
 										<xsl:comment>année importée depuis le tableau</xsl:comment>
-										<xsl:value-of select="$dateparution"/>
-									</sp:publishingyear>
+										<xsl:value-of select="$dateParution"/>
+									</sp:publishingYear>
 								</xsl:otherwise>
 							</xsl:choose>
-
-							<xsl:if test="$moisparution">
-								<sp:publishingmonth>
+							<xsl:if test="$moisParution">
+								<sp:publishingMonth>
 									<xsl:comment>mois importé depuis le tableau</xsl:comment>
-									<xsl:value-of select="$moisparution"/>
-								</sp:publishingmonth>
+									<xsl:value-of select="$moisParution"/>
+								</sp:publishingMonth>
 							</xsl:if>
-						</xsl:if>-->
+						</xsl:if>
 						<sp:isbn>
 							<xsl:comment>isbn importé depuis le tableau de bord</xsl:comment>
 							<xsl:value-of select="java:get(java:getVar($vDialog, 'persistMetas'), 'isbn')"/>
@@ -411,10 +410,25 @@
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
 	</xsl:template>
 
+	<!-- Balise cite -->
+	<xsl:template match="dtb:cite" mode="para">
+		<xsl:apply-templates select="*[1]" mode="para"/>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<!-- Balise cite dans un paragraphe -->
+	<xsl:template match="dtb:cite" mode="txt">
+		<sc:phrase role="cite">
+			<xsl:apply-templates mode="txt"/>
+		</sc:phrase>
+	</xsl:template>
+
 	<!-- Flux texte : balise author -->
 	<xsl:template match="dtb:title" mode="para">
 		<sc:para xml:space="preserve"><sc:inlineStyle role="titleCite"><xsl:apply-templates mode="txt"/></sc:inlineStyle></sc:para>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:title" mode="txt">
+		<sc:inlineStyle role="titleCite"><xsl:apply-templates mode="txt"/></sc:inlineStyle>
 	</xsl:template>
 
 	<!-- Flux texte : balise author -->
@@ -422,14 +436,27 @@
 		<sc:para xml:space="preserve"><sc:inlineStyle role="author"><xsl:apply-templates mode="txt"/></sc:inlineStyle></sc:para>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
 	</xsl:template>
+	<!-- Balise author dans un paragrpahe-->
+	<xsl:template match="dtb:author" mode="txt">
+		<sc:inlineStyle role="author"><xsl:apply-templates mode="txt"/></sc:inlineStyle>
+	</xsl:template>
 
-	<!-- Flux texte : poème -->
+	<!-- Flux texte : poème
+	peut contenir (title | author | hd | dateline | epigraph | byline | linegroup | line | pagenum | img | imggroup | sidebar)* -->
 	<xsl:template match="dtb:poem" mode="para">
 		<sc:div role="poem">
-			<xsl:for-each select="dtb:line">
-				<sc:para xml:space="preserve"><xsl:apply-templates mode="txt"/></sc:para>
-			</xsl:for-each>
+			<xsl:apply-templates select="*[1]" mode="para"/>
 		</sc:div>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<!-- Ignorer les linegroup (pas prevu dans le model), garder son contenu -->
+	<xsl:template match="dtb:linegroup" mode="para">
+		<xsl:apply-templates select="*[1]" mode="para"/>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<!-- Conversion des lines en paragraphes -->
+	<xsl:template match="dtb:line" mode="para">
+		<sc:para xml:space="preserve"><xsl:apply-templates mode="txt"/></sc:para>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
 	</xsl:template>
 
@@ -450,7 +477,7 @@
 
 	<!-- Flow sidebar -->
 	<xsl:template match="dtb:sidebar" mode="para">
-		<sc:div role="sidebar">
+		<sc:div role="side">
 			<paon:sidebar>
 				<sp:render>
 					<xsl:value-of select="@render"/>
@@ -468,6 +495,36 @@
 	<!-- Flux texte : éléments ignorés -->
 	<!-- br inutile si balise p -->
 	<xsl:template match="dtb:imggroup|dtb:note|dtb:br" mode="para">
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+
+	<xsl:template match="dtb:table" mode="para">
+		<sc:table>
+			<xsl:apply-templates select="*[1]" mode="para"/>
+		</sc:table>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:colgroup" mode="para">
+		<xsl:apply-templates select="*[1]" mode="para"/>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:col" mode="para">
+		<sc:column width="10" />
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:tr" mode="para">
+		<sc:row>
+			<xsl:if test="./dtb:th">
+				<xsl:attribute name="role">head</xsl:attribute>
+			</xsl:if>
+			<xsl:apply-templates select="*[1]" mode="para"/>
+		</sc:row>
+		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
+	</xsl:template>
+	<xsl:template match="dtb:td|dtb:th" mode="para">
+		<sc:cell>
+			<xsl:apply-templates select="*[1]" mode="para"/>
+		</sc:cell>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
 	</xsl:template>
 
@@ -537,6 +594,11 @@
 	<!-- br remplacé par espace -->
 	<xsl:template match="dtb:br" mode="txt">
 		<xsl:text> </xsl:text>
+	</xsl:template>
+
+	<!-- Pour les URL dans les dtbook reimportés, supprimé les span de lnk-->
+	<xsl:template match="dtb:span[@class='lnk']" mode="txt">
+		<xsl:apply-templates mode="txt"/>
 	</xsl:template>
 
 	<!-- on ignore les tags w -->
