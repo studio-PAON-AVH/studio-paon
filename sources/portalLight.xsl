@@ -62,6 +62,10 @@
 
 	<!-- prl.chain.lc.universeInit.xsl -->
 	<xsl:template match="callDialog"/>
+  <xsl:template match="updateImportMeta"/>
+  <!-- lnk.chain.batch.universeInit.xsl -->
+	<xsl:template match="taskDef[@localName='updateImportMeta']"/>
+  
 
 	<!-- 1_reader.role -->
 	<xsl:template match="/sm:role">
