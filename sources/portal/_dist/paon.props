@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <smp:properties xmlns:smp="scenari.eu:builder:portal:1.0">
-	<smp:property group="webapp" key="webapp.public.url" sortKey="10" value="https://studio-paon.scenari.eu">
+	<smp:property group="webapp" key="webapp.public.url" sortKey="10" value="https://studio-paon.org">
 		<smp:description xml:space="preserve">URL publique du serveur</smp:description>
 	</smp:property>
 	<smp:property group="webapp" key="webapp.code" sortKey="20" value="scenari">
@@ -12,10 +12,10 @@
 	<smp:property group="webapp" key="webapp.system.url" sortKey="30" value="http://127.0.0.1:8080">
 		<smp:description xml:space="preserve">URL locale du serveur</smp:description>
 	</smp:property>
-	<smp:property group="webapp" key="webapp.work.dir" sortKey="40" value="/data/studio-paon/data/scenari">
+	<smp:property group="webapp" key="webapp.work.dir" sortKey="40" value="/var/lib/studio-paon">
 		<smp:description xml:space="preserve">Chemin vers les fichiers de données du serveur (ce dossier contiendra un ensemble de répertoire : data, addons, working...)</smp:description>
 	</smp:property>
-	<smp:property group="webapp" key="webapp.logs.dir" sortKey="50" value="/data/logs/studio-paon/webapps">
+	<smp:property group="webapp" key="webapp.logs.dir" sortKey="50" value="/var/log/studio-paon">
 		<smp:description xml:space="preserve">Chemin vers les fichiers de logs du serveur</smp:description>
 	</smp:property>
 	<!--Mail-->
