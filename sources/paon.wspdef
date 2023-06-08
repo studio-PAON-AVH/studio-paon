@@ -51,7 +51,7 @@
 const {FixedCssSelectorSearchAction, FixedTextSearchAction} = await wspResUrl.importJs(":back:edit/wed/features/searchBar.js");
 const reg = wspMeta.reg;
 reg.addToList("wed.searchBar.actions", "repriseError", 100,
-    new FixedCssSelectorSearchAction("repriseError", "inlineStyle[role='error']", "•Erreur à la reprise•", 1000).setLabel("￼Parcourir les erreurs à la reprise￼")
+    new FixedCssSelectorSearchAction("repriseError", "inlineStyle[role='error']", "￼Erreur à la reprise￼", 1000).setLabel("￼Parcourir les erreurs à la reprise￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/errorSearch.svg").url)
     , 10
 );
@@ -62,7 +62,7 @@ reg.addToList("wed.searchBar.actions", "emphase", 100,
     , 10
 );
 reg.addToList("wed.searchBar.actions", "bridgehead", 101,
-    new FixedCssSelectorSearchAction("bridgehead", "flow &gt; bridgehead", "•Titre flottant•", 1000).setLabel("￼Parcourir les titres flottants￼")
+    new FixedCssSelectorSearchAction("bridgehead", "￼flow &gt; bridgehead￼", "￼Titre flottant￼", 1000).setLabel("￼Parcourir les titres flottants￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/titleSearch.svg").url)
     , 10
 );
@@ -74,13 +74,13 @@ reg.addToList("wed.searchBar.actions", "roman", 102,
 );
 
 reg.addToList("wed.searchBar.actions", "note", 103,
-    new FixedCssSelectorSearchAction("note", "emptyLeaf[role='note']", "•Note•", 1000).setLabel("￼Parcourir les notes de bas de page￼")
+    new FixedCssSelectorSearchAction("note", "emptyLeaf[role='note']", "￼Note￼", 1000).setLabel("￼Parcourir les notes de bas de page￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/note.svg").url)
     , 10
 );
 
 reg.addToList("wed.searchBar.actions", "frame", 104,
-    new FixedCssSelectorSearchAction("frame", "div", "•Cadre•", 1000).setLabel("•Parcourir les cadres•")
+    new FixedCssSelectorSearchAction("frame", "div", "￼Cadre￼", 1000).setLabel("￼Parcourir les cadres￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/frame.svg").url)
     , 10
 );
