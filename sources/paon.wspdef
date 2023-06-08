@@ -51,80 +51,52 @@
 const {FixedCssSelectorSearchAction, FixedTextSearchAction} = await wspResUrl.importJs(":back:edit/wed/features/searchBar.js");
 const reg = wspMeta.reg;
 reg.addToList("wed.searchBar.actions", "repriseError", 100,
-    new FixedCssSelectorSearchAction(
-        "repriseError",
-        "inlineStyle[role='error']",
-        "￼Erreur à la reprise￼"
-    ).setLabel("￼Parcourir les erreurs à la reprise￼")
+    new FixedCssSelectorSearchAction("repriseError", "inlineStyle[role='error']", "•Erreur à la reprise•", 1000).setLabel("￼Parcourir les erreurs à la reprise￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/errorSearch.svg").url)
     , 10
 );
 
 reg.addToList("wed.searchBar.actions", "emphase", 100,
-    new FixedCssSelectorSearchAction(
-        "repriseError",
-        "inlineStyle[role='emphase']",
-        "￼Italique￼"
-    ).setLabel("￼Parcourir le texte en italique￼")
+    new FixedCssSelectorSearchAction("italic", "inlineStyle[role='emphase']", "￼Italique￼", 1000).setLabel("￼Parcourir le texte en italique￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/italicSearch.svg").url)
     , 10
 );
 reg.addToList("wed.searchBar.actions", "bridgehead", 101,
-    new FixedCssSelectorSearchAction(
-        "bridgehead",
-        "flow &gt; bridgehead",
-        "￼Titre flottant￼"
-    ).setLabel("￼Parcourir les titres flottants￼")
+    new FixedCssSelectorSearchAction("bridgehead", "flow &gt; bridgehead", "•Titre flottant•", 1000).setLabel("￼Parcourir les titres flottants￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/titleSearch.svg").url)
     , 10
 );
 
 reg.addToList("wed.searchBar.actions", "roman", 102,
-    new FixedTextSearchAction(
-        "roman",
-        /(?&lt;=^|\s)[IVXLCDM]+(?=$|\s|ième\s)/g
-    ).setLabel("￼Parcourir les chiffres romains￼")
+    new FixedTextSearchAction("roman", /(?&lt;=^|\s)[IVXLCDM]+(?=$|\s|ième\s)/g, 1000).setLabel("￼Parcourir les chiffres romains￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/romanSearch.svg").url)
     , 10
 );
 
 reg.addToList("wed.searchBar.actions", "note", 103,
-    new FixedCssSelectorSearchAction(
-        "note",
-        "emptyLeaf[role='note']",
-        "￼Note￼"
-    ).setLabel("￼Parcourir les notes de bas de page￼")
+    new FixedCssSelectorSearchAction("note", "emptyLeaf[role='note']", "•Note•", 1000).setLabel("￼Parcourir les notes de bas de page￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/note.svg").url)
     , 10
 );
 
 reg.addToList("wed.searchBar.actions", "frame", 104,
-    new FixedCssSelectorSearchAction(
-        "frame",
-        "div",
-        "￼Cadre￼"
-    ).setLabel("￼Parcourir les cadres￼")
+    new FixedCssSelectorSearchAction("frame", "div", "•Cadre•", 1000).setLabel("•Parcourir les cadres•")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/frame.svg").url)
     , 10
 );
 
 reg.addToList("wed.searchBar.actions", "maj", 105,
-    new FixedTextSearchAction(
-        "maj",
-        /[AEIUOY]+/g
-    ).setLabel("￼Parcours les voyelles majuscules non accentuées￼")
+    new FixedTextSearchAction("maj", /[AEIUOY]+/g, 1000).setLabel("￼Parcours les voyelles majuscules non accentuées￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/maj.svg").url)
     , 10
 );
 
 reg.addToList("wed.searchBar.actions", "number", 106,
-    new FixedTextSearchAction(
-        "number",
-        /\d+/g
-    ).setLabel("￼Parcours les chiffres￼")
+    new FixedTextSearchAction("number", /\d+/g, 1000).setLabel("￼Parcours les chiffres￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/number.svg").url)
     , 10
-);</sm:freeConfigWsp>
+);
+</sm:freeConfigWsp>
 		</sm:front>
 		<sm:freeBuild sc:refUri="/gen/od/freeOdTxt.doss"/>
 	</sm:free>
