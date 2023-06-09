@@ -92,9 +92,30 @@
 	<xsl:template match="xhtml:em|xhtml:i|span[@class='i']"><sc:inlineStyle role="emphase"><xsl:apply-templates/></sc:inlineStyle></xsl:template>
 	<xsl:template match="xhtml:sup"><sc:inlineStyle role="exposant"><xsl:apply-templates/></sc:inlineStyle></xsl:template>
 	<xsl:template match="xhtml:sub"><sc:inlineStyle role="inferieur"><xsl:apply-templates/></sc:inlineStyle></xsl:template>
+	<xsl:template match="xhtml:aside[@noteID]">
+		<xsl:variable name="nodeID" select="@noteID"/>
+		<xsl:choose>
+			<xsl:when test="//xhtml:a[@noteRefID=$nodeID]"/>
+			<xsl:otherwise><sc:inlineStyle role="error">[Balise:<xsl:value-of select="local-name()"/><xsl:apply-templates select="@*" mode="inlineError"/>. Référence à la note non trouvée]<error/><xsl:value-of select="normalize-space()"/></sc:inlineStyle></xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 	<xsl:template match="xhtml:a">
 		<xsl:choose>
-			<xsl:when test="self::xhtml:a[@class='apnb' or @epub:type='noteref']"><error/>TODO -> Note</xsl:when>
+			<xsl:when test="self::xhtml:a[@noteRefID]">
+			<xsl:variable name="noteRefID" select="@noteRefID"/>
+			<xsl:variable name="aside" select="//xhtml:aside[@noteID=$noteRefID]"/>
+			<xsl:choose>
+				<xsl:when test="$aside"><sc:emptyLeaf role="note">
+					<paon:note>
+						<sp:content>
+							<paon:text>
+								<xsl:apply-templates select="$aside/*"/>
+							</paon:text>
+						</sp:content>
+					</paon:note>
+				</sc:emptyLeaf></xsl:when>
+				<xsl:otherwise><sc:inlineStyle role="error">[Balise:<xsl:value-of select="local-name()"/><xsl:apply-templates select="@*" mode="inlineError"/>. Contenu de la note non trouvé]<error/><xsl:value-of select="normalize-space()"/></sc:inlineStyle></xsl:otherwise>
+			</xsl:choose></xsl:when>
 			<xsl:when test="starts-with(@href, 'http') or starts-with(@href, 'mailto')"><sc:inlineStyle role="url">
 				<paon:url>
 					<sp:url><xsl:value-of select="@href"/></sp:url>
@@ -104,13 +125,14 @@
 		</xsl:choose>
 	</xsl:template>
 	<xsl:template match="xhtml:cite"><sc:phrase role="cite"><xsl:apply-templates/></sc:phrase></xsl:template>
-	<xsl:template match="br"><xsl:text> </xsl:text></xsl:template>
-	<xsl:template match="span[@class='pc']|span[@class='lettrine']"><span class="smallcaps"><xsl:apply-templates select="*"/></span></xsl:template>
+	<xsl:template match="xhtml:br"><xsl:text> </xsl:text></xsl:template>
+	<xsl:template match="xhtml:span[@class='pc']|xhtml:span[@class='lettrine']"><span class="smallcaps"><xsl:apply-templates select="*"/></span></xsl:template>
+	<xsl:template match="xhtml:span[@lang]|xhtml:span[@xml:lang]"><sc:inlineStyle role="lang"><paon:langM><sp:lang><xsl:value-of select="@lang|@xml:lang"/></sp:lang></paon:langM><xsl:apply-templates/></sc:inlineStyle></xsl:template>
+	<xsl:template match="xhtml:blockquote"><sc:div role="citation"><xsl:apply-templates/></sc:div></xsl:template>
 
 	<!-- Balises ignorés dont le contenu est traité -->
 	<xsl:template match="span[@class='nchap']"><xsl:apply-templates/></xsl:template>
 	<xsl:template match="span[@class='chap']"><xsl:apply-templates/></xsl:template>
-
 
 	<!-- Recopie des balises inconnues en commentaire pour affiner la XSL -->
 	<xsl:template match="@*|node()">
@@ -141,6 +163,6 @@
 		</xsl:copy>
 	</xsl:template>
 
-	<xsl:template match="@class|@epub:type|@role|@aria-label|@href" mode="inlineError"><xsl:text> </xsl:text><xsl:value-of select="local-name()"/><xsl:text>="</xsl:text><xsl:value-of select="."/><xsl:text>"</xsl:text></xsl:template>
+	<xsl:template match="@*" mode="inlineError"><xsl:text> </xsl:text><xsl:value-of select="local-name()"/><xsl:text>="</xsl:text><xsl:value-of select="."/><xsl:text>"</xsl:text></xsl:template>
 
 </xsl:stylesheet>

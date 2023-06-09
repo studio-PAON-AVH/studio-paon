@@ -110,10 +110,11 @@
 
 	<xsl:template match="xhtml:ol" mode="toc">
 		<xsl:for-each select="descendant::xhtml:a">
-			<xsl:variable name="href" select="java:java.lang.String.new(returnFirst(substring-before(@href, '#'), @href))"/>
+			<xsl:variable name="href" select="concat(java:getVar($vDialog, 'toc_path'),java:java.lang.String.new(returnFirst(substring-before(@href, '#'), @href)))"/>
 			<xsl:if test="not(java:contains($files, $href))">
+				<xsl:value-of select="execute(java:setVar($vDialog, 'href', $href))"/>
 				<xsl:value-of select="execute(java:add($files, $href))"/>
-				<xsl:apply-templates select="document(concat('inDir:',java:getVar($vDialog, 'toc_path') ,$href))/xhtml:html/xhtml:body/*" mode="html"/>
+				<xsl:apply-templates select="document(concat('inDir:', $href))/xhtml:html/xhtml:body/*" mode="html"/>
 			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
@@ -140,6 +141,26 @@
 			</xsl:for-each>
 		</xsl:copy>
 	</xsl:template>
+
+		<xsl:template match="xhtml:a[@class='apnb' or @epub:type='noteref']" mode="html">
+  		<xsl:variable name="href" select="java:getVar($vDialog, 'href')"/>
+  		<xsl:variable name="noteRefID"><xsl:choose>
+  			<xsl:when test="contains(@href, '#')"><xsl:value-of select="concat(java:getVar($vDialog, 'toc_path'), @href)"/></xsl:when>
+  			<xsl:otherwise><xsl:value-of select="concat($href, '#', @href)"/></xsl:otherwise>
+  		</xsl:choose></xsl:variable>
+  		<xsl:copy>
+  			<xsl:attribute name="noteRefID"><xsl:value-of select="$noteRefID"/></xsl:attribute>
+  			<xsl:apply-templates select="@*|node()" mode="html"/>
+			</xsl:copy>
+    </xsl:template>
+
+  	<xsl:template match="xhtml:aside[@epub:type='footnote' or @epub:type='endnote' or @epub:type='note' or @epub:type='rearnote']" mode="html">
+  	<xsl:variable name="href" select="java:getVar($vDialog, 'href')"/>
+			<xsl:copy>
+  			<xsl:attribute name="noteID"><xsl:value-of select="concat($href, '#', @id)"/></xsl:attribute>
+  			<xsl:apply-templates select="@*|node()" mode="html"/>
+			</xsl:copy>
+  	</xsl:template>
 
 	<!-- Recopie des balises inconnues en commentaire pour affiner la XSL -->
 	<xsl:template match="@*|node()">
