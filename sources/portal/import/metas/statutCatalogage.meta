@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<smp:meta description="￼;Statut du catalogage par la médiatheque￼" name="￼;Statut de catalogage du titre￼" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="statutCatalogage"/>
+	<smp:structure>
+		<smp:enum>
+			<smp:option key="catalogue" name="￼;Catalogué￼"/>
+			<smp:option key="noncatalogue" name="￼;Non catalogué￼"/>
+			<smp:option key="horscatalogue" name="￼;Hors catalogue￼"/>
+		</smp:enum>
+	</smp:structure>
+	<smp:authoring/>
+</smp:meta>

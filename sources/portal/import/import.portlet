@@ -135,6 +135,18 @@ jobBuilder.addBaseJobDatas({stopAfterFailures: 50,});</smp:uiFactory>
 							<smp:mpField code="dateParution">
 								<smp:keyword/>
 							</smp:mpField>
+							<smp:mpField code="nbPagesBrailleAbrege">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="nbPagesBrailleIntegral">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="statutCatalogage">
+								<smp:keyword/>
+							</smp:mpField>
+							<smp:mpField code="idMediatheque">
+								<smp:keyword/>
+							</smp:mpField>
 						</smp:mpFields>
 					</smp:contentGroup>
 				</smp:recordsStructure>

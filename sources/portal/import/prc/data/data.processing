@@ -38,6 +38,10 @@
 				<smp:meta sc:refUri="/portal/import/metas/dtdDetail.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/dateEnd.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/dateParution.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/nbPagesBrailleAbrege.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/nbPagesBrailleIntegral.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/statutCatalogage.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/idMediatheque.meta"/>
 			</smp:metaList>
 		</smp:metas>
 	</smp:structure>
@@ -94,6 +98,10 @@
 						<smp:includeMeta sc:refUri="/portal/import/metas/title.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/typeOuvrage.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/uid.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/nbPagesBrailleAbrege.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/nbPagesBrailleIntegral.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/statutCatalogage.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/idMediatheque.meta"/>
 					</smp:metadatas>
 				</smp:indexFields>
 			</smp:record>
