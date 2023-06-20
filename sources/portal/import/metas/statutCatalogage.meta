@@ -3,10 +3,11 @@
 	<smp:identification code="statutCatalogage"/>
 	<smp:structure>
 		<smp:enum>
-			<smp:option key="catalogue" name="￼;Catalogué￼"/>
 			<smp:option key="noncatalogue" name="￼;Non catalogué￼"/>
 			<smp:option key="horscatalogue" name="￼;Hors catalogue￼"/>
+			<smp:option key="catalogue" name="￼;Catalogué￼"/>
 		</smp:enum>
+		<smp:defaultValue xml:space="preserve">noncatalogue</smp:defaultValue>
 	</smp:structure>
 	<smp:authoring/>
 </smp:meta>
