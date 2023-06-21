@@ -3,6 +3,7 @@
 	<smp:identification code="idMediatheque"/>
 	<smp:structure>
 		<smp:number/>
+		<smp:defaultValue xml:space="preserve">-1</smp:defaultValue>
 	</smp:structure>
 	<smp:authoring/>
 </smp:meta>

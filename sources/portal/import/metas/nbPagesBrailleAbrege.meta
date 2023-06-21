@@ -3,6 +3,7 @@
 	<smp:identification code="nbPagesBrailleAbrege"/>
 	<smp:structure>
 		<smp:number/>
+		<smp:defaultValue xml:space="preserve">0</smp:defaultValue>
 	</smp:structure>
 	<smp:authoring/>
 </smp:meta>
