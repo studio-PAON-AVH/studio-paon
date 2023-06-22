@@ -46,7 +46,7 @@
 						<smp:volatileUser account="admin" authMethod="" digestPwd="§§user.admin.password.digest§§" isSuperAdmin="true">
 							<smp:grantedLocalRole sc:refUri="/collab/roles/main/4_admin.role"/>
 						</smp:volatileUser>
-						<smp:volatileUser account="system" categ="system" digestPwd="§§user.system.password.digest§§" grantedRoles="main:system" isHidden="true"/>
+						<smp:volatileUser account="system" authMethod="" categ="system" digestPwd="§§user.system.password.digest§§" grantedRoles="main:system" isHidden="true"/>
 					</smp:odbUsers>
 				</smp:usersManager>
 				<smp:transforms>

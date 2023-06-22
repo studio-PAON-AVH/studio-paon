@@ -49,7 +49,7 @@
 						<smp:volatileUser account="writer" authMethod="" password="§§@.hashpwdSHA256?key=user.writer.password;§§">
 							<smp:grantedLocalRole sc:refUri="/collab/roles/main/2_author.role"/>
 						</smp:volatileUser>
-						<smp:volatileUser account="system" categ="system" digestPwd="§§user.system.password.digest§§" grantedRoles="main:system" isHidden="true"/>
+						<smp:volatileUser account="system" authMethod="" categ="system" digestPwd="§§user.system.password.digest§§" grantedRoles="main:system" isHidden="true"/>
 					</smp:odbUsers>
 				</smp:usersManager>
 				<smp:transforms>
