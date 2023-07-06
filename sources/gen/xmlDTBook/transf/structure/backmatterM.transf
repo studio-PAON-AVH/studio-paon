@@ -13,7 +13,7 @@
 							<sm:fieldValueEnum format="label"/>
 							<sm:WText value="￼; ￼"/>
 						</sm:forField>
-						<sm:forField codes="publishingYear ">
+						<sm:forField codes="publishingYear">
 							<sm:fieldValueString/>
 						</sm:forField>
 					</sm:xhtmlContentZone>
