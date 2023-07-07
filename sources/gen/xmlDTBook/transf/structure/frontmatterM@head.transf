@@ -40,7 +40,7 @@
 				<sm:WText value="dtb:producer"/>
 			</sm:xhtmlContentZone>
 			<sm:xhtmlContentZone key="content">
-				<sm:WText value="￼;Pôle d'adaptation des ouvrages numériques de l'association Valentin Haüy￼"/>
+				<sm:fieldValueString/>
 			</sm:xhtmlContentZone>
 		</sm:Widget>
 		<sm:forField codes="publisher">
