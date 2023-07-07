@@ -60,9 +60,7 @@
 			<sm:xhtmlContentZone key="content">
 				<sm:forField codes="publisher">
 					<sm:fieldValueString/>
-					<sm:WText value=". "/>
 				</sm:forField>
-				<sm:WText value="￼;Adapté par l'Association Valentin Haüy￼"/>
 			</sm:xhtmlContentZone>
 		</sm:Widget>
 		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
@@ -72,9 +70,7 @@
 			<sm:xhtmlContentZone key="content">
 				<sm:forField codes="publisher">
 					<sm:fieldValueString/>
-					<sm:WText value=". "/>
 				</sm:forField>
-				<sm:WText value="￼;Adapté par l'Association Valentin Haüy￼"/>
 			</sm:xhtmlContentZone>
 		</sm:Widget>
 	</sm:content>
