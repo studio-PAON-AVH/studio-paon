@@ -110,7 +110,7 @@ public class SvcElectre extends SvcBase implements ICidTaskFactory {
 		password = pPassword;
 	}
 
-	protected void getAuthorization() throws Exception {
+	protected void getAuthorization(String user, String password) throws Exception {
 		StringBuilder vReqBodSB = PoolBuffers.popStringBuilder();
 		vReqBodSB.append("grant_type=password&username=").append(user);
 		vReqBodSB.append("&password=").append(password);
@@ -141,11 +141,11 @@ public class SvcElectre extends SvcBase implements ICidTaskFactory {
 		tokenExpirationDate = System.currentTimeMillis() + ((Integer) response.get("expires_in")).longValue() * 1000;
 	}
 
-	protected String getResume(String isbn) {
+	protected String getNotices(String ISBN){
 		try {
-			if (token == null || System.currentTimeMillis() + 60 * 1000 > tokenExpirationDate) getAuthorization();
+			if (token == null || System.currentTimeMillis() + 60 * 1000 > tokenExpirationDate) getAuthorization(user, password);
 			StringBuilder urlSB = PoolBuffers.popStringBuilder();
-			urlSB.append(noticeUrl).append(isbn);
+			urlSB.append(noticeUrl).append(ISBN);
 
 			HttpURLConnection vCon = (HttpURLConnection) new URL(PoolBuffers.getStringAndFreeStringBuilder(urlSB)).openConnection();
 			vCon.setUseCaches(false);
@@ -164,9 +164,20 @@ public class SvcElectre extends SvcBase implements ICidTaskFactory {
 				token = null;
 				return null;
 			}
+			return StreamUtils.buildString(new InputStreamReader(vCon.getInputStream()));
 
+		} catch (Exception e) {
+			LogMgr.publishException(e);
+			return null;
+		}
+	}
+
+	protected String getResume(String isbn) {
+		try {
+			String noticesjson = getNotices(isbn);
+			if(noticesjson == null) return null;
 			JsonParser parser = new JsonParser();
-			Map<String, Object> response = (Map<String, Object>) parser.parseValue(StreamUtils.buildString(new InputStreamReader(vCon.getInputStream())));
+			Map<String, Object> response = (Map<String, Object>) parser.parseValue(noticesjson);
 			List<Map<String, Object>> notices = (List<Map<String, Object>>) response.get("notices");
 			if (notices.size() > 0) return transformHtml2Xml((String) notices.get(0).get("quatriemeDeCouverture"));
 			else return null;
@@ -174,8 +185,9 @@ public class SvcElectre extends SvcBase implements ICidTaskFactory {
 			LogMgr.publishException(e);
 			return null;
 		}
-
 	}
+
+
 
 	protected String transformHtml2Xml(String xml) {
 		try {
