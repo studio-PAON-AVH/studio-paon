@@ -99,7 +99,11 @@ public class TfmAcapelaTTS extends TfmBase {
 		return resp.getInputStream();
 	}
 
+
 	protected void refreshToken() throws Exception {
+		if(token != null){
+			sendRequest("/api/logout/", null, null);
+		}
 		token = null;
 		Map<String, String> data = new HashMap<String, String>(2);
 		data.put("email", user);
@@ -176,9 +180,23 @@ public class TfmAcapelaTTS extends TfmBase {
 
 		}
 
+
 		if (vRespCode >= 300 && vRespCode != 403 && vRespCode != 401) {
 			String responseStr = StreamUtils.buildString(new InputStreamReader(response));
-			throw new ScException("Unable to reach '" + vUrlStr + "' : " + vRespCode + "\n" + responseStr);
+			if(vRespCode == 504){
+				// Timeout : essai de déco/reco/refresh token (demander par acapela)
+				this.refreshToken();
+				throw new ScException(
+						"Le serveur Acapela a renvoyer une erreur 'timed-out', le token a été refresh sur recommandation d'acapela, veuillez relancer l'export." +
+								"Request was '" + vUrlStr + "' and response was: " + vRespCode + "\n"
+								+ responseStr + "\n"
+								+ "Request data was : " + JsonSerializer.stringify(data));
+			}
+			throw new ScException(
+					"Unable to reach '" + vUrlStr + "' : " + vRespCode + "\n"
+					+ responseStr + "\n"
+					+ "Request data was : " + JsonSerializer.stringify(data));
+
 		}
 
 		//Handle Response

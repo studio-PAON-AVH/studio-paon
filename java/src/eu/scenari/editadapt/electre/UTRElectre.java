@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.Writer;
 
+/**
+ * Récupération des notices electres pour une resource possédant une méta isbn
+ */
 public class UTRElectre implements IUrlTreeRenderer {
     @Override
     public void renderUrl(UrlTreeRendererContext pContext) throws Exception {
-
         try{
-            // recuperer la meta isbn
+            // Si la requete est un
+            // recuperer la meta isbn si on est sur une ressource avec une meta ISBN
             IPersistentMetas pMetas = pContext.getPersistMetas();
             String ISBN = (String) pMetas.get("isbn");
             if(ISBN == null){
@@ -24,7 +27,6 @@ public class UTRElectre implements IUrlTreeRenderer {
             {
                 // Connection au service electre
                 SvcElectre electre = (SvcElectre) pContext.getUniverse().getService("electre");
-
                 String jsonNotices = electre.getNotices(ISBN);
                 if(jsonNotices == null){
                     pContext.response.sendError(404);
