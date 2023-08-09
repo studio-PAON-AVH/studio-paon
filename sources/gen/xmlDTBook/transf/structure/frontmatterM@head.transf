@@ -18,7 +18,7 @@
 				<sm:forField codes="typeOuvrage">
 					<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
 						<sm:xhtmlContentZone key="name">
-							<sm:WText value="dc:coverage"/>
+							<sm:WText value="dc:Coverage"/>
 						</sm:xhtmlContentZone>
 						<sm:xhtmlContentZone key="content">
 							<sm:fieldValueString/>
@@ -26,7 +26,7 @@
 					</sm:Widget>
 					<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
 						<sm:xhtmlContentZone key="name">
-							<sm:WText value="dc:subject"/>
+							<sm:WText value="dc:Subject"/>
 						</sm:xhtmlContentZone>
 						<sm:xhtmlContentZone key="content">
 							<sm:fieldValueString/>
