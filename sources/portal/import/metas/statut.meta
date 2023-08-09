@@ -1,8 +1,17 @@
 <?xml version="1.0"?>
-<smp:meta xmlns:smp="scenari.eu:builder:portal:1.0" name="￼;Statut￼">
+<smp:meta description="￼;Statut du titre dans la chaine de production￼" name="￼;Statut de production￼" xmlns:smp="scenari.eu:builder:portal:1.0">
 	<smp:identification code="statut"/>
 	<smp:structure>
-		<smp:string/>
+		<smp:enum>
+			<smp:option key="PLATON_PENDING" name="￼;A demander à Platon￼"/>
+			<smp:option key="PLATON_AWAITING" name="￼;En attente de Platon￼"/>
+			<smp:option key="TO_CONVERT" name="￼;A convertir￼"/>
+			<smp:option key="PROCESSING" name="￼;En cours￼"/>
+			<smp:option key="EXPORTED" name="￼;Exporté￼"/>
+			<smp:option key="DONE" name="￼;OK Médiathèque￼"/>
+			<smp:option key="STAND_BY" name="￼;En attente￼"/>
+		</smp:enum>
+		<smp:defaultValue xml:space="preserve">PLATON_PENDING</smp:defaultValue>
 	</smp:structure>
 	<smp:authoring/>
 </smp:meta>
