@@ -8,6 +8,9 @@
 		<sm:field code="typeOuvrage" family="property" name="￼;Type d'ouvrage￼" occurrence="zeroOrMore">
 			<sm:string/>
 		</sm:field>
+		<sm:field code="transcriptor" family="property" name="￼;Organisme de transcription￼" occurrence="zeroOrOne">
+			<sm:string/>
+		</sm:field>
 		<sm:field code="publisher" family="property" name="￼;Éditeur￼" occurrence="one">
 			<sm:string/>
 		</sm:field>
@@ -17,7 +20,7 @@
 		<sm:field code="legalsException" family="property" name="￼;Mention exception au droit d'auteur￼" occurrence="one">
 			<sm:string/>
 		</sm:field>
-		<sm:field code="legalsAUD" family="property" name="￼;Mention légale Audio￼" occurrence="one">
+		<sm:field code="legalsAUD" family="property" name="￼;Mention légale Audio￼" occurrence="zeroOrOne">
 			<sm:string/>
 		</sm:field>
 	</sm:structure>

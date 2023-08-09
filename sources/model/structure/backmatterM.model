@@ -45,6 +45,9 @@
 		<sm:field code="others" family="property" name="￼;Autres mentions￼" occurrence="zeroOrOne">
 			<sm:otherType sc:refUri="/model/bases/text.model"/>
 		</sm:field>
+		<sm:field code="InfosTranscription" family="property" name="￼;Informations sur l'organisme de transcription￼" occurrence="zeroOrOne">
+			<sm:otherType sc:refUri="/model/bases/text.model"/>
+		</sm:field>
 	</sm:structure>
 	<sm:storage>
 		<sm:fullTitleBuilder>
