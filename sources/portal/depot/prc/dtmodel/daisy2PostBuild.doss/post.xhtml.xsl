@@ -13,6 +13,9 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<!-- Supression des alt audio du résultat -->
+	<xsl:template match="xhtml:cmd|@cmd"/>
+
 	<!-- reformatage du contenu pour validité VoiceDream #13101 -->
 	<!-- Supp des divs -->
 	<xsl:template match="xhtml:div[$clean4VoiceDream = 'true']">

@@ -3,48 +3,12 @@
 	<sm:identification code="alttext" itemExtension="xml" targetNamespace="editadapt.fr:paon" targetPrefix="paon"/>
 	<sm:structure>
 		<sm:group code="altAUDIO" name="￼;Alternative Audio￼" occurrence="zeroOrOne">
-			<sm:field code="phonem" name="￼;Phoneme￼" occurrence="oneOrMore">
-				<sm:enum>
-					<sm:option key="_" name="￼;_￼"/>
-					<sm:option key="i" name="￼;i￼"/>
-					<sm:option key="e" name="￼;e￼"/>
-					<sm:option key="E" name="￼;E￼"/>
-					<sm:option key="a" name="￼;a￼"/>
-					<sm:option key="O" name="￼;O￼"/>
-					<sm:option key="o" name="￼;o￼"/>
-					<sm:option key="u" name="￼;u￼"/>
-					<sm:option key="y" name="￼;y￼"/>
-					<sm:option key="h" name="￼;h￼"/>
-					<sm:option key="2" name="￼;2￼"/>
-					<sm:option key="9" name="￼;9￼"/>
-					<sm:option key="@" name="￼;@￼"/>
-					<sm:option key="e~" name="￼;e~￼"/>
-					<sm:option key="a~" name="￼;a~￼"/>
-					<sm:option key="o~ " name="￼;o~￼"/>
-					<sm:option key="9~" name="￼;9~￼"/>
-					<sm:option key="j" name="￼;j￼"/>
-					<sm:option key="w" name="￼;w￼"/>
-					<sm:option key="H" name="￼;H￼"/>
-					<sm:option key="p" name="￼;p￼"/>
-					<sm:option key="t" name="￼;t￼"/>
-					<sm:option key="k" name="￼;k￼"/>
-					<sm:option key="b" name="￼;b￼"/>
-					<sm:option key="d" name="￼;d￼"/>
-					<sm:option key="g" name="￼;g￼"/>
-					<sm:option key="f" name="￼;f￼"/>
-					<sm:option key="s" name="￼;s￼"/>
-					<sm:option key="S" name="￼;S￼"/>
-					<sm:option key="v" name="￼;v￼"/>
-					<sm:option key="z" name="￼;z￼"/>
-					<sm:option key="Z" name="￼;Z￼"/>
-					<sm:option key="l" name="￼;l￼"/>
-					<sm:option key="R" name="￼;R￼"/>
-					<sm:option key="m" name="￼;m￼"/>
-					<sm:option key="n" name="￼;n￼"/>
-					<sm:option key="N" name="￼;N￼"/>
-					<sm:option key="%1" name="￼;%1￼"/>
-					<sm:option key="%2" name="￼;%2￼"/>
-				</sm:enum>
+			<!--<sexc:exclude xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sexc="scenari.eu:exclude:1.0"><sm:field occurrence="oneOrMore" name="￼;Phoneme￼" code="phonem"><sm:enum><sm:option name="￼;_￼" key="_"/><sm:option name="￼;i￼" key="i"/><sm:option name="￼;e￼" key="e"/><sm:option name="￼;E￼" key="E"/><sm:option name="￼;a￼" key="a"/><sm:option name="￼;O￼" key="O"/><sm:option name="￼;o￼" key="o"/><sm:option name="￼;u￼" key="u"/><sm:option name="￼;y￼" key="y"/><sm:option name="￼;h￼" key="h"/><sm:option name="￼;2￼" key="2"/><sm:option name="￼;9￼" key="9"/><sm:option name="￼;@￼" key="@"/><sm:option name="￼;e~￼" key="e~"/><sm:option name="￼;a~￼" key="a~"/><sm:option name="￼;o~￼" key="o~ "/><sm:option name="￼;9~￼" key="9~"/><sm:option name="￼;j￼" key="j"/><sm:option name="￼;w￼" key="w"/><sm:option name="￼;H￼" key="H"/><sm:option name="￼;p￼" key="p"/><sm:option name="￼;t￼" key="t"/><sm:option name="￼;k￼" key="k"/><sm:option name="￼;b￼" key="b"/><sm:option name="￼;d￼" key="d"/><sm:option name="￼;g￼" key="g"/><sm:option name="￼;f￼" key="f"/><sm:option name="￼;s￼" key="s"/><sm:option name="￼;S￼" key="S"/><sm:option name="￼;v￼" key="v"/><sm:option name="￼;z￼" key="z"/><sm:option name="￼;Z￼" key="Z"/><sm:option name="￼;l￼" key="l"/><sm:option name="￼;R￼" key="R"/><sm:option name="￼;m￼" key="m"/><sm:option name="￼;n￼" key="n"/><sm:option name="￼;N￼" key="N"/><sm:option name="￼;%1￼" key="%1"/><sm:option name="￼;%2￼" key="%2"/></sm:enum></sm:field></sexc:exclude>-->
+			<sm:field code="phonemes" family="property" name="￼;Phonèmes￼" occurrence="zeroOrOne">
+				<sm:string/>
+			</sm:field>
+			<sm:field code="texte" family="property" name="￼;Texte￼" occurrence="zeroOrOne">
+				<sm:string/>
 			</sm:field>
 		</sm:group>
 		<sm:field code="altBRL" family="property" name="￼;Alternative Braille￼" occurrence="zeroOrOne">

@@ -72,8 +72,6 @@
 		</xsl:copy>
 	</xsl:template>
 
-	<xsl:template match="xhtml:cmd|@cmd"/>
-
 	<xsl:template match="@*|node()">
 		<xsl:copy>
 			<xsl:apply-templates select="@*|node()"/>

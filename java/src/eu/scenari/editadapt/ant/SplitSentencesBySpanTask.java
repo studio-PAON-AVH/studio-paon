@@ -174,6 +174,7 @@ public class SplitSentencesBySpanTask extends Task {
 
 		@Override
 		public void characters(char[] ch, int start, int length) throws SAXException {
+			String content = new String(ch, start, length);
 			if (inFlow) {
 				for (int i = start; i < start + length; i++) {
 					if (sentence == null) {
@@ -212,7 +213,6 @@ public class SplitSentencesBySpanTask extends Task {
 						fuzzyMode = false;
 					} else if (!inSentence) {
 						// Difference entre le début de la phrase de l'audio et le texte du html
-						String content = new String(ch, start, length);
 						// Test des correspondances spéciales pour le texte converti en commande par acapela
 						if (content.trim().matches("\\*(\\s*\\*(\\s*\\*)?)?") &&
 								Objects.equals(sentence, "\\break\\")
@@ -326,6 +326,9 @@ public class SplitSentencesBySpanTask extends Task {
 						&& elementAttributes.get("class").equals("altaudio")
 				) {
 					inAltAudio = false;
+					if(elementAttributes.get("cmd") != null){
+						sentenceOffset += elementAttributes.get("cmd").length();
+					}
 				}
 			}
 			if (!elementAlreadyClosed) {
