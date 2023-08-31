@@ -90,13 +90,13 @@
 								<xsl:value-of select="@content"/>
 							</sp:secondaryIsbn>
 						</xsl:for-each>
-						<xsl:if test="dtb:head/dtb:meta[@name='dtb:rights' or @name='dc:rights' or @name='dc:Rights' or name='dc:description']">
+						<xsl:if test="dtb:head/dtb:meta[@name='dtb:rights' or @name='dc:rights' or @name='dc:Rights' or name='dc:description' or name='dc:Description']">
 							<sp:others>
 								<paon:text>
 									<xsl:for-each select="dtb:head/dtb:meta[@name='dtb:rights' or @name='dc:rights' or @name='dc:Rights']">
 										<sc:para xml:space="preserve"><xsl:value-of select="@content"/></sc:para>
 									</xsl:for-each>
-									<xsl:for-each select="dtb:head/dtb:meta[@name='dc:description']">
+									<xsl:for-each select="dtb:head/dtb:meta[@name='dc:description' or @name='dc:Description']">
 										<sc:para xml:space="preserve"><xsl:value-of select="@content"/></sc:para>
 									</xsl:for-each>
 								</paon:text>
