@@ -10,6 +10,8 @@
 			<smp:option key="EXPORTED" name="￼;Exporté￼"/>
 			<smp:option key="DONE" name="￼;OK Médiathèque￼"/>
 			<smp:option key="STAND_BY" name="￼;En attente￼"/>
+			<smp:option key="ARCHIVED" name="￼;Archivé￼"/>
+			<smp:option key="REOPENED" name="￼;Réouvert￼"/>
 		</smp:enum>
 		<smp:defaultValue xml:space="preserve">PLATON_PENDING</smp:defaultValue>
 	</smp:structure>
