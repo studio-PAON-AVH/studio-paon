@@ -42,6 +42,7 @@
 				<smp:meta sc:refUri="/portal/import/metas/nbPagesBrailleIntegral.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/statutCatalogage.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/idMediatheque.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/timestampCreation.meta"/>
 			</smp:metaList>
 		</smp:metas>
 	</smp:structure>
@@ -102,6 +103,7 @@
 						<smp:includeMeta sc:refUri="/portal/import/metas/nbPagesBrailleIntegral.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/statutCatalogage.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/idMediatheque.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/timestampCreation.meta"/>
 					</smp:metadatas>
 				</smp:indexFields>
 			</smp:record>
