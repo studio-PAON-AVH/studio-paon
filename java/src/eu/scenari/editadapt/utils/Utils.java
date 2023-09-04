@@ -19,6 +19,12 @@ public class Utils {
 
 	static protected final Pattern comma = Pattern.compile("\\p{Z},");
 
+	static protected final Pattern specialDashes = Pattern.compile("[‑]");
+
+	static protected final Pattern specialSimpleSpaces = Pattern.compile("[          \\u200B]+");
+
+	static protected final Pattern specialNbsp = Pattern.compile("[  ]+");
+
 	static protected final Pattern quotation = Pattern.compile("'\\p{Z}([«\"])");
 
 	static protected final Pattern punct = Pattern.compile("(?<=[!?:;])\\p{Z}+([!;:?])");
@@ -50,6 +56,9 @@ public class Utils {
 	static protected SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
 
 	public static String normalizeString(String str, boolean toUpperCase) {
+		str = specialSimpleSpaces.matcher(str).replaceAll(" ");
+		str = specialNbsp.matcher(str).replaceAll(" ");
+		str = specialDashes.matcher(str).replaceAll("-");
 		str = doubleSpace.matcher(str).replaceAll("$1");
 		str = comma.matcher(str).replaceAll(",");
 		str = quotation.matcher(str).replaceAll("'$1");

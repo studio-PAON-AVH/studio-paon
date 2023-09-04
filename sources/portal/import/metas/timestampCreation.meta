@@ -5,6 +5,7 @@
 	<smp:identification code="timestampCreation"/>
 	<smp:structure>
 		<smp:number/>
+		<smp:defaultValue xml:space="preserve">0</smp:defaultValue>
 	</smp:structure>
 	<smp:authoring>
 		<smp:formEditor>
