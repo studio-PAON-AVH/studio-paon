@@ -710,7 +710,12 @@
     <xsl:template match="let" mode="lettrine">
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="let"/>
+
+    <xsl:template match="let">
+        <xsl:if test="parent::p">
+            <xsl:apply-templates/>
+        </xsl:if>
+    </xsl:template>
 
     <!-- Traitement lettre -->
     <xsl:template match="lettre">
