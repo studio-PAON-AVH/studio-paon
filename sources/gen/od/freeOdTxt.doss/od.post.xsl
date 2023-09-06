@@ -33,6 +33,13 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<!-- Supprimer les styles sur les spans contenant les appels de notes -->
+	<xsl:template match="text:span[@text:style-name='txtExposant' and descendant::text:note]">
+		<xsl:copy>
+			<xsl:apply-templates/>
+		</xsl:copy>
+	</xsl:template>
+
 	<xsl:template match="text:note">
 		<xsl:variable name="prevPara" select="preceding-sibling::text()[1]"/>
 		<xsl:variable name="prevLastChar" select="substring($prevPara, string-length($prevPara))"/>
@@ -40,9 +47,7 @@
 		<xsl:if test="not($prevLastChar = ' ' or $prevLastChar = ' ' or $prevLastChar = '')"><xsl:text> </xsl:text></xsl:if>
 		<xsl:choose>
 			<xsl:when test="$publishNotesEnd">
-				<xsl:text>(Note </xsl:text>
-				<xsl:value-of select="text:note-citation/text()"/>
-				<xsl:text>)</xsl:text>
+				<xsl:text>[[*q~+*]]</xsl:text><xsl:value-of select="text:note-citation/text()"/><xsl:text> </xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:text>[[*ind5*]][[*tab7*]]Note </xsl:text>
