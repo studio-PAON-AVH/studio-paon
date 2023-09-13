@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<smp:meta name="￼;Identifiant Médiathèque￼" xmlns:smp="scenari.eu:builder:portal:1.0">
-	<smp:identification code="idMediatheque"/>
-	<smp:structure>
-		<smp:number/>
-		<smp:defaultValue xml:space="preserve">-1</smp:defaultValue>
-	</smp:structure>
-	<smp:authoring/>
-</smp:meta>
