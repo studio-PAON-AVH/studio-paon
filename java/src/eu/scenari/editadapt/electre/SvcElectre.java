@@ -36,7 +36,7 @@ public class SvcElectre extends SvcBase implements ICidTaskFactory {
 
 	protected Boolean enable;
 	protected String tokenUrl;
-	protected String noticeUrl;
+	protected String noticesUrl;
 	protected String user;
 	protected String password;
 	protected String token;
@@ -86,12 +86,12 @@ public class SvcElectre extends SvcBase implements ICidTaskFactory {
 		tokenUrl = pTokenUrl;
 	}
 
-	public String getNoticeUrl() {
-		return noticeUrl;
+	public String getNoticesUrl() {
+		return noticesUrl;
 	}
 
-	public void setNoticeUrl(String pNoticeUrl) {
-		noticeUrl = pNoticeUrl;
+	public void setNoticesUrl(String pNoticesUrl) {
+		noticesUrl = pNoticesUrl;
 	}
 
 	public String getUser() {
@@ -142,10 +142,17 @@ public class SvcElectre extends SvcBase implements ICidTaskFactory {
 	}
 
 	protected String getNotices(String ISBN){
+		return getNotices(new String[]{ISBN});
+	}
+
+	protected String getNotices(String[] ISBNs){
 		try {
 			if (token == null || System.currentTimeMillis() + 60 * 1000 > tokenExpirationDate) getAuthorization(user, password);
 			StringBuilder urlSB = PoolBuffers.popStringBuilder();
-			urlSB.append(noticeUrl).append(ISBN);
+			for(int i = 0; i < ISBNs.length; ++i){
+				ISBNs[i] = "ean=" + ISBNs[i];
+			}
+			urlSB.append(noticesUrl).append(String.join("&",ISBNs));
 
 			HttpURLConnection vCon = (HttpURLConnection) new URL(PoolBuffers.getStringAndFreeStringBuilder(urlSB)).openConnection();
 			vCon.setUseCaches(false);

@@ -81,7 +81,6 @@
 						<smp:includeMeta sc:refUri="/portal/import/metas/dateEnd.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/dateParution.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/dtdDetail.meta"/>
-						<smp:includeMeta sc:refUri="/portal/import/metas/dureeAudio.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/fileName.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/illustrations.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/isbn.meta"/>
