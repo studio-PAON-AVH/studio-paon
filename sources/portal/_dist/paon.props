@@ -78,7 +78,7 @@ Il doit être exprimé en clair (pas de hash)</smp:description>
 	<smp:property group="electre" key="electre.token.url" sortKey="210" value="https://login.electre-ng.com/auth/realms/electre/protocol/openid-connect/token">
 		<smp:description xml:space="preserve">URL de fourniture du jeton d'accès à l'API Electre.</smp:description>
 	</smp:property>
-	<smp:property group="electre" key="electre.notice.url" sortKey="220" value="https://api.electre-ng.com/notices/ean/">
+	<smp:property group="electre" key="electre.notices.url" sortKey="220" value="https://api.electre-ng.com/notices/eans?">
 		<smp:description xml:space="preserve">URL d'accès aux notices de l'API Electre.</smp:description>
 	</smp:property>
 	<smp:property group="electre" key="electre.user" sortKey="230">
