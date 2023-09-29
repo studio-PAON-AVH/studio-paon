@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<smp:meta xmlns:smp="scenari.eu:builder:portal:1.0" name="￼;Commentaire￼">
+<smp:meta name="￼;Commentaire￼" xmlns:smp="scenari.eu:builder:portal:1.0">
 	<smp:identification code="comment"/>
 	<smp:structure>
 		<smp:string/>

@@ -19,7 +19,7 @@
 				<smp:meta sc:refUri="/portal/import/metas/title.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/author.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/publisher.meta"/>
-				<smp:meta sc:refUri="/portal/import/metas/comments.meta"/>
+				<smp:meta sc:refUri="/portal/import/metas/comment.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/pages.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/sourceFormat.meta"/>
 				<smp:meta sc:refUri="/portal/import/metas/collection.meta"/>
@@ -77,7 +77,7 @@
 						<smp:includeMeta sc:refUri="/portal/import/metas/authorBrl.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/authorPivot.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/collection.meta"/>
-						<smp:includeMeta sc:refUri="/portal/import/metas/comments.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/comment.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/dateEnd.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/dateParution.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/dtdDetail.meta"/>
