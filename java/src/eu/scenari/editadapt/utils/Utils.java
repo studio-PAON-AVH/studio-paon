@@ -19,7 +19,9 @@ public class Utils {
 
 	static protected final Pattern comma = Pattern.compile("\\p{Z},");
 
-	static protected final Pattern specialDashes = Pattern.compile("[‑]");
+	static protected final Pattern specialDashes = Pattern.compile("[‑]+");
+
+	static protected final Pattern toRemove = Pattern.compile("[\u00AD]+");
 
 	static protected final Pattern specialSimpleSpaces = Pattern.compile("[          \\u200B]+");
 
@@ -59,6 +61,7 @@ public class Utils {
 		str = specialSimpleSpaces.matcher(str).replaceAll(" ");
 		str = specialNbsp.matcher(str).replaceAll(" ");
 		str = specialDashes.matcher(str).replaceAll("-");
+		str = toRemove.matcher(str).replaceAll("");
 		str = doubleSpace.matcher(str).replaceAll("$1");
 		str = comma.matcher(str).replaceAll(",");
 		str = quotation.matcher(str).replaceAll("'$1");
