@@ -96,6 +96,12 @@ reg.addToList("wed.searchBar.actions", "number", 106,
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/number.svg").url)
     , 10
 );
+
+reg.addToList("wed.searchBar.actions", "alternative", 106,
+    new FixedCssSelectorSearchAction("alternative", "phrase[role='alternative']", "￼Alternative￼", 1000).setLabel("￼Parcourir les alternatives￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/altSearch.svg").url)
+    , 10
+);
 </sm:freeConfigWsp>
 		</sm:front>
 		<sm:freeBuild sc:refUri="/gen/od/freeOdTxt.doss"/>
