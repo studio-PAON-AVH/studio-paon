@@ -1014,18 +1014,31 @@
         </p>
     </xsl:template>
 
+    <!-- <!ELEMENT dialogue (((interloc?, (p | question | reponse | stroplg | bl | sep | list | cita | fig | tableau | enc)+))+, fin*)>  -->
+    <xsl:template match="dialogue">
+        <xsl:apply-templates />
+    </xsl:template>
+    <!-- <!ELEMENT question (p)*> -->
+    <xsl:template match="question">
+        <xsl:apply-templates />
+    </xsl:template>
+    <!-- <!ELEMENT reponse (p)*> -->
+    <xsl:template match="reponse">
+        <xsl:apply-templates />
+    </xsl:template>
+
     <!-- ******************************************** -->
     <!-- traitement des notes -->
     <xsl:template match="defnotes">
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="apnb">
+    <xsl:template match="apnb|apnb2|apnb3">
         <!--  appel de note -->
         <noteref class="footnote" idref="#{@id}">
             <xsl:value-of select="substring-after(@id,'ntb-')"/>
         </noteref>
     </xsl:template>
-    <xsl:template match="ntb">
+    <xsl:template match="ntb|ntb2|ntb3">
         <!--  note -->
         <note class="endnote" id="{@id}">
             <xsl:apply-templates/>
@@ -1059,7 +1072,7 @@
 
     <!-- Traitement des index -->
     <!-- On ignore les index-->
-    <xsl:template match="indx">
+    <xsl:template match="indx|indx2|indx3|indx4|indx5|indx6|indx7|indx8">
         <xsl:apply-templates/>
     </xsl:template>
 
