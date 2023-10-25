@@ -59,6 +59,8 @@ public class SplitSentencesBySpanTask extends Task {
 
 	@Override
 	public void execute() throws BuildException {
+		// Pour debugging
+		// TraceMgr.enableTrace(SplitSentencesBySpanTask.class.getName() + ".sTrace", true);
 		try (FileWriter writer = new FileWriter(outFile);
 				 FileReader reader = new FileReader(inFile)) {
 			if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] START: transform %s to %s", inFile.getAbsolutePath(), outFile.toString());
@@ -150,9 +152,11 @@ public class SplitSentencesBySpanTask extends Task {
 				xml.startElement(uri, localName, qName, attributes);
 				//Mémorisation de l'uri pour fermer les spans
 				this.uri = uri;
+				stackClosed = true;
 			} else {
 				if (inFlow) {
 					if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] 'inFlow' is ON - element %s added to stack", qName);
+
 					Map<String, Object> element = new HashMap<>(4);
 					element.put("uri", uri);
 					element.put("localName", localName);
@@ -162,6 +166,7 @@ public class SplitSentencesBySpanTask extends Task {
 						elementAtts.put(attributes.getQName(i), attributes.getValue(i));
 					}
 					element.put("attributes", elementAtts);
+
 					elmntStack.add(element);
 					if (qName.equals("span") && attributes.getValue("class") != null && attributes.getValue("class").equals("altaudio")) {
 						if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] span@class='altaudio' - enter inAltAudio mode");
@@ -169,103 +174,173 @@ public class SplitSentencesBySpanTask extends Task {
 					}
 				}
 				xml.startElement(uri, localName, qName, attributes);
+
 			}
 		}
 
 		@Override
 		public void characters(char[] ch, int start, int length) throws SAXException {
-			String content = new String(ch, start, length);
-			if (inFlow) {
-				for (int i = start; i < start + length; i++) {
-					if (sentence == null) {
-						LogMgr.publishMessage(new LogMsg("[" + this.getClass().getName() + "] Xml txt `%s` at char %d [%c]. No more acapela string to process (sentence=null)", new String(ch, start, length), i, ch[i]));
-						throw LogMgr.newException("[" + this.getClass().getName() + "] Xml txt (%s) at char %d [%c]. No more acapela string to process (sentence=null)", new String(ch, start, length), i, ch[i]);
-					}
-					if (inAltAudio) {
-						if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] characters inFlow and in altAudioMode - copy");
-						xml.characters(ch, i, 1);
-					} else if (sentence.charAt(sentenceOffset) == ch[i]) {
-						if (!inSentence) {
-							if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] character found - not inSentence - start new span@class='sentence'");
-							inSentence = true;
-							//ouverture du span
-							Attributes2Impl attr = new Attributes2Impl();
-							attr.addAttribute(null, null, "class", null, "sentence");
-							xml.startElement(uri, "span", "span", attr);
+			try{
+				String content = new String(ch, start, length);
+				if (inFlow) {
+					for (int i = start; i < start + length; i++) {
+						if (sentence == null) {
+							LogMgr.publishMessage(new LogMsg("[" + this.getClass().getName() + "] Xml txt `%s` at char %d [%c]. No more acapela string to process (sentence=null)", new String(ch, start, length), i, ch[i]));
+							throw LogMgr.newException("[" + this.getClass().getName() + "] Xml txt (%s) at char %d [%c]. No more acapela string to process (sentence=null)", new String(ch, start, length), i, ch[i]);
+						}
+						if (inAltAudio) {
+							if (!inSentence) { // open the sentence if not already opened
+								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] character found - not inSentence - start new span@class='sentence'");
+								inSentence = true;
+								// fermeture des éléments précédents la phrase
+								if (elmntStack.size() > 0) {
+									if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] stack is not empty - close stack");
+									for (Iterator<Map<String, Object>> it = elmntStack.descendingIterator(); it.hasNext(); ) {
+										Map<String, Object> element = it.next();
 
-							//ouverture de la stack
-							if (stackClosed) {
-								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] stack previously closed, open all elements of the stack");
-								for (Map<String, Object> element : elmntStack) {
-									if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] open in stack %s", element.get("qName"));
-									AttributesImpl attributes = new AttributesImpl();
-									Map<String, String> elementAtts = (Map<String, String>) element.get("attributes");
-									for (String key : elementAtts.keySet()) {
-										attributes.addAttribute(null, "", key, "string", elementAtts.get(key));
+										if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] close in stack - %s", element.get("qName"));
+										xml.endElement((String) element.get("uri"), (String) element.get("localName"), (String) element.get("qName"));
+										//System.out.println("End stack " + (String) element.get("qName"));
+										if (!stackClosed) stackClosed = true;
 									}
-									xml.startElement((String) element.get("uri"), (String) element.get("localName"), (String) element.get("qName"), attributes);
 								}
-								stackClosed = false;
+								//ouverture du span de phrase
+								Attributes2Impl attr = new Attributes2Impl();
+								attr.addAttribute(null, null, "class", null, "sentence");
+								xml.startElement(uri, "span", "span", attr);
+
+								//ré ouverture des élément de la stack dans le span de phrase
+								if (stackClosed) {
+									if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] stack previously closed, open all elements of the stack");
+									for (Map<String, Object> element : elmntStack) {
+										if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] open in stack %s", element.get("qName"));
+										AttributesImpl attributes = new AttributesImpl();
+										Map<String, String> elementAtts = (Map<String, String>) element.get("attributes");
+										for (String key : elementAtts.keySet()) {
+											attributes.addAttribute(null, "", key, "string", elementAtts.get(key));
+										}
+										if (((String) element.get("localName")).equals("span") && attributes.getValue("class") != null && attributes.getValue("class").equals("altaudio")) {
+											if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] span@class='altaudio' - enter inAltAudio mode");
+											this.inAltAudio = true;
+										}
+										xml.startElement((String) element.get("uri"), (String) element.get("localName"), (String) element.get("qName"), attributes);
+									}
+									stackClosed = false;
+								}
 							}
-						}
-						xml.characters(ch, i, 1);
-						sentenceOffset++;
-						fuzzyMode = false;
-					} else if (!inSentence) {
-						// Difference entre le début de la phrase de l'audio et le texte du html
-						// Test des correspondances spéciales pour le texte converti en commande par acapela
-						if (content.trim().matches("\\*(\\s*\\*(\\s*\\*)?)?") &&
-								Objects.equals(sentence, "\\break\\")
-						) {
-							// - Présence de séparateur de paragraphes : * ou *** ou * * *
-							// Ces séparateurs sont convertis en \break\ par acapela
-							// Copier tout et passer a la suite
-							xml.characters(ch, i, length);
-							i += length;
-							nextSentence();
-						} else {
+							if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] characters inFlow and in altAudioMode - copy");
 							xml.characters(ch, i, 1);
-							if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] char '%s' not equals out of sentence - copy", ch[i]);
-						}
-					} else if (sentence.charAt(sentenceOffset) == '\\') {
-						sentenceOffset++;
-						sentenceOffset += sentence.substring(sentenceOffset).indexOf('\\') + 1;
-						i--;
-						if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] escaping char \\ - ignore");
-					} else if (!Character.isLetterOrDigit(ch[i])) {
-						//On tente une copie... contexte groupe de char de ponctuation non prononcé
-						xml.characters(ch, i, 1);
-						fuzzyMode = true;
-						if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] char not equals non digit or number char - copy end enter fuzzy mode");
-					} else {
-						LogMgr.publishMessage(new LogMsg("[" + this.getClass().getName() + "] - Xml txt `%s` at char %d [%c] does not match Acapela sentence `%s` at char %d [%c]", new String(ch, start, length), i, ch[i], sentence, sentenceOffset, sentence.charAt(sentenceOffset)));
-						throw LogMgr.newException("[" + this.getClass().getName() + "] - Xml txt `%s` at char %d [%c] does not match Acapela sentence `%s` at char %d [%c]", new String(ch, start, length), i, ch[i], sentence, sentenceOffset, sentence.charAt(sentenceOffset));
-					}
-					if (sentenceOffset == sentence.length()) {
-						//Fermeture de la stack
-						if (elmntStack.size() > 0) {
-							if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] stack is not empty - close stack");
-							for (Iterator<Map<String, Object>> it = elmntStack.descendingIterator(); it.hasNext(); ) {
-								Map<String, Object> element = it.next();
+						} else if (sentenceOffset >= sentence.length()) {
+							throw new IndexOutOfBoundsException(
+									String.format(
+											"fin de phrase dépassé, potentielle probleme d'alt audio : char = %c | txt = %s | acapella = %s",
+											ch[i],
+											new String(ch, start, length),
+											sentence.toString())
+									);
+						} else if (sentence.charAt(sentenceOffset) == ch[i]) {
+							if (!inSentence) {
+								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] character found - not inSentence - start new span@class='sentence'");
+								inSentence = true;
+								// fermeture des éléments précédents la phrase
+								if (elmntStack.size() > 0) {
+									if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] stack is not empty - close stack");
+									for (Iterator<Map<String, Object>> it = elmntStack.descendingIterator(); it.hasNext(); ) {
+										Map<String, Object> element = it.next();
 
-								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] close in stack - %s", element.get("qName"));
-								xml.endElement((String) element.get("uri"), (String) element.get("localName"), (String) element.get("qName"));
-								//System.out.println("End stack " + (String) element.get("qName"));
-								if (!stackClosed) stackClosed = true;
+										if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] close in stack - %s", element.get("qName"));
+										xml.endElement((String) element.get("uri"), (String) element.get("localName"), (String) element.get("qName"));
+										//System.out.println("End stack " + (String) element.get("qName"));
+										if (!stackClosed) stackClosed = true;
+									}
+								}
+								//ouverture du span
+								Attributes2Impl attr = new Attributes2Impl();
+								attr.addAttribute(null, null, "class", null, "sentence");
+								xml.startElement(uri, "span", "span", attr);
+
+								//réouverture de la stack dans la phrase
+								if (stackClosed) {
+									if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] stack previously closed, open all elements of the stack");
+									for (Map<String, Object> element : elmntStack) {
+										if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] open in stack %s", element.get("qName"));
+										AttributesImpl attributes = new AttributesImpl();
+										Map<String, String> elementAtts = (Map<String, String>) element.get("attributes");
+										for (String key : elementAtts.keySet()) {
+											attributes.addAttribute(null, "", key, "string", elementAtts.get(key));
+										}
+
+										if (((String) element.get("localName")).equals("span") && attributes.getValue("class") != null && attributes.getValue("class").equals("altaudio")) {
+											if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] span@class='altaudio' - enter inAltAudio mode");
+											this.inAltAudio = true;
+										}
+										xml.startElement((String) element.get("uri"), (String) element.get("localName"), (String) element.get("qName"), attributes);
+									}
+									stackClosed = false;
+								}
 							}
+							xml.characters(ch, i, 1);
+							sentenceOffset++;
+							fuzzyMode = false;
+						} else if (!inSentence) {
+							// Difference entre le début de la phrase de l'audio et le texte du html
+							// Test des correspondances spéciales pour le texte converti en commande par acapela
+							if (content.trim().matches("\\*(\\s*\\*(\\s*\\*)?)?") &&
+									Objects.equals(sentence, "\\break\\")
+							) {
+								// - Présence de séparateur de paragraphes : * ou *** ou * * *
+								// Ces séparateurs sont convertis en \break\ par acapela
+								// Copier tout et passer a la suite
+								xml.characters(ch, i, length);
+								i += length;
+								nextSentence();
+							} else {
+								xml.characters(ch, i, 1);
+								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] char '%s' not equals out of sentence - copy", ch[i]);
+							}
+						} else if (sentence.charAt(sentenceOffset) == '\\') {
+							sentenceOffset++;
+							sentenceOffset += sentence.substring(sentenceOffset).indexOf('\\') + 1;
+							i--;
+							if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] escaping char \\ - ignore");
+						} else if (!Character.isLetterOrDigit(ch[i])) {
+							//On tente une copie... contexte groupe de char de ponctuation non prononcé
+							xml.characters(ch, i, 1);
+							fuzzyMode = true;
+							if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] char not equals non digit or number char - copy end enter fuzzy mode");
+						} else {
+							LogMgr.publishMessage(new LogMsg("[" + this.getClass().getName() + "] - Xml txt `%s` at char %d [%c] does not match Acapela sentence `%s` at char %d [%c]", new String(ch, start, length), i, ch[i], sentence, sentenceOffset, sentence.charAt(sentenceOffset)));
+							throw LogMgr.newException("[" + this.getClass().getName() + "] - Xml txt `%s` at char %d [%c] does not match Acapela sentence `%s` at char %d [%c]", new String(ch, start, length), i, ch[i], sentence, sentenceOffset, sentence.charAt(sentenceOffset));
 						}
-						if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] last char of sentence - close span@class='sentence'");
-						//fermeture du span
-						xml.endElement(uri, "span", "span");
-						//System.out.println("End span sentence");
-						//Changement de phrase
-						nextSentence();
-						inSentence = false;
-					}
+						if (sentenceOffset == sentence.length()) {
+							//Fermeture de la stack
+							if (elmntStack.size() > 0) {
+								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] stack is not empty - close stack");
+								for (Iterator<Map<String, Object>> it = elmntStack.descendingIterator(); it.hasNext(); ) {
+									Map<String, Object> element = it.next();
 
+									if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] close in stack - %s", element.get("qName"));
+									xml.endElement((String) element.get("uri"), (String) element.get("localName"), (String) element.get("qName"));
+									//System.out.println("End stack " + (String) element.get("qName"));
+									if (!stackClosed) stackClosed = true;
+								}
+							}
+							if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] last char of sentence - close span@class='sentence'");
+							//fermeture du span de la phrase
+							xml.endElement(uri, "span", "span");
+							//Changement de phrase
+							nextSentence();
+							inSentence = false;
+						}
+
+					}
+				} else {
+					xml.characters(ch, start, length);
 				}
-			} else {
-				xml.characters(ch, start, length);
+			} catch (Exception e) {
+				LogMgr.publishMessage(
+						new LogMsg("[" + this.getClass().getName() + "] Erreur sur Xml txt `%s`, Acapela sentence `%s` : `%s` ", new String(ch, start, length), sentence.toString(), e.getMessage() ));
+				throw e;
 			}
 
 		}
@@ -274,6 +349,7 @@ public class SplitSentencesBySpanTask extends Task {
 		public void endElement(String uri, String localName, String qName) throws SAXException {
 			if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] End element %s", qName);
 			boolean elementAlreadyClosed = false;
+
 			if (stackClosed) {
 				// si le dernier élément de la stack (non vide) de contenu fermé précédement est le dernier élément en cours de fermeture
 				// il ne faut ni rouvrir, ni fermer l'élément
@@ -293,6 +369,7 @@ public class SplitSentencesBySpanTask extends Task {
 							attributes.addAttribute(null, "", key, "string", elementAtts.get(key));
 						}
 						xml.startElement((String) element.get("uri"), (String) element.get("localName"), (String) element.get("qName"), attributes);
+
 					}
 					stackClosed = false;
 				}
@@ -308,10 +385,9 @@ public class SplitSentencesBySpanTask extends Task {
 					if (!fuzzyMode) nextSentence();
 					inSentence = false;
 				} else if (sentence != null && sentenceOffset != 0) {
-					LogMgr.publishMessage(new LogMsg("Xml structure need to close tag %s and Acapala sentence is not ended : end of sentence is %s", qName, sentence.substring(sentenceOffset)));
-					throw LogMgr.newException("Xml structure need to close tag %s and Acapala sentence is not ended : end of sentence is %s", qName, sentence.substring(sentenceOffset));
+					LogMgr.publishMessage(new LogMsg("Xml structure need to close tag %s and Acapala sentence is not ended : end of sentence is %s and sentence is %s", qName, sentence.substring(sentenceOffset), sentence));
+					throw LogMgr.newException("Xml structure need to close tag %s and Acapala sentence is not ended : end of sentence is %s and sentence is %s", qName, sentence.substring(sentenceOffset), sentence);
 				}
-
 				inFlow = false;
 				assert (elmntStack.size() == 0);
 			} else if (inFlow == true) {
@@ -329,12 +405,17 @@ public class SplitSentencesBySpanTask extends Task {
 					if(elementAttributes.get("cmd") != null){
 						sentenceOffset += elementAttributes.get("cmd").length();
 					}
+					if(sentenceOffset >= sentence.length()){
+						// phrase suivante
+						nextSentence();
+					}
 				}
 			}
 			if (!elementAlreadyClosed) {
 				try {
 					xml.endElement(uri, localName, qName);
 				} catch (Exception e) {
+					// pour debug : sauvegarde du résultats
 					throw new SAXException("Une erreur est survenu en fermant l'élément " + qName, e);
 				}
 

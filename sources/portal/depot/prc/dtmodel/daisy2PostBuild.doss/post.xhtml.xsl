@@ -26,7 +26,7 @@
 			<xsl:attribute name="id"><xsl:value-of select="ancestor::xhtml:div[1]/@id"/></xsl:attribute>
 	</xsl:template>
 
-	<!-- Supp des spans dans les titres -->
+	<!-- Supp des spans et des inline dans les titres -->
 	<xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4|xhtml:h5|xhtml:h6">
 		<xsl:copy>
 			<xsl:apply-templates select="@*[local-name() != 'id']"/>
@@ -46,7 +46,17 @@
 
 
 	<xsl:template match="@*|node()">
-	    <xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
+		<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
+	</xsl:template>
+
+	<!-- Cleanup a bit by removing empty / self-closing inlined in paragraphs -->
+	<xsl:template match="xhtml:p">
+		<xsl:copy><xsl:apply-templates select="@*|node()" mode="removeEmpty"/></xsl:copy>
+	</xsl:template>
+	<xsl:template match="@*|node()" mode="removeEmpty">
+		<xsl:if test="*|comment()|processing-instruction()|text()">
+			<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
+		</xsl:if>
 	</xsl:template>
 
 </xsl:stylesheet>
