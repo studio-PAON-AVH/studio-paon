@@ -12,4 +12,5 @@
 	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/level.transf"/>
 	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/level@co.transf"/>
 	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/title.transf"/>
+	<sm:transformer sc:refUri="/gen/daisy2/transf/bases/text.transf"/>
 </sm:transformerList>
