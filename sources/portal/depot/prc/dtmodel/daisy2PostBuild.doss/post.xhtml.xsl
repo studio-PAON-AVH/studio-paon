@@ -49,13 +49,19 @@
 		<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
 	</xsl:template>
 
-	<!-- Cleanup a bit by removing empty / self-closing inlined in paragraphs -->
+	<!-- Suppression des inlines sans texte dans les paragraphes -->
 	<xsl:template match="xhtml:p">
 		<xsl:copy><xsl:apply-templates select="@*|node()" mode="removeEmpty"/></xsl:copy>
 	</xsl:template>
-	<xsl:template match="@*|node()" mode="removeEmpty">
-		<xsl:if test="*|comment()|processing-instruction()|text()">
-			<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
+	<xsl:template match="@*" mode="removeEmpty">
+		<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
+	</xsl:template>
+	<!-- Supression des alt audio du résultat -->
+	<xsl:template match="xhtml:cmd|@cmd" mode="removeEmpty"/>
+
+	<xsl:template match="node()" mode="removeEmpty">
+		<xsl:if test="descendant-or-self::text()">
+			<xsl:copy><xsl:apply-templates select="@*|node()" mode="removeEmpty"/></xsl:copy>
 		</xsl:if>
 	</xsl:template>
 
