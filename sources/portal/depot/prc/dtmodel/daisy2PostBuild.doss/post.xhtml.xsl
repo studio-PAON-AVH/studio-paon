@@ -51,7 +51,7 @@
 
 	<!-- Suppression des inlines sans texte dans les paragraphes -->
 	<xsl:template match="xhtml:p">
-		<xsl:copy><xsl:apply-templates select="@*|node()" mode="removeEmpty"/></xsl:copy>
+		<xsl:copy><xsl:apply-templates select="@*[not(local-name()='refid')]|node()" mode="removeEmpty"/></xsl:copy>
 	</xsl:template>
 	<xsl:template match="@*" mode="removeEmpty">
 		<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
@@ -63,6 +63,22 @@
 		<xsl:if test="descendant-or-self::text()">
 			<xsl:copy><xsl:apply-templates select="@*|node()" mode="removeEmpty"/></xsl:copy>
 		</xsl:if>
+	</xsl:template>
+
+	<!-- Note en fin de document (liens dans les paragraphes) :
+		reconstruction de la liaison avec le nouvel identifiant -->
+	<xsl:template match="@href[starts-with(.,'#')]" mode="removeEmpty">
+		<xsl:variable name="searchRef" select="substring-after(., '#')" />
+		<xsl:choose>
+			<xsl:when test="(//node()[@refid=$searchRef])[1]/@id">
+				<!-- remplacer la liaison par le nouvel identifiant du noeud -->
+				<xsl:attribute name="href"><xsl:value-of select="concat('#',(//node()[@refid=$searchRef])[1]/@id)"/></xsl:attribute>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:copy><xsl:apply-templates select="@*|node()" mode="removeEmpty"/></xsl:copy>
+			</xsl:otherwise>
+		</xsl:choose>
+
 	</xsl:template>
 
 </xsl:stylesheet>

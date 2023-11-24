@@ -69,7 +69,7 @@
 			</xsl:when>
 			<xsl:when test="$mode='end-xhtml1'">
 				<xsl:if test="not($prevLastChar = ' ' or $prevLastChar = ' ' or $prevLastChar = '')"><xsl:text> </xsl:text></xsl:if>
-				<span class="secondaryVoice"><a href="#d{@id}">￼Voir note ￼<xsl:value-of select="count(preceding::xhtml:note)+1"/></a></span>
+				<span class="secondaryVoice"><a href="#{@id}">￼Voir note ￼<xsl:value-of select="count(preceding::xhtml:note)+1"/></a></span>
 				<xsl:if test="not(contains($seperators,$follFirstChar) or $follFirstChar = '')"><xsl:text> </xsl:text></xsl:if>
 			</xsl:when>
 			<xsl:when test="$mode='end-dtb'">
@@ -106,8 +106,8 @@
 				<div class="level1" id="notes">
 					<h1>￼Notes￼</h1>
 					<xsl:for-each select="//xhtml:note">
-						<div id="{@id}" class="note">
-							<p class="secondaryVoice">￼Note ￼<xsl:value-of select="position()"/></p>
+						<div class="note">
+							<p class="secondaryVoice" refid="{@id}">￼Note ￼<xsl:value-of select="position()"/></p>
 							<xsl:apply-templates/>
 						</div>
 					</xsl:for-each>
