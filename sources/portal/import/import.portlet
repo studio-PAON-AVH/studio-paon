@@ -73,13 +73,13 @@ jobBuilder.addBaseJobDatas({stopAfterFailures: 50,});</smp:uiFactory>
 								<smp:keyword/>
 							</smp:mpField>
 							<smp:mpField code="title">
-								<smp:text multiline="false" predefinedAnalysis="french"/>
+								<smp:keyword/>
 							</smp:mpField>
 							<smp:mpField code="author">
-								<smp:text multiline="false" predefinedAnalysis="french"/>
+								<smp:keyword/>
 							</smp:mpField>
 							<smp:mpField code="publisher">
-								<smp:text multiline="false" predefinedAnalysis="french"/>
+								<smp:keyword/>
 							</smp:mpField>
 							<smp:mpField code="comment">
 								<smp:text multiline="true" predefinedAnalysis="french"/>
@@ -94,10 +94,10 @@ jobBuilder.addBaseJobDatas({stopAfterFailures: 50,});</smp:uiFactory>
 								<smp:keyword/>
 							</smp:mpField>
 							<smp:mpField code="statutAud">
-								<smp:text multiline="false" predefinedAnalysis="french"/>
+								<smp:keyword/>
 							</smp:mpField>
 							<smp:mpField code="statutBrl">
-								<smp:text multiline="false" predefinedAnalysis="french"/>
+								<smp:keyword/>
 							</smp:mpField>
 							<smp:mpField code="illustrations">
 								<smp:keyword/>
