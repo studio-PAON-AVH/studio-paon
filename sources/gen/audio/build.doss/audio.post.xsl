@@ -53,6 +53,18 @@
 				<span class="secondaryVoice"><xsl:text>￼(fin de note)￼</xsl:text></span>
 				<xsl:if test="not(contains($seperators,$follFirstChar) or $follFirstChar = '')"><xsl:text> </xsl:text></xsl:if>
 			</xsl:when>
+			<xsl:when test="$mode='flow-xhtml5'">
+				<aside id="{@id}" role="doc-footnote" epubtype="footnote">
+					<xsl:if test="not($prevLastChar = ' ' or $prevLastChar = ' ' or $prevLastChar = '')"><xsl:text> </xsl:text></xsl:if>
+					<span class="secondaryVoice"><xsl:text>￼(note)￼</xsl:text></span>
+					<xsl:if test="not($firstChar = ' ' or $firstChar = ' ')"><xsl:text> </xsl:text></xsl:if>
+					<xsl:for-each select="descendant::xhtml:p"><xsl:value-of select="normalize-space()"/>
+						<xsl:if test="following-sibling::*"><xsl:text> </xsl:text></xsl:if></xsl:for-each>
+					<xsl:if test="not($lastChar = ' ' or  $lastChar = ' ')"><xsl:text> </xsl:text></xsl:if>
+					<span class="secondaryVoice"><xsl:text>￼(fin de note)￼</xsl:text></span>
+					<xsl:if test="not(contains($seperators,$follFirstChar) or $follFirstChar = '')"><xsl:text> </xsl:text></xsl:if>
+				</aside>
+			</xsl:when>
 			<xsl:when test="$mode='flow-dtb'">
 				<xsl:if test="not($prevLastChar = ' ' or $prevLastChar = ' ' or $prevLastChar = '')"><xsl:text> </xsl:text></xsl:if>
 				<sup><noteref><xsl:attribute name="idref">#<xsl:value-of select="@id"/></xsl:attribute><xsl:text>￼(note)￼</xsl:text></noteref></sup>
@@ -68,6 +80,11 @@
 
 			</xsl:when>
 			<xsl:when test="$mode='end-xhtml1'">
+				<xsl:if test="not($prevLastChar = ' ' or $prevLastChar = ' ' or $prevLastChar = '')"><xsl:text> </xsl:text></xsl:if>
+				<span class="secondaryVoice"><a href="#{@id}">￼Voir note ￼<xsl:value-of select="count(preceding::xhtml:note)+1"/></a></span>
+				<xsl:if test="not(contains($seperators,$follFirstChar) or $follFirstChar = '')"><xsl:text> </xsl:text></xsl:if>
+			</xsl:when>
+			<xsl:when test="$mode='end-xhtml5'">
 				<xsl:if test="not($prevLastChar = ' ' or $prevLastChar = ' ' or $prevLastChar = '')"><xsl:text> </xsl:text></xsl:if>
 				<span class="secondaryVoice"><a href="#{@id}">￼Voir note ￼<xsl:value-of select="count(preceding::xhtml:note)+1"/></a></span>
 				<xsl:if test="not(contains($seperators,$follFirstChar) or $follFirstChar = '')"><xsl:text> </xsl:text></xsl:if>
@@ -99,7 +116,9 @@
 	</xsl:template>
 
 
-	<xsl:template match="xhtml:div[containWord(@class,'level1') and not(following-sibling::*[1][containWord(@class,'level1')])]|dtb:level1[not(following::dtb:level1)]">
+	<xsl:template match="xhtml:div[containWord(@class,'level1') and not(following-sibling::*[1][containWord(@class,'level1')])]|
+	dtb:level1[not(following::dtb:level1)]|
+	xhtml:section[containWord(@class,'level1') and not(following-sibling::xhtml:section[containWord(@class,'level1')])]">
 		<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
 		<xsl:choose>
 			<xsl:when test="$mode='end-xhtml1' and //xhtml:note">
@@ -112,6 +131,19 @@
 						</div>
 					</xsl:for-each>
 				</div>
+			</xsl:when>
+			<xsl:when test="$mode='end-xhtml5' and //xhtml:note">
+				<section epubtype="endnotes" role="doc-endnotes" id="notes">
+					<h1>￼Notes￼</h1>
+					<ol>
+					<xsl:for-each select="//xhtml:note">
+						<li id="{@id}">
+							<p class="secondaryVoice">￼Note ￼<xsl:value-of select="position()"/></p>
+							<xsl:apply-templates/>
+						</li>
+					</xsl:for-each>
+					</ol>
+				</section>
 			</xsl:when>
 			<xsl:when test="$mode='end-dtb'">
 				<level1 class="endnotes" id="notes">
@@ -128,10 +160,31 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template match="xhtml:div[containWord(@class, 'citation_div') and /xhtml:html[@epub]]">
+		<xsl:copy>
+			<xsl:apply-templates select="@*"/>
+			<p class="secondaryVoice">￼(Citation)￼</p>
+			<xsl:apply-templates/>
+			<p class="secondaryVoice">￼(Fin de citation)￼</p>
+		</xsl:copy>
+	</xsl:template>
+
 	<xsl:template match="xhtml:div[containWord(@class, 'citation_div')]">
-		<p class="secondaryVoice">￼(Citation)￼</p>
-		<xsl:apply-templates/>
-		<p class="secondaryVoice">￼(Fin de citation)￼</p>
+		<xsl:choose>
+			<xsl:when test="/xhtml:html[@epub]">
+				<xsl:copy>
+					<xsl:apply-templates select="@*"/>
+					<p class="secondaryVoice">￼(Citation)￼</p>
+					<xsl:apply-templates/>
+					<p class="secondaryVoice">￼(Fin de citation)￼</p>
+				</xsl:copy>
+			</xsl:when>
+			<xsl:otherwise>
+				<p class="secondaryVoice">￼(Citation)￼</p>
+				<xsl:apply-templates/>
+				<p class="secondaryVoice">￼(Fin de citation)￼</p>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="dtb:blockquote">
@@ -141,9 +194,21 @@
 	</xsl:template>
 
 	<xsl:template match="xhtml:div[containWord(@class, 'poem_div')]">
-		<p class="secondaryVoice">￼(Poésie)￼</p>
-		<xsl:apply-templates/>
-		<p class="secondaryVoice">￼(Fin de poésie)￼</p>
+		<xsl:choose>
+			<xsl:when test="/xhtml:html[@epub]">
+				<xsl:copy>
+					<xsl:apply-templates select="@*"/>
+					<p class="secondaryVoice">￼(Poésie)￼</p>
+					<xsl:apply-templates/>
+					<p class="secondaryVoice">￼(Fin de poésie)￼</p>
+				</xsl:copy>
+			</xsl:when>
+			<xsl:otherwise>
+				<p class="secondaryVoice">￼(Poésie)￼</p>
+				<xsl:apply-templates/>
+				<p class="secondaryVoice">￼(Fin de poésie)￼</p>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="dtb:poem">
@@ -154,10 +219,23 @@
 
 	<!-- Texte en marge -->
 	<xsl:template match="xhtml:div[containWord(@class, 'side_div')]">
-		<p class="secondaryVoice">￼(Texte en marge)￼</p>
-		<xsl:apply-templates/>
-		<p class="secondaryVoice">￼(Fin du texte en marge)￼</p>
+		<xsl:choose>
+			<xsl:when test="/xhtml:html[@epub]">
+				<xsl:copy>
+					<xsl:apply-templates select="@*"/>
+					<p class="secondaryVoice">￼(Texte en marge)￼</p>
+					<xsl:apply-templates/>
+					<p class="secondaryVoice">￼(Fin du texte en marge)￼</p>
+				</xsl:copy>
+			</xsl:when>
+			<xsl:otherwise>
+				<p class="secondaryVoice">￼(Texte en marge)￼</p>
+				<xsl:apply-templates/>
+				<p class="secondaryVoice">￼(Fin du texte en marge)￼</p>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
+
 	<xsl:template match="dtb:sidebar">
 		<p class="secondaryVoice">￼(Texte en marge)￼</p>
 		<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
@@ -165,9 +243,21 @@
 	</xsl:template>
 
 	<xsl:template match="xhtml:div[containWord(@class, 'epigraph_div')]">
-		<p class="secondaryVoice">￼(Épigraphe)￼</p>
-		<xsl:apply-templates/>
-		<p class="secondaryVoice">￼(Fin d'épigraphe)￼</p>
+		<xsl:choose>
+			<xsl:when test="/xhtml:html[@epub]">
+				<xsl:copy>
+					<xsl:apply-templates select="@*"/>
+					<p class="secondaryVoice">￼(Épigraphe)￼</p>
+					<xsl:apply-templates/>
+					<p class="secondaryVoice">￼(Fin d'épigraphe)￼</p>
+				</xsl:copy>
+			</xsl:when>
+			<xsl:otherwise>
+			<p class="secondaryVoice">￼(Épigraphe)￼</p>
+			<xsl:apply-templates/>
+			<p class="secondaryVoice">￼(Fin d'épigraphe)￼</p>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="dtb:epigraph">

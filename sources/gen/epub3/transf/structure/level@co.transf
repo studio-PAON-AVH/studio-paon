@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/level1.model"/>
+	<sm:model sc:refUri="/model/structure/level2.model"/>
+	<sm:model sc:refUri="/model/structure/level3.model"/>
+	<sm:model sc:refUri="/model/structure/level4.model"/>
+	<sm:model sc:refUri="/model/structure/level5.model"/>
+	<sm:model sc:refUri="/model/structure/level6.model"/>
+	<sm:axis code="co"/>
+	<sm:content format="xhtml">
+		<sm:inDataOrder>
+			<sm:for codes="flow">
+				<sm:callPartMeta/>
+				<sm:callSubModel/>
+			</sm:for>
+		</sm:inDataOrder>
+	</sm:content>
+</sm:compositionXhtmlTransf>

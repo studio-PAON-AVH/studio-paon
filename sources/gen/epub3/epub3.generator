@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<sm:webSiteGenerator code="epub3" name="￼;Epub 3￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:modelRoot>
+		<sm:allowedModel sc:refUri="/model/structure/book.model"/>
+	</sm:modelRoot>
+	<sm:mode debug="no" extension=".xhtml" standard="XHTML 5"/>
+	<sm:uiFrame sc:refUri="/gen/epub3/epub.uiframe"/>
+	<sm:transformerList>
+		<sm:transformerList info="audio" sc:refUri="/gen/audio/transf.transflist"/>
+		<sm:transformerList info="specific epub3" sc:refUri="/gen/epub3/transf.transflist"/>
+	</sm:transformerList>
+	<sm:uiTemplateList>
+		<sm:uiTemplate code="content" sc:refUri="/gen/epub3/tpl/content.uitemplate"/>
+	</sm:uiTemplateList>
+</sm:webSiteGenerator>

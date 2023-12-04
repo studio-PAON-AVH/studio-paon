@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns="http://www.w3.org/1999/xhtml" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/level1.model"/>
+	<sm:model sc:refUri="/model/structure/level2.model"/>
+	<sm:model sc:refUri="/model/structure/level3.model"/>
+	<sm:model sc:refUri="/model/structure/level4.model"/>
+	<sm:model sc:refUri="/model/structure/level5.model"/>
+	<sm:model sc:refUri="/model/structure/level6.model"/>
+	<sm:content format="xhtml">
+		<sm:for codes="level2">
+			<sm:WFreeBlock>
+				<section role="doc-chapter">
+					<sm:addAttribute name="class">
+						<sm:dynamicString>
+							<sm:freeSelect xpath="local-name()"/>
+						</sm:dynamicString>
+					</sm:addAttribute>
+					<sm:addAttribute name="id">
+						<sm:callSubModel axis="id"/>
+					</sm:addAttribute>
+					<sm:callPartMeta/>
+					<sm:callSubModel axis="co"/>
+					<sm:callSubModel/>
+				</section>
+			</sm:WFreeBlock>
+		</sm:for>
+		<sm:for codes="level3 level4 level5 level6">
+			<sm:WFreeBlock>
+				<section>
+					<sm:addAttribute name="class">
+						<sm:dynamicString>
+							<sm:freeSelect xpath="local-name()"/>
+						</sm:dynamicString>
+					</sm:addAttribute>
+					<sm:addAttribute name="id">
+						<sm:callSubModel axis="id"/>
+					</sm:addAttribute>
+					<sm:callPartMeta/>
+					<sm:callSubModel axis="co"/>
+					<sm:callSubModel/>
+				</section>
+			</sm:WFreeBlock>
+		</sm:for>
+	</sm:content>
+</sm:compositionXhtmlTransf>

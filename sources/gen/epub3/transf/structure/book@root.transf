@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:axis code="root"/>
+	<sm:navigation>
+		<sm:page template="content">
+			<sm:title/>
+			<sm:path>
+				<sm:dynamicPath xpath="concat(java:eu.scenari.editadapt.utils.Utils.escapeXhtmlId(paon:bookM/descendant::sp:title), '.html')"/>
+			</sm:path>
+			<sm:mainZone format="xhtml">
+				<sm:callModel>
+					<sm:current/>
+				</sm:callModel>
+			</sm:mainZone>
+			<sm:zone format="xhtml" key="meta">
+				<sm:callModel>
+					<sm:current axis="meta"/>
+				</sm:callModel>
+			</sm:zone>
+		</sm:page>
+	</sm:navigation>
+</sm:compositionXhtmlTransf>

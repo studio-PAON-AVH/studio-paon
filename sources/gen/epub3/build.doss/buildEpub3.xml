@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="main">
+
+	<target name="main">
+		<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+
+		<!-- Séléction du fichier html principal -->
+		<first id="root">
+			<fileset dir="${vFolderDest}/co" includes="*.xhtml"/>
+		</first>
+		<!-- Pré traitement -->
+		<transformXsl inFile="${toString:root}" outFile="${toString:root}" style="epub3.pre.xsl"/>
+
+		<!-- Gestion et textes spécifiques de structure -->
+		<transformXsl inFile="${toString:root}" outFile="${toString:root}" style="audio.post.xsl"/>
+
+		<!-- cleanup des structures vide -->
+		<transformXsl inFile="${toString:root}" outFile="${toString:root}" style="cleanup.xsl"/>
+
+		<!-- Completion des métadonnées manquantes -->
+		<transformXsl inFile="${toString:root}" outFile="${toString:root}" style="epub3.post.xsl"/>
+
+		<!-- Packaging -->
+		<move todir="${vFolderDest}">
+			<fileset dir="${vFolderDest}/co" includes="*.xhtml"/>
+		</move>
+		<delete dir="${vFolderDest}/lib-sc"/>
+		<delete dir="${vFolderDest}/co"/>
+		<delete file="${vFolderDest}/index.xhtml"/>
+	</target>
+</project>

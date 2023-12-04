@@ -13,6 +13,7 @@
 		<sm:publications>
 			<sm:generator sc:refUri="/gen/xmlDTBook/xmlDTBook.generator" shared="true"/>
 			<sm:generator nameInTree="￼;Tester les exports pour Duxbury￼" overrideGenName="￼;Tester les exports pour Duxbury￼" sc:refUri="/gen/od/odtDuxbury.generator" shared="true"/>
+			<sm:generator nameInTree="￼;Export Epub3￼" sc:refUri="/gen/epub3/epub3.generator" shared="true"/>
 		</sm:publications>
 		<sm:hiddenGenerators>
 			<sm:generator sc:refUri="/gen/xmlSrcAudio/xmlSrcAudio.generator"/>

@@ -68,6 +68,7 @@ public class SplitSentencesBySpanTask extends Task {
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
 			DefaultHandler handler = null;
 			if (this.parser != null && this.parser.equals("daisy3")) handler = new SplitSentencesBySpanDaisy3SaxHandler(xml);
+			else if (this.parser != null && this.parser.equals("epub3")) handler = new SplitSentencesBySpanEpub3SaxHandler(xml);
 				//Daisy 2 -> Default mode
 			else handler = new SplitSentencesBySpanDaisy2SaxHandler(xml);
 			parser.parse(inFile, handler);
@@ -131,7 +132,9 @@ public class SplitSentencesBySpanTask extends Task {
 		}
 
 		protected boolean isInFlow(String uri, String localName, String qName) {
-			if ((qName.startsWith("h") && qName.length() == 2) || qName.equals("p")) return true;
+			if ((qName.startsWith("h") && qName.length() == 2)
+					|| qName.equals("p")
+					|| qName.equals("aside")) return true;
 			return false;
 		}
 
@@ -140,6 +143,7 @@ public class SplitSentencesBySpanTask extends Task {
 
 		/**
 		 * Ouverture des balises présentes dans la stack
+		 *
 		 * @throws SAXException
 		 */
 		private void openStackElements() throws SAXException {
@@ -164,6 +168,7 @@ public class SplitSentencesBySpanTask extends Task {
 
 		/**
 		 * Fermeture des balises présentes dans la stack
+		 *
 		 * @throws SAXException
 		 */
 		private void closeStackElements() throws SAXException {
@@ -182,6 +187,7 @@ public class SplitSentencesBySpanTask extends Task {
 
 		/**
 		 * Ouverture d'une balise de phrase
+		 *
 		 * @throws SAXException
 		 */
 		private void openSentence() throws SAXException {
@@ -194,6 +200,7 @@ public class SplitSentencesBySpanTask extends Task {
 
 		/**
 		 * Fermeture d'une balise de phrase
+		 *
 		 * @throws SAXException
 		 */
 		private void closeSentence() throws SAXException {
@@ -246,9 +253,10 @@ public class SplitSentencesBySpanTask extends Task {
 		}
 
 		private String lastContentCopied = "";
+
 		@Override
 		public void characters(char[] ch, int start, int length) throws SAXException {
-			try{
+			try {
 				String content = new String(ch, start, length);
 				lastContentCopied = content;
 				if (inFlow) {
@@ -277,7 +285,7 @@ public class SplitSentencesBySpanTask extends Task {
 											ch[i],
 											new String(ch, start, length),
 											sentence.toString())
-									);
+							);
 						} else if (sentence.charAt(sentenceOffset) == ch[i]) {
 							if (!inSentence) {
 								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] character found - not inSentence - start new span@class='sentence'");
@@ -338,7 +346,7 @@ public class SplitSentencesBySpanTask extends Task {
 				}
 			} catch (Exception e) {
 				LogMgr.publishMessage(
-						new LogMsg("[" + this.getClass().getName() + "] Erreur sur Xml txt `%s`, Acapela sentence `%s` : `%s` ", new String(ch, start, length), sentence.toString(), e.getMessage() ));
+						new LogMsg("[" + this.getClass().getName() + "] Erreur sur Xml txt `%s`, Acapela sentence `%s` : `%s` ", new String(ch, start, length), sentence.toString(), e.getMessage()));
 				throw e;
 			}
 
@@ -378,12 +386,12 @@ public class SplitSentencesBySpanTask extends Task {
 						&& elementAttributes.get("class").equals("altaudio")
 				) { // fermeture d'un alt audio
 					inAltAudio = false;
-					if(elementAttributes.get("cmd") != null){
+					if (elementAttributes.get("cmd") != null) {
 						sentenceOffset += elementAttributes.get("cmd").length();
 					}
 					// Si on a atteint la fin de la phrase, on la ferme aussi
 					// et on prépare la phrase suivante
-					if(sentenceOffset >= sentence.length()){
+					if (sentenceOffset >= sentence.length()) {
 						isSentenceEnd = true;
 						nextSentence();
 					}
@@ -391,7 +399,7 @@ public class SplitSentencesBySpanTask extends Task {
 			}
 			try {
 				xml.endElement(uri, localName, qName);
-				if (isSentenceEnd){
+				if (isSentenceEnd) {
 					// fermer la stack restante,
 					closeStackElements();
 					// fermer la phrase précédente
@@ -446,6 +454,22 @@ public class SplitSentencesBySpanTask extends Task {
 				LogMgr.publishException(e);
 				closeSentencesReader();
 			}
+		}
+	}
+
+	protected class SplitSentencesBySpanEpub3SaxHandler extends SplitSentencesBySpanDaisy2SaxHandler {
+
+		SplitSentencesBySpanEpub3SaxHandler(XMLSerializer xml) {
+			super(xml);
+		}
+
+		@Override
+		protected String getAcapelaFileName(String uri, String localName, String qName, Attributes attributes) {
+			if (qName.equals("section")) {
+				String id = attributes.getValue("id");
+				if (id != null) return id;
+			}
+			return null;
 		}
 	}
 

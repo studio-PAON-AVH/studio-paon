@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<sm:compositionXhtmlTransf xmlns="http://www.w3.org/1999/xhtml" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/book.model"/>
+	<sm:content format="xhtml">
+		<sm:choose>
+			<sm:when xpath="//paon:bookM/sp:options/sp:publishNotes[text()='end']">
+				<sm:WFreeBlock>
+					<note-processing class="end-xhtml5"/>
+				</sm:WFreeBlock>
+			</sm:when>
+			<sm:otherwise>
+				<sm:WFreeBlock>
+					<note-processing class="flow-xhtml5"/>
+				</sm:WFreeBlock>
+			</sm:otherwise>
+		</sm:choose>
+		<sm:WFreeBlock>
+			<section class="frontMatter" epubtype="frontmatter">
+				<section class="cover">
+					<sm:addAttribute name="epubtype">cover</sm:addAttribute>
+					<sm:addAttribute name="id">
+						<sm:callModel>
+							<sm:current axis="id"/>
+						</sm:callModel>
+					</sm:addAttribute>
+					<h1 class="title" epubtype="title">
+						<sm:title>
+							<sm:compositionTitle/>
+						</sm:title>
+					</h1>
+					<sm:callCompositionMeta/>
+					<sm:for codes="frontmatter">
+						<sm:callPartMeta/>
+						<sm:callSubModel/>
+					</sm:for>
+				</section>
+				<sm:for codes="backcover sameAuthor">
+					<sm:WFreeBlock>
+						<section>
+							<sm:addAttribute name="class">
+								<sm:dynamicString>
+									<sm:freeSelect xpath="local-name()"/>
+								</sm:dynamicString>
+							</sm:addAttribute>
+							<sm:addAttribute name="id">
+								<sm:callPartMeta axis="id"/>
+							</sm:addAttribute>
+							<h1>
+								<sm:title>
+									<sm:partTitle/>
+								</sm:title>
+							</h1>
+							<sm:callPartMeta/>
+							<sm:callSubModel/>
+						</section>
+					</sm:WFreeBlock>
+				</sm:for>
+				<sm:inDataOrder>
+					<sm:for codes="citation">
+						<sm:WFreeBlock>
+							<section>
+								<sm:addAttribute name="class">
+									<sm:dynamicString>
+										<sm:freeSelect xpath="local-name()"/>
+									</sm:dynamicString>
+								</sm:addAttribute>
+								<sm:addAttribute name="id">
+									<sm:callPartMeta axis="id"/>
+								</sm:addAttribute>
+								<h1>
+									<sm:title>
+										<sm:partTitle/>
+									</sm:title>
+								</h1>
+								<sm:callPartMeta/>
+								<sm:callSubModel/>
+							</section>
+						</sm:WFreeBlock>
+					</sm:for>
+					<sm:for codes="inscription">
+						<sm:WFreeBlock>
+							<section epubtype="dedication" role="doc-dedication">
+								<sm:addAttribute name="class">
+									<sm:dynamicString>
+										<sm:freeSelect xpath="local-name()"/>
+									</sm:dynamicString>
+								</sm:addAttribute>
+								<sm:addAttribute name="id">
+									<sm:callPartMeta axis="id"/>
+								</sm:addAttribute>
+								<h1>
+									<sm:title>
+										<sm:partTitle/>
+									</sm:title>
+								</h1>
+								<sm:callPartMeta/>
+								<sm:callSubModel/>
+							</section>
+						</sm:WFreeBlock>
+					</sm:for>
+				</sm:inDataOrder>
+			</section>
+			<section class="bodymatter" epubtype="bodymatter">
+				<sm:for codes="level1">
+					<sm:WFreeBlock>
+						<section class="level1" role="doc-part">
+							<sm:addAttribute name="id">
+								<sm:callSubModel axis="id"/>
+							</sm:addAttribute>
+							<sm:callPartMeta/>
+							<sm:callSubModel axis="co"/>
+							<sm:callSubModel/>
+						</section>
+					</sm:WFreeBlock>
+				</sm:for>
+			</section>
+			<sm:for codes="backmatter">
+				<sm:WFreeBlock>
+					<section class="rearmatter" epubtype="backmatter">
+						<section role="doc-credits">
+							<sm:addAttribute name="class">
+								<sm:dynamicString>
+									<sm:freeSelect xpath="local-name()"/>
+								</sm:dynamicString>
+							</sm:addAttribute>
+							<sm:addAttribute name="id">
+								<sm:callPartMeta axis="id"/>
+							</sm:addAttribute>
+							<h1>
+								<sm:title>
+									<sm:partTitle/>
+								</sm:title>
+							</h1>
+							<sm:callPartMeta/>
+							<sm:callSubModel/>
+						</section>
+					</section>
+				</sm:WFreeBlock>
+			</sm:for>
+		</sm:WFreeBlock>
+	</sm:content>
+</sm:compositionXhtmlTransf>

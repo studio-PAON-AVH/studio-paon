@@ -37,9 +37,15 @@
 				</smp:generatorView>
 			</smp:view>
 			<smp:view code="daisy3Pre" family="userFriendly/notViewable" mimeType="application/zip" name="￼;Pre-build Daisy 3￼" urlPatterns="?V=daisy3Pre.zip">
-				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1637962212307">Préparation daisy2</comment></comment>-->
+				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1691574479833" creationTime="1637962212307">Préparation daisy3</comment></comment>-->
 				<smp:generatorView>
 					<smp:generator sc:refUri="/gen/xmlDTBookAud/xmlDTBookAud.generator"/>
+				</smp:generatorView>
+			</smp:view>
+			<smp:view code="epub3Pre" family="userFriendly/notViewable" mimeType="application/zip" name="￼;Pre-build Epub 3￼" urlPatterns="?V=epub3Pre.zip">
+				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1691578782398" creationTime="1637962212307">Préparation epub3</comment></comment>-->
+				<smp:generatorView>
+					<smp:generator sc:refUri="/gen/epub3/epub3.generator"/>
 				</smp:generatorView>
 			</smp:view>
 			<smp:view code="odtDuxbury" family="userFriendly/notViewable" mimeType="application/vnd.oasis.opendocument.text" name="￼;Export ODT pour Duxbury￼" urlPatterns="?V=odtDuxbury">
@@ -54,7 +60,8 @@
 					<smp:freeViewMaker xml:space="preserve">&lt;viewMaker indexPath="index.xml" transformParams="transform=gen&amp;amp;codeGen=xmlSrcAudio&amp;amp;localAutoUpdate=minor&amp;amp;failOnGenError=true&amp;amp;publishFullTraceGenOnFail=true"  type="eu.scenari.store.service.mkviews.makers.CallTransformMultiViewsMk" indexViewCode="multi-txt-view"/&gt;</smp:freeViewMaker>
 					<smp:freeViewMaker xml:space="preserve">&lt;viewMaker code="daisy2" urlPatterns="?V=daisy2.zip" builtOn="content" buildPath="free/prcs/daisy2/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2Pre"/&gt;
 &lt;viewMaker code="daisy3" urlPatterns="?V=daisy3.zip" builtOn="content" buildPath="free/prcs/daisy3/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy3Pre" optional="true"/&gt;
-&lt;viewMaker code="duration" urlPatterns="?V=duration" builtOn="content" buildPath="free/prcs/daisy2/buildDuration.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2"/&gt;<smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 2￼" urlPatterns="?V=daisy2.zip"/><smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 3￼" urlPatterns="?V=daisy3.zip"/><smp:registerUiView family="" name="￼;Duration￼" urlPatterns="?V=duration"/></smp:freeViewMaker>
+&lt;viewMaker code="epub3" urlPatterns="?V=epub3.zip" builtOn="content" buildPath="free/prcs/epub3/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="epub3Pre" optional="true"/&gt;
+&lt;viewMaker code="duration" urlPatterns="?V=duration" builtOn="content" buildPath="free/prcs/daisy2/buildDuration.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2"/&gt;<smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 2￼" urlPatterns="?V=daisy2.zip"/><smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 3￼" urlPatterns="?V=daisy3.zip"/><smp:registerUiView family="userFriendly/notViewable" name="￼;Epub 3￼" urlPatterns="?V=epub3.zip"/><smp:registerUiView family="" name="￼;Duration￼" urlPatterns="?V=duration"/></smp:freeViewMaker>
 				</smp:stateReady>
 				<smp:stateFailure/>
 			</smp:asyncBuildViews>

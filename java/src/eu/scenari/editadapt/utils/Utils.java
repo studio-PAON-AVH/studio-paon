@@ -3,9 +3,7 @@ package eu.scenari.editadapt.utils;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.Locale;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import org.w3c.dom.Node;
@@ -56,6 +54,9 @@ public class Utils {
 
 	//static protected final Pattern deleteChars = Pattern.compile("\u2028");
 	static protected SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+
+	static protected SimpleDateFormat isodateformat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+
 
 	public static String normalizeString(String str, boolean toUpperCase) {
 		str = specialSimpleSpaces.matcher(str).replaceAll(" ");
@@ -163,6 +164,11 @@ public class Utils {
 			node = ((LocPathIterator) xnodes).nextNode();
 		}
 		return null;
+	}
+
+	public static String isoDate() {
+		isodateformat.setTimeZone(TimeZone.getTimeZone("UTC"));
+		return isodateformat.format(new Date());
 	}
 
 	public static void main(String[] args) {

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<sm:dataFormXhtmlTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:model sc:refUri="/model/structure/bookM.model"/>
+	<sm:axis code="metadcGenSpecific"/>
+	<sm:content>
+		<sm:Widget sc:refUri="/gen/audio/widget/meta.uiwidget">
+			<sm:xhtmlContentZone key="name">
+				<sm:WText value="dc:format"/>
+			</sm:xhtmlContentZone>
+			<sm:xhtmlContentZone key="content">
+				<sm:WText value="￼;Epub 3￼"/>
+			</sm:xhtmlContentZone>
+		</sm:Widget>
+	</sm:content>
+</sm:dataFormXhtmlTransf>

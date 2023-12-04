@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<sm:staticUiFrame xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+	<sm:callRootModel axis="root"/>
+	<sm:publishFiles sc:refUri="/gen/audio/build.doss"/>
+	<sm:publishFiles sc:refUri="/gen/epub3/build.doss"/>
+	<sm:freeInitProperties xml:space="preserve">postTask.ant=buildEpub3.xml</sm:freeInitProperties>
+</sm:staticUiFrame>
