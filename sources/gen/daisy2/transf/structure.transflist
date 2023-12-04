@@ -6,6 +6,7 @@
 	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/book@meta.transf"/>
 	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/book@root.transf"/>
 	<sm:transformer sc:refUri="/gen/audio/transf/structure/dc/bookM@metadc.transf"/>
+	<sm:transformer sc:refUri="/gen/daisy2/transf/structure/bookM@metadcGenSpecific.transf"/>
 	<sm:transformer sc:refUri="/gen/audio/transf/structure/ncc/bookM@metancc.transf"/>
 	<sm:transformer sc:refUri="/gen/audio/transf/structure/dc/frontmatterM@metadc.transf"/>
 	<sm:transformer sc:refUri="/gen/audio/transf/structure/ncc/frontmatterM@metancc.transf"/>
