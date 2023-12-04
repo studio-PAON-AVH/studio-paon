@@ -26,8 +26,7 @@
             <xsl:variable name="xon" select="document(concat('inDir:',$package_id, '.acapela.tts.zip/events.xon'))"/>
             <xsl:choose>
             	<xsl:when test="$xon/fileNotFound"><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse('PT0s')))"/></xsl:when>
-				<!-- FIXME : clean de la premiere écriture de récup du time après maj api acapela -->
-            	<xsl:otherwise><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse(concat('PT',returnFirst($xon/o/a/o[last()-1]/o[@k='Time']/n/text(),$xon/o/a/o[last()-1]/s[@k='Time']/text()),'s'))))"/></xsl:otherwise>
+            	<xsl:otherwise><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse(concat('PT',$xon/o/a/o[last()-1]/s[@k='Time']/text(),'s'))))"/></xsl:otherwise>
             </xsl:choose>
         </xsl:for-each>
         <!-- On stocke la liste des durée dans le dialog courrant -->

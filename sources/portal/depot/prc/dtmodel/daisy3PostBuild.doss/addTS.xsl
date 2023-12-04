@@ -4,7 +4,7 @@
 	xmlns:java="http://xml.apache.org/xslt/java"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:redirect="com.scenari.xsldom.xalan.lib.Redirect"
-	xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/" xmlns:xal="http://www.w3.org/1999/XSL/Transform"
+	xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
 	extension-element-prefixes="redirect"
 	exclude-result-prefixes="xalan java dtb">
 
@@ -26,7 +26,7 @@
 		<xsl:value-of select="execute(java:put($vars, 'total_time', returnFirst($xon/o/a/o[last()-1]/o[@k='Time']/n/text(), $xon/o/a/o[last()-1]/s[@k='Time']/text()) ))"/>
 		<xsl:value-of select="execute(java:put($vars, 'div', .))"/>
 		<xsl:copy>
-			<xal:apply-templates select="@*|node()"/>
+			<xsl:apply-templates select="@*|node()"/>
 		</xsl:copy>
 	</xsl:template>
 
