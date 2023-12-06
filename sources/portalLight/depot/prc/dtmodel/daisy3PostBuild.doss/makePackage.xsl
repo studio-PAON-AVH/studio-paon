@@ -5,7 +5,7 @@
 								xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
 								xmlns:java="http://xml.apache.org/xslt/java"
 								xmlns:dc="http://purl.org/dc/elements/1.1/"
-								xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsm="http://www.w3.org/1999/XSL/Transform"
+								xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 								exclude-result-prefixes="xalan java dtb">
 
 	<xsl:output method="xml" omit-xml-declaration="yes" version="1.0" encoding="UTF-8" indent="yes" doctype-public="+//ISBN 0-9673008-1-9//DTD OEB 1.2 Package//EN" doctype-system="http://openebook.org/dtds/oeb-1.2/oebpkg12.dtd"/>
@@ -26,8 +26,7 @@
 				<xsl:variable name="xon" select="document(concat('inDir:',$package_id, '.acapela.tts.zip/events.xon'))"/>
 				<xsl:choose>
 					<xsl:when test="$xon/fileNotFound"><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse('PT0s')))"/></xsl:when>
-					<!-- FIXME : clean de la premiere écriture de récup du time après maj api acapela -->
-					<xsl:otherwise><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse(concat('PT',returnFirst($xon/o/a/o[last()-1]/o[@k='Time']/n/text(), $xon/o/a/o[last()-1]/s[@k='Time']/text()),'s'))))"/></xsl:otherwise>
+					<xsl:otherwise><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse(concat('PT',$xon/o/a/o[last()-1]/s[@k='Time']/text(),'s'))))"/></xsl:otherwise>
 				</xsl:choose>
 		</xsl:for-each>
 		<!-- On stocke la liste des durée dans le dialog courrant -->
@@ -68,9 +67,9 @@
 		<itemref idref="opf_{@id}"/>
 	</xsl:template>
 
-	<xsm:template match="dtb:meta" mode="dcMeta">
+	<xsl:template match="dtb:meta" mode="dcMeta">
 		<xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:value-of select="@name"/><xsl:if test="@name='dc:Identifier'"><xsl:text> id="uid"</xsl:text></xsl:if><xsl:text disable-output-escaping="yes">&gt;</xsl:text><xsl:value-of select="@content"/><xsl:text disable-output-escaping="yes">&lt;/</xsl:text><xsl:value-of select="@name"/><xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-	</xsm:template>
+	</xsl:template>
 
 	<xsl:template match="dtb:meta">
 		<meta>

@@ -15,7 +15,7 @@
 		<service code="electre" class="eu.scenari.editadapt.electre.SvcElectre">
       <property name="enable" value="§§enable.electre.api§§"/>
 			<property name="tokenUrl" value="§§electre.token.url§§"/>
-			<property name="noticeUrl" value="§§electre.notice.url§§"/>
+			<property name="noticesUrl" value="§§electre.notices.url§§"/>
 			<property name="user" value="§§electre.user§§"/>
 			<property name="password" value="§§electre.password§§"/>
 		</service>

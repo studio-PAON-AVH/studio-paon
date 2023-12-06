@@ -62,5 +62,6 @@
 		<smp:transformXsl filesPath="[WRITE]/WEB-INF/universeInit.*.xml" l10nCtxt="" sc:refUri="/portalLight/depot/free/prl.depot.freeIndexDuration.universeInit.xsl"/>
 		<smp:staticFile destPath="[WRITE]/WEB-INF/free/prcs/daisy2" l10nCtxt="" sc:refUri="/portalLight/depot/prc/dtmodel/daisy2PostBuild.doss"/>
 		<smp:staticFile destPath="[WRITE]/WEB-INF/free/prcs/daisy3" l10nCtxt="" sc:refUri="/portalLight/depot/prc/dtmodel/daisy3PostBuild.doss"/>
+		<smp:staticFile destPath="[WRITE]/WEB-INF/free/prcs/epub3" l10nCtxt="" sc:refUri="/portalLight/depot/prc/dtmodel/epub3PostBuild.doss"/>
 	</smp:free>
 </smp:depotPrl>

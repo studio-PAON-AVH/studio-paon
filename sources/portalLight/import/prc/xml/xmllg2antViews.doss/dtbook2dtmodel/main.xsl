@@ -35,7 +35,14 @@
 				<sp:frontmatter>
 					<paon:frontmatterM>
 						<sp:publisher>
-							<xsl:value-of select="dtb:head/dtb:meta[@name='dc:Publisher']/@content"/>
+							<xsl:choose>
+								<xsl:when test="dtb:head/dtb:meta[@name='dtb:sourcePublisher']/@content">
+									<xsl:value-of select="dtb:head/dtb:meta[@name='dtb:sourcePublisher']/@content"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="dtb:head/dtb:meta[@name='dc:Publisher']/@content"/>
+								</xsl:otherwise>
+							</xsl:choose>
 						</sp:publisher>
 						<sp:legalsException>Cette adaptation est réalisée et diffusée dans le cadre de l’exception au droit d’auteur en faveur des personnes en situation de handicap prévue aux articles L. 122-5, L. 122-5-1 et L. 122-5-2 et R. 122-13 à 22 du code de la propriété intellectuelle. Cette adaptation ne peut être utilisée que par la personne qui l’a empruntée et ne doit en aucune manière être transmise à un tiers de quelque façon que ce soit.</sp:legalsException>
 					</paon:frontmatterM>
@@ -90,13 +97,13 @@
 								<xsl:value-of select="@content"/>
 							</sp:secondaryIsbn>
 						</xsl:for-each>
-						<xsl:if test="dtb:head/dtb:meta[@name='dtb:rights' or @name='dc:rights']">
+						<xsl:if test="dtb:head/dtb:meta[@name='dtb:rights' or @name='dc:rights' or @name='dc:Rights' or name='dc:description' or name='dc:Description']">
 							<sp:others>
 								<paon:text>
-									<xsl:for-each select="dtb:head/dtb:meta[@name='dtb:rights' or @name='dc:rights']">
+									<xsl:for-each select="dtb:head/dtb:meta[@name='dtb:rights' or @name='dc:rights' or @name='dc:Rights']">
 										<sc:para xml:space="preserve"><xsl:value-of select="@content"/></sc:para>
 									</xsl:for-each>
-									<xsl:for-each select="dtb:head/dtb:meta[@name='dc:description']">
+									<xsl:for-each select="dtb:head/dtb:meta[@name='dc:description' or @name='dc:Description']">
 										<sc:para xml:space="preserve"><xsl:value-of select="@content"/></sc:para>
 									</xsl:for-each>
 								</paon:text>

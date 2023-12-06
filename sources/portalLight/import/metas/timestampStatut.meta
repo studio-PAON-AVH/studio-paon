@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<smp:meta description="￼;Horodatage du changement de statut de l'entrée￼" name="￼;Horodatage de statut￼" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1693821894808">Cette meta est un doublon de la meta automatique "deployDate" mais est modifiable
+(pour pouvoir controler plus finement l'ordre d'affichage dans le tableau de suivi)</comment></comment>-->
+	<smp:identification code="timestampStatut"/>
+	<smp:structure>
+		<smp:number/>
+		<smp:defaultValue xml:space="preserve">0</smp:defaultValue>
+	</smp:structure>
+	<smp:authoring>
+		<smp:formEditor>
+			<smp:numberWidget/>
+		</smp:formEditor>
+	</smp:authoring>
+</smp:meta>

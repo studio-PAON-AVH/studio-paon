@@ -19,7 +19,7 @@
 				<smp:meta sc:refUri="/portalLight/import/metas/title.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/author.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/publisher.meta"/>
-				<smp:meta sc:refUri="/portalLight/import/metas/comments.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/comment.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/pages.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/sourceFormat.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/collection.meta"/>
@@ -38,6 +38,10 @@
 				<smp:meta sc:refUri="/portalLight/import/metas/dtdDetail.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/dateEnd.meta"/>
 				<smp:meta sc:refUri="/portalLight/import/metas/dateParution.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/nbPagesBrailleAbrege.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/nbPagesBrailleIntegral.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/timestampStatut.meta"/>
+				<smp:meta sc:refUri="/portalLight/import/metas/dureeAudio.meta"/>
 			</smp:metaList>
 		</smp:metas>
 	</smp:structure>
@@ -47,7 +51,6 @@
 				<smp:fixedString value="FR-AVH-"/>
 				<smp:fromMeta sc:refUri="/portalLight/import/metas/isbn.meta"/>
 			</smp:metaToPopulate>
-			<!--<sexc:exclude xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns="http://www.w3.org/1999/xhtml" xmlns:smp="scenari.eu:builder:portal:1.0" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sexc="scenari.eu:exclude:1.0"><smp:metaToPopulate sc:refUri="/portal/import/metas/statut.meta"><smp:fixedString value="ARCHIVED"/></smp:metaToPopulate></sexc:exclude>-->
 		</smp:buildMetas>
 		<smp:buildViews>
 			<smp:infoView/>
@@ -75,7 +78,7 @@
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/authorBrl.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/authorPivot.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/collection.meta"/>
-						<smp:includeMeta sc:refUri="/portalLight/import/metas/comments.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/comment.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/dateEnd.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/dateParution.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/dtdDetail.meta"/>
@@ -95,6 +98,9 @@
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/title.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/typeOuvrage.meta"/>
 						<smp:includeMeta sc:refUri="/portalLight/import/metas/uid.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/nbPagesBrailleAbrege.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/nbPagesBrailleIntegral.meta"/>
+						<smp:includeMeta sc:refUri="/portalLight/import/metas/timestampStatut.meta"/>
 					</smp:metadatas>
 				</smp:indexFields>
 			</smp:record>

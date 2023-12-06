@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="importRes" basedir="." default="main">
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+	<taskdef name="loadStaticClass" classname="com.scenari.scant.LoadStaticClass" onerror="ignore"/>
+	<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
+	<taskdef name="transform" classname="com.scenari.m.co.ant.TransformTask"/>
+	<taskdef name="aggregateZippedViews" classname="eu.scenari.editadapt.ant.AggregateZippedViewsTask"/>
+	<taskdef name="splitSentencesBySpan" classname="eu.scenari.editadapt.ant.SplitSentencesBySpanTask"/>
+	<taskdef name="customXsl" classname="eu.scenari.editadapt.ant.TransformXslTask"/>
+
+	<property name="mode.debug" value="false"/>
+
+	<target name="main">
+		<!-- 1) Init post Epub 3 Build -->
+		<!-- recup des fichiers du gen Epub3 -->
+		<copy todir="${vDestPath}_tmp">
+			<fileset dir="${vInput}" includes="*.xhtml"/>
+		</copy>
+		<!-- Mémorisation du fichier xhtml principal -->
+		<first id="main">
+			<fileset dir="${vDestPath}_tmp" includes="*.xhtml"/>
+		</first>
+		<basename property="main_html_file" file="${toString:main}"/>
+		<!-- Recup et dezip des packages acapela (task ant free) -->
+		<aggregateZippedViews filter="tts.zip" output="${vDestPath}_tmp"/>
+
+
+		<!-- 2) Construction/modifications des fichiers -->
+		<!-- Déplacement des fichiers audio et xsl transf json -> xon -->
+		<foreach target="post.acapela.unpackage" param="dir" inheritall="true" inheritrefs="true">
+			<path>
+				<dirset dir="${vDestPath}_tmp" includes="*"/>
+			</path>
+		</foreach>
+		<!-- split sentences (custom ant task) -->
+		<splitSentencesBySpan inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/parsed_span.xml" sentencesSfx=".acapela.tts.zip.sentences.txt" parser="epub3"/>
+
+		<!-- add Ids-->
+		<!-- Bug dans la fonction precedings... transformXsl remplacée par xslt -->
+		<xslt in="${vDestPath}_tmp/parsed_span.xml" out="${vDestPath}_tmp/${main_html_file}" style="addIds.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="pPfx" expression="p"/>
+			<param name="sPfx" expression="s"/>
+		</xslt>
+
+		<!-- inject TS in span.sentence -->
+		<customXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/${main_html_file}" style="addTS.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="sPfx" expression="s"/>
+		</customXsl>
+
+		<!-- note post process -->
+		<customXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/${main_html_file}" style="post.xhtml.notes.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="sPfx" expression="s"/>
+		</customXsl>
+
+		<!-- package OPF -->
+		<customXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/package.opf" style="makePackage.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="sPfx" expression="s"/>
+		</customXsl>
+
+		<for param="mp3">
+			<path>
+				<fileset dir="${vDestPath}_tmp" includes="*.mp3"/>
+			</path>
+			<sequential>
+				<propertyregex override="yes" property="package_id" input="@{mp3}" regexp=".+[\\/]([^\\/]+).acapela.tts.zip.mp3" replace="\1"/>
+				<transformXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/${package_id}.smil" style="makeSmil.xsl">
+					<param name="package_id" expression="${package_id}"/>
+					<param name="dPfx" expression="d"/>
+					<param name="pPfx" expression="p"/>
+					<param name="sPfx" expression="s"/>
+				</transformXsl>
+
+				<transformXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/${package_id}.xhtml" style="makeXhtml.xsl">
+					<param name="package_id" expression="${package_id}"/>
+					<param name="dPfx" expression="d"/>
+					<param name="pPfx" expression="p"/>
+					<param name="sPfx" expression="s"/>
+				</transformXsl>
+			</sequential>
+		</for>
+
+		<!-- Construction du ncx -->
+		<transformXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/nav.xhtml" style="makeNav.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="pPfx" expression="p"/>
+			<param name="sPfx" expression="s"/>
+		</transformXsl>
+
+		<transformXsl inFile="${vDestPath}_tmp/nav.xhtml" outFile="${vDestPath}_tmp/nav.tmp.xhtml" style="filterPages.nav.xsl"/>
+		<xslt in="${vDestPath}_tmp/nav.tmp.xhtml" out="${vDestPath}_tmp/nav.xhtml" style="post.nav.xsl"/>
+
+
+		<!-- 3) Packaging -->
+		<!-- rename -->
+		<renameext srcDir="${vDestPath}_tmp" fromExtension=".acapela.tts.zip.mp3" toExtension=".mp3" replace="true"/>
+		<!-- clean up -->
+		<delete includeEmptyDirs="true">
+			<fileset dir="${vDestPath}_tmp" includes="**/*.zip/ parsed_span.xml ${main_html_file} *.xon *.txt *.tmp.*"/>
+		</delete>
+		<!-- create epub directories -->
+		<mkdir dir="${vDestPath}_tmp/EPUB"/>
+		<mkdir dir="${vDestPath}_tmp/META-INF"/>
+		<move todir="${vDestPath}_tmp/EPUB">
+      <fileset dir="${vDestPath}_tmp" includes="*.mp3 *.smil *.xhtml *.opf"/>
+    </move>
+
+    <copy file="static/container.xml" tofile="${vDestPath}_tmp/META-INF/container.xml"/>
+
+		<!-- package -->
+		<zip destfile="${vDestPath}" basedir="${vDestPath}_tmp"/>
+		<!-- Le fichier mimetype doit être positionné en premier dans l'index du zip -->
+		<zip destfile="${vDestPath}" basedir="static" includes="mimetype" zip64Mode="never" update="true" keepcompression="true" compress="false"/>
+		<!-- clean up build dir -->
+		<delete dir="${vDestPath}_tmp"/>
+	</target>
+
+	<target name="post.acapela.unpackage">
+		<basename property="dirName" file="${dir}"/>
+		<!-- déplacement fichier audio -->
+		<move file="${dir}/audio.mp3" tofile="${vDestPath}_tmp/${dirName}.mp3"/>
+		<!-- json2xon du fichier events -->
+		<transform src="${dir}/events.json" dst="${dir}/events.xon" params="transform=json2xml"/>
+		<transformXsl inFile="${dir}/events.xon" outFile="${vDestPath}_tmp/${dirName}.sentences.txt" style="extractSentences.txt.xsl"/>
+	</target>
+
+</project>

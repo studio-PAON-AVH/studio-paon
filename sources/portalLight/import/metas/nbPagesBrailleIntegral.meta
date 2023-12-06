@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<smp:meta description="￼;Nombre de pages pour le braille intégral￼" name="￼;Nombre de pages - Braille intégral￼" xmlns:smp="scenari.eu:builder:portal:1.0">
+	<smp:identification code="nbPagesBrailleIntegral"/>
+	<smp:structure>
+		<smp:number/>
+		<smp:defaultValue xml:space="preserve">0</smp:defaultValue>
+	</smp:structure>
+	<smp:authoring/>
+</smp:meta>
