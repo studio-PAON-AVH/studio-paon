@@ -27,7 +27,7 @@
 	</xsl:template>
 
 	<xsl:template match="xhtml:span[containWord(@class, 'sentence')]">
-		<xsl:variable name="smilId" select="substring(parent::xhtml:p/parent::xhtml:div/@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="smilId" select="substring(parent::xhtml:p/ancestor::xhtml:div[@id]/@id,string-length($dPfx)+1)"/>
 		<xsl:variable name="parId" select="substring(@id,string-length($sPfx)+1)"/>
 		<span class="page-normal">
 			<xsl:apply-templates select="@id"/>
@@ -36,7 +36,7 @@
 	</xsl:template>
 
 	<xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4|xhtml:h5|xhtml:h6" mode="title">
-		<xsl:variable name="smilId" select="substring(parent::xhtml:div/@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="smilId" select="substring(ancestor::xhtml:div[@id]/@id,string-length($dPfx)+1)"/>
 		<xsl:variable name="parId" select="substring(xhtml:span/@id,string-length($sPfx)+1)"/>
 		<xsl:copy>
 			<xsl:apply-templates select="@*[local-name() != 'id']"/>
