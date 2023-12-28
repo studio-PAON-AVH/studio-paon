@@ -49,10 +49,8 @@
 						</sp:backResume>
 					</paon:backcoverM>
 				</sp:backcover>
-				<xsl:variable name="toc" select="opf:manifest/opf:item[@properties='nav']/@href"/>
-				<xsl:value-of select="java:setVar($vDialog, 'toc_path', substring-before($toc, extractFileNameFromPath($toc)))"/>
 				<content>
-					<xsl:apply-templates select="document(concat('inDir:', $toc))//xhtml:nav[@epub:type='toc']/xhtml:ol" mode="toc"/>
+					<xsl:apply-templates select="opf:manifest/opf:item[@media-type='application/xhtml+xml' and not(@properties='nav')]"/>
 				</content>
 				<sp:backmatter>
 					<paon:backmatterM>
@@ -108,15 +106,13 @@
 	<xsl:template match="dc:contributor"/>
 
 
-	<xsl:template match="xhtml:ol" mode="toc">
-		<xsl:for-each select="descendant::xhtml:a">
-			<xsl:variable name="href" select="concat(java:getVar($vDialog, 'toc_path'),java:java.lang.String.new(returnFirst(substring-before(@href, '#'), @href)))"/>
-			<xsl:if test="not(java:contains($files, $href))">
-				<xsl:value-of select="execute(java:setVar($vDialog, 'href', $href))"/>
-				<xsl:value-of select="execute(java:add($files, $href))"/>
-				<xsl:apply-templates select="document(concat('inDir:', $href))/xhtml:html/xhtml:body/*" mode="html"/>
-			</xsl:if>
-		</xsl:for-each>
+	<xsl:template match="opf:item[@media-type='application/xhtml+xml' and not(@properties='nav')]">
+		<xsl:variable name="href" select="returnFirst(substring-before(@href, '#'), @href)"/>
+		<xsl:if test="not(java:contains($files, $href))">
+			<xsl:value-of select="execute(java:setVar($vDialog, 'href', $href))"/>
+			<xsl:value-of select="execute(java:add($files, $href))"/>
+			<xsl:apply-templates select="document(concat('inDir:', $href))/xhtml:html/xhtml:body/*" mode="html"/>
+		</xsl:if>
 	</xsl:template>
 
 	<xsl:template match="@*|node()" mode="html">
