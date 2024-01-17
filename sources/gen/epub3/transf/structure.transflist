@@ -13,4 +13,5 @@
 	<sm:transformer sc:refUri="/gen/epub3/transf/structure/level.transf"/>
 	<sm:transformer sc:refUri="/gen/epub3/transf/structure/level@co.transf"/>
 	<sm:transformer sc:refUri="/gen/epub3/transf/structure/title.transf"/>
+	<sm:transformer sc:refUri="/gen/epub3/transf/bases/text.transf"/>
 </sm:transformerList>

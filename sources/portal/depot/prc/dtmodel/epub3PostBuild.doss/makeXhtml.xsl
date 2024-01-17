@@ -38,6 +38,9 @@
 		</xsl:copy>
 	</xsl:template>
 
+	<xsl:template match="@cmd" />
+	<xsl:template match="@cmd" mode="xhtml" />
+
 	<xsl:template match="@clipBegin|@clipEnd" mode="xhtml"/>
 	<xsl:template match="xhtml:section[@id]" mode="xhtml"/>
 

@@ -34,8 +34,6 @@
 		</xsl:copy>
 	</xsl:template>
 
-	<xsl:template match="xhtml:cmd|@cmd"/>
-
 	<xsl:template match="@epubtype">
 		<xsl:attribute name="epub:type"><xsl:value-of select="."/></xsl:attribute>
 	</xsl:template>
