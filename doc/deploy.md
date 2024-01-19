@@ -107,7 +107,7 @@ sera déployer dans `/var/www/studio-paon`:
  - `sudo rm -rf /var/www/studio-paon; sudo find ~/studio-paon/deploy -type d -name "static" -exec sudo cp -r "{}" /var/www/studio-paon \;`
  - `sudo systemctl restart jetty9`
 
-Une fois l’application installée, il faut aussi déployer le modèle documentaire manuellement dans l’application avant de commencer a l’utiliser.
+Une fois l’application installée, il faut aussi déployer le modèle documentaire manuellement dans l’application avant de commencer à l’utiliser.
 
 ## NGINX
 
@@ -141,7 +141,6 @@ server {
 	# Suivant le repertoire de déploiement du site
 	root /var/www/studio-paon;
 
-
 	client_max_body_size 0;
 
 	proxy_request_buffering off;
@@ -151,8 +150,6 @@ server {
 	error_log /var/log/nginx/error_test.studio-paon.fr.log error;
 	access_log /var/log/nginx/access_test.studio-paon.fr.log combined;
 
-	
-	
 	# Add index.php to the list if you are using PHP
 	index fr-FR/home.xhtml;
 
@@ -229,11 +226,11 @@ server {
 	}
 	location /~~edit
 	{
-		return 301 https://test.studio-paon.fr/~~static/depot/fr-FR/depot.xhtml;
+		return 301 http://test.studio-paon.fr/~~static/depot/fr-FR/depot.xhtml;
 	}
 
 	location / {
-		proxy_pass http://127.0.0.1:8080/scenari/depot/tree:;
+		proxy_pass http://127.0.0.1:8080/scenari/depot/tree;
 		proxy_http_version 1.1;
 		proxy_set_header Upgrade $http_upgrade;
 		proxy_set_header Connection $connection_upgrade;
