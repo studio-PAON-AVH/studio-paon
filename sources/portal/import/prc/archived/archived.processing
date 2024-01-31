@@ -101,6 +101,7 @@
 						<smp:includeMeta sc:refUri="/portal/import/metas/nbPagesBrailleAbrege.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/nbPagesBrailleIntegral.meta"/>
 						<smp:includeMeta sc:refUri="/portal/import/metas/timestampStatut.meta"/>
+						<smp:includeMeta sc:refUri="/portal/import/metas/dureeAudio.meta"/>
 					</smp:metadatas>
 				</smp:indexFields>
 			</smp:record>

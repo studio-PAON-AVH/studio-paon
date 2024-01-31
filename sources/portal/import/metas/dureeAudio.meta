@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<smp:meta xmlns:smp="scenari.eu:builder:portal:1.0" name="￼;Durée Audio￼">
+<smp:meta description="￼;Sauvegarde de la durée de l'audio généré￼" name="￼;Durée Audio￼" xmlns:smp="scenari.eu:builder:portal:1.0">
 	<smp:identification code="dureeAud"/>
 	<smp:structure>
 		<smp:string/>
