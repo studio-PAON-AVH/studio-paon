@@ -4,5 +4,12 @@
 	<smp:structure>
 		<smp:string/>
 	</smp:structure>
-	<smp:authoring/>
+	<smp:authoring>
+		<smp:formEditor>
+			<smp:stringMultilineWidget/>
+		</smp:formEditor>
+		<smp:formInfo>
+			<smp:stringMultilineWidget/>
+		</smp:formInfo>
+	</smp:authoring>
 </smp:meta>
