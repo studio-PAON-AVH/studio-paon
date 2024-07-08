@@ -62,6 +62,17 @@ reg.addToList("wed.searchBar.actions", "emphase", 100,
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/italicSearch.svg").url)
     , 10
 );
+reg.addToList("wed.searchBar.actions", "exposant", 100,
+    new FixedCssSelectorSearchAction("exposant", "inlineStyle[role='exposant']", "￼Exposant￼", 1000).setLabel("￼Parcourir le texte en exposant￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/italicSearch.svg").url)
+    , 10
+);
+reg.addToList("wed.searchBar.actions", "inferieur", 100,
+    new FixedCssSelectorSearchAction("inferieur", "inlineStyle[role='inferieur']", "￼Inférieur￼", 1000).setLabel("￼Parcourir le texte en inférieur￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/italicSearch.svg").url)
+    , 10
+);
+
 reg.addToList("wed.searchBar.actions", "bridgehead", 101,
     new FixedCssSelectorSearchAction("bridgehead", "￼flow &gt; bridgehead￼", "￼Titre flottant￼", 1000).setLabel("￼Parcourir les titres flottants￼")
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/titleSearch.svg").url)
