@@ -11,7 +11,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="core.Jav_AppBuilder.main" />
-    <orderEntry type="library" name="Gradle: org.apache.ant:ant:1.10.12" level="project" />
     <orderEntry type="module" module-name="core.Jav_Store.main" />
     <orderEntry type="module" module-name="core.Jav_Core.main" />
     <orderEntry type="module" module-name="core.Jav_Commons.main" />
@@ -20,6 +19,7 @@
     <orderEntry type="module" module-name="core.Jav_Wsp.main" />
     <orderEntry type="module" module-name="core.Jav_CoreSrv.main" />
     <orderEntry type="module" module-name="core.Jav_Gen.main" />
-    <orderEntry type="library" name="Gradle: org.apache.ant:ant:1.10.13" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.ant:ant:1.10.14" level="project" />
+    <orderEntry type="library" name="Gradle: javax.servlet:javax.servlet-api:3.1.0" level="project" />
   </component>
 </module>
