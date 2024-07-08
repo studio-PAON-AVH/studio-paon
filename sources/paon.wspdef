@@ -103,6 +103,19 @@ reg.addToList("wed.searchBar.actions", "alternative", 106,
     .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/altSearch.svg").url)
     , 10
 );
+
+reg.addToList("wed.searchBar.actions", "itemizedList", 104,
+    new FixedCssSelectorSearchAction("itemizedList", "itemizedList", "￼Liste￼", 1000).setLabel("￼Parcourir les listes simples￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/frame.svg").url)
+    , 10
+);
+
+reg.addToList("wed.searchBar.actions", "orderedList", 104,
+    new FixedCssSelectorSearchAction("orderedList", "orderedList", "￼Liste numéroté￼", 1000).setLabel("￼Parcourir les listes numérotés￼")
+    .setIcon(wspResUrl.resolve(":wspRes:ui/freeRes/icons/frame.svg").url)
+    , 10
+);
+
 </sm:freeConfigWsp>
 		</sm:front>
 		<sm:freeBuild sc:refUri="/gen/od/freeOdTxt.doss"/>
