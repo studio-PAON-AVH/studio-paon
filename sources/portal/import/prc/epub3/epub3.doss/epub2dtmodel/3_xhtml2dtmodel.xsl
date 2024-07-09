@@ -133,6 +133,7 @@
 	<!-- Balises ignorés dont le contenu est traité -->
 	<xsl:template match="span[@class='nchap']"><xsl:apply-templates/></xsl:template>
 	<xsl:template match="span[@class='chap']"><xsl:apply-templates/></xsl:template>
+	<xsl:template match="xhtml:small"><xsl:apply-templates/></xsl:template>
 
 	<!-- Recopie des balises inconnues en commentaire pour affiner la XSL -->
 	<xsl:template match="@*|node()">
