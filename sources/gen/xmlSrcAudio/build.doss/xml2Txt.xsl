@@ -21,7 +21,7 @@
 		<xsl:apply-templates mode="copyTxt">
 			<xsl:with-param name="voice" select="$voice2"/>
 		</xsl:apply-templates>
-		<xsl:text>\break\ </xsl:text>
+		<xsl:text> \break\ </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="xhtml:p">
@@ -32,7 +32,7 @@
 		<xsl:apply-templates mode="copyTxt">
 			<xsl:with-param name="voice" select="$voice1"/>
 		</xsl:apply-templates>
-		<xsl:text>\break\ </xsl:text>
+		<xsl:text> \break\ </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="xhtml:table">
@@ -43,7 +43,7 @@
 	<xsl:template match="xhtml:caption">
 		<xsl:text>\vce=speaker=</xsl:text><xsl:value-of select="$voice1"/><xsl:text>\</xsl:text>
 				<xsl:apply-templates mode="copyTxt"/>
-  		<xsl:text>\break\ </xsl:text>
+  		<xsl:text> \break\ </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="xhtml:span[@cmd]" mode="copyTxt">
@@ -68,7 +68,7 @@
 		<xsl:apply-templates mode="copyTxt">
 			<xsl:with-param name="voice" select="$voice"/>
 		</xsl:apply-templates>
-		<xsl:text>\break\ </xsl:text>
+		<xsl:text> \break\ </xsl:text>
 	</xsl:template>
 
 	<xsl:template match="@*|*" mode="copyTxt">

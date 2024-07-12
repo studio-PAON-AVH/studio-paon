@@ -35,12 +35,12 @@
 		<xsl:when test="$mode='flow-aud'">
 				<xsl:if test="not($prevLastChar = ' ' or $prevLastChar = ' ' or $prevLastChar = '')"><xsl:text> </xsl:text></xsl:if>
 				<!-- les breaks permettent d'éviter un changement de phrase dans `(note)` ce qui couperait le noteref en deux dans un contexte de note en flow dans daisy3 -->
-				<span class="secondaryVoice"><xsl:text>\break\</xsl:text><xsl:text>￼(note)￼</xsl:text><xsl:text>\break\</xsl:text></span>
+				<span class="secondaryVoice"><xsl:text>\break\</xsl:text><xsl:text>￼(note)￼</xsl:text><xsl:text> \break\</xsl:text></span>
 				<xsl:if test="not($firstChar = ' ' or $firstChar = ' ')"><xsl:text> </xsl:text></xsl:if>
 				<xsl:for-each select="descendant::xhtml:p"><xsl:value-of select="normalize-space()"/>
 					<xsl:if test="following-sibling::*"><xsl:text> </xsl:text></xsl:if></xsl:for-each>
 				<xsl:if test="not($lastChar = ' ' or  $lastChar = ' ')"><xsl:text> </xsl:text></xsl:if>
-				<span class="secondaryVoice"><xsl:text>\break\￼(fin de note)￼\break\</xsl:text></span>
+				<span class="secondaryVoice"><xsl:text>\break\￼(fin de note)￼ \break\</xsl:text></span>
 				<xsl:if test="not(contains($seperators,$follFirstChar) or $follFirstChar = '')"><xsl:text> </xsl:text></xsl:if>
 			</xsl:when>
 			<xsl:when test="$mode='flow'">
@@ -122,7 +122,7 @@
 		<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
 		<xsl:choose>
 			<xsl:when test="$mode='end-xhtml1' and //xhtml:note">
-				<div class="level1" id="notes">
+				<div class="level1" id="_notes">
 					<h1>￼Notes￼</h1>
 					<xsl:for-each select="//xhtml:note">
 						<div class="note">
@@ -133,7 +133,7 @@
 				</div>
 			</xsl:when>
 			<xsl:when test="$mode='end-xhtml5' and //xhtml:note">
-				<section epubtype="endnotes" role="doc-endnotes" id="notes">
+				<section epubtype="endnotes" role="doc-endnotes" id="_notes">
 					<h1>￼Notes￼</h1>
 					<ol>
 					<xsl:for-each select="//xhtml:note">
@@ -146,7 +146,7 @@
 				</section>
 			</xsl:when>
 			<xsl:when test="$mode='end-dtb'">
-				<level1 class="endnotes" id="notes">
+				<level1 class="endnotes" id="_notes">
 					<h1>￼Notes￼</h1>
 					<xsl:for-each select="//dtb:note">
 						<xsl:copy>

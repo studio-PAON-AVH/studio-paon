@@ -22,7 +22,7 @@
 		<xsl:apply-templates select="node()"/>
 	</xsl:template>
 
-	<xsl:template match="xhtml:p[$clean4VoiceDream = 'true'][ancestor::xhtml:div[@id='dnotes']][position()=1]/@id">
+	<xsl:template match="xhtml:p[$clean4VoiceDream = 'true'][ancestor::xhtml:div[@id='_notes']][position()=1]/@id">
 			<xsl:attribute name="id"><xsl:value-of select="ancestor::xhtml:div[1]/@id"/></xsl:attribute>
 	</xsl:template>
 

@@ -16,7 +16,7 @@
 
 		<xmltask source="${vFolderDest}/txts.xml">
 			<call path="/*[local-name()='html']/*[local-name()='body']/*[local-name()='div']">
-				<param name="id" path="@id"/>
+				<param name="id" path="substring(@id,2)"/>
 				<param name="text" path="text()"/>
 				<actions>
 					<!-- Création fichiers txt -->

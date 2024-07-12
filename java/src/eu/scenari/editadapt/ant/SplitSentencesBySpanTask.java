@@ -26,7 +26,7 @@ import eu.scenari.xml.serializer.xerces.impl.XMLSerializer;
  */
 public class SplitSentencesBySpanTask extends Task {
 	public static final TracePoint sTrace = TraceMgr.register(SplitSentencesBySpanTask.class.getName() + ".sTrace", "Traces SplitSentencesBySpanTask.");
-	protected static final String sBreakStr = "\\break\\";
+	protected static final String sBreakStr = " \\break\\";
 	protected File inFile;
 	protected File outFile;
 	protected String sentencesSfx;
@@ -125,7 +125,7 @@ public class SplitSentencesBySpanTask extends Task {
 				String id = attributes.getValue("id");
 				String className = attributes.getValue("class");
 				if (id != null && !className.equals("note")) {
-					return id;
+					return id.substring(1); // supression du prefix
 				}
 			}
 			return null;
@@ -241,11 +241,19 @@ public class SplitSentencesBySpanTask extends Task {
 					}
 					element.put("attributes", elementAtts);
 
-					elmntStack.add(element);
 					if (qName.equals("span") && attributes.getValue("class") != null && attributes.getValue("class").equals("altaudio")) {
 						if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] span@class='altaudio' - enter inAltAudio mode");
 						this.inAltAudio = true;
+						if(!inSentence){ // cas des alt audio an début de phrase de paragraphe
+							// fermeture des éléments précédents la phrase
+							closeStackElements();
+							//ouverture du span de phrase
+							openSentence();
+							//ré-ouverture des éléments de la stack dans le span de phrase
+							openStackElements();
+						}
 					}
+					elmntStack.add(element);
 				}
 				xml.startElement(uri, localName, qName, attributes);
 
@@ -303,7 +311,7 @@ public class SplitSentencesBySpanTask extends Task {
 							// Difference entre le début de la phrase de l'audio et le texte du html
 							// Test des correspondances spéciales pour le texte converti en commande par acapela
 							if (content.trim().matches("\\*(\\s*\\*(\\s*\\*)?)?") &&
-									Objects.equals(sentence, "\\break\\")
+									Objects.equals(sentence, sBreakStr)
 							) {
 								// - Présence de séparateur de paragraphes : * ou *** ou * * *
 								// Ces séparateurs sont convertis en \break\ par acapela
@@ -467,7 +475,7 @@ public class SplitSentencesBySpanTask extends Task {
 		protected String getAcapelaFileName(String uri, String localName, String qName, Attributes attributes) {
 			if (qName.equals("section")) {
 				String id = attributes.getValue("id");
-				if (id != null) return id;
+				if (id != null) return id.substring(1); // supression du prefix
 			}
 			return null;
 		}
@@ -485,7 +493,7 @@ public class SplitSentencesBySpanTask extends Task {
 				String id = attributes.getValue("id");
 				String className = attributes.getValue("class");
 				if (id != null && (className == null || !className.equals("note"))) {
-					return id;
+					return id.substring(1); // supression du prefix
 				}
 			}
 			return null;

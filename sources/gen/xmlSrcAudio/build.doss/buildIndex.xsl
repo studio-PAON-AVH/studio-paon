@@ -14,8 +14,8 @@
 	</xsl:template>
 
 	<xsl:template match="xhtml:div">
-<xsl:text>	</xsl:text><view code="{@id}.acapela.tts.zip" urlPatterns="?V={@id}.acapela.tts.zip" contentType="application/zip"><xsl:text>
-		</xsl:text><singleSource src="{@id}.acapela.tts.zip"/><xsl:text>
+<xsl:text>	</xsl:text><view code="{substring(@id,2)}.acapela.tts.zip" urlPatterns="?V={substring(@id,2)}.acapela.tts.zip" contentType="application/zip"><xsl:text>
+		</xsl:text><singleSource src="{substring(@id,2)}.acapela.tts.zip"/><xsl:text>
 	</xsl:text></view><xsl:text>
 </xsl:text>
 	</xsl:template>

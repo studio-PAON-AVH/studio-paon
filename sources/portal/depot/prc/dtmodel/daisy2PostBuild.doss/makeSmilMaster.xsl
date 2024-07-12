@@ -20,17 +20,28 @@
 	
 
 	<xsl:template match="/">
-        <!-- On stocke dans une liste java les durée de tous les modules -->
-        <xsl:for-each select="descendant::xhtml:div[@id and not(containWord(@class, 'note'))]">
-            <xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+1)"/>
-            <xsl:variable name="xon" select="document(concat('inDir:',$package_id, '.acapela.tts.zip/events.xon'))"/>
-            <xsl:choose>
-            	<xsl:when test="$xon/fileNotFound"><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse('PT0s')))"/></xsl:when>
-            	<xsl:otherwise><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse(concat('PT',$xon/o/a/o[last()-1]/s[@k='Time']/text(),'s'))))"/></xsl:otherwise>
-            </xsl:choose>
-        </xsl:for-each>
-        <!-- On stocke la liste des durée dans le dialog courrant -->
-        <xsl:value-of select="java:setVar($vDialog, 'durations', $durations)"/>
+
+		<!-- la durée du smil n'est pas la durée des fichiers mp3, mais le total des durées des séquences-->
+		<xsl:variable name="smilsDurations">
+			<xsl:for-each select="descendant::xhtml:div[@id and not(containWord(@class, 'note'))]">
+				<xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+2)"/>
+				<xsl:variable name="package" select="document(concat('inDir:./',$package_id, '.tmp.smil'))"/>
+				<temps>
+					<xsl:attribute name="value">
+						<xsl:choose>
+							<xsl:when test="$package/fileNotFound">
+								<xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse('PT0s')))"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse(concat('PT',number(substring-before($package/smil/body/seq[@dur]/@dur,'s')),'s'))))"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:attribute>
+				</temps>
+			</xsl:for-each>
+		</xsl:variable>
+		<!-- On stocke la liste des durées dans le dialog courrant -->
+		<xsl:value-of select="java:setVar($vDialog, 'durations', $durations)"/>
 		<smil>
 			<head>
 				<meta name="ncc:generator" content="{$head/xhtml:meta[@name='ncc:generator']/@content}"/>
@@ -49,8 +60,8 @@
 	</xsl:template>
 
 	<xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4|xhtml:h5|xhtml:h6">
-		<xsl:variable name="smilId" select="substring(parent::xhtml:div/@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="smilId" select="substring(parent::xhtml:div/@id,string-length($dPfx)+2)" />
 		<xsl:variable name="parId" select="substring(xhtml:span/@id,string-length($sPfx)+1)"/>
-		<ref title="{xhtml:span/text()}" src="{$smilId}.smil#par_{$parId}" id="smil_{$smilId}"/>
+		<ref title="{xhtml:span/text()}" src="{$smilId}.smil#par{$parId}" id="smil_{$smilId}"/>
 	</xsl:template>
 </xsl:stylesheet>

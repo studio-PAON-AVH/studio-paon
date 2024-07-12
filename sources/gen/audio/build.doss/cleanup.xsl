@@ -20,9 +20,16 @@
 	<xsl:template match="dtb:*[starts-with(local-name(), 'level')][@id and java:eu.scenari.editadapt.utils.Utils.isEmptyStr(normalize-space()) != 'false']"/>
 
 	<xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4|xhtml:h5|xhtml:h6|xhtml:p|dtb:h1|dtb:h2|dtb:h3|dtb:h4|dtb:h5|dtb:h6|dtb:p|dtb:line">
-		<xsl:if test="java:eu.scenari.editadapt.utils.Utils.isEmptyStr(normalize-space()) != 'true'">
-			<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
-		</xsl:if>
+		<xsl:copy>
+			<xsl:choose>
+				<xsl:when test="java:eu.scenari.editadapt.utils.Utils.isEmptyStr(normalize-space()) = 'true'">
+					<span class="altaudio" cmd="\prx=_\"><xsl:apply-templates select="@*|node()"/></span>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:apply-templates select="@*|node()"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:copy>
 	</xsl:template>
 
 	<xsl:template match="@*|node()">

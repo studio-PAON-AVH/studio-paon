@@ -123,7 +123,7 @@ public class Utils {
 		return out.toString();
 	}
 
-	public static String formatSumDuration(LinkedList list, int until, String format) {
+	public static String formatSumDuration(LinkedList list, int until, String format, String info) {
 		Duration duration = Duration.ofMillis(0);
 		for (int i = 0; i < until; i++)
 			duration = duration.plus((Duration) list.get(i));
@@ -141,6 +141,19 @@ public class Utils {
 		if (until >= list.size()) return "Out of boundary";
 		Duration duration = (Duration) list.get(until);
 		return String.format(format, duration.toHoursPart() + 24 * duration.toDaysPart(), duration.toMinutesPart(), duration.toSecondsPart(), duration.toMillisPart());
+	}
+
+	public static String secondesToFormat(String seconds, String format, String info){
+		float parsedSeconds = Float.parseFloat(seconds);
+		float hoursValue = parsedSeconds / 3600;
+		int hours = (int)Math.floor(parsedSeconds / 3600);
+		float minutesValue = (hoursValue - hours) * 60;
+		int minutes = (int)Math.floor(minutesValue);
+		float secondesValue = (minutesValue - minutes) * 60;
+		int secondes = (int)Math.floor(secondesValue);
+		float millisValue = (secondesValue - secondes) * 1000;
+		int millis =  (int)Math.round(millisValue); // rounding a la fin pour faire comme en xsl
+		return String.format(format, hours, minutes, secondes, millis);
 	}
 
 	/**
