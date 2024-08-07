@@ -19,7 +19,7 @@
 
 
 	<xsl:template match="xhtml:section[@id]">
-		<xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+2)"/>
 		<xsl:variable name="xon" select="document(concat('inDir:',$package_id, '.acapela.tts.zip/events.xon'))"/>
 		<xsl:value-of select="execute(java:put($vars, 'xon_sentences', $xon/o/a/o[s[@k='EventKind' and text()='Sentence']][s[@k='Sentence' and string-length(text()) > 0 and  not(starts-with(text(),'\pau='))]]))"/>
 		<xsl:value-of select="execute(java:put($vars, 'total_time', returnFirst($xon/o/a/o[last()-1]/o[@k='Time']/n/text(), $xon/o/a/o[last()-1]/s[@k='Time']/text()) ))"/>

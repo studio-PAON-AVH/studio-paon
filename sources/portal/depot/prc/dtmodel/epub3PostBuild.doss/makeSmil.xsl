@@ -23,7 +23,7 @@
 	<xsl:variable name="previous-audio" select="java:getVar($vDialog, 'iterator')"/>
 	<xsl:variable name="format-audio-duration" select="'%02d:%02d:%02d.%03d'"/>
 
-	<xsl:template match="*[@id=concat($dPfx,$package_id)]">
+	<xsl:template match="*[@id=concat($dPfx,'_',$package_id)]">
 		<smil version="3.0">
 			<body>
 			<!-- dur="{java:eu.scenari.editadapt.utils.Utils.formatDuration($durations, $previous-audio, $format-audio-duration)}" -->

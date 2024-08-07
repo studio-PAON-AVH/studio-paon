@@ -18,33 +18,21 @@
 	<xsl:param name="pPfx"/>
 	<xsl:param name="sPfx"/>
 
-	<xsl:template match="*[@id=concat($dPfx,'_',$package_id)]">
-		<html>
-			<head>
-				<meta charset="UTF-8"/>
-				<title><xsl:value-of select="normalize-space(child::*[1])"/></title>
-			</head>
-			<body>
-				<xsl:copy>
-					<xsl:apply-templates select="@*|node()" mode="xhtml"/>
-				</xsl:copy>
-			</body>
-		</html>
-	</xsl:template>
+	<!-- Nombre de phrases maximal par page -->
+	<xsl:variable name="sPerPage" select="17"/>
 
-	<xsl:template match="@*|node()" mode="xhtml">
+	<!-- Pagebreak sur les titres -->
+	<xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4|xhtml:h5|xhtml:h6">
 		<xsl:copy>
-			<xsl:apply-templates select="@*|node()" mode="xhtml"/>
+			<xsl:apply-templates select="@*|node()"/>
 		</xsl:copy>
 	</xsl:template>
 
-	<xsl:template match="@cmd" />
-	<xsl:template match="@cmd" mode="xhtml" />
-
-	<xsl:template match="@clipBegin|@clipEnd" mode="xhtml"/>
-	<xsl:template match="xhtml:section[@id]" mode="xhtml"/>
-
 	<xsl:template match="@*|node()">
-		<xsl:apply-templates select="@*|node()"/>
+		<xsl:copy>
+			<xsl:apply-templates select="@*|node()"/>
+		</xsl:copy>
 	</xsl:template>
+
+
 </xsl:stylesheet>
