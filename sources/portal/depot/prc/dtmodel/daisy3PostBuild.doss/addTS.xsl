@@ -19,7 +19,7 @@
 
 
 	<xsl:template match="dtb:frontmatter|dtb:level1[@id]|dtb:level2|dtb:level3|dtb:level4|dtb:level5|dtb:level6">
-		<xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+2)"/>
 		<xsl:variable name="xon" select="document(concat('inDir:',$package_id, '.acapela.tts.zip/events.xon'))"/>
 		<xsl:value-of select="execute(java:put($vars, 'xon_sentences', $xon/o/a/o[s[@k='EventKind' and text()='Sentence']][s[@k='Sentence' and string-length(text()) > 0 and  not(starts-with(text(),'\pau='))]]))"/>
 		<!-- FIXME : clean de la premiere écriture de récup du time après maj api acapela -->

@@ -16,7 +16,7 @@
 
 	<xsl:template match="dtb:note-processing"/>
 
-	<xsl:template match="dtb:level1[not(id='dnotes')]|dtb:level2|dtb:level3|dtb:level4|dtb:level5|dtb:level6">
+	<xsl:template match="dtb:level1[not(id='_notes')]|dtb:level2|dtb:level3|dtb:level4|dtb:level5|dtb:level6">
 		<xsl:copy>
 			<xsl:apply-templates select="@*|node()"/>
 			<xsl:if test="$mode='flow-dtb'">

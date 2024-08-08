@@ -22,7 +22,7 @@
 	<xsl:template match="/">
 		<!-- On stocke dans une liste java les durées de tous les modules -->
 		<xsl:for-each select="(descendant::dtb:frontmatter[@id]|descendant::dtb:level1[@id]|descendant::dtb:level2[@id]|descendant::dtb:level3[@id]|descendant::dtb:level4[@id]|descendant::dtb:level5[@id]|descendant::dtb:level6[@id])">
-				<xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+1)"/>
+				<xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+2)"/>
 				<xsl:variable name="xon" select="document(concat('inDir:',$package_id, '.acapela.tts.zip/events.xon'))"/>
 				<xsl:choose>
 					<xsl:when test="$xon/fileNotFound"><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse('PT0s')))"/></xsl:when>
@@ -58,7 +58,7 @@
 	</xsl:template>
 
 	<xsl:template match="dtb:frontmatter[@id]|dtb:level1[@id]|dtb:level2[@id]|dtb:level3[@id]|dtb:level4[@id]|dtb:level5[@id]|dtb:level6[@id]	">
-		<xsl:variable name="smilId" select="substring(@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="smilId" select="substring(@id,string-length($dPfx)+2)"/>
 		<item href="{$smilId}.smil" id="opf_{@id}" media-type="application/smil"/>
 		<item href="{$smilId}.mp3" id="opf_{@id}_aud" media-type="audio/mpeg"/>
 	</xsl:template>
