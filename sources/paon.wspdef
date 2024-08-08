@@ -44,6 +44,10 @@
 			<sm:from key="paon"/>
 			<sm:to key="paon" majorVersion="1" mediumVersion="1" minorVersion="4"/>
 		</sm:update>
+		<sm:update sc:refUri="/migr/from_1.2.doss">
+			<sm:from key="paon"/>
+			<sm:to key="paon" majorVersion="1" mediumVersion="3" minorVersion="0"/>
+		</sm:update>
 	</sm:migration>
 	<sm:free>
 		<sm:front>
