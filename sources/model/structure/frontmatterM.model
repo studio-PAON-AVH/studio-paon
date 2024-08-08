@@ -8,10 +8,27 @@
 		<sm:field code="typeOuvrage" family="property" name="￼;Type d'ouvrage￼" occurrence="zeroOrMore">
 			<sm:string/>
 		</sm:field>
-		<sm:field code="transcriptor" family="property" name="￼;Organisme de transcription￼" occurrence="zeroOrOne">
+		<sm:field code="transcriptor" family="property" name="￼;Organisme et Service de transcription￼" occurrence="zeroOrOne">
+			<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1723110323880" creationTime="1723110047657">correspond aux champ ncc:producer et dtb:producer dans daisy2 et dtbook : Organisme et service de transcription en charge de réaliser l'adaptation</comment></comment>-->
 			<sm:string/>
 		</sm:field>
 		<sm:field code="publisher" family="property" name="￼;Éditeur￼" occurrence="one">
+			<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1723111859342" creationTime="1723110070766">correspond aux champs ncc:sourcePublisher et dtb:sourcePublisher des daisy2 et dtbook : éditeur du fichier a l'origine de la transcription
+actuellement défini en dc:publisher et en sourcePublisher</comment></comment>-->
+			<sm:string/>
+		</sm:field>
+		<sm:field code="transcriptPublisher" family="property" name="￼;Mention éditeur transcription￼" occurrence="zeroOrOne">
+			<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1723118446126" creationTime="1723109981409">devrait normalement correspondre au champ dc:publisher des daisy2 et dtbook : organismes responsable de la publication du dtbook
+
+Actuellement utilisé comme mention accolé au champ dc:publisher
+Exemple de valeur attendu : "transcript et adapté par apiDV"</comment></comment>-->
+			<sm:string/>
+		</sm:field>
+		<sm:field code="legalsTranscription" family="property" name="￼;Mention légale transcription￼" occurrence="zeroOrOne">
+			<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1723110418975" creationTime="1723107895245">Mention de l'organisme de transcription inséré dans le quatrième de couverture, par exemple:
+Transcript et adapté par apiDV nouvelle acquitaine
+ou encore
+Transcrit et adapté pour la Médiathèque de l'Association Valentin Haüy</comment></comment>-->
 			<sm:string/>
 		</sm:field>
 		<sm:field code="legalsJeunesse" family="property" name="￼;Mention légale jeunesse￼" occurrence="zeroOrOne">
