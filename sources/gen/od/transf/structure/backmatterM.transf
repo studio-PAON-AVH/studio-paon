@@ -72,5 +72,8 @@
 		<sm:forField codes="others">
 			<sm:fieldValueOtherType/>
 		</sm:forField>
+		<sm:forField codes="InfosTranscription">
+			<sm:fieldValueOtherType/>
+		</sm:forField>
 	</sm:content>
 </sm:dataFormOdTransf>

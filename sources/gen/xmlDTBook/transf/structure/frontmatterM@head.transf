@@ -40,25 +40,7 @@
 				<sm:WText value="dtb:producer"/>
 			</sm:xhtmlContentZone>
 			<sm:xhtmlContentZone key="content">
-				<sm:fieldValueString/>
-			</sm:xhtmlContentZone>
-		</sm:Widget>
-		<sm:forField codes="publisher">
-			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
-				<sm:xhtmlContentZone key="name">
-					<sm:WText value="dtb:sourcePublisher"/>
-				</sm:xhtmlContentZone>
-				<sm:xhtmlContentZone key="content">
-					<sm:fieldValueString/>
-				</sm:xhtmlContentZone>
-			</sm:Widget>
-		</sm:forField>
-		<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
-			<sm:xhtmlContentZone key="name">
-				<sm:WText value="dtb:publisher"/>
-			</sm:xhtmlContentZone>
-			<sm:xhtmlContentZone key="content">
-				<sm:forField codes="publisher">
+				<sm:forField codes="transcriptor">
 					<sm:fieldValueString/>
 				</sm:forField>
 			</sm:xhtmlContentZone>
@@ -71,7 +53,21 @@
 				<sm:forField codes="publisher">
 					<sm:fieldValueString/>
 				</sm:forField>
+				<sm:forField codes="transcriptPublisher">
+					<sm:WText value="￼;, ￼"/>
+					<sm:fieldValueString/>
+				</sm:forField>
 			</sm:xhtmlContentZone>
 		</sm:Widget>
+		<sm:forField codes="publisher">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
+				<sm:xhtmlContentZone key="name">
+					<sm:WText value="dtb:sourcePublisher"/>
+				</sm:xhtmlContentZone>
+				<sm:xhtmlContentZone key="content">
+					<sm:fieldValueString/>
+				</sm:xhtmlContentZone>
+			</sm:Widget>
+		</sm:forField>
 	</sm:content>
 </sm:dataFormXhtmlTransf>

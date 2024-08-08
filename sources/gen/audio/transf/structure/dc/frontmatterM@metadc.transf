@@ -11,6 +11,10 @@
 				<sm:forField codes="publisher">
 					<sm:fieldValueString/>
 				</sm:forField>
+				<sm:forField codes="transcriptPublisher">
+					<sm:WText value="￼;, ￼"/>
+					<sm:fieldValueString/>
+				</sm:forField>
 			</sm:xhtmlContentZone>
 		</sm:Widget>
 		<sm:forField codes="typeOuvrage">

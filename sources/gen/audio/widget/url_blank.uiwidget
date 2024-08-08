@@ -16,7 +16,7 @@
 			&lt;xsl:variable name="vTitle" select="$vArguments/paon:url/sp:title"/&gt;
 			&lt;xsl:variable name="vUrl" select="$vArguments/paon:url/sp:url"/&gt;
 			&lt;xsl:variable name="vContent" select="computeStrAgent('xhtmlContentZone_content', $vArguments)"/&gt;
-    	&lt;a target="_blank" href="{$vUrl}"&gt;&lt;xsl:if test="string-length($vTitle)&gt;0"&gt;&lt;xsl:attribute name="title"&gt;&lt;xsl:value-of select="$vTitle"/&gt;&lt;/xsl:attribute&gt;&lt;/xsl:if&gt;&lt;span class="lnk"&gt;&lt;xsl:value-of select="$vContent" disable-output-escaping="yes"/&gt;&lt;/span&gt;&lt;/a&gt;
+    	&lt;a target="_blank" href="{$vUrl}"&gt;&lt;xsl:if test="string-length($vTitle)&gt;0"&gt;&lt;xsl:attribute name="title"&gt;&lt;xsl:value-of select="$vTitle"/&gt;&lt;/xsl:attribute&gt;&lt;/xsl:if&gt;&lt;xsl:value-of select="$vContent" disable-output-escaping="yes"/&gt;&lt;/a&gt;
 		&lt;/xsl:template&gt;
 	&lt;/xsl:stylesheet&gt;
 &lt;/source&gt;</sm:widgetBsFragment>

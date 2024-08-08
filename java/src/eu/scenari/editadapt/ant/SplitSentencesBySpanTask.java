@@ -337,7 +337,11 @@ public class SplitSentencesBySpanTask extends Task {
 							LogMgr.publishMessage(new LogMsg("[" + this.getClass().getName() + "] - Xml txt `%s` at char %d [%c] does not match Acapela sentence `%s` at char %d [%c]", new String(ch, start, length), i, ch[i], sentence, sentenceOffset, sentence.charAt(sentenceOffset)));
 							throw LogMgr.newException("[" + this.getClass().getName() + "] - Xml txt `%s` at char %d [%c] does not match Acapela sentence `%s` at char %d [%c]", new String(ch, start, length), i, ch[i], sentence, sentenceOffset, sentence.charAt(sentenceOffset));
 						}
-						if (sentenceOffset == sentence.length()) { // on a atteint la fin de la phrase
+						int sLength = sentence.length();
+						if(sentence.endsWith(sBreakStr)){
+							sLength = sLength - sBreakStr.length();
+						}
+						if (sentenceOffset == sLength) { // on a atteint la fin de la phrase
 							//Fermeture de la stack
 							closeStackElements();
 							if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] last char of sentence - close span@class='sentence'");

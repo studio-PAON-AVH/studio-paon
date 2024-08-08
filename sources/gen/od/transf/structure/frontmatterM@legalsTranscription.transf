@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<sm:dataFormOdTransf xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+<sm:dataFormOdTransf xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
 	<sm:model sc:refUri="/model/structure/frontmatterM.model"/>
-	<sm:axis code="legalsAVH"/>
+	<sm:axis code="legalsTranscription"/>
 	<sm:content>
-		<sm:forField codes="legalsAVH">
+		<sm:forField codes="legalsTranscription">
 			<sm:WParagraph globalStyle="couverture">
 				<sm:fixedString value="[[*sk-9*]]"/>
 				<sm:fieldValueString/>
