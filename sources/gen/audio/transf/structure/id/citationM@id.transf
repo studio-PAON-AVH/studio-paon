@@ -5,7 +5,7 @@
 	<sm:content>
 		<sm:WText value="_"/>
 		<sm:dynamicString>
-			<sm:freeSelect xpath="count(../preceding-sibling::*)"/>
+			<sm:freeSelect xpath="formatStr('%03.0f', count(../preceding-sibling::*))"/>
 		</sm:dynamicString>
 		<sm:WText value="_"/>
 		<sm:dynamicString>
