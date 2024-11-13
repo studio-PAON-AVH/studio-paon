@@ -63,13 +63,17 @@
 			<smp:rootView code="xml" family="userFriendly" mimeType="application/xml" name="￼;Source￼">
 				<smp:identityView/>
 			</smp:rootView>
-			<smp:freeView buildPath="free/prcs/xml-lg/xmllg2dtbook/build.xml" builtOn="content" code="dtbook" family="userFriendly" name="￼;DTModel￼" type="eu.scenari.store.service.mkviews.makers.AntViewMk" urlPatterns="?V=dtbook">
+			<smp:freeView buildPath="lg2dtbook/build.xml" builtOn="content" code="dtbook" family="userFriendly" name="￼;DTBook￼" type="eu.scenari.store.service.mkviews.makers.AntViewMk" urlPatterns="?V=dtbook">
 				<smp:condition sc:refUri="/portal/import/prc/xml/meta/islg.cond"/>
+				<smp:resource sc:refUri="/portal/import/prc/xml/xmllg2dtbook.doss" toPath="lg2dtbook"/>
 			</smp:freeView>
-			<smp:freeView buildPath="free/prcs/xml-lg/xmllg2dtbook/build.xml" builtOn="content" code="dtbook" family="userFriendly" name="￼;DTModel￼" type="eu.scenari.store.service.mkviews.makers.AntViewMk" urlPatterns="?V=dtbook">
-				<smp:condition sc:refUri="/portal/import/prc/xml/meta/isbook.cond"/>
+			<smp:view code="dtbook" family="userFriendly" name="￼;DTBook￼" urlPatterns="?V=dtbook">
+				<smp:condition sc:refUri="/portal/import/prc/xml/meta/isdtbook.cond"/>
+				<smp:identityView/>
+			</smp:view>
+			<smp:freeView buildPath="dtbook2dtmodel/build.xml" builtOn="views" code="dtmodel" family="userFriendly" fromCdView="dtbook" name="￼;DTModel￼" type="eu.scenari.store.service.mkviews.makers.AntViewMk" urlPatterns="?V=dtmodel">
+				<smp:resource sc:refUri="/portal/import/prc/xml/dtbook2dtmodel.doss" toPath="dtbook2dtmodel"/>
 			</smp:freeView>
-			<smp:freeView buildPath="free/prcs/xml-lg/dtbook2dtmodel/build.xml" builtOn="views" code="dtmodel" family="userFriendly" fromCdView="dtbook" name="￼;DTBook￼" type="eu.scenari.store.service.mkviews.makers.AntViewMk" urlPatterns="?V=dtmodel"/>
 		</smp:buildViews>
 	</smp:writeProcess>
 	<smp:authoring>
