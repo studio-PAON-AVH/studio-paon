@@ -1,4 +1,0 @@
-<?xml version="1.0"?>
-<smp:metasCond code="isbook" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
-	<smp:matchRegExp regexp="dtbook" sc:refUri="/portalLight/import/prc/xml/meta/sourceXMLDoctype.meta"/>
-</smp:metasCond>

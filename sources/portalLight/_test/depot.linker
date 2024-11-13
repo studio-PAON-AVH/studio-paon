@@ -18,7 +18,7 @@
 					<smp:wspDef lang="fr-FR" sc:refUri="/paon.wspdef"/>
 				</smp:embeddedPacks>
 				<smp:esEngine>
-					<smp:esInternalAccess url="http://127.0.0.1:9210"/>
+					<smp:esInternalAccess url="http://127.0.0.1:9811"/>
 				</smp:esEngine>
 			</smp:components>
 		</smp:serverWrite>
