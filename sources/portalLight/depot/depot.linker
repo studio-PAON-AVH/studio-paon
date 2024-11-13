@@ -24,6 +24,9 @@
 				<smp:remoteServers>
 					<smp:otherServers localIPs="forbid" otherIps="allow" privateIPs="forbid"/>
 				</smp:remoteServers>
+				<smp:embeddedPacks>
+					<smp:packMake sc:refUri="/_dist/fr-FR/paon.packmake"/>
+				</smp:embeddedPacks>
 				<smp:esEngine>
 					<smp:esInternalAccess url="§§app.ext.es.host§§"/>
 					<smp:esPublicAccess baseUrl="/~~search" sc:refUri="/portalLight/servers/static.server"/>

@@ -69,6 +69,9 @@
 					</smp:scDepot>
 					<smp:otherServers localIPs="forbid" otherIps="forbid" privateIPs="forbid"/>
 				</smp:remoteServers>
+				<smp:embeddedPacks>
+					<smp:packMake sc:refUri="/_dist/fr-FR/paon.packmake"/>
+				</smp:embeddedPacks>
 			</smp:components>
 		</smp:serverApp>
 		<smp:serverWebFront baseUrl="/~~static/#portletCode#" sc:refUri="/portal/servers/static.server"/>
