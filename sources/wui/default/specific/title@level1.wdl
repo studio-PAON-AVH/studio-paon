@@ -8,7 +8,7 @@
 					<sm:container sharedCssKey="level-title"/>
 					<div class="icon-hx">￼;h1￼</div>
 					<sm:call>
-						<sm:inputStringField placeholder="￼;Chapitre￼" textStyle="border-width:0 0 1px 0; padding: 0 0 .3em 0;"/>
+						<sm:inputStringField placeholder="￼;Chapitre￼" style="border-width:0 0 1px 0; padding: 0 0 .3em 0;"/>
 					</sm:call>
 				</sm:contentBox>
 			</sm:openEdtWidget>

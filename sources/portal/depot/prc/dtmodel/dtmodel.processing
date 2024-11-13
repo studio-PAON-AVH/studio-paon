@@ -57,11 +57,11 @@
 				<smp:stateNew/>
 				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1636532571785" updateTime="1637962206521">Vues pour génération des pistes audio communes à tous les exports audio</comment></comment>-->
 				<smp:stateReady>
-					<smp:freeViewMaker xml:space="preserve">&lt;viewMaker indexPath="index.xml" transformParams="transform=gen&amp;amp;codeGen=xmlSrcAudio&amp;amp;localAutoUpdate=minor&amp;amp;failOnGenError=true&amp;amp;publishFullTraceGenOnFail=true"  type="eu.scenari.store.service.mkviews.makers.CallTransformMultiViewsMk" indexViewCode="multi-txt-view"/&gt;</smp:freeViewMaker>
-					<smp:freeViewMaker xml:space="preserve">&lt;viewMaker code="daisy2" urlPatterns="?V=daisy2.zip" builtOn="content" buildPath="free/prcs/daisy2/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2Pre"/&gt;
-&lt;viewMaker code="daisy3" urlPatterns="?V=daisy3.zip" builtOn="content" buildPath="free/prcs/daisy3/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy3Pre" optional="true"/&gt;
-&lt;viewMaker code="epub3" urlPatterns="?V=epub3.zip" builtOn="content" buildPath="free/prcs/epub3/build.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="epub3Pre" optional="true"/&gt;
-&lt;viewMaker code="duration" urlPatterns="?V=duration" builtOn="content" buildPath="free/prcs/daisy2/buildDuration.xml" type="eu.scenari.editadapt.ant.AntViewMk" fromCdView="daisy2"/&gt;<smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 2￼" urlPatterns="?V=daisy2.zip"/><smp:registerUiView family="userFriendly/notViewable" name="￼;Daisy 3￼" urlPatterns="?V=daisy3.zip"/><smp:registerUiView family="userFriendly/notViewable" name="￼;Epub 3￼" urlPatterns="?V=epub3.zip"/><smp:registerUiView family="" name="￼;Duration￼" urlPatterns="?V=duration"/></smp:freeViewMaker>
+					<smp:freeView code="multi-txt-view" indexPath="index.xml" transformParams="transform=gen&amp;amp;codeGen=xmlSrcAudio&amp;amp;localAutoUpdate=minor&amp;amp;failOnGenError=true&amp;amp;publishFullTraceGenOnFail=true" type="eu.scenari.store.service.mkviews.makers.CallTransformMultiViewsMk"/>
+					<smp:freeView buildPath="free/prcs/daisy2/build.xml" builtOn="content" code="daisy2" family="userFriendly/notViewable" fromCdView="daisy2Pre" name="￼;Daisy 2￼" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=daisy2.zip"/>
+					<smp:freeView buildPah="free/prcs/daisy3/build.xml" builtOn="content" code="daisy3" family="userFriendly/notViewable" fromCdView="daisy3Pre" name="￼;Daisy 3￼" onError="quiet" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=daisy3.zip"/>
+					<smp:freeView buildPah="free/prcs/epub3/build.xml" builtOn="content" code="epub3" family="userFriendly/notViewable" fromCdView="epub3Pre" name="￼;Epub 3￼" onError="quiet" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=epub3.zip"/>
+					<smp:freeView buildPath="free/prcs/daisy2/buildDuration.xml" builtOn="content" code="duration" fromCdView="daisy2" name="￼;Duration￼" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=duration"/>
 				</smp:stateReady>
 				<smp:stateFailure/>
 			</smp:asyncBuildViews>

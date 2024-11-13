@@ -30,9 +30,9 @@
 				<smp:remoteServers>
 					<smp:otherServers localIPs="forbid" otherIps="allow" privateIPs="forbid"/>
 				</smp:remoteServers>
-				<smp:models>
+				<smp:embeddedPacks>
 					<smp:wspDef lang="fr-FR" sc:refUri="/paon.wspdef"/>
-				</smp:models>
+				</smp:embeddedPacks>
 			</smp:components>
 		</smp:serverApp>
 		<smp:serverWebFront sc:refUri="/portalLight/_test/servers/web.server"/>

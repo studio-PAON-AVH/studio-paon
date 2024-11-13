@@ -45,7 +45,7 @@
 			</sm:Widget>
 		</sm:forField>
 		<sm:forGroup codes="translatedTitle">
-			<sm:forField codes="translatedTitle">
+			<sm:forField codes="title">
 				<sm:Widget sc:refUri="/gen/xmlDTBook/widget/bookM@head.uiwidget">
 					<sm:xhtmlContentZone key="name">
 						<sm:WText value="dc:Relation"/>

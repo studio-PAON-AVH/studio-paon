@@ -59,8 +59,6 @@
 				<smp:batch>
 					<smp:commonsTasks/>
 					<smp:generateTask/>
-					<smp:beanshellTask/>
-					<smp:antTask/>
 				</smp:batch>
 				<smp:remoteServers>
 					<smp:otherServers localIPs="forbid" otherIps="forbid" privateIPs="forbid"/>

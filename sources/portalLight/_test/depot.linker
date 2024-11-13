@@ -14,9 +14,9 @@
 				<smp:transforms>
 					<smp:all/>
 				</smp:transforms>
-				<smp:models>
+				<smp:embeddedPacks>
 					<smp:wspDef lang="fr-FR" sc:refUri="/paon.wspdef"/>
-				</smp:models>
+				</smp:embeddedPacks>
 				<smp:esEngine>
 					<smp:esInternalAccess url="http://127.0.0.1:9210"/>
 				</smp:esEngine>

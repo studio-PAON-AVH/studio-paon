@@ -62,8 +62,6 @@
 				<smp:batch>
 					<smp:commonsTasks/>
 					<smp:generateTask/>
-					<smp:beanshellTask/>
-					<smp:antTask/>
 				</smp:batch>
 				<smp:remoteServers>
 					<smp:scDepot sc:refUri="/portal/depot/depot.portlet" usedFor="output">

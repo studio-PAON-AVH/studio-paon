@@ -27,7 +27,7 @@
 				<xsl:apply-templates select="/xhtml:html/xhtml:head/xhtml:meta[not(starts-with(@name, 'dc'))]"/>
 				<!-- On stocke dans une liste java les durées de tous les modules -->
 				<xsl:for-each select="descendant::xhtml:section[@id]">
-					<xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+1)"/>
+					<xsl:variable name="package_id" select="substring(@id,string-length($dPfx)+2)"/>
 					<xsl:variable name="xon" select="document(concat('inDir:',$package_id, '.acapela.tts.zip/events.xon'))"/>
 					<xsl:choose>
 						<xsl:when test="$xon/fileNotFound"><xsl:value-of select="execute(java:add($durations, java:java.time.Duration.parse('PT0s')))"/></xsl:when>
@@ -58,7 +58,7 @@
 	</xsl:template>
 
 	<xsl:template match="xhtml:section[@id]">
-		<xsl:variable name="sectionId" select="substring(@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="sectionId" select="substring(@id,string-length($dPfx)+2)"/>
 		<opf:item href="{$sectionId}.xhtml" id="opf_{@id}_xhtml" media-overlay="opf_{@id}_smil" media-type="application/xhtml+xml"/>
 		<opf:item href="{$sectionId}.smil" id="opf_{@id}_smil" media-type="application/smil+xml"/>
 		<opf:item href="{$sectionId}.mp3" id="opf_{@id}_aud" media-type="audio/mpeg"/>

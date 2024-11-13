@@ -57,7 +57,7 @@
 			<smp:rootView code="xml" family="userFriendly" mimeType="application/xml" name="￼;Source￼">
 				<smp:identityView/>
 			</smp:rootView>
-			<smp:freeViewMaker xml:space="preserve">&lt;viewMaker code="dtmodel" urlPatterns="?V=dtmodel" builtOn="content" buildPath="free/prcs/epub3/epub2dtmodel/build.xml" type="eu.scenari.store.service.mkviews.makers.AntViewMk"/&gt;<smp:registerUiView family="userFriendly" name="￼;DTModel￼" urlPatterns="?V=dtmodel"/></smp:freeViewMaker>
+			<smp:freeView buildPath="free/prcs/epub3/epub2dtmodel/build.xml" builtOn="content" code="dtmodel" type="eu.scenari.store.service.mkviews.makers.AntViewMk" urlPatterns="?V=dtmodel"/>
 		</smp:buildViews>
 	</smp:writeProcess>
 	<smp:authoring>

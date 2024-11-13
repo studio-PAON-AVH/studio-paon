@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <smp:webAppServer code="§§webapp.code§§" name="￼;§§webapp.name§§￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smp="scenari.eu:builder:portal:1.0">
 	<smp:systemAccess domainUrl="§§webapp.system.url§§"/>
-	<smp:data addonsDirPath="§§webapp.work.dir§§/addons" backupDirPath="§§webapp.work.dir§§/backup" dataDirPath="§§webapp.work.dir§§/data" logsDirPath="§§webapp.logs.dir§§" tempDirPath="§§webapp.work.dir§§/tmp" workingDirPath="§§webapp.work.dir§§/working"/>
+	<smp:data addonsDirPath="§§webapp.work.dir§§/addons" backupDirPath="§§webapp.work.dir§§/backup" dataDirPath="§§webapp.work.dir§§/data" keysDirPath="§§webapp.work.dir§§/keys" logsDirPath="§§webapp.logs.dir§§" tempDirPath="§§webapp.work.dir§§/tmp" workingDirPath="§§webapp.work.dir§§/working"/>
 	<smp:components>
-		<smp:scenariEngine addCoreLib="yes">
+		<smp:scenariEngine>
 			<smp:logs>
 				<smp:daily/>
 			</smp:logs>

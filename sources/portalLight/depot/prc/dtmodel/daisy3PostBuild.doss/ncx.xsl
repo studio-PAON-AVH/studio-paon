@@ -43,7 +43,7 @@
 	</xsl:template>
 
 	<xsl:template match="dtb:doctitle">
-		<xsl:variable name="smilId" select="substring(parent::*/@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="smilId" select="substring(parent::*/@id,string-length($dPfx)+2)"/>
 		<docTitle>
 			<text><xsl:value-of select="normalize-space()"/></text>
 			<audio clipBegin="{descendant::dtb:span[1]/@clipBegin}" clipEnd="{java:eu.scenari.editadapt.utils.Utils.formatSumDuration($durations, 1, $format-audio-duration)}" src="{$smilId}.smil" />
@@ -51,20 +51,20 @@
 	</xsl:template>
 
 	<xsl:template match="dtb:level1[@id]|dtb:level2[@id]|dtb:level3[@id]|dtb:level4[@id]|dtb:level5[@id]|dtb:level6[@id]">
-		<xsl:variable name="smilId" select="substring(@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="smilId" select="substring(@id,string-length($dPfx)+2)"/>
 
 		<navPoint class="{local-name(child::*[1])}" id="nav_{$smilId}">
 			<navLabel>
 				<text><xsl:value-of select="normalize-space(child::*[1])"/></text>
 				<audio clipBegin="{child::*[1]/dtb:span[@class='sentence'][1]/@clipBegin}" clipEnd="{child::*[1]/dtb:span[@class='sentence'][last()]/@clipEnd}" src="{$smilId}.mp3" />
 			</navLabel>
-			<content src="{$smilId}.smil#par_{@id}" />
+			<content src="{$smilId}.smil#par{@id}" />
 			<pages>
 				<navPoint class="page-title" id="navp_{$smilId}">
 					<navLabel>
 						<audio clipBegin="{child::*[1]/dtb:span[@class='sentence'][1]/@clipBegin}" clipEnd="{child::*[1]/dtb:span[@class='sentence'][last()]/@clipEnd}" src="{$smilId}.mp3" />
 					</navLabel>
-					<content src="{$smilId}.smil#par_{@id}" />
+					<content src="{$smilId}.smil#par{@id}" />
 				</navPoint>
 				<xsl:apply-templates select="*"/>
 			</pages>
@@ -77,7 +77,7 @@
 			<navLabel>
 				<audio clipBegin="{@clipBegin}" clipEnd="{@clipEnd}" src="{$smilId}.mp3" />
 			</navLabel>
-			<content src="{$smilId}.smil#par_{@id}" />
+			<content src="{$smilId}.smil#par{@id}" />
 		</navPoint>
 	</xsl:template>
 
@@ -85,7 +85,7 @@
 		<xsl:apply-templates select="parent::*" mode="id"/>
 	</xsl:template>
 
-	<xsl:template match="dtb:frontmatter[@id]|dtb:level1[@id]|dtb:level2[@id]|dtb:level3[@id]|dtb:level4[@id]|dtb:level5[@id]|dtb:level6[@id]" mode="id"><xsl:value-of select="substring(@id,string-length($dPfx)+1)"/></xsl:template>
+	<xsl:template match="dtb:frontmatter[@id]|dtb:level1[@id]|dtb:level2[@id]|dtb:level3[@id]|dtb:level4[@id]|dtb:level5[@id]|dtb:level6[@id]" mode="id"><xsl:value-of select="substring(@id,string-length($dPfx)+2)"/></xsl:template>
 
 	<xsl:template match="*" mode="copyTxt">
 			<xsl:apply-templates select="@*|node()" mode="copyTxt"/>

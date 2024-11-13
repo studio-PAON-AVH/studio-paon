@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sm:dataFormBoxWdl xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+<sm:dataFormBoxWdl xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
 	<sm:model sc:refUri="/model/structure/bookM.model"/>
 	<sm:editPoints>
 		<sm:tag refCodes="title">
@@ -14,7 +14,7 @@ margin:.3em 0;
 }</sm:cssRules>
 					</sm:container>
 					<sm:call>
-						<sm:inputStringField textStyle="border-width:0 0 1px 0; padding: 0 0 .3rem 0;"/>
+						<sm:inputStringField style="border-width:0 0 1px 0; padding: 0 0 .3rem 0;"/>
 					</sm:call>
 				</sm:contentBox>
 			</sm:openEdtWidget>

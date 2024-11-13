@@ -27,23 +27,23 @@
 	</xsl:template>
 
 	<xsl:template match="xhtml:span[containWord(@class, 'sentence')]">
-		<xsl:variable name="smilId" select="substring(parent::xhtml:p/ancestor::xhtml:div[@id]/@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="smilId" select="substring(parent::xhtml:p/parent::xhtml:div[@id]/@id,string-length($dPfx)+2)"/>
 		<xsl:variable name="parId" select="substring(@id,string-length($sPfx)+1)"/>
 		<span class="page-normal">
 			<xsl:apply-templates select="@id"/>
-			<a href="{$smilId}.smil#par_{$parId}"></a>
+			<a href="{$smilId}.smil#par{$parId}"></a>
 		</span>
 	</xsl:template>
 
 	<xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4|xhtml:h5|xhtml:h6" mode="title">
-		<xsl:variable name="smilId" select="substring(ancestor::xhtml:div[@id]/@id,string-length($dPfx)+1)"/>
+		<xsl:variable name="smilId" select="substring(parent::xhtml:div[@id]/@id,string-length($dPfx)+2)"/>
 		<xsl:variable name="parId" select="substring(xhtml:span/@id,string-length($sPfx)+1)"/>
 		<xsl:copy>
 			<xsl:apply-templates select="@*[local-name() != 'id']"/>
 			<xsl:attribute name="id"><xsl:value-of select="xhtml:span/@id"/></xsl:attribute>
-			<a href="{$smilId}.smil#par_{$parId}"><xsl:apply-templates select="descendant::text()"/></a>
+			<a href="{$smilId}.smil#par{$parId}"><xsl:apply-templates select="descendant::text()"/></a>
 		</xsl:copy>
-		<span title="true" class="page-normal" id="s{@id}"><a href="{$smilId}.smil#par_{$parId}"></a></span>
+		<span title="true" class="page-normal" id="s{@id}"><a href="{$smilId}.smil#par{$parId}"></a></span>
 	</xsl:template>
 
 	<xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4|xhtml:h5|xhtml:h6"/>

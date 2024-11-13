@@ -9,7 +9,7 @@
 					<sm:container sharedCssKey="level-title"/>
 					<div class="icon-hx">￼;h5￼</div>
 					<sm:call>
-						<sm:inputStringField placeholder="￼;Intertitre (niveau 5)￼" textStyle="border-width:0 0 1px 0; padding: 0 0 .3em 0;"/>
+						<sm:inputStringField placeholder="￼;Intertitre (niveau 5)￼" style="border-width:0 0 1px 0; padding: 0 0 .3em 0;"/>
 					</sm:call>
 				</sm:contentBox>
 			</sm:openEdtWidget>

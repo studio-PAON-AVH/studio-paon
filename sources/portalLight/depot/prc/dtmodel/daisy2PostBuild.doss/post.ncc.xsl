@@ -12,7 +12,7 @@
 	<xsl:param name="vDialog"/>
 	<xsl:param name="vAgent"/>
 
-	<xsl:variable name="format-audio-duration" select="'%02d:%02d:%02d'"/>
+	<xsl:variable name="format-audio-duration" select="'%02d:%02d:%02d.%03d'"/>
   <xsl:variable name="durations" select="java:getVar($vDialog, 'durations')"/>
 
 	<xsl:template match="xhtml:meta[@name='ncc:totalTime']">

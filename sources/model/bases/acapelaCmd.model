@@ -5,7 +5,7 @@
 		<sm:field code="acapelaCmd" family="content" name="￼;Commande Acapela￼" occurrence="one">
 			<sm:help quickHelp="￼;Cf https://www.acapela-cloud.com/editor/ pour la liste des commandes￼"/>
 			<sm:doc xml:space="preserve">Voir la liste des commandes ici : https://www.acapela-cloud.com/editor/</sm:doc>
-			<sm:string matchesRegexp="\\[^\\]+\\" matchesRegexpMsg="￼;Les commandes doivent respecter la forme \xxx\￼"/>
+			<sm:string matchesRegexp="^\\[^\\]+\\$" matchesRegexpMsg="￼;Les commandes doivent respecter la forme \xxx\￼"/>
 		</sm:field>
 	</sm:structure>
 	<sm:storage/>

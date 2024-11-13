@@ -5,7 +5,7 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:epub="http://www.idpf.org/2007/ops"
 	xmlns:xhtml="http://www.w3.org/1999/xhtml"
-	exclude-result-prefixes="xalan java xhtml">
+	exclude-result-prefixes="xalan java">
 
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 	<xsl:param name="vDialog"/>
@@ -18,18 +18,19 @@
 	<xsl:variable name="format-audio-duration" select="'%02d:%02d:%02d.%03d'"/>
 
 	<xsl:template match="xhtml:html">
-		<xhtml:html>
+		<xhtml:html xml:lang="fr" lang="fr" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 			<xhtml:head>
+				<meta charset="UTF-8" />
 				<xsl:apply-templates select="xhtml:head/xhtml:title" mode="copy"/>
 			</xhtml:head>
 			<xhtml:body>
-				<xhtml:nav epub:type="toc">
+				<xhtml:nav epub:type="toc" role="doc-toc">
 					<xhtml:h1>￼Table des matières￼</xhtml:h1>
 					<xhtml:ol>
 						<xsl:apply-templates mode="toc"/>
 					</xhtml:ol>
 				</xhtml:nav>
-				<xhtml:nav epub:type="page-list">
+				<xhtml:nav epub:type="page-list" role="doc-pagelist">
 					<xhtml:h1>￼Liste des pages￼</xhtml:h1>
 					<xhtml:ol>
 						<xsl:apply-templates mode="pages"/>
@@ -45,7 +46,7 @@
 
 	<xsl:template match="xhtml:section[@id]" mode="toc">
 		<xhtml:li id="{@id}">
-			<xhtml:a href="{substring(@id,string-length($dPfx)+1)}.xhtml"><xsl:apply-templates select="xhtml:h1" mode="copyTxt"/></xhtml:a>
+			<xhtml:a href="{substring(@id,string-length($dPfx)+2)}.xhtml"><xsl:apply-templates select="xhtml:h1" mode="copyTxt"/></xhtml:a>
 		</xhtml:li>
 	</xsl:template>
 
@@ -72,7 +73,7 @@
 		<xsl:apply-templates select="parent::*" mode="packageId"/>
 	</xsl:template>
 
-	<xsl:template match="xhtml:section[@id]" mode="packageId"><xsl:value-of select="substring(@id,string-length($dPfx)+1)"/></xsl:template>
+	<xsl:template match="xhtml:section[@id]" mode="packageId"><xsl:value-of select="substring(@id,string-length($dPfx)+2)"/></xsl:template>
 
 	<xsl:template match="*" mode="copyTxt">
 			<xsl:apply-templates select="node()" mode="copyTxt"/>

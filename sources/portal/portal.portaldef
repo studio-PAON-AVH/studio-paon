@@ -19,8 +19,6 @@
 				</smp:openSiteAction>
 			</smp:mainToolbarPlugin>
 			<smp:wspsPlugin/>
-			<smp:itemEdPlugin/>
-			<smp:dynGenPlugin/>
 			<smp:depotPlugin>
 				<smp:allDepotPortlets>
 					<smp:showDesk/>

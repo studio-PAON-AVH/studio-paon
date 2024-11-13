@@ -13,8 +13,6 @@
 				<smp:remoteSite url="https://studio-paon.docs-kelis.fr/common/help"/>
 			</smp:homePlugin>
 			<smp:wspsPlugin/>
-			<smp:itemEdPlugin/>
-			<smp:dynGenPlugin/>
 			<smp:depotPlugin>
 				<smp:allDepotPortlets>
 					<smp:showDesk/>

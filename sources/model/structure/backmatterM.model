@@ -59,7 +59,7 @@
 			</sm:index>
 			<sm:index sc:refUri="/model/auth/index/translatedTitle.index">
 				<sm:for refCodes="translatedTitle">
-					<sm:fieldValue refCode="translatedTitle"/>
+					<sm:fieldValue refCode="title"/>
 				</sm:for>
 			</sm:index>
 		</sm:indexes>

@@ -14,7 +14,7 @@
 	<xsl:param name="vAgent"/>
 
 	<!-- Nombre de phrases par page -->
-  <xsl:variable name="sPerPage" select="17"/>
+  	<xsl:variable name="sPerPage" select="17"/>
 	
 	<xsl:template match="xhtml:li[@class='pagenum']">
 		<xsl:variable name="prec" select="count(preceding-sibling::xhtml:li[@class='pagenum'])"/>

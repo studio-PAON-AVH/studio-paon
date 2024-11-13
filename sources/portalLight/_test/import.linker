@@ -8,7 +8,7 @@
 				<smp:usersManager>
 					<smp:cookieBasicAuth openCookiePath="¤builder;test#main#portal#http.contexts.path¤"/>
 					<smp:remoteScUsers>
-						<smp:chainLnk sc:refUri="/portalLight/_test/chain.linker"/>
+						<smp:chainPrl sc:refUri="/portalLight/chain/chain.portlet"/>
 					</smp:remoteScUsers>
 				</smp:usersManager>
 				<smp:transforms>

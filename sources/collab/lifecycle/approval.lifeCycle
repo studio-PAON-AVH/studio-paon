@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sm:lifeCycle info="Approbation des documents" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+<sm:lifeCycleClass info="Approbation des documents" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
 	<sm:states>
 		<sm:state-default/>
 		<sm:state-unknown name="￼;Inconnu￼"/>
@@ -68,4 +68,4 @@ On peut activer depuis working à cause de la pose de lien et de la transition a
 		</sm:simpleTransition>
 	</sm:transitions>
 	<sm:authoring/>
-</sm:lifeCycle>
+</sm:lifeCycleClass>

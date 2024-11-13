@@ -56,6 +56,12 @@
 			<param name="sPfx" expression="s"/>
 		</customXsl>
 
+		<!-- Calcul de page coté contenu pour indiquer les pagebreak -->
+		<customXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/${main_html_file}" style="post.xhtml.pages.xsl">
+			<param name="dPfx" expression="d"/>
+			<param name="sPfx" expression="s"/>
+		</customXsl>
+
 		<!-- package OPF -->
 		<customXsl inFile="${vDestPath}_tmp/${main_html_file}" outFile="${vDestPath}_tmp/package.opf" style="makePackage.xsl">
 			<param name="dPfx" expression="d"/>

@@ -2,11 +2,11 @@
 <smw:modeletImporter xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:smw="scenari.eu:builder:wspmgr">
 	<smw:modelet>
 		<smw:replaceSpace fromUri="/portal" toUri="/portalLight"/>
-		<smw:replaceItem>
+		<smw:replace>
 			<smw:from sc:refUri="/collab/roles/main/1_reader.role"/>
 			<smw:to sc:refUri="/portalLight/collab/roles/1_reader.role"/>
-		</smw:replaceItem>
-		<smw:overrideItemByXsl>
+		</smw:replace>
+		<smw:overrideByXsl>
 			<smw:target sc:refUri="/portalLight/portal.portaldef"/>
 			<smw:target sc:refUri="/portalLight/import/import.portlet"/>
 			<smw:target sc:refUri="/portalLight/import/import.linker"/>
@@ -22,7 +22,7 @@
 			<smw:target sc:refUri="/portalLight/chain/chain.linker"/>
 			<smw:target sc:refUri="/portalLight/_test/chain.linker"/>
 			<smw:xsl sc:refUri="/portalLight.xsl"/>
-		</smw:overrideItemByXsl>
-		<smw:lastImport state="done" ts="1703769751003"/>
+		</smw:overrideByXsl>
+		<smw:lastImport state="done" ts="1731493594956"/>
 	</smw:modelet>
 </smw:modeletImporter>

@@ -18,7 +18,7 @@
 	<xsl:param name="pPfx"/>
 	<xsl:param name="sPfx"/>
 
-	<xsl:template match="*[@id=concat($dPfx,$package_id)]">
+	<xsl:template match="*[@id=concat($dPfx,'_',$package_id)]">
 		<html>
 			<head>
 				<meta charset="UTF-8"/>
@@ -37,6 +37,9 @@
 			<xsl:apply-templates select="@*|node()" mode="xhtml"/>
 		</xsl:copy>
 	</xsl:template>
+
+	<xsl:template match="@cmd" />
+	<xsl:template match="@cmd" mode="xhtml" />
 
 	<xsl:template match="@clipBegin|@clipEnd" mode="xhtml"/>
 	<xsl:template match="xhtml:section[@id]" mode="xhtml"/>

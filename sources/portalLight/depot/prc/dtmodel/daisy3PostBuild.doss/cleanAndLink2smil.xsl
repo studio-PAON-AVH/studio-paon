@@ -18,6 +18,7 @@
 
 	<xsl:template match="@clipBegin"/>
 	<xsl:template match="@clipEnd"/>
+	<xsl:template match="@cmd"/>
 
 	<xsl:template match="*[@id]">
 		<xsl:variable name="smilId"><xsl:apply-templates select="." mode="id"/>.smil</xsl:variable>
