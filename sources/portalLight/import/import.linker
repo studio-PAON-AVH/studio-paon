@@ -15,6 +15,9 @@
 				<smp:transforms>
 					<smp:all/>
 				</smp:transforms>
+				<smp:strongbox>
+					<smp:proxiedTo sc:refUri="/portalLight/chain/chain.portlet"/>
+				</smp:strongbox>
 				<smp:remoteServers>
 					<smp:otherServers localIPs="forbid" otherIps="forbid" privateIPs="forbid"/>
 				</smp:remoteServers>

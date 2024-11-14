@@ -21,6 +21,9 @@
 						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
 					</smp:libreOfficeConnectionPool>
 				</smp:transforms>
+				<smp:strongbox>
+					<smp:proxiedTo sc:refUri="/portal/chain/chain.portlet"/>
+				</smp:strongbox>
 				<smp:remoteServers>
 					<smp:otherServers localIPs="forbid" otherIps="allow" privateIPs="forbid"/>
 				</smp:remoteServers>

@@ -56,6 +56,14 @@
 						<smp:pipeConnection autoKill="true" autoLaunch="true" headless="true"/>
 					</smp:libreOfficeConnectionPool>
 				</smp:transforms>
+				<smp:strongbox>
+					<smp:masterPasswordManagement>
+						<smp:isolated path="¤builder;prl-chain#app.keysDirPath¤/.strongbox-master.pass"/>
+					</smp:masterPasswordManagement>
+					<smp:defaultConfig>
+						<smp:isolated path="¤builder;prl-chain#app.keysDirPath¤/strongbox-system-init.xml"/>
+					</smp:defaultConfig>
+				</smp:strongbox>
 				<smp:batch>
 					<smp:commonsTasks/>
 					<smp:generateTask/>
