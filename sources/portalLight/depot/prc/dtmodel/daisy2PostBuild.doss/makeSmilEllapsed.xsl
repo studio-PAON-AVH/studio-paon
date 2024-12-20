@@ -33,7 +33,7 @@
 
 
     <xsl:template match="meta[@name='ncc:totalElapsedTime']">
-        <meta name="ncc:totalElapsedTime" content="{java:eu.scenari.editadapt.utils.Utils.formatSumDuration($durations, $previous-audio, $format-audio-duration, $package)}"/>
+        <meta name="ncc:totalElapsedTime" content="{java:eu.scenari.editadapt.utils.Utils.formatSumDuration($durations, $previous-audio, $format-audio-duration)}"/>
     </xsl:template>
 
     <xsl:template match="@*|node()">

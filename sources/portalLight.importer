@@ -23,6 +23,6 @@
 			<smw:target sc:refUri="/portalLight/_test/chain.linker"/>
 			<smw:xsl sc:refUri="/portalLight.xsl"/>
 		</smw:overrideByXsl>
-		<smw:lastImport state="done" ts="1734706757779"/>
+		<smw:lastImport state="done" ts="1734710999106"/>
 	</smw:modelet>
 </smw:modeletImporter>

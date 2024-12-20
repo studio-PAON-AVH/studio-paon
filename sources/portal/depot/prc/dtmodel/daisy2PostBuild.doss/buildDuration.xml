@@ -9,12 +9,12 @@
 
 	<!-- vu spécifique qui expose la duree pour le dashbord -->
 	<target name="main">
-		<unzip src="${vInput}" dest="${vDestPath}_tmp">
+		<unzip src="${vInput}" dest="${vTmpDir}">
 			<patternset>
 				<include name="**/ncc.html"/>
 			</patternset>
 		</unzip>
-		<transformXsl inFile="${vDestPath}_tmp/ncc.html" outFile="${vDestPath}" style="extractDuration.xsl"/>
-		<delete dir="${vDestPath}_tmp"/>
+		<transformXsl inFile="${vTmpDir}/ncc.html" outFile="${vDestPath}" style="extractDuration.xsl"/>
+		<delete dir="${vTmpDir}"/>
 	</target>
 </project>
