@@ -123,7 +123,7 @@ public class Utils {
 		return out.toString();
 	}
 
-	public static String formatSumDuration(LinkedList list, int until, String format, String info) {
+	public static String formatSumDuration(LinkedList list, int until, String format) {
 		Duration duration = Duration.ofMillis(0);
 		for (int i = 0; i < until; i++)
 			duration = duration.plus((Duration) list.get(i));
