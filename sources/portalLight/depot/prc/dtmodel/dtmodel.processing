@@ -58,16 +58,16 @@
 				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment creationTime="1636532571785" updateTime="1637962206521">Vues pour génération des pistes audio communes à tous les exports audio</comment></comment>-->
 				<smp:stateReady>
 					<smp:freeView builtOn="content" code="multi-txt-view" indexPath="index.xml" transformParams="transform=gen&amp;codeGen=xmlSrcAudio&amp;localAutoUpdate=minor&amp;failOnGenError=true&amp;publishFullTraceGenOnFail=true" type="eu.scenari.store.service.mkviews.makers.CallTransformMultiViewsMk"/>
-					<smp:freeView buildPath="daisy2/build.xml" builtOn="content" code="daisy2" family="userFriendly/notViewable" fromCdView="daisy2Pre" name="￼;Daisy 2￼" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=daisy2.zip">
+					<smp:freeView buildPath="prcs/dtmodel/daisy2/build.xml" builtOn="content" code="daisy2" family="userFriendly/notViewable" fromCdView="daisy2Pre" name="￼;Daisy 2￼" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=daisy2.zip">
 						<smp:resource sc:refUri="/portalLight/depot/prc/dtmodel/daisy2PostBuild.doss" toPath="daisy2"/>
 					</smp:freeView>
-					<smp:freeView buildPath="daisy3/build.xml" builtOn="content" code="daisy3" family="userFriendly/notViewable" fromCdView="daisy3Pre" name="￼;Daisy 3￼" onError="quiet" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=daisy3.zip">
+					<smp:freeView buildPath="prcs/dtmodel/daisy3/build.xml" builtOn="content" code="daisy3" family="userFriendly/notViewable" fromCdView="daisy3Pre" name="￼;Daisy 3￼" onError="quiet" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=daisy3.zip">
 						<smp:resource sc:refUri="/portalLight/depot/prc/dtmodel/daisy3PostBuild.doss" toPath="daisy3"/>
 					</smp:freeView>
-					<smp:freeView buildPath="epub3/build.xml" builtOn="content" code="epub3" family="userFriendly/notViewable" fromCdView="epub3Pre" name="￼;Epub 3￼" onError="quiet" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=epub3.zip">
+					<smp:freeView buildPath="prcs/dtmodel/epub3/build.xml" builtOn="content" code="epub3" family="userFriendly/notViewable" fromCdView="epub3Pre" name="￼;Epub 3￼" onError="quiet" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=epub3.zip">
 						<smp:resource sc:refUri="/portalLight/depot/prc/dtmodel/epub3PostBuild.doss" toPath="epub3"/>
 					</smp:freeView>
-					<smp:freeView buildPath="free/prcs/daisy2/buildDuration.xml" builtOn="content" code="duration" fromCdView="daisy2" name="￼;Duration￼" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=duration"/>
+					<smp:freeView buildPath="prcs/dtmodel/daisy2/buildDuration.xml" builtOn="content" code="duration" fromCdView="daisy2" name="￼;Duration￼" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=duration"/>
 				</smp:stateReady>
 				<smp:stateFailure/>
 			</smp:asyncBuildViews>
