@@ -36,7 +36,7 @@
 					<smp:generator sc:refUri="/gen/daisy2/daisy2.generator"/>
 				</smp:generatorView>
 			</smp:view>
-			<smp:view code="daisy3Pre" family="userFriendly/notViewable" mimeType="application/zip" name="￼;Pre-build Daisy 3￼" urlPatterns="EViewBuiltOn?V=daisy3Pre.zip">
+			<smp:view code="daisy3Pre" family="userFriendly/notViewable" mimeType="application/zip" name="￼;Pre-build Daisy 3￼" urlPatterns="?V=daisy3Pre.zip">
 				<!--<comment xmlns="scenari.eu:comment:1.0" type="thread"><comment updateTime="1691574479833" creationTime="1637962212307">Préparation daisy3</comment></comment>-->
 				<smp:generatorView>
 					<smp:generator sc:refUri="/gen/xmlDTBookAud/xmlDTBookAud.generator"/>
