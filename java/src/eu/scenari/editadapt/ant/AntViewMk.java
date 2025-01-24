@@ -1,6 +1,7 @@
 package eu.scenari.editadapt.ant;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 
@@ -62,6 +63,9 @@ public class AntViewMk extends eu.scenari.store.service.mkviews.makers.AntViewMk
 			vProject.addReference(IData.NAMEVARINSCRIPT_vDialog, vDialog);
 			vProject.setUserProperty(NAMEVAR_INPUT, vSrc);
 			vProject.setUserProperty(NAMEVAR_DESTPATH, vDst.toString());
+			vProject.setUserProperty("vTmpDir", Files.createTempDirectory(pTask.getTempFolder(), this.fCodeMkView).toString());
+
+
 			AntViewLogger vLogger = new AntViewLogger();
 
 			try {
