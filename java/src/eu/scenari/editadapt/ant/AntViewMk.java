@@ -8,15 +8,25 @@ import java.util.Map;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.ProjectHelper;
+import org.xml.sax.Attributes;
 
 import com.scenari.m.co.ant.TransformTask;
 import com.scenari.m.co.donnee.IData;
 import com.scenari.m.ge.generator.ant.AntGenerator;
+import com.scenari.src.ISrcNode;
+import com.scenari.src.feature.alternateurl.SrcFeatureAlternateUrl;
+import com.scenari.src.feature.paths.SrcFeaturePaths;
+import com.scenari.src.fs.mini.FsMiniFactory;
 
+import eu.scenari.commons.initapp.SystemProps;
 import eu.scenari.commons.log.LogMgr;
+import eu.scenari.commons.util.lang.IAdaptable;
 import eu.scenari.commons.util.lang.ScException;
+import eu.scenari.commons.util.xml.FragmentSaxHandlerBase;
+import eu.scenari.commons.util.xml.IFragmentSaxHandler;
 import eu.scenari.core.dialog.DialogFake;
 import eu.scenari.core.dialog.IDialog;
+import eu.scenari.core.service.IService;
 import eu.scenari.store.cid.ICidTask;
 import eu.scenari.store.service.mkviews.DescView;
 import eu.scenari.store.service.mkviews.IDescView;
@@ -63,9 +73,8 @@ public class AntViewMk extends eu.scenari.store.service.mkviews.makers.AntViewMk
 			vProject.addReference(IData.NAMEVARINSCRIPT_vDialog, vDialog);
 			vProject.setUserProperty(NAMEVAR_INPUT, vSrc);
 			vProject.setUserProperty(NAMEVAR_DESTPATH, vDst.toString());
+
 			vProject.setUserProperty("vTmpDir", Files.createTempDirectory(pTask.getTempFolder(), this.fCodeMkView).toString());
-
-
 			AntViewLogger vLogger = new AntViewLogger();
 
 			try {
