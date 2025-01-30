@@ -3,7 +3,7 @@
 	<target name="main">
 		<taskdef name="transform" classname="com.scenari.m.co.ant.TransformTask"/>
 		<taskdef name="transformXsl" classname="com.scenari.m.co.ant.TransformXslTask"/>
-		<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>
+		<!--<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"/>-->
 
 		<!-- Gestion des notes -->
 		<transformXsl inFile="${vFolderDest}/index.xml" outFile="${vFolderDest}/index.xml" style="audio.post.xsl"/>
@@ -13,20 +13,24 @@
 
 		<!-- Post traitement contenu - sortie texte à traduire en audio -->
 		<transformXsl inFile="${vFolderDest}/index.xml" outFile="${vFolderDest}/txts.xml" style="xml2Txt.xsl"/>
-
-		<xmltask source="${vFolderDest}/txts.xml">
+		<!-- NP 2025/01/24 : J'ai des probleme récurrent d'évaluation xpath (cannot convert string to nodelist)
+			avec la tache xml task mais je n'ai pas trouvé ce qui provoque cette erreur.
+			J'ai décidé de modifier le fonctionne de la transfo acapela pour traiter le fichier
+			-->
+		<transform src="${vFolderDest}/txts.xml" dst="${vFolderDest}" params="transform=acapelaTTS&amp;voice=Manon22k_HQ&amp;dico=Dictionnaire_MANON_AVH.dic&amp;extension=.acapela.tts.zip"/>
+		<!--<xmltask source="${vFolderDest}/txts.xml">
 			<call path="/*[local-name()='html']/*[local-name()='body']/*[local-name()='div']">
 				<param name="id" path="substring(@id,2)"/>
 				<param name="text" path="text()"/>
 				<actions>
-					<!-- Création fichiers txt -->
+					&lt;!&ndash; Création fichiers txt &ndash;&gt;
 					<echo file="${vFolderDest}/@{id}.txt" append="false">@{text}</echo>
-					<!-- TTS -->
-					<!-- Commenter cette ligner pour debug dans builder sans ajout free du transformer acapelaTTS -->
-					<transform src="${vFolderDest}/@{id}.txt" dst="${vFolderDest}/@{id}.acapela.tts.zip" params="transform=acapelaTTS&amp;voice=Manon22k_HQ&amp;dico=Dictionnaire_MANON_AVH.dic"/>
+					&lt;!&ndash; TTS &ndash;&gt;
+					&lt;!&ndash; Commenter cette ligner pour debug dans builder sans ajout free du transformer acapelaTTS &ndash;&gt;
+					&lt;!&ndash;<transform src="${vFolderDest}/@{id}.txt" dst="${vFolderDest}/@{id}.acapela.tts.zip" params="transform=acapelaTTS&amp;voice=Manon22k_HQ&amp;dico=Dictionnaire_MANON_AVH.dic"/>&ndash;&gt;
 				</actions>
 			</call>
-		</xmltask>
+		</xmltask>-->
 
 		<!-- construction de l'index des vues -->
 		<transformXsl inFile="${vFolderDest}/txts.xml" outFile="${vFolderDest}/index.xml" style="buildIndex.xsl"/>

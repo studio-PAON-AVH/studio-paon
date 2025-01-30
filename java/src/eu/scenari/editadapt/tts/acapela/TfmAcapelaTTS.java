@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import com.scenari.src.ISrcContent;
 import com.scenari.src.ISrcNode;
 
@@ -25,6 +26,13 @@ import eu.scenari.core.webdav.HttpRespGet;
 import eu.scenari.src.transform.TfmBase;
 import eu.scenari.src.transform.TfmParams;
 import eu.scenari.src.transform.TransformContentException;
+
+// Pour parsing DOM du fichier xml des textes à synthétiser
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
 
 /**
  * Transformation d'un txt en audio via un service de text 2 speech
@@ -51,36 +59,86 @@ public class TfmAcapelaTTS extends TfmBase {
 		Map<String, Object> params = pParams.getParamsAsMap();
 		String from = null;
 		String to = null;
-		Reader srcReader = null;
-		if (pSrc instanceof ISrcNode) {
-			ISrcContent vSrcContent = (ISrcContent) pSrc;
-			srcReader = new InputStreamReader(vSrcContent.newInputStream(true));
-		} else if (pSrc instanceof File) {
-			File vFile = (File) pSrc;
-			srcReader = new FileReader(vFile);
-			from = vFile.getPath();
-		} else if (srcReader != null) {
-			srcReader = new InputStreamReader((InputStream) pSrc);
-		}
-		OutputStream targetStream = null;
-		if (pRes instanceof OutputStream) {
-			targetStream = (OutputStream) pRes;
-		} else if (pRes instanceof File) {
-			Path path = Path.of(((File) pRes).getPath());
-			targetStream = Files.newOutputStream(path);
-			to = path.toString();
+		// NP 2025/01/24 : nouveau param extension pour convertir directement le contenu du fichier XML en fichiers zip de l'audio
+		String extension = (String) params.get("extension");
+		String voice = (String) params.get("voice");
+		String dico = (String) params.get("dico");
+		if(extension == null || extension.isEmpty()){
+			// Code d'origine : conversion de fichier texte en fichier audio
+			Reader srcReader = null;
+			if (pSrc instanceof ISrcNode) {
+				ISrcContent vSrcContent = (ISrcContent) pSrc;
+				srcReader = new InputStreamReader(vSrcContent.newInputStream(true));
+			} else if (pSrc instanceof File) {
+				File vFile = (File) pSrc;
+				srcReader = new FileReader(vFile);
+				from = vFile.getPath();
+			} else if (srcReader != null) {
+				srcReader = new InputStreamReader((InputStream) pSrc);
+			}
+
+			OutputStream targetStream = null;
+			if (pRes instanceof OutputStream) {
+				targetStream = (OutputStream) pRes;
+			} else if (pRes instanceof File) {
+				Path path = Path.of(((File) pRes).getPath());
+				targetStream = Files.newOutputStream(path);
+				to = path.toString();
+			}
+			try {
+				StreamUtils.write(getAudioZip(srcReader, voice, dico), targetStream);
+			} catch (Exception e) {
+				throw LogMgr.addMessage(e, "Unable to TTS: " + ((File) pSrc).toPath() + " with Acapela provider");
+			} finally {
+				srcReader.close();
+				targetStream.close();
+			}
+		} else {
+			// Je parse en DOM, c'est peut être pas le plus optimal niveau
+			// resource mais plus rapide a implem
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory.setValidating(false);
+			factory.setIgnoringElementContentWhitespace(true);
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = null;
+			// J'utilise le paramètre extension pour faire un mode "split"
+			InputStream source = null;
+			if (pSrc instanceof ISrcNode) {
+				ISrcContent vSrcContent = (ISrcContent) pSrc;
+				source = vSrcContent.newInputStream(true);
+			} else if (pSrc instanceof File) {
+				File vFile = (File) pSrc;
+				source = (InputStream) new FileInputStream(vFile);
+				from = vFile.getPath();
+			} else if (source != null) {
+				source = (InputStream) pSrc;
+			}
+			doc = builder.parse(source);
+			NodeList divs = doc.getElementsByTagName("div");
+			String outputDir = pRes.toString();
+			for(int i = 0; i < divs.getLength(); i++){
+				// Récupérer les infos
+				Element div = (Element) divs.item(i);
+				String id = div.getAttribute("id");
+				if(id.startsWith("_")){
+					id = id.substring(1);
+				}
+				Path path = Path.of(outputDir, id + extension);
+				OutputStream targetStream = Files.newOutputStream(path);
+				to = path.toString();
+				InputStreamReader srcReader = new InputStreamReader((InputStream) new ByteArrayInputStream((div.getTextContent().getBytes("UTF-8"))));
+				try {
+					StreamUtils.write(getAudioZip(srcReader, voice, dico), targetStream);
+				} catch (Exception e) {
+					throw LogMgr.addMessage(e, "Unable to TTS: " + ((File) pSrc).toPath() + " with Acapela provider");
+				} finally {
+					srcReader.close();
+					targetStream.close();
+				}
+			}
+
 		}
 
-		try {
-			String voice = (String) params.get("voice");
-			String dico = (String) params.get("dico");
-			StreamUtils.write(getAudioZip(srcReader, voice, dico), targetStream);
-		} catch (Exception e) {
-			throw LogMgr.addMessage(e, "Unable to TTS: " + ((File) pSrc).toPath() + " with Acapela provider");
-		} finally {
-			srcReader.close();
-			targetStream.close();
-		}
 	}
 
 	// https://www.acapela-cloud.com/docs/
