@@ -51,6 +51,9 @@ jobBuilder.addBaseJobDatas({stopAfterFailures: 50,});</smp:uiFactory>
 						<smp:freeRendering xml:space="preserve">&lt;case test="hasParam(electre)"&gt;
   &lt;urlRenderer code="electre" type="eu.scenari.editadapt.electre.UTRdrElectreLoader" /&gt;
 &lt;/case&gt;</smp:freeRendering>
+						<smp:freeRendering xml:space="preserve">&lt;case test="hasParam(platon)"&gt;
+  &lt;urlRenderer code="platon" type="eu.scenari.editadapt.platon.UTRdrPlatonLoader" outputFormat="json"/&gt;
+&lt;/case&gt;</smp:freeRendering>
 					</smp:apPublic>
 				</smp:standardsAccessPoints>
 			</smp:accessPoints>
