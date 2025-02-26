@@ -99,6 +99,9 @@
 			</head>
 			<body>
 				<seq dur="{round(sum($clips/par/seq/audio/@clip-duration) * 1000) div 1000}s">
+					<par endsync="last" id="h{$clips/par[1]/@id}">
+						<text src="{$clips/par[1]/text/@src}" id="h{$clips/par[1]/text/@id}"/>
+					</par>
 					<xsl:for-each select="$clips/par">
 						<par endsync="last" id="{@id}">
 							<text src="{text/@src}" id="{text/@id}"/>
