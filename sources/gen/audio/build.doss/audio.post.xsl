@@ -236,10 +236,35 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="dtb:sidebar">
+	<xsl:template match="dtb:sidebar[@render='optional']">
 		<p class="secondaryVoice">￼(Texte en marge)￼</p>
 		<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
 		<p class="secondaryVoice">￼(Fin du texte en marge)￼</p>
+	</xsl:template>
+
+	<!-- Texte en marge -->
+	<xsl:template match="xhtml:div[containWord(@class, 'apart_div')]">
+		<xsl:choose>
+			<xsl:when test="/xhtml:html[@epub]">
+				<xsl:copy>
+					<xsl:apply-templates select="@*"/>
+					<p class="secondaryVoice">￼(Aparté)￼</p>
+					<xsl:apply-templates/>
+					<p class="secondaryVoice">￼(Fin de l'aparté)￼</p>
+				</xsl:copy>
+			</xsl:when>
+			<xsl:otherwise>
+				<p class="secondaryVoice">￼(Aparté)￼</p>
+				<xsl:apply-templates/>
+				<p class="secondaryVoice">￼(Fin de l'aparté)￼</p>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template match="dtb:sidebar[@render='required']">
+		<p class="secondaryVoice">￼(Aparté)￼</p>
+		<xsl:copy><xsl:apply-templates select="@*|node()"/></xsl:copy>
+		<p class="secondaryVoice">￼(Fin de l'aparté)￼</p>
 	</xsl:template>
 
 	<xsl:template match="xhtml:div[containWord(@class, 'epigraph_div')]">

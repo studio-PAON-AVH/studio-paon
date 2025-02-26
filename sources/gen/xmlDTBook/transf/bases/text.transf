@@ -6,9 +6,8 @@
 		<sm:divTag role="citation" tagName="div" widgetClass="blockquote"/>
 		<sm:divTag role="epigraph" tagName="div" widgetClass="epigraph"/>
 		<sm:divTag role="poem" tagName="div" widgetClass="poem"/>
-		<sm:divTag role="side" tagName="div" widgetClass="side">
-			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/side.uiwidget"/>
-		</sm:divTag>
+		<sm:divTag role="side" tagName="div" widgetClass="side"/>
+		<sm:divTag role="apart" tagName="div" widgetClass="apart"/>
 		<sm:listTags>
 			<sm:itemizedListTag tagName="ul"/>
 			<sm:orderedListTag tagName="ol"/>

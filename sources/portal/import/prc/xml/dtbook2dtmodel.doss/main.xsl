@@ -484,12 +484,11 @@
 
 	<!-- Flow sidebar -->
 	<xsl:template match="dtb:sidebar" mode="para">
-		<sc:div role="side">
-			<paon:sidebar>
-				<sp:render>
-					<xsl:value-of select="@render"/>
-				</sp:render>
-			</paon:sidebar>
+		<sc:div>
+			<xsl:choose>
+				<xsl:when test="@render='optional'"><xsl:attribute name="role">side</xsl:attribute></xsl:when>
+				<xsl:otherwise><xsl:attribute name="role">apart</xsl:attribute></xsl:otherwise>
+			</xsl:choose>
 			<xsl:apply-templates select="*[1]" mode="para"/>
 		</sc:div>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>

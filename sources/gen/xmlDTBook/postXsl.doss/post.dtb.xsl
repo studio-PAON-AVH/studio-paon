@@ -23,7 +23,8 @@
 	<xsl:template match="dtb:div">
 		<xsl:choose>
 			<xsl:when test="containWord(@class, 'poem_div')"><poem><xsl:apply-templates mode="poem"/></poem></xsl:when>
-			<xsl:when test="containWord(@class, 'side_div')"><sidebar render="{dtb:att/@render}"><xsl:apply-templates/></sidebar></xsl:when>
+			<xsl:when test="containWord(@class, 'side_div')"><sidebar render="optional"><xsl:apply-templates/></sidebar></xsl:when>
+			<xsl:when test="containWord(@class, 'apart_div')"><sidebar render="required"><xsl:apply-templates/></sidebar></xsl:when>
 			<xsl:when test="containWord(@class, 'blockquote_div')"><blockquote><xsl:apply-templates/></blockquote></xsl:when>
 			<xsl:when test="containWord(@class, 'epigraph_div')"><epigraph><xsl:apply-templates/></epigraph></xsl:when>
 		</xsl:choose>
@@ -40,9 +41,10 @@
 	<xsl:template match="dtb:div" mode="poem">
 	<xsl:choose>
 		<xsl:when test="containWord(@class, 'poem_div')"><xsl:apply-templates mode="poem"/></xsl:when> <!-- on ignore les doubles structures de poeme -->
-  	<xsl:when test="containWord(@class, 'side_div')"><sidebar render="{dtb:att/@render}"><xsl:apply-templates/></sidebar></xsl:when>
-  	<xsl:when test="containWord(@class, 'blockquote_div')"><blockquote><xsl:apply-templates/></blockquote></xsl:when>
-  	<xsl:when test="containWord(@class, 'epigraph_div')"><epigraph><xsl:apply-templates/></epigraph></xsl:when>
+		<xsl:when test="containWord(@class, 'side_div')"><sidebar render="optional"><xsl:apply-templates/></sidebar></xsl:when>
+		<xsl:when test="containWord(@class, 'apart_div')"><sidebar render="required"><xsl:apply-templates/></sidebar></xsl:when>
+		<xsl:when test="containWord(@class, 'blockquote_div')"><blockquote><xsl:apply-templates/></blockquote></xsl:when>
+		<xsl:when test="containWord(@class, 'epigraph_div')"><epigraph><xsl:apply-templates/></epigraph></xsl:when>
 	</xsl:choose>
 	</xsl:template>
 

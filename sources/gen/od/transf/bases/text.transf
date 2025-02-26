@@ -51,6 +51,22 @@
 				</sm:WParagraph>
 			</sm:end>
 		</sm:divTag>
+		<sm:divTag role="apart">
+			<sm:start>
+				<sm:WParagraph globalStyle="p">
+					<sm:title>
+						<sm:fixedTitle value=" [[*sc1:0*]][[*hi5:3:0:2:2*]]"/>
+					</sm:title>
+				</sm:WParagraph>
+			</sm:start>
+			<sm:end>
+				<sm:WParagraph style="p">
+					<sm:title>
+						<sm:fixedTitle value="[[*hi*]][[*sc1:0:0*]]"/>
+					</sm:title>
+				</sm:WParagraph>
+			</sm:end>
+		</sm:divTag>
 		<sm:divTag role="epigraph">
 			<sm:start>
 				<sm:WParagraph globalStyle="p">

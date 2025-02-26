@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sm:wspDefinition keyWsp="paoncommons" majorVersion="1" mediumVersion="3" minorVersion="0" name="￼;Paon￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
+<sm:wspDefinition keyWsp="paoncommons" majorVersion="1" mediumVersion="4" minorVersion="0" name="￼;Paon￼" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
 	<sm:publicClasses>
 		<sm:class access="readWrite" sc:refUri="/model/structure/book.model"/>
 	</sm:publicClasses>
@@ -47,6 +47,10 @@
 		<sm:update sc:refUri="/migr/from_1.2.doss">
 			<sm:from key="paoncommons"/>
 			<sm:to key="paoncommons" majorVersion="1" mediumVersion="3" minorVersion="0"/>
+		</sm:update>
+		<sm:update sc:refUri="/migr/from_1.3.doss">
+			<sm:from key="paoncommons"/>
+			<sm:to key="paoncommons" majorVersion="1" mediumVersion="4" minorVersion="0"/>
 		</sm:update>
 	</sm:migration>
 	<sm:free>

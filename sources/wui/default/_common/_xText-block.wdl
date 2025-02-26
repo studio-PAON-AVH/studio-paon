@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sm:textWdl xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core">
+<sm:textWdl xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling">
 	<sm:anyTextPrim/>
 	<sm:editPoints>
 		<sm:root/>
@@ -10,7 +10,7 @@
 				<sm:entryStyle key="line-height" value="1.25em"/>
 			</sm:htmlStyle>
 		</sm:blockTag>
-		<sm:blockTag tag="div" role="citation">
+		<sm:blockTag role="citation" tag="div">
 			<sm:behaviors>
 				<sm:keyBinding char=">"/>
 			</sm:behaviors>
@@ -44,7 +44,7 @@
 				<sm:entryStyle key="height" value="16px"/>
 			</sm:htmlStyle>
 		</sm:blockTag>
-		<sm:blockTag tag="div" role="poem">
+		<sm:blockTag role="poem" tag="div">
 			<sm:behaviors>
 				<sm:keyBinding char="P"/>
 			</sm:behaviors>
@@ -70,7 +70,7 @@
 				<sm:entryStyle key="height" value="16px"/>
 			</sm:htmlStyle>
 		</sm:blockTag>
-		<sm:blockTag tag="div" role="side">
+		<sm:blockTag role="side" tag="div">
 			<sm:behaviors>
 				<sm:keyBinding char="&amp;"/>
 			</sm:behaviors>
@@ -96,7 +96,33 @@
 				<sm:entryStyle key="height" value="16px"/>
 			</sm:htmlStyle>
 		</sm:blockTag>
-		<sm:blockTag tag="div" role="epigraph">
+		<sm:blockTag role="apart" tag="div">
+			<sm:behaviors>
+				<sm:keyBinding char="@"/>
+			</sm:behaviors>
+			<sm:toolbar>
+				<sm:button refMenuId="mnBlockDiv">
+					<sm:icon sc:refUri="/wui/_res/txtBlock/apart.svg"/>
+				</sm:button>
+			</sm:toolbar>
+			<sm:htmlStyle>
+				<sm:entryStyle key="position" value="relative"/>
+				<sm:entryStyle key="padding" value=".5em"/>
+				<sm:entryStyle key="margin" value="1em 0 1em 2.5em;"/>
+				<sm:entryStyle key="border-left" value="1px solid var(--alt1-border-color)"/>
+				<sm:entryStyle key="border-radius" value=".5em"/>
+			</sm:htmlStyle>
+			<sm:htmlStyle pseudoClass="before">
+				<sm:entryStyle key="content" value="&quot;&quot;"/>
+				<sm:entryImgStyle key="background-image" sc:refUri="/wui/_res/txtBlock/apart.svg"/>
+				<sm:entryStyle key="background-repeat" value="no-repeat"/>
+				<sm:entryStyle key="position" value="absolute"/>
+				<sm:entryStyle key="left" value="-2em"/>
+				<sm:entryStyle key="width" value="16px"/>
+				<sm:entryStyle key="height" value="16px"/>
+			</sm:htmlStyle>
+		</sm:blockTag>
+		<sm:blockTag role="epigraph" tag="div">
 			<sm:behaviors>
 				<sm:keyBinding char="3"/>
 			</sm:behaviors>
@@ -157,7 +183,7 @@
 					<sm:entryStyle key="color" value="var(--edit-color)"/>
 				</sm:htmlStyle>
 			</sm:subBlockTag>
-			<sm:subBlockTag tag="row" role="head">
+			<sm:subBlockTag role="head" tag="row">
 				<sm:htmlStyle>
 					<sm:entryStyle key="font-weight" value="bold"/>
 					<sm:entryStyle key="background-color" value="var(--alt1-bgcolor)"/>

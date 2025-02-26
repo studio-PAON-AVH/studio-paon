@@ -8,9 +8,8 @@
 			<sm:paraTag name="￼;Paragraphe￼"/>
 			<sm:divTag name="￼;Citation multi-paragraphe￼" role="citation"/>
 			<sm:divTag name="￼;Poème￼" role="poem"/>
-			<sm:divTag name="￼;Texte en marge￼" role="side">
-				<sm:meta sc:refUri="/model/bases/sidebar.model" usage="required"/>
-			</sm:divTag>
+			<sm:divTag name="￼;Texte en marge￼" role="side"/>
+			<sm:divTag name="￼;Aparté￼" role="apart"/>
 			<sm:divTag name="￼;Épigraphe￼" role="epigraph"/>
 			<sm:itemizedListTag name="￼;Liste à puces￼">
 				<sm:listItemTag name="￼;ligne￼"/>
