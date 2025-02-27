@@ -36,12 +36,12 @@ Les logiciels suivants doivent être installés préalablement :
 - IntelliJ IDEA
 - Temurin JDK 11
     - Peut être installer via IntelliJ
-- NodeJS 18
+- NodeJS 18 ou plus
 - ImageMagick
     -  Sous Windows, l'installateur de ImageMagick
        peut aussi installer FFMPEG
 - FFMPEG
-- ElasticSearch 7.10.2
+- ElasticSearch 8.17.1 ou plus
 
 En plus de ce dépot, vous aurez besoin de cloner le dépot de code scenari :
 https://source.scenari.software/git/dev-core/
@@ -57,8 +57,8 @@ ajouter ou modifier les lignes suivantes :
 # Indiquez le répertoire où ES stockera ses données
 # et insérez son chemin ci apres à la place de /path/to/data
 path.data: C:/path/to/data
-# Associez le port 9210 a ES
-http.port: 9210
+# Associez le port 9811 a ES - cette information est stocké 
+http.port: 9811
 # Creer un répertoire auquel ES pourra accéder en lecture/écriture/execution 
 # et où ES stockera les dépots de documents et indiquez-le
 # ci-aprés entre crochet et double-quote, 
@@ -118,20 +118,41 @@ Dans Intellij IDEA :
   `dev-core/Wui_Bootstrap`
 - Lancez les commandes suivantes :
 ```bash
-npm i
-npm run transpile:es6d
+npm run install:all
+npm run dist
 ```
 - Dans intellij, Ouvrez le fichier `studio-paon/SCENARIbuilder-paon.run.xml`
 - Cliquez sur `Open Run/Debug configurations` pour la charger dans la liste des
   configurations de lancement
 - Si nécessaire, remplacer le JDK cible
+- Dans les paramètres de intelliJ, rendez-vous dans `Build, Execution, Deployment > Build Tools > Gradle`
+  - Sélectionner le projet gradle `Main_Core`
+  - Pour les options `Build and run using` et `Run tests using` : sélectionnez `IntelliJ`
+    (Sans ça, vous pourriez ne pas avoir de liaison entre le serveur de dev de l'interface et le serveur scenari) 
 
 # Lancement de l'application via intellij
 (En cours de rédaction)
 - Lancer elasticsearch dans un terminal
 - Dans un autre terminal, placez-vous dans le dossier `dev-core/Wui_Bootstrap`
-  et lancez la commande `npm run devServer`
+  et lancez la commande `npm run launch:devServer`
 
+
+## Possible blocage au lancement de scenari
+
+### Probleme d'exception lancer sur une fonction `getSsOfSs`
+
+Il est possible que le build ne copie pas certains dossier de resource lors de la phase de build.
+Pour corriger le probleme, exécuter les commandes suivantes:
+
+```bash
+cp -r ./dev-core/Jav_Wsp/src/main/java/com/scenari/m/bdp/item/fs/ssofss ./dev-core/Jav_Wsp/~bin/main/java/com/scenari/m/bdp/item/fs/ssofss
+cp -r ./dev-core/Jav_Wsp/src/main/java/com/scenari/m/bdp/item/fs/ss4unknownwsp  ./dev-core/Jav_Wsp/~bin/main/java/com/scenari/m/bdp/item/fs/ss4unknownwsp
+```
+
+### L'interface reste bloqué sur un écran "Chargement"
+
+- Vérifiez que le projet `Main_Core` est bien configurer pour être lancer avec `IntelliJ` dans `Build, Execution, Deployment > Build Tools > Gradle`
+- Vérifiez que le serveur de développement de l'interface est bien lancé (`npm run launch:devServer` dans `dev-core\Wui_Bootstrap`)
 
 ## Notes pour les développeurs travaillant sous Windows
 
