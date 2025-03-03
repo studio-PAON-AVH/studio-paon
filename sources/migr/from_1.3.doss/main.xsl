@@ -19,7 +19,7 @@
     <!-- Suppression de la meta render des textes en marge :
     les texte en marge sont maintenant des sidebar avec rendu "optionnel"
     alors que les appartés sont des sidebare avec rendu "requis" -->
-    <xsl:template match="paon:render" />
+    <xsl:template match="paon:sidebar" />
 
 
 
