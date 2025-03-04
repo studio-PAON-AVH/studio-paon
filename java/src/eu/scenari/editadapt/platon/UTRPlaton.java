@@ -40,7 +40,7 @@ public class UTRPlaton implements IUrlTreeRenderer {
                 // user:string
                 // password:string
                 // action:'runDemandeAPlaton' | 'getPlatonCatalogueInfo'
-                // EAN:string? (optionnel si appelé sur une ressource avec une meta ISBN)
+                // ean:string? (optionnel si appelé sur une ressource avec une meta ISBN)
                 String user = (String) inputData.get("user");
                 if(user == null || user.isEmpty()){
                     vResp.setStatus(400);
