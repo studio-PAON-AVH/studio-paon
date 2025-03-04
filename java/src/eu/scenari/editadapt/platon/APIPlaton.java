@@ -54,7 +54,7 @@ public class APIPlaton {
 				"}",
 				notifType,
 				new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").format(new Date()),
-				message
+				message.replace("\n", "\\n").replace("\r", "\\r")
 		);
 	}
 
@@ -499,10 +499,10 @@ public class APIPlaton {
 				s4 = e.getMessage();
 			}
 			String sf = "";
-			if(s1 != null && !s1.isEmpty()) sf += s1 + "\\n";
-			if(s2 != null && !s2.isEmpty()) sf += s2 + "\\n";
-			if(s3 != null && !s3.isEmpty()) sf += s3 + "\\n";
-			if(s4 != null && !s4.isEmpty()) sf += s4 + "\\n";
+			if(s1 != null && !s1.isEmpty()) sf += s1 + "\n";
+			if(s2 != null && !s2.isEmpty()) sf += s2 + "\n";
+			if(s3 != null && !s3.isEmpty()) sf += s3 + "\n";
+			if(s4 != null && !s4.isEmpty()) sf += s4 + "\n";
 			return ResponsePlaton(NotificationType.SUCCESS, sf.length() > 0 ? sf : "Aucune information trouvée");
 		} catch (Exception e) {
 			return ResponsePlaton(NotificationType.ERROR, e.getMessage());
