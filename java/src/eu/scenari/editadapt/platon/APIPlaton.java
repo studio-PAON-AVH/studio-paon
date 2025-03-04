@@ -46,6 +46,18 @@ public class APIPlaton {
 		public static final String WARNING = "warning";
 	}
 
+	public static String ResponsePlaton(String notifType, String message){
+		return String.format("{" +
+						"\"type\":\"%s\", " +
+						"\"date\":\"%s\", " +
+						"\"message\":\"%s\"" +
+				"}",
+				notifType,
+				new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").format(new Date()),
+				message
+		);
+	}
+
 	protected static HttpClient logOnPlaton(String user, String password) throws Exception {
 		HttpClient client = HttpClient.newBuilder()
 				.followRedirects(HttpClient.Redirect.ALWAYS)
@@ -373,7 +385,7 @@ public class APIPlaton {
 	 * @return un document html
 	 * @throws Exception
 	 */
-	protected static boolean saveDemandeAPlaton(HttpClient client, DemandePlaton dataForm) throws Exception {
+	protected static void saveDemandeAPlaton(HttpClient client, DemandePlaton dataForm) throws Exception {
 
 		HttpRequest request = HttpRequest.newBuilder(new URI(BASEURL + ENDPOINTS.SAVE_DEMANDE))
 				.header("Content-Type", "application/x-www-form-urlencoded")
@@ -381,7 +393,7 @@ public class APIPlaton {
 				.build();
 
 		HttpResponse resp = client.send(request, HttpResponse.BodyHandlers.ofString());
-		return resp.statusCode() == 200;
+		if(resp.statusCode() < 200 || resp.statusCode() > 299) throw new Exception("Une erreur s'est produite lors de la validation de la demande : " + resp.statusCode());
 	}
 
 
@@ -444,15 +456,13 @@ public class APIPlaton {
 			checkDemandeBeforeDemandeAPlaton((Map<String, Object>) parser.parseValue(getDemandesForEAN(platon, ean13)));
 			DemandePlaton dataForm = createDemandeAPlaton(platon, ean13);
 			saveDemandeAPlaton(platon, dataForm);
-			return String.format("{\"type\":\"%s\", \"message\":\"%s\"}",
+			return ResponsePlaton(
 					NotificationType.SUCCESS,
 					checkDemandeAfterDemandeAPlaton((Map<String, Object>) parser.parseValue(getDemandesForEAN(platon, ean13)))
 			);
 		} catch (Exception e) {
-			return String.format("{\"type\":\"%s\", \"message\":\"%s\"}",
-					NotificationType.ERROR,
-					e.getMessage()
-			);
+			return ResponsePlaton(NotificationType.ERROR, e.getMessage());
+
 		}
 	}
 
@@ -493,20 +503,9 @@ public class APIPlaton {
 			if(s2 != null && !s2.isEmpty()) sf += s2 + "\\n";
 			if(s3 != null && !s3.isEmpty()) sf += s3 + "\\n";
 			if(s4 != null && !s4.isEmpty()) sf += s4 + "\\n";
-
-			return String.format("{" +
-						"\"type\":\"%s\", " +
-						"\"message\":\"[%s]\\n%s\"}",
-					NotificationType.SUCCESS,
-					new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").format(new Date()),
-					sf.length() > 0 ? sf : "Aucune information trouvée"
-			);
+			return ResponsePlaton(NotificationType.SUCCESS, sf.length() > 0 ? sf : "Aucune information trouvée");
 		} catch (Exception e) {
-			return String.format("{\"type\":\"%s\", \"message\":\"[%s]\\n%s\"}",
-					NotificationType.ERROR,
-					new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").format(new Date()),
-					e.getMessage()
-			);
+			return ResponsePlaton(NotificationType.ERROR, e.getMessage());
 		}
 	}
 
