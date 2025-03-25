@@ -385,7 +385,17 @@ public class SplitSentencesBySpanTask extends Task {
 					throw LogMgr.newException("Xml structure need to close tag %s and Acapala sentence is not ended : end of sentence is %s and sentence is %s", qName, sentence.substring(sentenceOffset), sentence);
 				}
 				inFlow = false;
-				assert (elmntStack.isEmpty());
+				if(!elmntStack.isEmpty()){
+					LogMgr.publishMessage(
+						new LogMsg("Possible probleme de pile : la stack n'est pas vide alors que l'élément %s est entrain d'être fermé (teste restant = %s ; phrase = %s). Vidage de la pile par sécurité.",
+							qName,
+							sentence.substring(sentenceOffset),
+							sentence
+						)
+					);
+					elmntStack.clear();
+				}
+
 			} else if (inFlow) { // fermeture d'une balises d'enrichissement / inlined
 				if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] Poll last element from stack");
 				Map<String, Object> element = elmntStack.pollLast();
