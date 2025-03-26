@@ -103,7 +103,7 @@
 						<text src="{$clips/par[1]/text/@src}" id="h{$clips/par[1]/text/@id}"/>
 						<seq>
 							<audio src="{$clips/par[1]/seq/audio/@src}" id="h{$clips/par[1]/seq/audio/@id}"
-										 clip-begin="npt=0.00s"
+										 clip-begin="npt=0.000s"
 										 clip-end="npt={round(number($clips/par[1]/seq/audio/@clip-begin) * 1000) div 1000}s" />
 						</seq>
 					</par>
