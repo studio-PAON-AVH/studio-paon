@@ -139,7 +139,6 @@
 
     <xsl:template
         match="pbib
-            | sl
             | collec/pbib">
         <p><xsl:apply-templates /></p>
     </xsl:template>
@@ -331,6 +330,11 @@
             <xsl:apply-templates />
         </epigraph>
     </xsl:template>
+    <xsl:template match="chapeau">
+        <epigraph>
+            <xsl:apply-templates/>
+        </epigraph>
+    </xsl:template>
     <xsl:template match="/livre/pre/tit">
         <h1>
             <xsl:apply-templates />
@@ -492,6 +496,10 @@
         <blockquote>
             <xsl:apply-templates />
         </blockquote>
+    </xsl:template>
+    <!-- Source d'extrait ignoré (unwrapped) -->
+    <xsl:template match="extrait/source">
+        <xsl:apply-templates select="node()"/>
     </xsl:template>
     <!-- Traitement exer -->
     <xsl:template match="exer">
@@ -925,8 +933,12 @@
     <xsl:template match="fig/leg">
         <caption>
             <xsl:apply-templates />
+            <xsl:apply-templates select="following-sibling::source/node()"/>
         </caption>
     </xsl:template>
+
+    <xsl:template match="fig/source" />
+
     <xsl:template match="img">
         <xsl:element name="img">
             <xsl:for-each select="@*">
@@ -1264,17 +1276,41 @@
         </xsl:choose>
     </xsl:template>
 
+    <!-- gestion par défaut des titres de scene (pour les extraits) -->
+    <xsl:template match="scene/tit">
+        <p class="scene-tit"><xsl:apply-templates select="node()"/></p>
+    </xsl:template>
+    <xsl:template match="scene/n">
+        <p class="scene-n"><xsl:apply-templates select="node()"/></p>
+    </xsl:template>
+
     <xsl:template match="MalleAvant">
         <xsl:apply-templates select="node()" />
     </xsl:template>
 
-    <!-- libella : element section -->
+    <!-- libella : element section
+    NP 2025 04 10 : des section existe dans flammarion et sont mélanger avec du LG -->
     <xsl:template match="partie | chapitre | section">
         <xsl:variable name="titleValue">
-            <xsl:apply-templates select="MalleAvant/péritexte/titre" mode="asTitle" />
+            <xsl:choose>
+                <xsl:when test="MalleAvant/péritexte/titre">
+                    <xsl:apply-templates select="MalleAvant/péritexte/titre" mode="asTitle"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:if test="n">
+                        <xsl:value-of select="n/text()"/>
+                        <xsl:text> - </xsl:text>
+                    </xsl:if>
+                    <xsl:if test="surtit">
+                        <xsl:value-of select="surtit/text()"/>
+                        <xsl:text> - </xsl:text>
+                    </xsl:if>
+                    <xsl:apply-templates select="tit" mode="asTitle"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:variable>
         <xsl:call-template name="createLevel">
-            <xsl:with-param name="contentSelector" select="chapitre | contenu/node()" />
+            <xsl:with-param name="contentSelector" select="chap | chapitre | contenu/node()"/>
             <xsl:with-param name="titleValue" select="normalize-space($titleValue)" />
             <xsl:with-param name="notesSelector" select="contenu//note" />
         </xsl:call-template>
@@ -1414,7 +1450,6 @@
         <epigraph>
             <xsl:apply-templates select="node()" />
         </epigraph>
-
     </xsl:template>
 
     <xsl:template match="CORPS">
