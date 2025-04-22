@@ -32,7 +32,7 @@
             <head>
                 <!-- Alimenter le bloc head avec le bloc source ident -->
                 <xsl:apply-templates select="
-                    ident/node()[not(self::collec or self::dedi or self::exer)] |
+                    ident/node()[not(self::collec or self::dedi or self::exer or self::bio)] |
                     métadonnées/node()"/>
             </head>
             <book>
@@ -57,6 +57,7 @@
                             <p><xsl:apply-templates select="node()" /></p>
                         </level1>
                     </xsl:if>
+                    <xsl:apply-templates select="ident/bio"/>
                     <xsl:if test="ident/dedi | ident/exer">
                         <level1 class="dedicace">
                             <xsl:apply-templates select="ident/dedi | ident/exer"/>
@@ -235,10 +236,8 @@
 
          <p><xsl:apply-templates/></p>
          </xsl:template> -->
-    <!--Gautier : on récupére le bloc collec = les livres du même auteur-->
-    <!-- <xsl:template match="collec">
-         <xsl:apply-templates/>
-         </xsl:template> -->
+    <!--Gautier : on récupére le bloc collec = les livres du même auteur manuellement dans le frontmatter-->
+    <xsl:template match="collec"/>
 
     <xsl:template match="exer/source">
         <!-- Pas de balise en DTBook : passage de l'info en attribut class de p -->
@@ -312,6 +311,10 @@
             <xsl:value-of select="@folio"/>
         </pagenum>
     </xsl:template>
+    <xsl:template match="pc" mode="doctitle">
+        <xsl:apply-templates/>
+    </xsl:template>
+    <xsl:template match="apfi" mode="doctitle"/>
 
     <xsl:template match="pre/exer">
         <epigraph>
@@ -1078,7 +1081,6 @@
         | conclusion
         | epilogue
         | annexe
-        | bio
         | glossaire
         | genealogie
         | lexique
@@ -1116,6 +1118,18 @@
         </xsl:call-template>
     </xsl:template>
 
+    <xsl:template match="bio">
+        <xsl:variable name="titleValue">
+            <xsl:apply-templates select="auteur" mode="asTitle"/>
+        </xsl:variable>
+        <xsl:call-template name="createLevel">
+            <xsl:with-param name="contentSelector" select="node()[
+                    not(self::auteur)
+                ]"/>
+            <xsl:with-param name="titleValue" select="normalize-space($titleValue)" />
+        </xsl:call-template>
+    </xsl:template>
+
     <!-- Reconversion des niveaux en sous-parties -->
     <xsl:template match="niv1 | niv2 | niv3 | niv4 | niv5">
         <xsl:choose>
@@ -1141,7 +1155,7 @@
         </xsl:choose>
 
     </xsl:template>
-    <xsl:template match="int|tit|surtit|TITRE|n|titre" mode="asTitle">
+    <xsl:template match="int|tit|surtit|TITRE|n|titre|auteur" mode="asTitle">
         <xsl:apply-templates select="node()"/>
     </xsl:template>
 
