@@ -181,6 +181,7 @@
     </xsl:template>
     <xsl:template
         match="ident/info
+            | ident/modulus
             | ident/trad
             | ident/ref
             | métadonnées/divers"
@@ -190,12 +191,6 @@
         <xsl:if test="string-length(normalize-space(.)) &gt; 0">
             <meta name="dc:description" content="[{local-name()}]{normalize-space(.)}" />
         </xsl:if>
-    </xsl:template>
-
-    <!-- ajout gautier-->
-    <xsl:template match="ident/titreVO">
-        <!-- Titre original -->
-        <meta name="dc:Relation" content="{.}" />
     </xsl:template>
 
     <xsl:template match="ident/isbn | métadonnées/isbn">
@@ -831,13 +826,38 @@
     <xsl:template match="dialogue">
         <xsl:apply-templates />
     </xsl:template>
-    <!-- <!ELEMENT question (p)*> -->
+    <xsl:template match="interloc">
+    <xsl:choose>
+        <xsl:when test="./p">
+            <xsl:apply-templates />
+        </xsl:when>
+        <xsl:otherwise>
+            <p class="interloc"><xsl:apply-templates /></p>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+    <!-- <!ELEMENT question (p)*>
+    Pas toujours vrai : sur la V5 il peut y avoir des question sans paragraphe-->
     <xsl:template match="question">
-        <xsl:apply-templates />
+        <xsl:choose>
+            <xsl:when test="./p">
+                <xsl:apply-templates />
+            </xsl:when>
+            <xsl:otherwise>
+                <p class="question"><xsl:apply-templates /></p>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     <!-- <!ELEMENT reponse (p)*> -->
     <xsl:template match="reponse">
-        <xsl:apply-templates />
+        <xsl:choose>
+            <xsl:when test="./p">
+                <xsl:apply-templates />
+            </xsl:when>
+            <xsl:otherwise>
+                <p class="reponse"><xsl:apply-templates /></p>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <!-- ******************************************** -->
@@ -1404,7 +1424,7 @@
         <xsl:text>(Voir image </xsl:text><xsl:value-of select="@fichier" /><xsl:text>)</xsl:text>
     </xsl:template>
 
-    <xsl:template match="RP|BLANC|INDEX|BR|colspec|SEP" />
+    <xsl:template match="RP|BLANC|INDEX|BR|SEP" />
 
     <xsl:template match="SIGNATURE">
         <p><xsl:apply-templates /></p>
