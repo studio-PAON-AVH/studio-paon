@@ -57,14 +57,13 @@
                             <p><xsl:apply-templates select="node()" /></p>
                         </level1>
                     </xsl:if>
-                    <xsl:apply-templates select="ident/bio"/>
                     <xsl:if test="ident/dedi | ident/exer">
                         <level1 class="dedicace">
                             <xsl:apply-templates select="ident/dedi | ident/exer"/>
                         </level1>
                     </xsl:if>
 
-                    <xsl:apply-templates select="pre|MalleAvant"/>
+                    <xsl:apply-templates select="ident/bio|pre|MalleAvant"/>
                 </frontmatter>
                 <bodymatter>
                     <!-- Alimenter le bloc bodymatter avec le bloc source corps -->
