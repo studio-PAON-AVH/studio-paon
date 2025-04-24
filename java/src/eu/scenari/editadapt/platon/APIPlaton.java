@@ -30,6 +30,7 @@ public class APIPlaton {
 		public static final String LOGIN = "/connexion/miglogin2";
 		public static final String LOGIN_SUCCESS = "/pmeh/accueil";
 		public static final String GET_ID_FROM_EAN = "/ajaxGetRechercheAvanceeData";
+		public static final String GET_DOCUMENT = "/detailDocument?idDocument=%d";
 		//public static final String GET_ID_FROM_EAN = "/ajaxGetRechercheAvanceeDataEtFacets?estampille=1";
 		public static final String GET_DEMANDES_FROM_EAN = "/ajaxGetDemandePmehResponse";
 		public static final String GET_FICHIERS_EDITEUR = "/ajaxGetFichiersEditeurResponse";
@@ -40,6 +41,10 @@ public class APIPlaton {
 		public static final String SAVE_DEMANDE = "/pmeh/enregistrer-demande";
 	}
 
+	private static final Pattern MATCH_DOCUMENT_FIELDS = Pattern.compile(
+			"<label class=\"label\"[^>]*>\\s*\\n*\\s*(.*?) :\\s*\\n*\\s*</label>.*?<div (id=\"[^\"]*\" )?class=\"(formatText|inputNumeroDl)\"[^>]*>([^<]*)</div>",
+			Pattern.CASE_INSENSITIVE | Pattern.DOTALL
+	);
 	public static class NotificationType {
 		public static final String ERROR = "error";
 		public static final String SUCCESS =  "success";
@@ -47,14 +52,19 @@ public class APIPlaton {
 	}
 
 	public static String ResponsePlaton(String notifType, String message){
+		return ResponsePlaton(notifType, message, "{}");
+	}
+	public static String ResponsePlaton(String notifType, String message, String data){
 		return String.format("{" +
 						"\"type\":\"%s\", " +
 						"\"date\":\"%s\", " +
-						"\"message\":\"%s\"" +
+						"\"message\":\"%s\", " +
+						"\"data\":%s" +
 				"}",
 				notifType,
 				new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS").format(new Date()),
-				message.replace("\n", "\\n").replace("\r", "\\r")
+				message.replace("\n", "\\n").replace("\r", "\\r"),
+				data
 		);
 	}
 
@@ -131,6 +141,29 @@ public class APIPlaton {
 		else {
 			throw new Exception("Erreur d'identifiant platon pour l'ean " + EAN13);
 		}
+	}
+
+	protected static String getDocumentFromId(HttpClient client, int platonId) throws Exception {
+
+		HttpRequest request = HttpRequest.newBuilder(new URI(BASEURL + String.format(ENDPOINTS.GET_DOCUMENT, platonId)))
+				.GET()
+				.build();
+
+		HttpResponse resp = client.send(request, HttpResponse.BodyHandlers.ofString());
+		if(resp.statusCode() != 200) throw new Exception("Une erreur s'est produite lors de la requête des fichiers éditeurs : " + resp.statusCode());
+		String htmlDocument = resp.body().toString();
+		Matcher fields = MATCH_DOCUMENT_FIELDS.matcher(htmlDocument);
+		StringBuilder result = new StringBuilder();
+		result.append("{");
+		result.append("\"platonid\":").append(platonId);
+		while(fields.find()){
+			result.append(",");
+			String fieldName = fields.group(1).replaceAll("\\s+", " ").trim();
+			String fieldValue = fields.group(4).replaceAll("\\s+", " ").trim();
+			result.append("\"").append(fieldName).append("\":\"").append(fieldValue).append("\"");
+		}
+		result.append("}");
+		return result.toString();
 	}
 
 	protected static String getFichiersEditeursFromId(HttpClient client, int platonId) throws Exception {
@@ -503,7 +536,13 @@ public class APIPlaton {
 			if(s2 != null && !s2.isEmpty()) sf += s2 + "\n";
 			if(s3 != null && !s3.isEmpty()) sf += s3 + "\n";
 			if(s4 != null && !s4.isEmpty()) sf += s4 + "\n";
-			return ResponsePlaton(NotificationType.SUCCESS, sf.length() > 0 ? sf : "Aucune information trouvée");
+
+			String document = "{}";
+			try {
+				document = getDocumentFromId(platon, id);
+			} catch (Exception e){}
+
+			return ResponsePlaton(NotificationType.SUCCESS, sf.length() > 0 ? sf : "Aucune information trouvée", document);
 		} catch (Exception e) {
 			return ResponsePlaton(NotificationType.ERROR, e.getMessage());
 		}
