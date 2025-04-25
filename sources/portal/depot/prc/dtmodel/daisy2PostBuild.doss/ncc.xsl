@@ -41,7 +41,8 @@
 		<xsl:copy>
 			<xsl:apply-templates select="@*[local-name() != 'id']"/>
 			<xsl:attribute name="id"><xsl:value-of select="xhtml:span/@id"/></xsl:attribute>
-			<a href="{$smilId}.smil#hpar{$parId}"><xsl:apply-templates select="descendant::text()"/></a>
+			<!--<a href="{$smilId}.smil#hpar{$parId}"><xsl:apply-templates select="descendant::text()"/></a>-->
+			<a href="{$smilId}.smil#par{$parId}"><xsl:apply-templates select="descendant::text()"/></a>
 		</xsl:copy>
 		<span title="true" class="page-normal" id="s{@id}"><a href="{$smilId}.smil#par{$parId}"></a></span>
 	</xsl:template>

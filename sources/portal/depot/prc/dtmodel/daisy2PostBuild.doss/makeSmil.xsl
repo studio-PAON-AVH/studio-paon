@@ -85,7 +85,8 @@
 		<smil>
 			<head>
 				<meta name="dc:format" content="Daisy 2.02"/>
-				<meta name="ncc:timeInThisSmil" content="{java:eu.scenari.editadapt.utils.Utils.secondesToFormat(number($clips/par[1]/seq/audio/@clip-begin) + sum($clips/par/seq/audio/@clip-duration), $format-audio-duration, $package)}"/>
+				<!--number($clips/par[1]/seq/audio/@clip-begin) + -->
+				<meta name="ncc:timeInThisSmil" content="{java:eu.scenari.editadapt.utils.Utils.secondesToFormat(sum($clips/par/seq/audio/@clip-duration), $format-audio-duration, $package)}"/>
 				<!--<meta name="ncc:totalElapsedTime" content="{java:eu.scenari.editadapt.utils.Utils.formatSumDuration($durations, $previous-audio, $format-audio-duration)}"/>-->
 				<!-- A mettre a jour apres création du master smil qui redonne l'ordre de lecture et permet de créer l'accumulation-->
 				<meta name="ncc:totalElapsedTime" content="00:00:00.000"/>
@@ -98,15 +99,16 @@
 				<meta name="dc:identifier" content="{$html/xhtml:head/xhtml:meta[@name='dc:identifier']/@content}"/>
 			</head>
 			<body>
-				<seq dur="{round(number($clips/par[1]/seq/audio/@clip-begin) + sum($clips/par/seq/audio/@clip-duration) * 1000) div 1000}s">
-					<par endsync="last" id="h{$clips/par[1]/@id}">
+				<!--number($clips/par[1]/seq/audio/@clip-begin) + -->
+				<seq dur="{round(sum($clips/par/seq/audio/@clip-duration) * 1000) div 1000}s">
+					<!--<par endsync="last" id="h{$clips/par[1]/@id}">
 						<text src="{$clips/par[1]/text/@src}" id="h{$clips/par[1]/text/@id}"/>
 						<seq>
 							<audio src="{$clips/par[1]/seq/audio/@src}" id="h{$clips/par[1]/seq/audio/@id}"
 										 clip-begin="npt=0.000s"
 										 clip-end="npt={round(number($clips/par[1]/seq/audio/@clip-begin) * 1000) div 1000}s" />
 						</seq>
-					</par>
+					</par>-->
 					<xsl:for-each select="$clips/par">
 						<par endsync="last" id="{@id}">
 							<text src="{text/@src}" id="{text/@id}"/>
