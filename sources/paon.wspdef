@@ -44,14 +44,7 @@
 			<sm:from key="paoncommons"/>
 			<sm:to key="paoncommons" majorVersion="1" mediumVersion="1" minorVersion="4"/>
 		</sm:update>
-		<sm:update sc:refUri="/migr/from_1.2.doss">
-			<sm:from key="paoncommons"/>
-			<sm:to key="paoncommons" majorVersion="1" mediumVersion="3" minorVersion="0"/>
-		</sm:update>
-		<sm:update sc:refUri="/migr/from_1.3.doss">
-			<sm:from key="paoncommons"/>
-			<sm:to key="paoncommons" majorVersion="1" mediumVersion="4" minorVersion="0"/>
-		</sm:update>
+		<!--<sexc:exclude sexc:comment="Exclut pour éviter d'avoir a rebuild l'ensemble du depot." xmlns:sexc="scenari.eu:exclude:1.0" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sc="http://www.utc.fr/ics/scenari/v3/core"><sm:update sc:refUri="/migr/from_1.3.doss"><sm:from key="paoncommons"/><sm:to key="paoncommons" majorVersion="1" mediumVersion="4" minorVersion="0"/></sm:update></sexc:exclude>-->
 	</sm:migration>
 	<sm:free>
 		<sm:front>
