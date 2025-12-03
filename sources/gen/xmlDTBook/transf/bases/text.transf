@@ -20,7 +20,9 @@
 			<sm:rowTag preferedCellTagName="th" role="head"/>
 			<sm:cellTag/>
 		</sm:tableTag>
-		<sm:phraseTag role="alternative" tagName="none"/>
+		<sm:phraseTag role="alternative" tagName="none">
+			<sm:Widget sc:refUri="/gen/xmlDTBook/widget/spanAlternative.uiwidget"/>
+		</sm:phraseTag>
 		<sm:phraseTag role="cite" tagName="cite"/>
 		<sm:inlineStyleTag role="strong" tagName="strong"/>
 		<sm:inlineStyleTag role="emphase" tagName="em"/>

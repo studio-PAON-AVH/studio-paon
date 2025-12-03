@@ -569,6 +569,29 @@
 			<xsl:apply-templates mode="txt"/>
 		</span>
 	</xsl:template>
+    <xsl:template match="dtb:span[@class='alternative']" mode="txt">
+        <sc:phrase role="alternative">
+            <paon:alttext xml:space="default">
+                <xsl:if test="@altphonemes|@alttext">
+                    <sp:altAUDIO>
+                        <xsl:if test="@altphonemes">
+                            <sp:phonemes><xsl:value-of select="@altphonemes"/></sp:phonemes>
+                        </xsl:if>
+                        <xsl:if test="@alttext">
+                            <sp:texte><xsl:value-of select="@alttext"/></sp:texte>
+                        </xsl:if>
+                    </sp:altAUDIO>
+                </xsl:if>
+                <xsl:if test="@altbrl">
+                    <sp:altBRL><xsl:value-of select="@altbrl"/></sp:altBRL>
+                </xsl:if>
+                <xsl:if test="@protecbrl">
+                    <sp:protecBRL><xsl:value-of select="@protecbrl"/></sp:protecBRL>
+                </xsl:if>
+            </paon:alttext>
+            <xsl:apply-templates mode="txt"/>
+        </sc:phrase>
+    </xsl:template>
 	<!-- Abreviation -->
 	<xsl:template match="dtb:abbr" mode="txt">
 		<sc:inlineStyle role="abreviation">
