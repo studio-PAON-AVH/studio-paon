@@ -110,6 +110,8 @@ public class SplitSentencesBySpanTask extends Task {
 		protected boolean stackClosed = false;
 		BufferedReader sentencesReader = null;
 
+        protected String currentFile = "";
+
 		SplitSentencesBySpanDaisy2SaxHandler(XMLSerializer xml) {
 			this.xml = xml;
 		}
@@ -215,6 +217,7 @@ public class SplitSentencesBySpanTask extends Task {
 			if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] Start element %s", qName);
 			String acapelaFileName = getAcapelaFileName(uri, localName, qName, attributes);
 			if (acapelaFileName != null) {
+                currentFile = acapelaFileName;
 				if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] new Acapela File found on div - load new sentence file %s", acapelaFileName);
 				closeSentencesReader();
 				openSentencesReader(acapelaFileName);
@@ -269,10 +272,17 @@ public class SplitSentencesBySpanTask extends Task {
 				lastContentCopied = content;
 				if (inFlow) {
 					for (int i = start; i < start + length; i++) {
-						if (sentence == null) {
-							LogMgr.publishMessage(new LogMsg("[" + this.getClass().getName() + "] Xml txt `%s` at char %d [%c]. No more acapela string to process (sentence=null)", new String(ch, start, length), i, ch[i]));
-							throw LogMgr.newException("[" + this.getClass().getName() + "] Xml txt (%s) at char %d [%c]. No more acapela string to process (sentence=null)", new String(ch, start, length), i, ch[i]);
-						}
+                        String alreadyParsed = new String(ch, start, i - start);
+                        String remaining = new String(ch, i, start + length - i);
+						if (sentence == null) { // fin de contenu, on copie le reste
+                            if(Character.isLetterOrDigit(ch[i])){
+                                LogMgr.publishMessage(new LogMsg("[" + this.getClass().getName() + "] Xml txt précédent `%s`, erreur sur char %d [%c] : Plus de contenu acapela disponible (sentence=null) mais contenu original restant : %s", alreadyParsed, i, ch[i],remaining));
+                                throw LogMgr.newException("[" + this.getClass().getName() + "] Xml txt précédent `%s`, erreur sur char %d [%c] : Plus de contenu acapela disponible (sentence=null) mais contenu original restant : %s ", alreadyParsed, i, ch[i], remaining);
+                            } else {
+                                xml.characters(ch, i, 1);
+                                continue;
+                            }
+                        }
 						if (inAltAudio) {
 							if (!inSentence) { // Cas d'un alt audio en début de phrase
 								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] character found - not inSentence - start new span@class='sentence'");
@@ -444,11 +454,16 @@ public class SplitSentencesBySpanTask extends Task {
 			closeSentencesReader();
 			xml.endDocument();
 		}
-
+        protected String previousSentence = "";
 		protected void nextSentence() {
 			try {
+                previousSentence = sentence;
 				sentence = sentencesReader.readLine();
-				if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] Load new sentence:\n%s", sentence);
+                if(sentence == null){
+                    if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] %s : fin de contenu atteint apres la phrase %s", currentFile, previousSentence);
+                } else {
+                    if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] %s : Nouvelle phrase  - \n%s", currentFile, sentence);
+                }
 				sentenceOffset = 0;
 			} catch (Exception e) {
 				LogMgr.publishException(e);
