@@ -565,9 +565,9 @@
 	</xsl:template>
 	<!-- smallcaps -->
 	<xsl:template match="dtb:span[@class='smallcaps']" mode="txt">
-		<span class="smallcaps">
+		<sc:inlineStyle role="smallcaps">
 			<xsl:apply-templates mode="txt"/>
-		</span>
+		</sc:inlineStyle>
 	</xsl:template>
     <xsl:template match="dtb:span[@class='alternative']" mode="txt">
         <sc:phrase role="alternative">

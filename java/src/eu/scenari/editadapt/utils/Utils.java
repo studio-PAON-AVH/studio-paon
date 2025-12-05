@@ -68,8 +68,11 @@ public class Utils {
 		str = quotation.matcher(str).replaceAll("'$1");
 		str = punct.matcher(str).replaceAll("$1");
 		str = nbsp.matcher(str).replaceAll(" $1");
-		//str = deleteChars.matcher(str).replaceAll("");
-		return toUpperCase ? str.toUpperCase(Locale.FRANCE) : str;
+        if(toUpperCase){
+            return str.toUpperCase(Locale.FRANCE);
+        } else {
+            return str;
+        }
 	}
 
 	public static String isEmptyStr(String str) {
