@@ -5,6 +5,7 @@
 									version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 									xmlns:paon="editadapt.fr:paon"
 									xmlns:sc="http://www.utc.fr/ics/scenari/v3/core"
+									xmlns:pa="http://avh.asso.fr/paon/alternatives"
 									xmlns:sp="http://www.utc.fr/ics/scenari/v3/primitive"
 									xmlns:java="http://xml.apache.org/xslt/java"&gt;
 
