@@ -462,6 +462,7 @@ public class SplitSentencesBySpanTask extends Task {
                 if(sentence == null){
                     if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] %s : fin de contenu atteint apres la phrase %s", currentFile, previousSentence);
                 } else {
+                    sentence = sentence.trim();
                     if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] %s : Nouvelle phrase  - \n%s", currentFile, sentence);
                 }
 				sentenceOffset = 0;
