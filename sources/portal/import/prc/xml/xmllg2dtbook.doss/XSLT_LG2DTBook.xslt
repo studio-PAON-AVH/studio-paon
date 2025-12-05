@@ -529,14 +529,14 @@
                 </xsl:for-each>
             </xsl:when>
             <xsl:otherwise>
-                <sidebar render="required">
+                <sidebar render="optional">
                     <xsl:apply-templates/>
                 </sidebar>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
     <xsl:template match="niv1 | niv2 | niv3 | niv4 | niv5" mode="encart">
-        <sidebar render="required">
+        <sidebar render="optional">
             <xsl:apply-templates mode="encart"/>
         </sidebar>
     </xsl:template>
