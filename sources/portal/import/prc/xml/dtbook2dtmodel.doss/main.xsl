@@ -7,6 +7,7 @@
 								xmlns:redirect="com.scenari.xsldom.xalan.lib.Redirect"
 								xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
 								xmlns:paon="editadapt.fr:paon"
+                                xmlns:pa="http://avh.asso.fr/paon/alternatives"
 								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 								version="1.0"
 								extension-element-prefixes="redirect" exclude-result-prefixes="xalan java sc sp" xsi:schemaLocation="editadapt.fr:paon ">
@@ -572,21 +573,21 @@
     <xsl:template match="dtb:span[@class='alternative']" mode="txt">
         <sc:phrase role="alternative">
             <paon:alttext xml:space="default">
-                <xsl:if test="@altphonemes|@alttext">
+                <xsl:if test="@pa:altphonemes|@pa:alttext">
                     <sp:altAUDIO>
-                        <xsl:if test="@altphonemes">
-                            <sp:phonemes><xsl:value-of select="@altphonemes"/></sp:phonemes>
+                        <xsl:if test="@pa:altphonemes">
+                            <sp:phonemes><xsl:value-of select="@pa:altphonemes"/></sp:phonemes>
                         </xsl:if>
-                        <xsl:if test="@alttext">
-                            <sp:texte><xsl:value-of select="@alttext"/></sp:texte>
+                        <xsl:if test="@pa:alttext">
+                            <sp:texte><xsl:value-of select="@pa:alttext"/></sp:texte>
                         </xsl:if>
                     </sp:altAUDIO>
                 </xsl:if>
-                <xsl:if test="@altbrl">
-                    <sp:altBRL><xsl:value-of select="@altbrl"/></sp:altBRL>
+                <xsl:if test="@pa:altbrl">
+                    <sp:altBRL><xsl:value-of select="@pa:altbrl"/></sp:altBRL>
                 </xsl:if>
-                <xsl:if test="@protecbrl">
-                    <sp:protecBRL><xsl:value-of select="@protecbrl"/></sp:protecBRL>
+                <xsl:if test="@pa:protecbrl">
+                    <sp:protecBRL><xsl:value-of select="@pa:protecbrl"/></sp:protecBRL>
                 </xsl:if>
             </paon:alttext>
             <xsl:apply-templates mode="txt"/>
