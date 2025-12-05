@@ -677,14 +677,14 @@
         </strong>
     </xsl:template>
 
-    <xsl:template match="pc">
+    <!--<xsl:template match="pc">
         <xsl:apply-templates/>
-    </xsl:template>
-    <!-- <xsl:template match="pc">
+    </xsl:template>-->
+    <xsl:template match="pc">
          <span class="smallcaps">
          <xsl:apply-templates/>
          </span>
-         </xsl:template> -->
+         </xsl:template>
     <!-- ligne de blanc : suppression -->
     <xsl:template match="bl"/>
     <xsl:template match="sep">
