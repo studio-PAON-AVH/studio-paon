@@ -1046,6 +1046,7 @@
          | ancestor-or-self::horstexte
          | ancestor-or-self::autre
          | ancestor-or-self::part
+         | ancestor-or-self::spart
          | ancestor-or-self::partie
          | ancestor-or-self::vol
          | ancestor-or-self::chap
@@ -1068,6 +1069,7 @@
     <xsl:template match="
         vol
         | part
+        | spart
         | chap
         | schap
         | pre
@@ -1524,6 +1526,7 @@
                 | ancestor-or-self::part
                 | ancestor-or-self::partie
                 | ancestor-or-self::PARTIE
+                | ancestor-or-self::spart
                 | ancestor-or-self::vol
                 | ancestor-or-self::chap
                 | ancestor-or-self::chapitre
@@ -1535,7 +1538,6 @@
                 | ancestor-or-self::sect
                 | ancestor-or-self::péritexte
                 | ancestor-or-self::section
-                | ancestor-or-self::partie
                 | ancestor-or-self::chapitre
                 | ancestor-or-self::niv1
                 | ancestor-or-self::niv2
