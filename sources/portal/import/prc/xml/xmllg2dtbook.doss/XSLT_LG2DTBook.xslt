@@ -380,9 +380,6 @@
     <!-- Traitement paragraphes de texte -->
     <xsl:template match="p">
         <xsl:element name="p">
-            <xsl:if test="preceding-sibling::let">
-                <xsl:value-of select="preceding-sibling::let/text()"/>
-            </xsl:if>
             <xsl:for-each select="@*">
                 <xsl:choose>
                     <xsl:when test="local-name() = 'igsStyle'">
@@ -412,10 +409,10 @@
             </xsl:for-each>
             <!-- avant d'injeter le contenu du paragraphe,
                  on recherche la présence d'une lettrine juste avant-->
-            <xsl:if test="local-name(preceding-sibling::node()[1]) = 'let'">
+            <xsl:if test="preceding-sibling::*[1][self::let]">
                 <!--  si ce paragraphe est précédé immédiatement par une balise lettrine,
-                     l'injecter ici au début du paragraphe, mode lettrine -->
-                <xsl:value-of select="preceding-sibling::node()[1]"/>
+                l'injecter ici au début du paragraphe, mode lettrine -->
+                <xsl:value-of select="preceding-sibling::*[1][self::let]/text()"/>
             </xsl:if>
             <xsl:apply-templates/>
         </xsl:element>
