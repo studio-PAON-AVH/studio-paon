@@ -630,6 +630,9 @@
 	<xsl:template match="dtb:span[@class='lnk']" mode="txt">
 		<xsl:apply-templates mode="txt"/>
 	</xsl:template>
+    <xsl:template match="dtb:span[@class='author_is ']" mode="txt">
+        <sc:inlineStyle role="author"><xsl:apply-templates mode="txt"/></sc:inlineStyle>
+    </xsl:template>
 
 	<!-- on ignore les tags w -->
 	<xsl:template match="dtb:w" mode="txt">
