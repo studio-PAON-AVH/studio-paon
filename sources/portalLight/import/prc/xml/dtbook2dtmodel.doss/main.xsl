@@ -7,6 +7,7 @@
 								xmlns:redirect="com.scenari.xsldom.xalan.lib.Redirect"
 								xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
 								xmlns:paon="editadapt.fr:paon"
+                                xmlns:pa="http://avh.asso.fr/paon/alternatives"
 								xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 								version="1.0"
 								extension-element-prefixes="redirect" exclude-result-prefixes="xalan java sc sp" xsi:schemaLocation="editadapt.fr:paon ">
@@ -484,12 +485,11 @@
 
 	<!-- Flow sidebar -->
 	<xsl:template match="dtb:sidebar" mode="para">
-		<sc:div role="side">
-			<paon:sidebar>
-				<sp:render>
-					<xsl:value-of select="@render"/>
-				</sp:render>
-			</paon:sidebar>
+		<sc:div>
+			<xsl:choose>
+				<xsl:when test="@render='optional'"><xsl:attribute name="role">side</xsl:attribute></xsl:when>
+				<xsl:otherwise><xsl:attribute name="role">apart</xsl:attribute></xsl:otherwise>
+			</xsl:choose>
 			<xsl:apply-templates select="*[1]" mode="para"/>
 		</sc:div>
 		<xsl:apply-templates select="following-sibling::*[1]" mode="para"/>
@@ -566,10 +566,33 @@
 	</xsl:template>
 	<!-- smallcaps -->
 	<xsl:template match="dtb:span[@class='smallcaps']" mode="txt">
-		<span class="smallcaps">
+		<sc:inlineStyle role="smallcaps">
 			<xsl:apply-templates mode="txt"/>
-		</span>
+		</sc:inlineStyle>
 	</xsl:template>
+    <xsl:template match="dtb:span[@class='alternative']" mode="txt">
+        <sc:phrase role="alternative">
+            <paon:alttext xml:space="default">
+                <xsl:if test="@pa:altphonemes|@pa:alttext">
+                    <sp:altAUDIO>
+                        <xsl:if test="@pa:altphonemes">
+                            <sp:phonemes><xsl:value-of select="@pa:altphonemes"/></sp:phonemes>
+                        </xsl:if>
+                        <xsl:if test="@pa:alttext">
+                            <sp:texte><xsl:value-of select="@pa:alttext"/></sp:texte>
+                        </xsl:if>
+                    </sp:altAUDIO>
+                </xsl:if>
+                <xsl:if test="@pa:altbrl">
+                    <sp:altBRL><xsl:value-of select="@pa:altbrl"/></sp:altBRL>
+                </xsl:if>
+                <xsl:if test="@pa:protecbrl">
+                    <sp:protecBRL><xsl:value-of select="@pa:protecbrl"/></sp:protecBRL>
+                </xsl:if>
+            </paon:alttext>
+            <xsl:apply-templates mode="txt"/>
+        </sc:phrase>
+    </xsl:template>
 	<!-- Abreviation -->
 	<xsl:template match="dtb:abbr" mode="txt">
 		<sc:inlineStyle role="abreviation">
@@ -607,6 +630,9 @@
 	<xsl:template match="dtb:span[@class='lnk']" mode="txt">
 		<xsl:apply-templates mode="txt"/>
 	</xsl:template>
+    <xsl:template match="dtb:span[@class='author_is ']" mode="txt">
+        <sc:inlineStyle role="author"><xsl:apply-templates mode="txt"/></sc:inlineStyle>
+    </xsl:template>
 
 	<!-- on ignore les tags w -->
 	<xsl:template match="dtb:w" mode="txt">

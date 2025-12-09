@@ -22,19 +22,19 @@
 		<xsl:value-of select="java:eu.scenari.editadapt.utils.Utils.normalizeString(., true())"/>
 	</xsl:template>
 
-	<xsl:template match="span[@class='smallcaps']">
-		<xsl:apply-templates select="node()" mode="uppercase"/>
-	</xsl:template>
+    <xsl:template match="sc:inlineStyle[starts-with(@role,'smallcaps')]">
+        <xsl:apply-templates select="node()" mode="uppercase"/>
+    </xsl:template>
 
 	<xsl:template match="@*|*|comment()">
-		<xsl:copy>
-			<xsl:apply-templates select="@*|node()"/>
-		</xsl:copy>
+        <xsl:copy>
+            <xsl:apply-templates select="@*|node()"/>
+        </xsl:copy>
 	</xsl:template>
 
 	<xsl:template match="@*|*|comment()" mode="uppercase">
 		<xsl:copy>
-			<xsl:apply-templates select="@*|node()" mode="uppercase"/>
+            <xsl:apply-templates select="@*|*|comment()" mode="uppercase"/>
 		</xsl:copy>
 	</xsl:template>
 

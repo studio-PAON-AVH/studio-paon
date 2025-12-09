@@ -61,9 +61,7 @@
 					<smp:freeView buildPath="prcs/dtmodel/daisy2/build.xml" builtOn="content" code="daisy2" family="userFriendly/notViewable" fromCdView="daisy2Pre" name="￼;Daisy 2￼" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=daisy2.zip">
 						<smp:resource sc:refUri="/portalLight/depot/prc/dtmodel/daisy2PostBuild.doss" toPath="daisy2"/>
 					</smp:freeView>
-					<smp:freeView buildPath="prcs/dtmodel/daisy3/build.xml" builtOn="content" code="daisy3" family="userFriendly/notViewable" fromCdView="daisy3Pre" name="￼;Daisy 3￼" onError="quiet" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=daisy3.zip">
-						<smp:resource sc:refUri="/portalLight/depot/prc/dtmodel/daisy3PostBuild.doss" toPath="daisy3"/>
-					</smp:freeView>
+					<!--<sexc:exclude xmlns:sc="http://www.utc.fr/ics/scenari/v3/core" xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xmlns:smp="scenari.eu:builder:portal:1.0" xmlns:sm="http://www.utc.fr/ics/scenari/v3/modeling" xmlns:sexc="scenari.eu:exclude:1.0"><smp:freeView urlPatterns="?V=daisy3.zip" type="eu.scenari.editadapt.ant.AntViewMk" onError="quiet" name="￼;Daisy 3￼" fromCdView="daisy3Pre" family="userFriendly/notViewable" code="daisy3" builtOn="content" buildPath="prcs/dtmodel/daisy3/build.xml"><smp:resource toPath="daisy3" sc:refUri="/portalLight/depot/prc/dtmodel/daisy3PostBuild.doss"/></smp:freeView></sexc:exclude>-->
 					<smp:freeView buildPath="prcs/dtmodel/epub3/build.xml" builtOn="content" code="epub3" family="userFriendly/notViewable" fromCdView="epub3Pre" name="￼;Epub 3￼" onError="quiet" type="eu.scenari.editadapt.ant.AntViewMk" urlPatterns="?V=epub3.zip">
 						<smp:resource sc:refUri="/portalLight/depot/prc/dtmodel/epub3PostBuild.doss" toPath="epub3"/>
 					</smp:freeView>

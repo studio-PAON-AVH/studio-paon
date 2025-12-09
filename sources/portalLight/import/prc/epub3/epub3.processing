@@ -57,7 +57,7 @@
 			<smp:rootView code="xml" family="userFriendly" mimeType="application/xml" name="￼;Source￼">
 				<smp:identityView/>
 			</smp:rootView>
-			<smp:freeView buildPath="epub3/build.xml" builtOn="content" code="dtmodel" type="eu.scenari.store.service.mkviews.makers.AntViewMk" urlPatterns="?V=dtmodel">
+			<smp:freeView buildPath="prcs/epub3/epub3/build.xml" builtOn="content" code="dtmodel" type="eu.scenari.store.service.mkviews.makers.AntViewMk" urlPatterns="?V=dtmodel">
 				<smp:resource sc:refUri="/portalLight/import/prc/epub3/epub3.doss" toPath="epub3"/>
 			</smp:freeView>
 		</smp:buildViews>
