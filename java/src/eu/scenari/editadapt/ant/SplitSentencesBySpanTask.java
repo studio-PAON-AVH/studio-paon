@@ -173,7 +173,7 @@ public class SplitSentencesBySpanTask extends Task {
 		 *
 		 * @throws SAXException
 		 */
-		private void closeStackElements() throws SAXException {
+		private void closeStackElements(boolean andCleanup) throws SAXException {
 			if (!elmntStack.isEmpty()) {
 				if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] close stacked elements");
 				for (Iterator<Map<String, Object>> it = elmntStack.descendingIterator(); it.hasNext(); ) {
@@ -183,6 +183,9 @@ public class SplitSentencesBySpanTask extends Task {
 					xml.endElement((String) element.get("uri"), (String) element.get("localName"), (String) element.get("qName"));
 					//System.out.println("End stack " + (String) element.get("qName"));
 					if (!stackClosed) stackClosed = true;
+				}
+				if(andCleanup){
+					elmntStack.clear();
 				}
 			}
 		}
@@ -249,7 +252,7 @@ public class SplitSentencesBySpanTask extends Task {
 						this.inAltAudio = true;
 						if(!inSentence){ // cas des alt audio an début de phrase de paragraphe
 							// fermeture des éléments précédents la phrase
-							closeStackElements();
+							closeStackElements(false);
 							//ouverture du span de phrase
 							openSentence();
 							//ré-ouverture des éléments de la stack dans le span de phrase
@@ -288,7 +291,7 @@ public class SplitSentencesBySpanTask extends Task {
 								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] character found - not inSentence - start new span@class='sentence'");
 
 								// fermeture des éléments précédents la phrase
-								closeStackElements();
+								closeStackElements(false);
 								//ouverture du span de phrase
 								openSentence();
 								//ré-ouverture des éléments de la stack dans le span de phrase
@@ -308,7 +311,7 @@ public class SplitSentencesBySpanTask extends Task {
 							if (!inSentence) {
 								if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] character found - not inSentence - start new span@class='sentence'");
 								// fermeture des éléments précédents la phrase
-								closeStackElements();
+								closeStackElements(false);
 								//ouverture du span
 								openSentence();
 								//réouverture de la stack dans la phrase
@@ -353,7 +356,7 @@ public class SplitSentencesBySpanTask extends Task {
 						}
 						if (sentenceOffset == sLength) { // on a atteint la fin de la phrase
 							//Fermeture de la stack
-							closeStackElements();
+							closeStackElements(false);
 							if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] last char of sentence - close span@class='sentence'");
 							//fermeture du span de la phrase
 							closeSentence();
@@ -382,7 +385,7 @@ public class SplitSentencesBySpanTask extends Task {
 			if (isInFlow(uri, localName, qName)) { // Fermeture d'un block de contenu
 				if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] element p or hx, quit 'inFlow' mode");
 				// Par securité, fermer la stack s'il reste des éléments ouverts
-				closeStackElements();
+				closeStackElements(true);
 				//S'il ne reste qu'un séparateur "/break/" dans la phrase ou qu'on est en mode "fuzzy", on referme la phrase
 				if (sentence != null && sentence.substring(sentenceOffset).equals(sBreakStr) || fuzzyMode) {
 					if (sTrace.isEnabled()) LogMgr.publishTrace("[" + this.getClass().getName() + "] sentence not null but in fuzzy mode or equals break - close span@class='sentence'");
@@ -433,7 +436,7 @@ public class SplitSentencesBySpanTask extends Task {
 				xml.endElement(uri, localName, qName);
 				if (isSentenceEnd) {
 					// fermer la stack restante,
-					closeStackElements();
+					closeStackElements(false);
 					// fermer la phrase précédente
 					closeSentence();
 					// réouvrir la stack restante
