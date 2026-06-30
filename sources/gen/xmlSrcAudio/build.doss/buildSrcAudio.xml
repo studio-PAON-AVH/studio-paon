@@ -17,7 +17,7 @@
 			avec la tache xml task mais je n'ai pas trouvé ce qui provoque cette erreur.
 			J'ai décidé de modifier le fonctionne de la transfo acapela pour traiter le fichier
 			-->
-		<transform src="${vFolderDest}/txts.xml" dst="${vFolderDest}" params="transform=acapelaTTS&amp;voice=Manon22k_HQ&amp;dico=Dictionnaire_MANON_AVH.dic&amp;extension=.acapela.tts.zip"/>
+		<transform src="${vFolderDest}/txts.xml" dst="${vFolderDest}" params="transform=acapelaTTS&amp;voice=Manon22k_NV&amp;dico=Dictionnaire_MANON_AVH.dic&amp;extension=.acapela.tts.zip"/>
 		<!--<xmltask source="${vFolderDest}/txts.xml">
 			<call path="/*[local-name()='html']/*[local-name()='body']/*[local-name()='div']">
 				<param name="id" path="substring(@id,2)"/>

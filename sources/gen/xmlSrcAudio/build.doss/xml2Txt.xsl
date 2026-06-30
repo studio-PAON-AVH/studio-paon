@@ -12,12 +12,12 @@
 	<xsl:param name="vDialog"/>
 	<xsl:param name="vAgent"/>
 
-	<xsl:variable name="voice1">￼Manon￼</xsl:variable>
-	<xsl:variable name="voice2">￼Antoine￼</xsl:variable>
+	<xsl:variable name="voice1">￼Manon22k_NV￼</xsl:variable>
+	<xsl:variable name="voice2">￼Antoine22k_NV￼</xsl:variable>
 
 
 	<xsl:template match="xhtml:h1|xhtml:h2|xhtml:h3|xhtml:h4|xhtml:h5|xhtml:h6">
-		<xsl:text>\vce=speaker=</xsl:text><xsl:value-of select="$voice2"/><xsl:text>\</xsl:text>
+		<xsl:text>\vce=voice=</xsl:text><xsl:value-of select="$voice2"/><xsl:text>\</xsl:text>
 		<xsl:apply-templates mode="copyTxt">
 			<xsl:with-param name="voice" select="$voice2"/>
 		</xsl:apply-templates>
@@ -26,8 +26,8 @@
 
 	<xsl:template match="xhtml:p">
 		<xsl:choose>
-		<xsl:when test="containWord(@class, 'secondaryVoice')"><xsl:text>\vce=speaker=</xsl:text><xsl:value-of select="$voice2"/><xsl:text>\ </xsl:text></xsl:when>
-		<xsl:otherwise><xsl:text>\vce=speaker=</xsl:text><xsl:value-of select="$voice1"/><xsl:text>\ </xsl:text></xsl:otherwise>
+		<xsl:when test="containWord(@class, 'secondaryVoice')"><xsl:text>\vce=voice=</xsl:text><xsl:value-of select="$voice2"/><xsl:text>\ </xsl:text></xsl:when>
+		<xsl:otherwise><xsl:text>\vce=voice=</xsl:text><xsl:value-of select="$voice1"/><xsl:text>\ </xsl:text></xsl:otherwise>
 		</xsl:choose>
 		<xsl:apply-templates mode="copyTxt">
 			<xsl:with-param name="voice" select="$voice1"/>
@@ -41,7 +41,7 @@
 	</xsl:template>
 
 	<xsl:template match="xhtml:caption">
-		<xsl:text>\vce=speaker=</xsl:text><xsl:value-of select="$voice1"/><xsl:text>\</xsl:text>
+		<xsl:text>\vce=voice=</xsl:text><xsl:value-of select="$voice1"/><xsl:text>\</xsl:text>
 				<xsl:apply-templates mode="copyTxt"/>
   		<xsl:text> \break\ </xsl:text>
 	</xsl:template>
@@ -53,11 +53,11 @@
 	<!-- NP 2022-11-10 : le ticket Acapela 6146988-7856 semble résolu sur mes test -->
 	<xsl:template match="xhtml:span[@class='secondaryVoice']" mode="copyTxt">
 		<xsl:param name="voice"/>
-			<xsl:text> \vce=speaker=</xsl:text><xsl:value-of select="$voice2"/><xsl:text>\ </xsl:text>
+			<xsl:text> \vce=voice=</xsl:text><xsl:value-of select="$voice2"/><xsl:text>\ </xsl:text>
 			<xsl:apply-templates mode="copyTxt">
 				<xsl:with-param name="voice" select="$voice2"/>
 			</xsl:apply-templates>
-			<xsl:text> \vce=speaker=</xsl:text><xsl:value-of select="$voice"/><xsl:text>\ </xsl:text>
+			<xsl:text> \vce=voice=</xsl:text><xsl:value-of select="$voice"/><xsl:text>\ </xsl:text>
   	</xsl:template>
 
 	<!-- Pour résoudre un problème de prononciation des appels de notes qui sont après la ponctuation
