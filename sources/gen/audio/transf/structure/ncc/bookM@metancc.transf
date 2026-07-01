@@ -34,7 +34,7 @@
 				<sm:WText value="ncc:narrator"/>
 			</sm:xhtmlContentZone>
 			<sm:xhtmlContentZone key="content">
-				<sm:WText value="Manon, HQ 22k, French, Acapela-cloud TTS"/>
+				<sm:WText value="Antoine et Manon, NV 22k, French, Acapela-cloud TTS"/>
 			</sm:xhtmlContentZone>
 		</sm:Widget>
 		<sm:Widget sc:refUri="/gen/audio/widget/meta.uiwidget">
