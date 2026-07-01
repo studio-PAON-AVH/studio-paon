@@ -37,11 +37,12 @@
 		<splitSentencesBySpan inFile="${vTmpDir}/${main_html_file}" outFile="${vTmpDir}/parsed_span.xml" sentencesSfx=".acapela.tts.zip.sentences.txt"/>
 		<!-- add Ids-->
 		<!-- Bug dans la fonction precedings... xsl remplacée par transformXsl remplacée par xslt -->
-		<xslt in="${vTmpDir}/parsed_span.xml" out="${vTmpDir}/${main_html_file}" style="addIds.xsl">
+		<!-- NP 2026/07/01 : une mise à jour de ant fais que cette xsl ne marche plus avec xslt, repassage en transformXsl ... -->
+		<transformXsl inFile="${vTmpDir}/parsed_span.xml" outFile="${vTmpDir}/${main_html_file}" style="addIds.xsl">
 			<param name="dPfx" expression="d"/>
 			<param name="pPfx" expression="p"/>
 			<param name="sPfx" expression="s"/>
-		</xslt>
+		</transformXsl>
 
 
 		<for param="xon">
